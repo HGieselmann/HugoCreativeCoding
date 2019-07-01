@@ -28,18 +28,12 @@ If you consider using it latyer, you can just comment it out.
 
 
 
-### Working with the Docs
-- another important part of debugging and advanding your code is the Unity docs
-- https://docs.unity3d.com
-- The docs consists of two parts - the manual and the scripting API
--The Manual describes how things work and also contains tutorials
-- It is great place to start looking into new things or getting a deeper understanding ogf things you are working on
-- You can also switch to the scripting API
-- Whenever you come across the letters “API” it’s about programming
-- Application programming interface
-- Major social media I.e. also have APIs
-- This is where you can find all the commands Unity exposes for scripting
-- most of them contain example Code you can check out
-- If you are stuck this can also be a wonderful place for inspiration, as maybe the function you are searching for, does not exists, but something else equally useful
--If you are slow internet Connection there are offline Documentaion browsers
-- Zeal (zealdocs.org)
+### Still stuck?
+If you are stuck, there are several places to look for help.
+The first place you should always check out are the Unity Docs. You can find them at https://docs.unity3d.com. 
+The Unity Documentation are really, really helpful and consists of two different parts. The first part is the manual. It consists of descriptions of all Components and Workflows in Unity as well as tutorials and Guides on some topics. It also has some great insight about optimizations for your scenes and so on. Be sure to check it out.
+The other part is the Unity Scripting API. (You can switch between both in the upper right corner.)
+API is short for Application programming interface and it’s the things Unity lays open for you to acces through code. Like the transform.position. So you could search for transform. The first entry will show you a list of all the things you can access on that component. That is a lot of stuff and you will never need everything. 
+Now think about all other components and think about everything they might lay open. Nobody can remember everything, so it’s great that we can look this stuff up so conveniently.
+If you choose on of it’s properties or functions you can get even more details and in most cases even see example code, which is really helpful!
+You will always find the most recent version of the docs online, but if you happen to have a slow internet connection you could try Zeal as an offline documentation browser. I have it installed on my Laptop as a great way to search the docs when I’m on the train. You can find it at zealdocs.org.
