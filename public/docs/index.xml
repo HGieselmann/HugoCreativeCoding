@@ -1,57 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docs on My New Hugo Site</title>
-    <link>http://example.org/docs/</link>
-    <description>Recent content in Docs on My New Hugo Site</description>
+    <title>Docs on Generative Unity</title>
+    <link>https://localhost:1313/docs/</link>
+    <description>Recent content in Docs on Generative Unity</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     
-	<atom:link href="http://example.org/docs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://localhost:1313/docs/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title></title>
-      <link>http://example.org/docs/01_introduction/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://example.org/docs/01_introduction/</guid>
-      <description>Title: Punity
-Author:
-Generative Design in Unity
-What is this book? This is book is an introduction to Generative Design or �Creative Coding� inside of Unity.
-Why should you read this book?
-What is Creative Coding? Creative Coding is kind of a weird term. As programming in general is about problem solving, any kind of coding requires creativity. Wether this is in the finance industries, industry automation, gaming or cutting-edge Artificial intelligence.</description>
-    </item>
     
     <item>
       <title></title>
-      <link>http://example.org/docs/01_the_editor/</link>
+      <link>https://localhost:1313/docs/00_Introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/docs/01_the_editor/</guid>
+      <guid>https://localhost:1313/docs/00_Introduction/</guid>
       <description>Title: Master
 Author:
-So you managed your way through the Introduction and are still here. Awesome! The first step on your Journey to learn is to actually go and download Unity. While you could just head to unity3d.com and grab the latest and greatest Version of Unity Personal, I would suggest getting the Unity Hub. Unity Hub will help you manage your Projects as well as the Versions of Unity you have installed on your machine.</description>
+What is this book? The core idea of this book is teaching Unity as tool for creatives of all all kinds. This is “living” book. This means things will change, parts will grow, others will wither. This is for multiple reasons. For one, I am not an expert on all topics in Unity, especially not programming. I have background in Media-Design and merely am trying to learn and in this case teach Unity to the best of my ability.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://example.org/docs/02_moving_things/</link>
+      <link>https://localhost:1313/docs/01_The_Editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/docs/02_moving_things/</guid>
+      <guid>https://localhost:1313/docs/01_The_Editor/</guid>
+      <description>Getting started with Unity So you managed your way through the Introduction and are still here. Awesome! The first step on your Journey to learn is to actually go and download Unity. While you could just head to unity3d.com and grab the latest and greatest Version of Unity Personal, I would suggest getting the Unity Hub. Unity Hub will help you manage your Projects as well as the Versions of Unity you have installed on your machine.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://localhost:1313/docs/02_Moving_Things/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://localhost:1313/docs/02_Moving_Things/</guid>
       <description>Title: Master
 Author:
- With our prefab set up, create a new “Empty” in the Hierarchy we need this to Hold a script, so rename it ScriptHolder In the Scripts Folder create a new Script, call it StaticAlbers, grad and drop onto scriptholder Scripts are listed in the inspector the same way as any other component Double Click on the Script to open it in an external IDE (The Standard IDE is Visual Studio)  Let’s examine the Code that’s already there with caution</description>
+Design as a Process Design Process and PseudoCode Design on Paper an then go deeper Design and Coding are both Skills, they need practice Design is an Iterative Process and we will use it for practice Examples: Ellen Lupton, Dailies, drawABox, Ivan
+Throughout the first chapters we will use Josef Albers “Hommage to the Square” as a starting point for experimentation. This will be a great way to get started coding with small script and also see how just a few lines of code can change a lot of the feel of things.</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://example.org/docs/99_github/</link>
+      <link>https://localhost:1313/docs/03_The_Console/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/docs/99_github/</guid>
+      <guid>https://localhost:1313/docs/03_The_Console/</guid>
+      <description>Title: Master
+Author:
+The Console - Your best friend This chapter is a short but important intermezzo. Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your code! As we are Coding in C# your computer will be very, very picky about the code you write.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://localhost:1313/docs/99_Github/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://localhost:1313/docs/99_Github/</guid>
       <description>Let’s talk about Version Control You probably noticed, or will soon, that sometimes you have an idea on how to improve your code. You reformat your code, delete some old code here some there and all is good. The next day you look at your code an realize that it was laaate last night and everything you did, was just breaking stuff. But what did you actually change last night?</description>
     </item>
     

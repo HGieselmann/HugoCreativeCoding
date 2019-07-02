@@ -13,7 +13,7 @@
   
     Docs
   
- | My New Hugo Site</title>
+ | Generative Unity</title>
 
 
 
@@ -23,7 +23,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="http://example.org/docs/index.xml" title="My New Hugo Site" />
+<link rel="alternate" type="application/rss+xml" href="https://localhost:1313/docs/index.xml" title="Generative Unity" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -39,103 +39,63 @@ https://github.com/alex-shpak/hugo-book
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="http://example.org/">My New Hugo Site</a>
+  <a href="https://localhost:1313">Generative Unity</a>
 </h2>
 
 
 
     
-
   
   
-
-
-
-
-
- 
-  
-    
-
-  <ul>
-    
-    
-    <li>
-      
-
-  <a href="/docs/01_introduction/" >
-    
-  
-    
-    01 Introduction
   
 
-  </a>
+  <style>
+  nav ul a[href$="\2f docs\2f "] {
+      color: #004ed0;
+  }
+  </style>
 
+<ul>
+<li><a href="/"><strong>Intro to Coding</strong></a></li>
 
-    </li>
-    
-    <li>
-      
+<li><p><a href="/docs/00_Introduction/">Introduction</a></p>
 
-  <a href="/docs/01_the_editor/" >
-    
-  
-    
-    01 the Editor
-  
+<ul>
+<li><a href="/docs/00_Introduction/">Menu Test1</a></li>
+<li><a href="/docs/00_Introduction/">Menu Test2</a></li>
+<li><a href="/docs/00_Introduction/">Menu Test3</a><br /></li>
+</ul></li>
 
-  </a>
+<li><p><a href="/docs/01_The_Editor/">01 The Editor</a></p></li>
 
+<li><p><a href="/docs/02_Moving_Things/">02 Moving Things</a></p></li>
 
-    </li>
-    
-    <li>
-      
+<li><p><a href="/docs/03_The_Console/">03 The Console</a></p></li>
 
-  <a href="/docs/02_moving_things/" >
-    
-  
-    
-    02 Moving Things
-  
+<li><p><strong>Other</strong></p></li>
 
-  </a>
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
 
-
-    </li>
-    
-    <li>
-      
-
-  <a href="/docs/99_github/" >
-    
-  
-    
-    99 Github
-  
-
-  </a>
-
-
-    </li>
-    
-  </ul>
-
-
-  
-
-
-
-
-
-
+<li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
+</ul>
 
 
 
 
 
 </nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
 
 
 
@@ -157,6 +117,15 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown"></article>
 
       
+<div class="book-footer justify-end">
+  
+  
+  <div>
+    
+  </div>
+  
+</div>
+
 
       
     </div>

@@ -14,7 +14,7 @@
     
     02 Moving Things
   
- | My New Hugo Site</title>
+ | Generative Unity</title>
 
 
 
@@ -39,103 +39,63 @@ https://github.com/alex-shpak/hugo-book
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="http://example.org/">My New Hugo Site</a>
+  <a href="https://localhost:1313">Generative Unity</a>
 </h2>
 
 
 
     
-
   
   
-
-
-
-
-
- 
-  
-    
-
-  <ul>
-    
-    
-    <li>
-      
-
-  <a href="/docs/01_introduction/" >
-    
-  
-    
-    01 Introduction
   
 
-  </a>
+  <style>
+  nav ul a[href$="\2f docs\2f 02_Moving_Things\2f "] {
+      color: #004ed0;
+  }
+  </style>
 
+<ul>
+<li><a href="/"><strong>Intro to Coding</strong></a></li>
 
-    </li>
-    
-    <li>
-      
+<li><p><a href="/docs/00_Introduction/">Introduction</a></p>
 
-  <a href="/docs/01_the_editor/" >
-    
-  
-    
-    01 the Editor
-  
+<ul>
+<li><a href="/docs/00_Introduction/">Menu Test1</a></li>
+<li><a href="/docs/00_Introduction/">Menu Test2</a></li>
+<li><a href="/docs/00_Introduction/">Menu Test3</a><br /></li>
+</ul></li>
 
-  </a>
+<li><p><a href="/docs/01_The_Editor/">01 The Editor</a></p></li>
 
+<li><p><a href="/docs/02_Moving_Things/">02 Moving Things</a></p></li>
 
-    </li>
-    
-    <li>
-      
+<li><p><a href="/docs/03_The_Console/">03 The Console</a></p></li>
 
-  <a href="/docs/02_moving_things/"  class="active">
-    
-  
-    
-    02 Moving Things
-  
+<li><p><strong>Other</strong></p></li>
 
-  </a>
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
 
-
-    </li>
-    
-    <li>
-      
-
-  <a href="/docs/99_github/" >
-    
-  
-    
-    99 Github
-  
-
-  </a>
-
-
-    </li>
-    
-  </ul>
-
-
-  
-
-
-
-
-
-
+<li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
+</ul>
 
 
 
 
 
 </nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
 
 
 
@@ -155,77 +115,288 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><p>Title: Master<br />
+<article class="markdown">
+
+<p>Title: Master<br />
 Author:</p>
 
-<ul>
-<li>With our prefab set up, create a new “Empty” in the Hierarchy</li>
-<li>we need this to Hold a script, so rename it ScriptHolder</li>
-<li>In the Scripts Folder create a new Script, call it StaticAlbers, grad and drop onto scriptholder</li>
-<li>Scripts are listed in the inspector the same way as any other component</li>
-<li>Double Click on the Script to open it in an external IDE (The Standard IDE is Visual Studio)</li>
+<p>Design as a Process
+Design Process and PseudoCode
+Design on Paper an then go deeper
+Design and Coding are both Skills, they need practice
+Design is an Iterative Process and we will use it for practice
+Examples: Ellen Lupton, Dailies, drawABox, Ivan</p>
 
-<li></li>
+<p>Throughout the first chapters we will use Josef Albers “Hommage to the Square” as a starting point for experimentation. This will be a great way to get started coding with small script and also see how just a few lines of code can change a lot of the feel of things.
+These two thing will perfetly go hand in hand, as Design, as well as Coding are Skills. You can read about them as much as you want, but you will only become good at it by actually designing stuff and actually writing code. This is actually an important point. A lot of the ideas of programming are in their core not hard to grasp. A lot of them are really straight forward. What makes programming complex is dividing bigger problems into smaller problems and even smaller problems. And becoming good at this thoughtprocess takes practice. When I went to Drawing school to prepare for my design studies I didn’t get any better until the moment my teacher Ivan forced me to come back with 100 drawings of simple things within a week. The Website drawabox.com has a challenge of drawing 250 boxes.
+And for both worlds a great process for starting out exists. In the design world you start out by doing scribbles or storyboards to get an idea of what the result should look like. In coding you should start with so called “Pseudo Code”.
+Pseudo Code is just a few written lines of what needs to happen. You can then try ordering them in the way the code would require execution, if you can estimate that. These can just look like your average cooking recipe. In essence they are the same.
+I recommend starting on paper, as technology sadly has a tendency to screw with your thinking process, but it can also be a good idea to bring your pseudocode into your script as a comment.</p>
 
-<li><p>Let’s examine the Code that’s already there with caution</p></li>
-</ul>
+<p>For our “Hommage to the Square” experimentation I started with some simple scribbles on what could be things we could easily do with code:
+TODO INSERT SCRIBBLES AND PSEUDOCODE</p>
 
-<p>Now that we are set up and have a very rough overview over the editor we should finally get moving!
-So first we need something, that we can indeed move around! How about a Sphere? Spheres are awesome! Everyone loves Spheres! There are several ways to create Geometry inside Unity but the most convenient is to do a “right-click” in the hierarchy and select “3D-Objects/Sphere”.
-Now you should see a Sphere inside your Editor view as well as the Gameview, if you haven’t messed to heavily with your Camera. This Sphere is a “GameObject”.
-If you select your sphere and take a look at the inspector on the right side, you will see the name correspond to the object in the Hierarchy.
-Below you will find five “Components” attached to the GameObject. We are interested into the Transform Component, as we are willing to actually move the Object. You can hover your mouse over the Letters “XYZ” and you actually get a slider Control to move, rotate or scale the object! Go ahead try it! When you are done set reset the values to 0 on Position and Rotation and to 1 on the Scale values.
-Ok that is fancy and all, but gets a little tedious to do, so let’s get this thing moving on it’s own. To do this we need another Component. So click the “Add Component” Button in the Inspector. This will offer you a list of all the Components Unity offers. Don’t bother with it and just type a name like “Movement”. Every name that is not already in use by Unity itself is fine and Unity will offer you to create a new script. Choose that Option to an Choose create and add.
-This will create an Script in the AssetFolder. You can now either do a double-click on the Name of the Script on the Script Component or in the Asset Folder in the Project View.
-This will trigger your default ScriptEditor/IDE to open up. Most likely Visual Studio Code. This can vary on Version of Unity and wether you are on Mac, PC or Linux. It does not matter though. You could do all of this using notepad or textedit. It’s just more Convenient to use an IDE like Visual Studio.
-Now when Visual Studio Code pops up you will have your first Script and it already has Code! That’s “boilerplate” Code Unity provides you with, because it assumes a that you are going to need a few things anyways. DON’T be intimidated by anything here. We will break it all down into pieces and for now we are just interested in the Update part.</p>
+<h3 id="structure-of-a-script">Structure of a script</h3>
 
-<p>// Update is called once per frame void Update() {      }</p>
+<p>So let’s finally start writing our first script. There are multiple ways to create script, the one I prefer is creating it via <code>RightClick -&gt; C# Script</code> in the Project View. The advantage is that, you can directly choose the Folder in which the Script should be located and you don’t have to start organizing your Files afterwards.
+But you can also create scripts from the Inspector by adding a component and in the searchPanel simply write the name you want to give to the script. For us that will be “MovingAlbers1” for now.
+I guess it is not typical to ad numbers to your scripts, but as we will iterate quite a bit, we will do that for a while.
+With your script created just open it using double-click. Your default Code Editor will open. This can take while depending on your system.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h2 id="code-editors-and-ides">Code Editors and IDEs</h2>
 
-<p>The fine people at unity actually added a comment for us. “// Update is called once per frame”
-So now we know that what ever we do in Update is called every frame. The perfect place to add code for movement!</p>
+<p>The default Code Editor for you probably is “Visual Studio Community Edition” oder “Visual Studio for Mac”. These are IDEs - Integrated Development Environments. These are powerful tools for editing Code, the can integrate with Unity and come with many advanced features. The downside to them is, they tend to be slow. And on a Laptop they can be draining on your battery, as they check code in the background a lot. So if you are on a low end machine it can be wise to look for a “Code Editor”. They are a lightweight alternative, but in comparison lack some advanced features.
+Great Code Editors are “Visual Studio Code” by Microsoft, “Atom” by Github.
+    </div>
+  </label>
+</div>
 
-<p>void Update() {     transform.position = transform.position + new Vector3(1, 0, 0); }</p>
+Every Unity Script comes with some “boilerplate” Code to get you started. It looks like this:</p>
 
-<p>If we add this Code inside the Curly brackets of the Update() Method and start Play Mode (CTRL+P in Unity) our Sphere starts moving. If you try this it will probably move so fast its pretty much instantly gone into the distance, but we will fix that later. Lets first inspect that line of code.
-On the left side of the statement we have transform.position. If you take a look at the Inspector in Unity our GameObject has a “Transform” Component. In that Component the first set of values is the position values. This “dot notation” in C# is like referencing the hierarchy. We first select the transform Component and then separated by the dot the subcomponent Position.
-On the right side we repeat transform.position, which means we take the current value of transform and then add a new Vector3 to it. Our position in 3D consists of 3 values: x,y,z. Unity does not allow us to just change one value, so we need a Vector with three components as well. We have to create it using the new Keyword and give it values. We just want it to move along one Axis.</p>
+<pre><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-<p>So you probably saw your Sphere shoot of to never be seen again. So let’s think about what is happening. Let’s assume our Sphere is at the center of our scene in the beginning. The we start Play Mode and our Script kicks in. It takes our current Position add 1 on the X-Axis. This happens every single Frame. Unity  aims for a framerate of 60 Frames per Second. Our Sphere is thus moving at 60m/s or 216km/h. That’s fast!
-So we need to slow it down:</p>
+public class New : MonoBehaviour
+{
+// Start is called before the first frame updat
+    void Start()
+    {
 
-<p>void Update() {     transform.position = transform.position + new Vector3(1, 0, 0) * Time.deltaTime; }</p>
+    }
+    // Update is called once per frame
+    void Update()
+    {
 
-<p>If you try that code your Sphere is way slower. So what does this mystical Time.deltaTime do?
-Time.deltaTime is the amount of time Unity took to calculate the last Frame. So probably about <sup>1</sup>&frasl;<sub>60</sub>. If you multiply this with the amount we want to move we actually get a movement of 1m/s. Exactly the amount we added. So pretty much whenever you want to move stuff you need to multiply the movement by Time.deltaTime.</p>
+    }
+}
+</code></pre>
 
-<p>Why does Unity know to move our Sphere? Because it is attached to our GameObject and Unity uses a shorthand to understand whats going on. You could go with a longer Code and add “this.gameObject” in front. This would be more specific, but would also mean more clutter in your code. If you write code that is unnecessary your IDE will probably give you a hint about that. Most likely by coloring the Code gray.</p>
+<p>The first few lines are “using statements”. These reference Libraries on your computer into the script. And I think libraries is a really fitting word. It’s like quite a bunch of book the computer has read and now you can talk about them and the computer knows what you are alking about. The first two are really like the absolute basics and the “UnityEngine” Library defines all the Unity Specific “book” your computer should know about.</p>
 
-<p>void Update() {     this.gameObject.transform.Translate(Vector3.right); }</p>
+<p>Next up is the class. Every script we write defines a class. You could have multile classes in one and the same file, but that is not considered good practice. Classes really are an advanced topic, so for now, let’s just say they bundle a bunch of code together. Make mark of the MovingAlbers1 as the class name. This corresponds to the name we gave our script file and they always need to have the same name.
+Everything that belongs to the class is wrapped inside the following curly brakets. Curly braces define a block of Code. You can see this in the Code for the Start and Update Methods as well. All our code belongs inside theses curly braces - except for any additional using statements.
+Speaking of those! Start and Update are Methods that Unity recogizes and calls during the execution of the Program. The Start Function is called first and only once before the program starts running. Here you would define everything you wanted to set up before hand.
+The Update Method is then called each frame and keeps running until you end the program. Here we have to write all our Code that changes or animates over the time of the execution of the script.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h2 id="what-is-a-frame">What is a Frame?</h2>
 
-<p>Congratulations! You have written your first script! Next we will take a look at the Console - your new best friend while Coding!</p>
+<p>Images are rendered to your screen, one image at a time. If the distance between two images is short enough we percieve this as fluid motion. Movies are typically shot with 24 Frames per Second. Unity by default is set up to render 60 Frames per Second, which is the most common refreshrate for Monitors.
+    </div>
+  </label>
+</div>
 
-<p>** You can also create the Script in the ProjectView and go “RightClick/Create/C# Script”</p>
+In general all your code is executed from top to bottom. So if you would move your using statements to the bottom, Unity or your IDE would start complaining.</p>
 
-<p>** You will probably find these:
-Transform, *(MeshFilter), Mesh Renderer, Sphere Collider and a Default Material. You can probably guess what each Component does:
-The Material Component defines what kind of “Material” your GameObject is supposed to be made of. Or what it should it look like.
-The Mesh Renderer than defines how it is drawn to the screen. The Mesh Filter deals with shape of the GameObject and the Sphere Collider</p>
+<h3 id="variables">Variables</h3>
 
-<p>TLDR;
-- Create a Sphere
-- Add a Script Component to that sphere.
-- On Update add a Vector3 to your transform.position
-- multiply it by Time.deltaTime to get more reasonable timing.</p>
+<p>The first thing Coding Concept we will introduce are variables. Variables are often described as boxes with a name on. You can put stuff in and later retrieve the content of the Box, if you know what’s inside.
+In C# variables have a “Type”. This makes C# a (mostly) “type safe” language. To stay with our box example, If you create a box youhave to define what kind of things go inside. A bread box is a bread box and will stay a bread box. A banana box is a banana box and will stay always stay a banana box.
+The C# language comes witha few basic types. We don’t need to know about all of them, but others will we use all the time.</p>
+
+<h4 id="numbers">Numbers</h4>
+
+<p>C# comes with eleven (11!) ways to talk of numbers. We will reduce this to three.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h2 id="number-types-and-memory">Number-Types and Memory</h2>
+    </div>
+  </label>
+</div>
+
+The first one is integers. Integers contain all “whole”numbers no matter if positive or negative.
+<code>int integerVariable;</code>
+This code declares an integer variable with the name “integerVariable”. Right now it holds no value and  if would try to access it we would encounter an error.
+You can assign to variables using the <code>=</code> sign.
+<code>int integerVariable;
+integerVariable = 1;</code>
+This would initialize our integerVariable two 1.
+We could also do this in just one step:
+<code>int integerVariable = 1;</code>
+Assignment is always done form the rightside of the <code>=</code> sign to the left. This also means, that any code on the right side will first be evaluated before it is assigned to the varible on the left.
+<code>int integerVariable = 1+1;</code></p>
+
+<p>Next up are “Floats” and “Doubles”. Both hold all the non-whole numbers. The differnce between the two is, that double use the doubled amount of memory to save values and can store highre precision values. But this also means that  doubles take longer to calculate. That’s why in Unity we use floats, unless we absolutley need to use double precision. So why TALK about doubles already? Because floats are a little weird.
+<code>float floatNumber = 1.1f;
+Double doubleNumber = 1.1;</code>
+Look at that code. See something fishy?
+Whenever we declare a float we have to append the value with a lowercase “f” to tell C# that this is indeed a float-value and NOT a double.
+Doubles are the default way to store floating points in C# and C# can’t implicitly convert doubles to floats. So If you do not add the <code>f</code> C# will expect the number to be a double.</p>
+
+<h4 id="strings">Strings</h4>
+
+<p>Another important Data-Type is strings. Strings contain essentially text.
+<code>string myString = “Hello! I am text.”;</code></p>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h2 id="conversion">Conversion</h2>
+    </div>
+  </label>
+</div>
+
+
+<h4 id="objects">Objects</h4>
+
+<p>Objects are the last important Data-Type we really need to know about. Objects really is a generalization for many things. Unity comes with a lot of types we will use.
+The first things we will see are Vectors.
+<code>vector3 myVector = new Vector3(1,1,1);</code>
+Vector3s are defined by Unity and essentially bundle 3 floats  in one variable. What’s really important here is the <code>new</code> Keyword. It tells C# to allocate some space in memory for it. So if we create variables for classes, then we need to instance them using the new keyword.
+Now this might sound complicated, but you will get the hang of it.</p>
+
+<h3 id="starting-our-first-script">Starting our first script</h3>
+
+<p>So we sketched out what we want to code. So now we just need to transfer those ideas. Earlier we established that the position of an objects is defined through the transform component, so we need to get hold of that one.
+Becaus it is used so much, it is really convenient to get to all the transforms.
+<code>transform.position = new Vector3(0,0,0);</code>
+Transform.position gets hold of the position component of the Object our script is attached to. As position is a vector we need to give it a Vector 3 as input. The <code>(0,0,0)</code> are the respective values for X,Y and Z. So this line of code would center all our squares.
+Go over to Unity and aadd the Script to all Squares except for the largest one. You can do this via Drag-And-Drop from the ProjectView or via the add Component button on the Inspector. Press Play and all your squares shoud jump to the Center of the scene. As they overlay each other, maybe you can’t see all of them.
+In order for them to avoid jumping in the same space, we can hand them their current position in Z back.
+<code>transform.position = new Vector3(0,0,transform.position.z);</code>
+As we learned the right side is always evaluate before the left side.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h2 id="why-not-assign-a-value-here">Why not assign a value here?</h2>
+
+<p>Because we want to use the same script on all our squares. So we need to make sure all of them get different values.
+    </div>
+  </label>
+</div>
+</p>
+
+<p>To get thing moving, we will make use of some Math-Shenanigans. If you think back to your school days, you know, that te Sin Function always returns a value between -1 and 1; And for a linearly growing value, we get a typical Sinus-Wave.
+As in German this is called the “Kreisfunktion” this hopefully fits the idea of the Bauhaus.
+So what can we do to get a linear growing value? Well, Time. Just the current time your computer thinks it is.
+<code>float sinus = Mathf.Sin(Time.time);</code>
+<code>Time.time</code> works, because we imported the System.Generic at the top o four script. To apply this as value, we can just set is as one of the values in the Vector3 we create.
+<code>transform.position = new Vector3(0, sinus, transform.position.z);</code></p>
+
+<p>This is great and all, but now all squares move the same distances, but that looks kinda odd, so we need the Offset back, that Josef Albers envisioned of those squares.
+We have actually two options to deal with this. We could add a variable to set the offet in the Unity Editor, or we could assume, that alle squares are positioned correctly before the code is running. Let’s look at both:</p>
+
+<p>To create a variable we can create a public variable above our start statement.
+<code>public float offsetMultiplier = 1;</code>
+    The multiply the sinus with offet.
+<code>sinus *= offsetMultiplier;</code>
+If you check the Inspector now, you will see a “Textfield”. On each Square you can now define a custom offset. You should be able to just add, the values you chose on the Y Component. You can of course play around with values and try something completley different.
+You can also reuse the values you already setup by positioning them in the scene.
+To do so read the position value of Y and set it to the offset value in the Start function.
+multiplier = transform.position.y;`</p>
+
+<p>The completed Script should look like this:</p>
+
+<pre><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MovingAlbersVar : MonoBehaviour
+{
+        public float multiplier = 1;
+        // Start is called before the first frame update
+        void Start()
+        {
+        multiplier = transform.position.y;
+        }
+    // Update is called once per frame
+        void Update()
+        {
+        float sinus = Mathf.Sin(Time.time) * multiplier;
+
+    transform.position = new Vector3(transform.position.x, sinus,transform.position.z);
+        }
+}
+</code></pre>
+
+<p> </p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">199
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">//</span> <span style="color:#f92672">...</span> <span style="color:#a6e22e">code</span></code></pre></td></tr></table>
+</div>
+</div>
 </article>
 
       
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/alex-shpak/hugo-book/commit/a2ea2982888b574fa32dda7f4bbe1089f4cab9c5" title='Last modified July 1, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> July 1, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c02_Moving_Things.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
 
       
     </div>
 
     
   
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#structure-of-a-script">Structure of a script</a></li>
+<li><a href="#variables">Variables</a>
+<ul>
+<li><a href="#numbers">Numbers</a></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#objects">Objects</a></li>
+</ul></li>
+<li><a href="#starting-our-first-script">Starting our first script</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
 
 
 

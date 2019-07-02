@@ -3,45 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/docs/01_introduction/</loc>
+    <loc>https://localhost:1313/docs/00_Introduction/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/docs/01_the_editor/</loc>
+    <loc>https://localhost:1313/docs/01_The_Editor/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/docs/02_moving_things/</loc>
+    <loc>https://localhost:1313/docs/02_Moving_Things/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/docs/99_github/</loc>
+    <loc>https://localhost:1313/docs/03_The_Console/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://localhost:1313/docs/99_Github/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/docs/</loc>
+    <loc>https://localhost:1313/posts/01_The_Editor/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://localhost:1313/docs/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/_indexwha/</loc>
+    <loc>https://localhost:1313/</loc>
+    <lastmod>2019-06-16T16:54:55+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://localhost:1313/posts/</loc>
     <priority>0</priority>
   </url>
   

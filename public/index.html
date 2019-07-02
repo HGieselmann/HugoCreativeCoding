@@ -14,7 +14,7 @@
   
     Introduction
   
- | My New Hugo Site</title>
+ | Generative Unity</title>
 
 
 
@@ -24,7 +24,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="http://example.org/index.xml" title="My New Hugo Site" />
+<link rel="alternate" type="application/rss+xml" href="https://localhost:1313/index.xml" title="Generative Unity" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -40,103 +40,66 @@ https://github.com/alex-shpak/hugo-book
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="http://example.org/">My New Hugo Site</a>
+  <a href="https://localhost:1313">Generative Unity</a>
 </h2>
 
 
 
     
-
   
   
-
-
-
-
-
- 
   
     
-
-  <ul>
-    
-    
-    <li>
-      
-
-  <a href="/docs/01_introduction/" >
     
   
-    
-    01 Introduction
-  
 
-  </a>
+  <style>
+  nav ul a[href="https\3a\2f\2flocalhost\3a 1313\2f "] {
+      color: #004ed0;
+  }
+  </style>
 
+<ul>
+<li><a href="/"><strong>Intro to Coding</strong></a></li>
 
-    </li>
-    
-    <li>
-      
+<li><p><a href="/docs/00_Introduction/">Introduction</a></p>
 
-  <a href="/docs/01_the_editor/" >
-    
-  
-    
-    01 the Editor
-  
+<ul>
+<li><a href="/docs/00_Introduction/">Menu Test1</a></li>
+<li><a href="/docs/00_Introduction/">Menu Test2</a></li>
+<li><a href="/docs/00_Introduction/">Menu Test3</a><br /></li>
+</ul></li>
 
-  </a>
+<li><p><a href="/docs/01_The_Editor/">01 The Editor</a></p></li>
 
+<li><p><a href="/docs/02_Moving_Things/">02 Moving Things</a></p></li>
 
-    </li>
-    
-    <li>
-      
+<li><p><a href="/docs/03_The_Console/">03 The Console</a></p></li>
 
-  <a href="/docs/02_moving_things/" >
-    
-  
-    
-    02 Moving Things
-  
+<li><p><strong>Other</strong></p></li>
 
-  </a>
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
 
-
-    </li>
-    
-    <li>
-      
-
-  <a href="/docs/99_github/" >
-    
-  
-    
-    99 Github
-  
-
-  </a>
-
-
-    </li>
-    
-  </ul>
-
-
-  
-
-
-
-
-
-
+<li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
+</ul>
 
 
 
 
 
 </nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
 
 
 
@@ -304,6 +267,24 @@ If you want to know what is happening under the hood you can always take a look 
 </article>
 
       
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/alex-shpak/hugo-book/commit/45b3d45a131066022b9ae530ea308ec8fb613346" title='Last modified June 16, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> June 16, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/_index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
 
       
     </div>
@@ -311,7 +292,7 @@ If you want to know what is happening under the hood you can always take a look 
     
   
 
-  <aside class="book-toc level-6 fixed">
+  <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
 <li>

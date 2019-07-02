@@ -13,7 +13,7 @@
   
     Posts
   
- | My New Hugo Site</title>
+ | Generative Unity</title>
 
 
 
@@ -23,7 +23,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
 
-<link rel="alternate" type="application/rss+xml" href="http://example.org/posts/index.xml" title="My New Hugo Site" />
+<link rel="alternate" type="application/rss+xml" href="https://localhost:1313/posts/index.xml" title="Generative Unity" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -38,209 +38,63 @@ https://github.com/alex-shpak/hugo-book
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="http://example.org/">My New Hugo Site</a>
+  <a href="https://localhost:1313">Generative Unity</a>
 </h2>
 
 
 
     
-
   
   
-
-
-
-
-
- 
-  
-    
-
-  <ul>
-    
-      
-
-  <li >
-    
-      
-
-  <a href="/docs/sub-section/" >
-    
-  
-    
-    
-    Docs\sub Section\
   
 
-  </a>
+  <style>
+  nav ul a[href$="\2fposts\2f "] {
+      color: #004ed0;
+  }
+  </style>
 
+<ul>
+<li><a href="/"><strong>Intro to Coding</strong></a></li>
 
-    
+<li><p><a href="/docs/00_Introduction/">Introduction</a></p>
 
-    
+<ul>
+<li><a href="/docs/00_Introduction/">Menu Test1</a></li>
+<li><a href="/docs/00_Introduction/">Menu Test2</a></li>
+<li><a href="/docs/00_Introduction/">Menu Test3</a><br /></li>
+</ul></li>
 
-  <ul>
-    
-    
-    <li>
-      
+<li><p><a href="/docs/01_The_Editor/">01 The Editor</a></p></li>
 
-  <a href="/docs/sub-section/ego-numen/" >
-    
-  
-    
-    Ego Numen
-  
+<li><p><a href="/docs/02_Moving_Things/">02 Moving Things</a></p></li>
 
-  </a>
+<li><p><a href="/docs/03_The_Console/">03 The Console</a></p></li>
 
+<li><p><strong>Other</strong></p></li>
 
-    </li>
-    
-    <li>
-      
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
 
-  <a href="/docs/sub-section/natusque/" >
-    
-  
-    
-    Natusque
-  
-
-  </a>
-
-
-    </li>
-    
-  </ul>
-
-
-  </li>
-
-
-    
-    
-    <li>
-      
-
-  <a href="/docs/advanced/" >
-    
-  
-    
-    Advanced
-  
-
-  </a>
-
-
-    </li>
-    
-    <li>
-      
-
-  <a href="/docs/client/" >
-    
-  
-    
-    Client
-  
-
-  </a>
-
-
-    </li>
-    
-    <li>
-      
-
-  <a href="/docs/examples/" >
-    
-  
-    
-    Examples
-  
-
-  </a>
-
-
-    </li>
-    
-    <li>
-      
-
-  <a href="/docs/server/" >
-    
-  
-    
-    Server
-  
-
-  </a>
-
-
-    </li>
-    
-    <li>
-      
-
-  <a href="/docs/shortcodes/" >
-    
-  
-    
-    Shortcodes
-  
-
-  </a>
-
-
-    </li>
-    
-    <li>
-      
-
-  <a href="/docs/with-toc/" >
-    
-  
-    
-    With Toc
-  
-
-  </a>
-
-
-    </li>
-    
-    <li>
-      
-
-  <a href="/docs/without-toc/" >
-    
-  
-    
-    Without Toc
-  
-
-  </a>
-
-
-    </li>
-    
-  </ul>
-
-
-  
-
-
-
-
-
-
+<li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
+</ul>
 
 
 
 
 
 </nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
 
 
 
@@ -264,61 +118,13 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown">
     <h2>
-      <a href="/posts/creating-a-new-theme/">Creating a New Theme</a>
+      <a href="/posts/01_The_Editor/"></a>
     </h2>
     <h5>
-      <strong>September 28, 2014</strong>
+      <strong>January 1, 0001</strong>
     </h5>
-    <p>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&rsquo;t cover using CSS to style your theme.
-We&rsquo;ll start with creating a new site with a very basic template.
-        <a href="/posts/creating-a-new-theme/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown">
-    <h2>
-      <a href="/posts/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a>
-    </h2>
-    <h5>
-      <strong>March 10, 2014</strong>
-    </h5>
-    <p>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &lt;root&gt;/ ▾ images/ logo.png  should become
-▾ &lt;root&gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.
-        <a href="/posts/migrate-from-jekyll/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown">
-    <h2>
-      <a href="/posts/goisforlovers/">(Hu)go Template Primer</a>
-    </h2>
-    <h5>
-      <strong>April 2, 2014</strong>
-    </h5>
-    <p>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.
-        <a href="/posts/goisforlovers/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown">
-    <h2>
-      <a href="/posts/hugoisforlovers/">Getting Started with Hugo</a>
-    </h2>
-    <h5>
-      <strong>April 2, 2014</strong>
-    </h5>
-    <p>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:
-        <a href="/posts/hugoisforlovers/">...</a>
+    <p>Getting started with Unity So you managed your way through the Introduction and are still here. Awesome! The first step on your Journey to learn is to actually go and download Unity. While you could just head to unity3d.com and grab the latest and greatest Version of Unity Personal, I would suggest getting the Unity Hub. Unity Hub will help you manage your Projects as well as the Versions of Unity you have installed on your machine.
+        <a href="/posts/01_The_Editor/">...</a>
       
     </p>
   </article>
