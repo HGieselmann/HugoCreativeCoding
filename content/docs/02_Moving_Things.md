@@ -144,31 +144,25 @@ To do so read the position value of Y and set it to the offset value in the Star
 multiplier = transform.position.y;`
 
 The completed Script should look like this:
+{{< highlight C >}}
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-	using System.Collections;
-	using System.Collections.Generic;
-	using UnityEngine;
-
-	public class MovingAlbersVar : MonoBehaviour
-	{
-    		public float multiplier = 1;
-    		// Start is called before the first frame update
-    		void Start()
-    		{
-        	multiplier = transform.position.y;
-    		}
+public class MovingAlbersVar : MonoBehaviour
+{
+	public float multiplier = 1;
+		// Start is called before the first frame update
+		void Start()
+		{
+		multiplier = transform.position.y;
+			}
 		// Update is called once per frame
-    		void Update()
-    		{
-        	float sinus = Mathf.Sin(Time.time) * multiplier;
-        
-       	transform.position = new Vector3(transform.position.x, sinus,transform.position.z);
-    		}
+		void Update()
+		{
+		float sinus = Mathf.Sin(Time.time) * multiplier;
+    
+		transform.position = new Vector3(transform.position.x, sinus,transform.position.z);
+		}
 	}
- 
-
-
-
-{{< highlight go "linenos=table,hl_lines=8 15-17,linenostart=199" >}}
-// ... code
 {{< / highlight >}}

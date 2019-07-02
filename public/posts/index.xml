@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Generative Unity</title>
-    <link>https://localhost:1313/posts/</link>
+    <link>https://generativeunity.henrikgieselmann.com/posts/</link>
     <description>Recent content in Posts on Generative Unity</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://generativeunity.henrikgieselmann.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://localhost:1313/posts/01_The_Editor/</link>
+      <link>https://generativeunity.henrikgieselmann.com/posts/01_The_Editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://localhost:1313/posts/01_The_Editor/</guid>
+      <guid>https://generativeunity.henrikgieselmann.com/posts/01_The_Editor/</guid>
       <description>Getting started with Unity So you managed your way through the Introduction and are still here. Awesome! The first step on your Journey to learn is to actually go and download Unity. While you could just head to unity3d.com and grab the latest and greatest Version of Unity Personal, I would suggest getting the Unity Hub. Unity Hub will help you manage your Projects as well as the Versions of Unity you have installed on your machine.</description>
     </item>
     
