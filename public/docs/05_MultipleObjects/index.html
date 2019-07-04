@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  
+    
+    05 Multiple Objects
+  
+ | Generative Unity</title>
+
+
+
+<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
+
+
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+</h2>
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2f docs\2f 05_MultipleObjects\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><a href="/"><strong>Intro to Coding</strong></a></li>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+
+<li><p><a href="/docs/05_MultipleObjects/">05 Multiple Objects</a></p></li>
+
+<li><p><strong>Other</strong></p></li>
+
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Github</a></p></li>
+
+<li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
+
+
+
+    </aside>
+
+    <div class="book-page">
+      <header class="align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>
+  
+    
+    05 Multiple Objects
+  
+</strong>
+</header>
+
+      
+<article class="markdown">
+
+<p>Title: Master<br />
+Author:</p>
+
+<h3 id="multiple-object-workflow">Multiple Object Workflow</h3>
+
+<p>If you followed along with some of the examples, you probably realized we are doing a lot of manual labor in changing things on the Unity Editor itself. Each Square has to get the new Script and so forth. Then again programming is a lazy mans art. The less manual labor we have to the better.
+In this Chapter we will introduce ways to handle multiple Squares at once. And Squares of course in the end could be anything. To do this convenienty in Unity we need  to look at three Concepts:
+1. Prefabs and Instantiation
+2. Lists and Arrays
+3. Loops
+In short, we will create objects through Instantiation. We will the use Lists to hold track of them and loops to iterate over these lists.
+What’s even better is, it opens up a lot of creative possibilities and ideas to talk about!</p>
+
+<h3 id="prefabs">Prefabs</h3>
+
+<p>Instantiation is the process of creating Objects from a script and it is tightly intertwined with the Concept of Prefabs. Prefabs are “prefabricated” Objects we can “save” in the project window.
+Creating Prefabs is superbly simple. You create the Object you want to create in the Hierarchy and then drag and drop it into the Project View.
+TODO GIF PREFAB
+The tiny cube in front of the object turn blue if Unity knows about this object as an Prefab. It’s often advisable to create a specific folder for all your prefabs. The great thing is that Unity will keep all of it’s components attached to the prefab.</p>
+
+<h5 id="you-may-want-to-dublicate-your-scene-before-following-along">You may want to dublicate your scene before following along.</h5>
+
+<p>So if you go ahead and take a square with a script for movement already attached to it you will be able touse it through instantiation.
+Once you have created a prefab from an GameObject you can go ahead and save it from the hierarchy.</p>
+
+<h3 id="instantiation">Instantiation</h3>
+
+<p>Next we will need to create a script to actually handle the creation of all our stuff and because scripts in Unity can’t exists in empty space, we need to create a GameObject for this as well. Technically any object would work, yet an “Empty Object” would of course be the ideal choice. Empties only consist of a transform component and thus have no visual representation in the scene. Rename your Empty to something like “ScriptHolder” or “Manager”.
+Fiorst we have to find a way to grab hold of our prefabed square. In Unity all Objects (that inherit from Monobehaviour) can be referenced as GameObject. So let’s create a variable for our square.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public GameObject squarePrefab;</code></pre></div>
+Now go back to Unity and check the Inspector. You will see a field named squarePrefab. You can now drag and drop the prefab you created from the Project view into the field on the inspector.
+Now the script <em>knows</em> about the prefab. Next we need to actually create an actual instance at runtime:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Instantiate(squarePrefab, Vector3.back, Quaternion.identity);</code></pre></div>
+The instantiate Method takes 3 argumentts: 1. The Object we want to Instantiate, A  Vector as Position in Space, and a Rotation. Rotation is passed as Quaternion. For now,  just use Quaternion.identity; Quaternions are scary things. We will deal with them later.
+If you run your scene now, you should have one one Square moving around.
+Go ahead and duplicate that line.
+It should give you two Squares and yet you will probably only see one.
+Both are created in exactly the same space and Size again. Also both have the same color.
+So we need to find a way to access a gameObject after instantiation. To do that we can just assign the created Object to variable the moment we create it:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	var Square <span style="color:#666">=</span>Instantiate(_SquarePrefab, Vector3.back, Quaternion.identity);</code></pre></div>
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h3 id="the-var-keyword">the ‘var’ Keyword</h3>
+
+<p>You might stumbled across the ‘var’ Keyword here. You will see code that never uses ‘var’ and code which makes a lot use of it. Generally speaking you should only use it when through the context it is unmistakeable which Type is referenced. This is mostly true for “Object stuff”. To keep it simple for now. As an Example:
+<code>GameObject myGameOject = new GameObject();</code>
+This would create a new empty GameObject. But the line of code isn’t a beauty, is it? That’s where var comes in:
+<code>var myGameObject = new GameObject();</code>
+Don’t worry about it too much for now. This will become second nature over time.
+    </div>
+  </label>
+</div>
+
+Now we have a variable for our square. With this variable we can change the square from this script just like the way we used to with the script which was directly attached to the square itself. All we have to chang is adding Square in front of it.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Square.transform.position <span style="color:#666">=</span> new Vector3(<span style="color:#40a070">0</span>,<span style="color:#40a070">0</span>,<span style="color:#40a070">0</span>);</code></pre></div>
+To actually start recreating our sketch, we need two other squares with another variable.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">var Square <span style="color:#666">=</span>Instantiate(_SquarePrefab, Vector3.back, Quaternion.identity);
+var SquareM <span style="color:#666">=</span>Instantiate(_SquarePrefab, Vector3.back, Quaternion.identity);
+var SquareS <span style="color:#666">=</span>Instantiate(_SquarePrefab, Vector3.back, Quaternion.identity);</code></pre></div>
+If you run this, we still face the problem of all squares overlapping in the exact same space.</p>
+</article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/alex-shpak/hugo-book/commit/e5a40af8dbf601a8612ded9cb641d248caba4f9e" title='Last modified July 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> July 4, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c05_MultipleObjects.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#multiple-object-workflow">Multiple Object Workflow</a></li>
+<li><a href="#prefabs">Prefabs</a>
+<ul>
+<li>
+<ul>
+<li><a href="#you-may-want-to-dublicate-your-scene-before-following-along">You may want to dublicate your scene before following along.</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#instantiation">Instantiation</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

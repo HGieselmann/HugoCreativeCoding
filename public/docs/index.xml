@@ -54,6 +54,40 @@ The Console - Your best friend This chapter is a short but important intermezzo.
     
     <item>
       <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/04_UserInput/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/04_UserInput/</guid>
+      <description>Title: Master
+Author:
+Conditionals So we kow how to code some absolute basic movement. But that’s built upon the conveneience of the Sin Function and that’s really rather limited. So what if we could do things based off of some condition. Let’s say you press a button, move the mouse or tilt your phone? This is where Conditionals come in. Conditionals are one way to manage how your code is flowing (”Control Flow”).</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/05_MultipleObjects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/05_MultipleObjects/</guid>
+      <description>Title: Master
+Author:
+Multiple Object Workflow If you followed along with some of the examples, you probably realized we are doing a lot of manual labor in changing things on the Unity Editor itself. Each Square has to get the new Script and so forth. Then again programming is a lazy mans art. The less manual labor we have to the better. In this Chapter we will introduce ways to handle multiple Squares at once.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/98_AdditionalResources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/98_AdditionalResources/</guid>
+      <description>Title: Master
+Author:
+Addtional Resources You finished everything ans ask yourself: What’s next? My style of writing isn’t yours? These are rescources which are somewhat related to the topic, but can ben written for other programming languages or software. Yet they still hold - in my eyes -tremendous value. So feel free to check them out!
+Books: - The nature of Code - Daniel Shiffman - Eloquent Javascript - Marijn Haverbeke - Graphic Deisgn: The New Basics - Ellen Lupton, Jennifer Cole Phillips</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://generativeunity.henrikgieselmann.com/docs/99_Github/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

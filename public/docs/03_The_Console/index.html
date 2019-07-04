@@ -57,24 +57,19 @@ https://github.com/alex-shpak/hugo-book
 
 <ul>
 <li><a href="/"><strong>Intro to Coding</strong></a></li>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
 
-<li><p><a href="/docs/00_Introduction/">Introduction</a></p>
-
-<ul>
-<li><a href="/docs/00_Introduction/">Menu Test1</a></li>
-<li><a href="/docs/00_Introduction/">Menu Test2</a></li>
-<li><a href="/docs/00_Introduction/">Menu Test3</a><br /></li>
-</ul></li>
-
-<li><p><a href="/docs/01_The_Editor/">01 The Editor</a></p></li>
-
-<li><p><a href="/docs/02_Moving_Things/">02 Moving Things</a></p></li>
-
-<li><p><a href="/docs/03_The_Console/">03 The Console</a></p></li>
+<li><p><a href="/docs/05_MultipleObjects/">05 Multiple Objects</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
 <li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Github</a></p></li>
 
 <li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
 </ul>
@@ -123,12 +118,9 @@ Author:</p>
 <h3 id="the-console-your-best-friend">The Console - Your best friend</h3>
 
 <p>This chapter is a short but important intermezzo.
-Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your code! As we are Coding in C#  your computer will be very, very picky about the code you write. So if you haven’t already fabricated an error. Go ahead and do so. Any typo is good enough.</p>
-
-<pre><code>transform.positio = transform.positio + new Vector3(1, 0, 0)* Time.deltaTime;
-</code></pre>
-
-<p>But not only will he complain, he will also try to tell you what it is he does not understand:
+Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your code! As we are Coding in C#  your computer will be very, very picky about the code you write. So if you haven’t already fabricated an error. Go ahead and do so. Any typo is good enough.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">transform.positio <span style="color:#666">=</span> transform.positio <span style="color:#666">+</span> new Vector3(<span style="color:#40a070">1</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">0</span>)<span style="color:#666">*</span> Time.deltaTime;</code></pre></div>
+But not only will he complain, he will also try to tell you what it is he does not understand:
 <code>Assets\Scripts\MovingAlbersVar.cs(19,19): error CS1061: 'Transform' does not contain a definition for 'positio' and no accessible extension method 'positio' accepting a first argument of type 'Transform' could be found (are you missing a using directive or an assembly reference?)</code>
 In this case, he tells us, taht he knows about Transform but has no concept of “positio”. And well, of course he doesn’t.
 He also prints out the line in which he has problems understanding you, this is really helpful for debugging.
@@ -139,7 +131,7 @@ So now that we have established that the console is our friend and not our enemy
 
 <p>Often in programming we think about what we want to achieve and yet the computer does not do what we want him to. Especially as a beginner we often assume the computer knows something it doesn’t. So we can actually ask the Computer to tell us what he thinks is going on.
 You could for example print out the value for our sinus Variable at each frame to check if it is reallystaying between 0 and 1.
-<code>Debug.Log(sinus);</code>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Debug.Log(sinus);</code></pre></div>
 If you now run your code, and check the Console you should se the value printed out each Frame.
 You can have as many Debug.Log Statements in your code as you want, but they will slow down the execution of your code, so once you don’t need one anymore, get rid of it.
 If you consider using it latyer, you can just comment it out.</p>
@@ -161,8 +153,8 @@ You will always find the most recent version of the docs online, but if you happ
   
   <div>
     
-    <a href="https://github.com/alex-shpak/hugo-book/commit/2686321038dd4c939660ad3ea85c57c18d810568" title='Last modified July 1, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> July 1, 2019
+    <a href="https://github.com/alex-shpak/hugo-book/commit/e5a40af8dbf601a8612ded9cb641d248caba4f9e" title='Last modified July 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> July 4, 2019
     </a>
   </div>
   

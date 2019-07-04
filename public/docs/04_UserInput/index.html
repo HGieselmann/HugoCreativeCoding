@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  
+    
+    04 User Input
+  
+ | Generative Unity</title>
+
+
+
+<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
+
+
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+</h2>
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2f docs\2f 04_UserInput\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><a href="/"><strong>Intro to Coding</strong></a></li>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+
+<li><p><a href="/docs/05_MultipleObjects/">05 Multiple Objects</a></p></li>
+
+<li><p><strong>Other</strong></p></li>
+
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Github</a></p></li>
+
+<li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
+
+
+
+    </aside>
+
+    <div class="book-page">
+      <header class="align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>
+  
+    
+    04 User Input
+  
+</strong>
+</header>
+
+      
+<article class="markdown">
+
+<p>Title: Master<br />
+Author:</p>
+
+<h3 id="conditionals">Conditionals</h3>
+
+<p>So we kow how to code some absolute basic movement. But that’s built upon the conveneience of the Sin Function and that’s really rather limited.
+So what if we could do things based off of some condition. Let’s say you press a button, move the mouse or tilt your phone?
+This is where Conditionals come in. Conditionals are one way to manage how your code is flowing (”Control Flow”). They manifest them self in “If” and “If-Else”-Statements. Meaning that you can define code that runs only if a certain condition is met. Or code which runs when a condition is met, but also has a fixed Block of code which will run instead.
+With the introduction of conditionals we also need to introduce another variable type: The Boolean. Luckily this one is really easy to grasp. It knows exactly two states. True or false.
+If statements the are pretty straight forward: You start with <code>if</code> followed by a condition in brackets and the put the Code to execute on condtion in the following curly brackets.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#60a0b0;font-style:italic">// Declaring and initializing some booleans
+</span><span style="color:#60a0b0;font-style:italic"></span>private <span style="color:#902000">bool</span> myBoolean <span style="color:#666">=</span> <span style="color:#007020">true</span>;
+private <span style="color:#902000">bool</span> myboolean2 <span style="color:#666">=</span> <span style="color:#007020">false</span>;
+<span style="color:#007020;font-weight:bold">if</span>(myBoolean){
+	<span style="color:#60a0b0;font-style:italic">// Code to execute on condition
+</span><span style="color:#60a0b0;font-style:italic"></span>	<span style="color:#60a0b0;font-style:italic">// This Code would run
+</span><span style="color:#60a0b0;font-style:italic"></span>}
+<span style="color:#007020;font-weight:bold">if</span> (myBoolean){
+	<span style="color:#60a0b0;font-style:italic">// Code to execute on condition
+</span><span style="color:#60a0b0;font-style:italic"></span>	<span style="color:#60a0b0;font-style:italic">// This code would not run
+</span><span style="color:#60a0b0;font-style:italic"></span>}</code></pre></div>
+So can use boolean variables as your condition on your if-statements. You can also put statements that either evaluate to true or false. To do this C# offers conditional operators. You probably remember some of these form school:
+<code>&gt;</code> greater then
+<code>&lt;</code> smaller then
+<code>&gt;=</code> greater or equal
+<code>&lt;=</code> smaller or equal
+<code>==</code> is equal to
+<code>!=</code> not equal to
+What’s to note here is that <code>==</code> or double-equals is for checking If some values are equal, becaus single<code>=</code> is already used for assigning variables.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">If(<span style="color:#40a070">1</span><span style="color:#666">&lt;</span><span style="color:#40a070">2</span>){
+	<span style="color:#60a0b0;font-style:italic">// Code block
+</span><span style="color:#60a0b0;font-style:italic"></span>	<span style="color:#60a0b0;font-style:italic">// This code will run
+</span><span style="color:#60a0b0;font-style:italic"></span>	}
+If(<span style="color:#40a070">1</span><span style="color:#666">&gt;</span><span style="color:#40a070">2</span>){
+	<span style="color:#60a0b0;font-style:italic">// Code block
+</span><span style="color:#60a0b0;font-style:italic"></span>	<span style="color:#60a0b0;font-style:italic">// This code won’t
+</span><span style="color:#60a0b0;font-style:italic"></span>	}</code></pre></div></p>
+
+<p>Of course we can put any statement in those brackets. To pick up where we left of last chapter, let’s create a condition based on our sinus function:
+if (sinus &gt; 0)
+{
+    transform.position = new Vector3(transform.position.x, sinus,transform.position.z);
+}
+This way we will only get the animatin from center to top and then a hold at the center position. While it is working, it isn’t really a visually pleasing result.
+So let’s think about other ways we could use Conditionals to improve our Sketch. A contra-movement on one of the Squares could be interesting. One way to achieve his would be to, have a whole different script act on that Square. Or we could just have a public Boolean which could be checked to inverse the motion.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">...
+public class <span style="color:#002070;font-weight:bold">MovingAlbers</span> : MonoBehaviour {     public <span style="color:#902000">float</span> multiplier <span style="color:#666">=</span> <span style="color:#40a070">1</span>;     public <span style="color:#902000">bool</span> inverse <span style="color:#666">=</span> <span style="color:#007020">false</span>;      <span style="color:#666">//</span> Update is called once per frame     <span style="color:#902000">void</span> Update()     {         <span style="color:#902000">float</span> sinus <span style="color:#666">=</span> Mathf.Sin(Time.time) <span style="color:#666">*</span> multiplier;         <span style="color:#007020;font-weight:bold">if</span> (inverse)         {             sinus <span style="color:#666">*=</span> <span style="color:#666">-</span><span style="color:#40a070">1</span>;         }                  transform.position <span style="color:#666">=</span> new Vector3(transform.position.x, sinus,transform.position.z);     } }</code></pre></div></p>
+
+<h3 id="getting-user-input">Getting User Input</h3>
+
+<p>As Unity is in it’s core a game engine one of it’s core features is of course to do something based on User Input. Every game obviously needs this way of interaction. Unity kindly exposes many differnt ways to get Inout from the user and we will cover the most important here.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">if</span> (Input.GetKey(KeyCode.A)) {     transform.position <span style="color:#666">=</span> new Vector3(transform.position.x, sinus,transform.position.z);  }</code></pre></div>
+The return-type for these is often a boolean. So this Code will execute as long as you you press the “A” Key on your Keyboard. Unity offers a variety of  Methods. I.e. you could check for the moment you pressed the Key <code>Input.GetKeyDown()</code> or the moment you release the Key <code>Input.GetKeyUp()</code>.
+No let’s again think about beautifying our result. Right now the moment we press the “A” Key all our squares jump and then keep moving. A more pleasing result would bet to have the starting of where we left off. So let’s think about our code. Where exactly does the movement come from?
+The movement is ingrained in our usage of time as a variable. Even worse. It is using System time, and that’s really a place we can’t and don’t want to stop!
+We need to create our own way of advancing time. We can do that with a simple float variable.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">private <span style="color:#902000">float</span> timePressed <span style="color:#666">=</span> <span style="color:#40a070">0</span>;</code></pre></div>
+Now, we could go ahead and just add a small value to our timePressed Variable. And we would get a seemingly smooth Animation. This would work fine as long as our machine is able to maintain a constant framerate. By default it is limited to 60 Frames per Second as a maximum. So worst case, we would get a slower animation on slower computers. But we could disable this upper Limit and on new computers it could easily run ten times faster.
+This is actually a very common problem in 3D Engines. The fix programmers came up with, is deltaTime. DeltaTime is the time that passed since the completion of the last frame. If you add the deltaTime of each frame over the timeframe of a second, you should end up with more or less a second. By all means this isn’t perfect, but it’s as good as it gets. And as long your computer doen’t have any hicups, this will be fine.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">if</span> (Input.GetKey(KeyCode.A))
+{
+    timePressed <span style="color:#666">+=</span> Time.deltaTime;
+}</code></pre></div>
+Now you can use timePressed instead of Time.time in your sin-Function. And the Animation should continue where it left of.</p>
+
+<p>The if-statements we looked at so far, always were deciders for one block of code, but they can also behave like a fork in the road with if-else-statements.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#666">//</span> Code <span style="color:#007020;font-weight:bold">for</span> <span style="color:#007020;font-weight:bold">if</span><span style="color:#666">-</span><span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">for</span> inverse based on Keypress</code></pre></div></p>
+
+<p>They can even check for additional conditions.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#666">//</span> Code <span style="color:#007020;font-weight:bold">for</span> <span style="color:#007020;font-weight:bold">if</span><span style="color:#666">-</span>elseIf<span style="color:#666">-</span><span style="color:#007020;font-weight:bold">else</span> statements</code></pre></div></p>
+
+<p>Sometimes it is necessary to have multiple if-statements stacked into each other. And this works fine, but you should avoid going deeper then to levels. This will make debugging your code really hard and messy and there are very likely other ways to deal with that sort of complexity.
+TODO
+IMPLEMENT COLOR CHANGES HERE!</p>
+</article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/alex-shpak/hugo-book/commit/e5a40af8dbf601a8612ded9cb641d248caba4f9e" title='Last modified July 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> July 4, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c04_UserInput.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#getting-user-input">Getting User Input</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

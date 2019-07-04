@@ -57,24 +57,19 @@ https://github.com/alex-shpak/hugo-book
 
 <ul>
 <li><a href="/"><strong>Intro to Coding</strong></a></li>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
 
-<li><p><a href="/docs/00_Introduction/">Introduction</a></p>
-
-<ul>
-<li><a href="/docs/00_Introduction/">Menu Test1</a></li>
-<li><a href="/docs/00_Introduction/">Menu Test2</a></li>
-<li><a href="/docs/00_Introduction/">Menu Test3</a><br /></li>
-</ul></li>
-
-<li><p><a href="/docs/01_The_Editor/">01 The Editor</a></p></li>
-
-<li><p><a href="/docs/02_Moving_Things/">02 Moving Things</a></p></li>
-
-<li><p><a href="/docs/03_The_Console/">03 The Console</a></p></li>
+<li><p><a href="/docs/05_MultipleObjects/">05 Multiple Objects</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
 <li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Github</a></p></li>
 
 <li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
 </ul>
@@ -315,40 +310,27 @@ You can also reuse the values you already setup by positioning them in the scene
 To do so read the position value of Y and set it to the offset value in the Start function.
 multiplier = transform.position.y;`</p>
 
-<p>The completed Script should look like this:</p>
-
-<pre><code>using System.Collections;
+<p>The completed Script should look like this:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingAlbersVar : MonoBehaviour
+public class <span style="color:#002070;font-weight:bold">MovingAlbersVar</span> : MonoBehaviour
 {
-        public float multiplier = 1;
-        // Start is called before the first frame update
-        void Start()
-        {
-        multiplier = transform.position.y;
-        }
-    // Update is called once per frame
-        void Update()
-        {
-        float sinus = Mathf.Sin(Time.time) * multiplier;
-
-    transform.position = new Vector3(transform.position.x, sinus,transform.position.z);
-        }
-}
-</code></pre>
-
-<p> </p>
-
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">199
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">//</span> <span style="color:#f92672">...</span> <span style="color:#a6e22e">code</span></code></pre></td></tr></table>
-</div>
-</div>
+	public <span style="color:#902000">float</span> multiplier <span style="color:#666">=</span> <span style="color:#40a070">1</span>;
+		<span style="color:#60a0b0;font-style:italic">// Start is called before the first frame update
+</span><span style="color:#60a0b0;font-style:italic"></span>		<span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
+		{
+		multiplier <span style="color:#666">=</span> transform.position.y;
+			}
+		<span style="color:#60a0b0;font-style:italic">// Update is called once per frame
+</span><span style="color:#60a0b0;font-style:italic"></span>		<span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
+		{
+		<span style="color:#902000">float</span> sinus <span style="color:#666">=</span> Mathf.Sin(Time.time) <span style="color:#666">*</span> multiplier;
+    
+		transform.position <span style="color:#666">=</span> new Vector3(transform.position.x, sinus,transform.position.z);
+		}
+	}</code></pre></div></p>
 </article>
 
       
@@ -356,8 +338,8 @@ public class MovingAlbersVar : MonoBehaviour
   
   <div>
     
-    <a href="https://github.com/alex-shpak/hugo-book/commit/a2ea2982888b574fa32dda7f4bbe1089f4cab9c5" title='Last modified July 1, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> July 1, 2019
+    <a href="https://github.com/alex-shpak/hugo-book/commit/43b2d3d3e8dd7bfe1352b6627e87ba01d262124f" title='Last modified July 2, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> July 2, 2019
     </a>
   </div>
   
