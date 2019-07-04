@@ -11,7 +11,8 @@ We will look at the things you would typically see from people learning or using
 I hope I could spark your interest let’s get started.
 
 
-### Over the course of this book I will assume that you have absolutely no knowledge of the topic of gameengines, 3D or programming. If you do, try to start at a point that seems to be the end o your current knowledge. Also have an eye out for the TL;DR sections in each chapter to refresh you knowledge.
+### Who is this for?
+ Over the course of this book I will assume that you have absolutely no knowledge of the topic of gameengines, 3D or programming. If you do, try to start at a point that seems to be the end o your current knowledge. Also have an eye out for the TL;DR sections in each chapter to refresh you knowledge.
 
 
  ### What is Creative Coding?
