@@ -62,16 +62,17 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
 <li><a href="/docs/03_The_Console/">03 The Console</a></li>
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+<li><a href="/docs/05_Functions/">05 Methods</a></li>
 
-<li><p><a href="/docs/05_MultipleObjects/">05 Multiple Objects</a></p></li>
+<li><p><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
 <li><p><a href="/docs/99_Github/">Github</a></p></li>
 
-<li><p><a href="/docs/98_AdditionalResources/">Github</a></p></li>
+<li><p><a href="/docs/98_AdditionalResources/">Additional Resources</a></p></li>
 
-<li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
+<li><p><a href="/posts/">  </a></p></li>
 </ul>
 
 
@@ -112,14 +113,12 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown">
 
-<p>Title: Master<br />
-Author:</p>
-
 <h3 id="the-console-your-best-friend">The Console - Your best friend</h3>
 
 <p>This chapter is a short but important intermezzo.
 Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your code! As we are Coding in C#  your computer will be very, very picky about the code you write. So if you haven’t already fabricated an error. Go ahead and do so. Any typo is good enough.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">transform.positio <span style="color:#666">=</span> transform.positio <span style="color:#666">+</span> new Vector3(<span style="color:#40a070">1</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">0</span>)<span style="color:#666">*</span> Time.deltaTime;</code></pre></div>
+<img src="/img/consoleError.jpg" alt="Console Error" />
 But not only will he complain, he will also try to tell you what it is he does not understand:
 <code>Assets\Scripts\MovingAlbersVar.cs(19,19): error CS1061: 'Transform' does not contain a definition for 'positio' and no accessible extension method 'positio' accepting a first argument of type 'Transform' could be found (are you missing a using directive or an assembly reference?)</code>
 In this case, he tells us, taht he knows about Transform but has no concept of “positio”. And well, of course he doesn’t.

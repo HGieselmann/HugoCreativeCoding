@@ -15,9 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/00_Introduction/</guid>
-      <description>Title: Master
-Author:
-What is this book? The core idea of this book is teaching Unity as tool for creatives of all all kinds. This is “living” book. This means things will change, parts will grow, others will wither. This is for multiple reasons. For one, I am not an expert on all topics in Unity, especially not programming. I have background in Media-Design and merely am trying to learn and in this case teach Unity to the best of my ability.</description>
+      <description>What is this book? The core idea of this book is teaching Unity as tool for creatives of all all kinds. This is “living” book. This means things will change, parts will grow, others will wither. This is for multiple reasons. For one, I am not an expert on all topics in Unity, especially not programming. I have background in Media-Design and merely am trying to learn and in this case teach Unity to the best of my ability.</description>
     </item>
     
     <item>
@@ -35,10 +33,7 @@ What is this book? The core idea of this book is teaching Unity as tool for crea
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/02_Moving_Things/</guid>
-      <description>Title: Master
-Author:
-Design as a Process Design Process and PseudoCode Design on Paper an then go deeper Design and Coding are both Skills, they need practice Design is an Iterative Process and we will use it for practice Examples: Ellen Lupton, Dailies, drawABox, Ivan
-Throughout the first chapters we will use Josef Albers “Hommage to the Square” as a starting point for experimentation. This will be a great way to get started coding with small script and also see how just a few lines of code can change a lot of the feel of things.</description>
+      <description>On Design Throughout the first chapters we will use Josef Albers “Hommage to the Square” as a starting point for experimentation. This will be a great way to get started coding with small script and also see how just a few lines of code can change a lot of the feel of things. These two thing will perfetly go hand in hand, as Design, as well as Coding are Skills.</description>
     </item>
     
     <item>
@@ -47,9 +42,7 @@ Throughout the first chapters we will use Josef Albers “Hommage to the Square�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/03_The_Console/</guid>
-      <description>Title: Master
-Author:
-The Console - Your best friend This chapter is a short but important intermezzo. Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your code! As we are Coding in C# your computer will be very, very picky about the code you write.</description>
+      <description>The Console - Your best friend This chapter is a short but important intermezzo. Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your code! As we are Coding in C# your computer will be very, very picky about the code you write. So if you haven’t already fabricated an error.</description>
     </item>
     
     <item>
@@ -58,9 +51,16 @@ The Console - Your best friend This chapter is a short but important intermezzo.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/04_UserInput/</guid>
-      <description>Title: Master
-Author:
-Conditionals So we kow how to code some absolute basic movement. But that’s built upon the conveneience of the Sin Function and that’s really rather limited. So what if we could do things based off of some condition. Let’s say you press a button, move the mouse or tilt your phone? This is where Conditionals come in. Conditionals are one way to manage how your code is flowing (”Control Flow”).</description>
+      <description>Conditionals So we kow how to code some absolute basic movement. But that’s built upon the conveneience of the Sin Function and that’s really rather limited. So what if we could do things based off of some condition. Let’s say you press a button, move the mouse or tilt your phone? This is where Conditionals come in. Conditionals are one way to manage how your code is flowing (”Control Flow”).</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/05_Functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/05_Functions/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -72,6 +72,15 @@ Conditionals So we kow how to code some absolute basic movement. But that’s bu
       <description>Title: Master
 Author:
 Multiple Object Workflow If you followed along with some of the examples, you probably realized we are doing a lot of manual labor in changing things on the Unity Editor itself. Each Square has to get the new Script and so forth. Then again programming is a lazy mans art. The less manual labor we have to the better. In this Chapter we will introduce ways to handle multiple Squares at once.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/06_MultipleObjects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/06_MultipleObjects/</guid>
+      <description>Multiple Object Workflow If you followed along with some of the examples, you probably realized we are doing a lot of manual labor in changing things on the Unity Editor itself. Each Square has to get the new Script and so forth. Then again programming is a lazy mans art. The less manual labor we have to the better. In this Chapter we will introduce ways to handle multiple Squares at once.</description>
     </item>
     
     <item>

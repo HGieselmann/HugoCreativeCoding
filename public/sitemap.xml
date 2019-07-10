@@ -28,7 +28,17 @@
   </url>
   
   <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/05_Functions/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/05_MultipleObjects/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/06_MultipleObjects/</loc>
     <priority>0</priority>
   </url>
   

@@ -4,11 +4,7 @@ So you managed your way through the Introduction and are still here. Awesome!
 The first step on your Journey to learn is to actually go and download Unity. While you could just head to unity3d.com and grab the latest and greatest Version of Unity Personal, I would suggest getting the Unity Hub. Unity Hub will help you manage your Projects as well as the Versions of Unity you have installed on your machine. As you dive deeper and deeper into Unity the day will come, where you hear of a new feature and you really want to try it. 
 And Unity Hub is great helper to automatically manage Versions of Unity! But both ways are obviously fine!
 
-As you are willing to learn to code and coding is in essence a problem solving skill, I will leave the rest of the process to you.
-If you struggle, from now on and for the rest of this journey the Search-Engine of your choice is your best friend!
-
-
-I will show you the process of using UnityHub to manage your Projects and Unity installations.
+Let’s look at the process of managing Unity Versions and more importantly Projects with Unity Hub.
 When you Start Unity Hub it will automatically show you all your latest Projects. If you don’t have one just press the “New” Button to create One. In the next Panel you can Set the Project Name and the Location where the Project will be stored. UnityHub will create a Folder with your chosen Projectname. So no need to create that folder yourself.
 You will also have to choose a Template. “3D” is the default option, yet we will use the “Lightweight RP” Settings. It will help to help our tiny projects run smoothly on mobile devices and it will also get us access to the ShaderGraph. Hit create and Unity will take a while to initialize your new project and start up the Editor.
 
@@ -45,13 +41,6 @@ Okay. That’s what you need to now for now. Let’s move forward
 
 
 
-
-
-
-
-
-
-
 TODO
 Principles of Coding, Principles of Design
 Josef Albers at the bauhaus
@@ -63,13 +52,15 @@ We will recreate one using Unity
 Introducing the Bauhaus
 While teaching programming is rather straight forward, teaching art and design is not. In the  programming sessions of  this book I can teach you the syntax of the language and it will always apply. And if you do not abide by it’s rules things won’t work. (This would not be true if we were using Javascript btw.)
 Design and Art is different. Some would argue, that there are no rules. Pablo Picasso famously said, you need to learn the rules to break them. And then there was the Bauhaus, who actually aimed for that universal language of design as going so far as trying to fix the realtionship between color and and form. Wassily Kandinsky assigned yellow, red and blue to the forms triangle, rectangle and circle. While this seems outdated, a lot can be learned form their approach to teaching and understanding design.
-Throughout the first chapters we will use some of their work as reference and their ideas for rules in designing things. We will complement this by their idea of experimentation. While experimenting on our designs we will also have a good chance to get our fingers accustomed to coding. 
-
 
 
 
 ### “Homage to the Square” in Unity
+
+![Josef Albers “Hommage To the Square” on a german stamp](/img/stampAlbers.jpg)
+
 With Josef Albers “Homage to the Square” paintings as a goal, let’s head back to Unity. First we should start out be tidying our workspace. Unity projects come with some thing premade and we eanto to get rid of it! So delete everything in the Projects Folder except for the Materials, Scenes, Scripts and the packages folder.
+
 Now create a new Scene. You can either press ‘CTRL + N’ to create a new scene or in the Project Window: RightClick -> Create -> Scene.
 No let’s create our for square. In the hierarchy RightClick -> 3D Object -> Quad. Quads by default are Squares of 1x1 Unit. 
 {{< expand >}}
@@ -86,5 +77,6 @@ Check your Game view to inspect what you see. (Not the Scene View!) You should h
 As you now, we will need two or three more squares to fullfill our Homage to the “Homage to the Square”. Select the Objects in the Hierarchy and press `CTRL +D`. Alternatively `Rightclick ---> Duplicate` will do the trick as well.
 To actually change the Colors of each new Quad, we need two new Materials as well. So duplicate them and assign them a new color and assign the materials to the Quads, so that each Quad has it’s own material and Color.
 If you go into gameview, you will still only see one plane. This is because right now all of our planes are in the exact same position in space. Also they have the exact same size. So not try to push some of them slightly to the back and scale them up and position them to finish your own personal “Hommage to the Quad”.
+![The Unity Editor](/img/staticAlbers.png)
 
 

@@ -1,6 +1,3 @@
-Title: Master  
-Author:   
-
 
 ### The Console - Your best friend
 This chapter is a short but important intermezzo.
@@ -8,6 +5,7 @@ Maybe you have already encountered the console. Whenever you write code your com
 {{<highlight c>}}
 transform.positio = transform.positio + new Vector3(1, 0, 0)* Time.deltaTime;
 {{</highlight>}}
+![Console Error](/img/consoleError.jpg)
 But not only will he complain, he will also try to tell you what it is he does not understand:
 `Assets\Scripts\MovingAlbersVar.cs(19,19): error CS1061: 'Transform' does not contain a definition for 'positio' and no accessible extension method 'positio' accepting a first argument of type 'Transform' could be found (are you missing a using directive or an assembly reference?)`
 In this case, he tells us, taht he knows about Transform but has no concept of “positio”. And well, of course he doesn’t.

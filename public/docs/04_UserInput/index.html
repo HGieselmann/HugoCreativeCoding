@@ -62,16 +62,17 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
 <li><a href="/docs/03_The_Console/">03 The Console</a></li>
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+<li><a href="/docs/05_Functions/">05 Methods</a></li>
 
-<li><p><a href="/docs/05_MultipleObjects/">05 Multiple Objects</a></p></li>
+<li><p><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
 <li><p><a href="/docs/99_Github/">Github</a></p></li>
 
-<li><p><a href="/docs/98_AdditionalResources/">Github</a></p></li>
+<li><p><a href="/docs/98_AdditionalResources/">Additional Resources</a></p></li>
 
-<li><p><a href="/posts/"><strong>Blog</strong></a></p></li>
+<li><p><a href="/posts/">  </a></p></li>
 </ul>
 
 
@@ -111,9 +112,6 @@ https://github.com/alex-shpak/hugo-book
 
       
 <article class="markdown">
-
-<p>Title: Master<br />
-Author:</p>
 
 <h3 id="conditionals">Conditionals</h3>
 
@@ -183,9 +181,94 @@ Now you can use timePressed instead of Time.time in your sin-Function. And the A
 <p>They can even check for additional conditions.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#666">//</span> Code <span style="color:#007020;font-weight:bold">for</span> <span style="color:#007020;font-weight:bold">if</span><span style="color:#666">-</span>elseIf<span style="color:#666">-</span><span style="color:#007020;font-weight:bold">else</span> statements</code></pre></div></p>
 
-<p>Sometimes it is necessary to have multiple if-statements stacked into each other. And this works fine, but you should avoid going deeper then to levels. This will make debugging your code really hard and messy and there are very likely other ways to deal with that sort of complexity.
-TODO
-IMPLEMENT COLOR CHANGES HERE!</p>
+<p>Sometimes it is necessary to have multiple if-statements stacked into each other. And this works fine, but you should avoid going deeper then to levels. This will make debugging your code really hard and messy and there are very likely other ways to deal with that sort of complexity.</p>
+
+<h3 id="a-word-on-color">A word on color</h3>
+
+<ul>
+<li>we now have an animated Version of these squares, but Josef Albers was obviously concerned with colors in these things</li>
+<li>at the Bauhaus he sure wan’t the only one, Johannes Itten as well</li>
+<li>Before them Goethe took a shot at Color theory</li>
+<li>while they had their problems, to fix the rise of the screen comes with it’s own very specific set of problems</li>
+<li>with this also came complex ideas like Gamma Correction and Linear Light</li>
+
+<li><p>it also came with color spaces
+it even got worse, if you design for the screen you essentially design for Your screen!
+Even if you have to the perfectly calibrated monitor, your enduser does not.
+Their Computers come with stuff like “Night Light” which shifts colors towards red at night
+The world of Color is imperfect!
+The world of Color is also very, very subjective! They are changed by cultural background and personal preference. A color scheme that resonates strongly with one person might not so much with another person.</p></li>
+
+<li><p>Color Wheel</p></li>
+
+<li><p>Color combinations</p></li>
+
+<li><p>where to inspiration (nature)</p></li>
+
+<li><p>good color is hard to master and is learned by experimentation</p></li>
+</ul>
+
+<p>Designers which I think work great with color:
+James Turell
+Colorlisa.com</p>
+
+<h3 id="colors-in-unity">Colors in Unity</h3>
+
+<p>Color of course is it’s own type in Unity. This means colors need to be created using the <code>new</code> Keyword. The arguments we can pass to the constuctor are red, green blue and an optional alpha value.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Color myRed <span style="color:#666">=</span> new Color(<span style="color:#40a070">1</span>,<span style="color:#40a070">0</span>,<span style="color:#40a070">0</span>); <span style="color:#60a0b0;font-style:italic">// This would be pure red
+</span><span style="color:#60a0b0;font-style:italic"></span>Color myGreen <span style="color:#666">=</span> new Color(<span style="color:#40a070">0</span>,<span style="color:#40a070">1</span>,<span style="color:#40a070">0</span>); <span style="color:#60a0b0;font-style:italic">// This would be pure green
+</span><span style="color:#60a0b0;font-style:italic"></span>Color myBlue <span style="color:#666">=</span> new Color(<span style="color:#40a070">0</span>,<span style="color:#40a070">0</span>,<span style="color:#40a070">1</span>); <span style="color:#60a0b0;font-style:italic">// This would be pure green;
+</span><span style="color:#60a0b0;font-style:italic"></span>Color myTransparent <span style="color:#666">=</span> new Color(<span style="color:#40a070">.5f</span>, <span style="color:#40a070">.5f</span>, <span style="color:#40a070">.5f</span>, <span style="color:#40a070">.5f</span>); <span style="color:#666">//</span> This would be a transparent middle gray</code></pre></div>
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      Unity comes with some static colors as well, which you can use for convenience. <code>Color.black</code> for example could be used just to quickly define a default value.
+    </div>
+  </label>
+</div>
+
+Given this, working with colors is pretty much straight forward, what is a little awkward on the other hand, is assigning the Colors. We need to access the Color Component on the Material Component on the Renderer Component on our object. It’s a long line of code for just a small assignment and it looks like this:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> new Color(<span style="color:#40a070">1</span>,<span style="color:#40a070">0</span>,<span style="color:#40a070">0</span>);</code></pre></div>
+Using this we could change the Color of our squares on Button press. But we would have to define color on each square and we could not do much else.
+Luckily Unity provides us with some Methods to retrieve or set Colors differently using the Hue, Saturation and Value approach.
+Setting HSV Colors works very similar to creating Colors using the RGBA approach.
+- <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">Color myColor <span style="color:#666">=</span> Color.HSVToRGB(<span style="color:#40a070">0</span>,<span style="color:#40a070">1</span>,<span style="color:#40a070">1</span>);</code></pre></div>
+But it also yields the same reults. We can define a color. We just use other means to do so. More interesting would be to actually manipulate colors. Unity does not provide a way to do this. But we can build our own manipulation tools!
+The code for this stars growing and will also use some Syntax we haven’t seen so far and yet it is rather straight forward. First we need to declare variables for hue, saturation and value. All of them will be handled as values between 0 and 1 and thus are defined as floats. Then we create a variable for our the current Color of the GameObject and retrieve it .
+Then we use a “static” method on the color class which we pass the current color and tell, to which variables it should assign the three HSV values.
+With those now assigned, we can manipulate one of those values. Here we choose Hue to shift the color around the colorwheel. We also add a Condition to check if we surpass 1, if so, we subtract 1 to also go in circles.
+Finally we construct a new Color from hue, saturation and value and assign it back to our Square.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">float</span> h,s,v;
+Color currentColor <span style="color:#666">=</span> GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color;
+Color.RGBToHSV(currentColor, out h, out s, out v);
+h <span style="color:#666">+=</span> <span style="color:#40a070">0.05f</span>;
+<span style="color:#007020;font-weight:bold">if</span>(h <span style="color:#666">&gt;</span> <span style="color:#40a070">1</span>){
+	h <span style="color:#666">-</span> <span style="color:#40a070">1</span>;
+}
+GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> Color.HSVToRGB(h,s,v);</code></pre></div>
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h3 id="color-math">Color Math</h3>
+
+<p>Unity also allows for doing basic math operations between Colors. The following Code would give you magenta.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Color myColor <span style="color:#666">=</span> Color.Red <span style="color:#666">+</span> Color.Blue;</code></pre></div>
+Color math is actually just Vector Math. And Vector Math is nothing else as separating the components and dealing with red, green and blue one at a time.</p>
+
+    </div>
+  </label>
+</div>
+</p>
 </article>
 
       
@@ -223,6 +306,8 @@ IMPLEMENT COLOR CHANGES HERE!</p>
 <ul>
 <li><a href="#conditionals">Conditionals</a></li>
 <li><a href="#getting-user-input">Getting User Input</a></li>
+<li><a href="#a-word-on-color">A word on color</a></li>
+<li><a href="#colors-in-unity">Colors in Unity</a></li>
 </ul></li>
 </ul></li>
 </ul>

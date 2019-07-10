@@ -1,6 +1,3 @@
-Title: Master  
-Author:   
-
 
 ### What is this book?
 The core idea of this book is teaching Unity as tool for creatives of all all kinds. This is “living” book. This means things will change, parts will grow, others will wither. This is for multiple reasons. For one, I am not an expert on all topics in Unity, especially not programming. I have background in Media-Design and merely am trying to learn and in this case teach Unity to the best of my ability. This means if you find errors, tell me and I will fix them. Also Unity as well as it’s programming language C# are living things as well. Unity releases new Versions three times a year, if you count in betas and packages then there is a lot of change going on. So best practices can change and I will try to maintain these changes in this book.
