@@ -59,7 +59,6 @@
   
   <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -69,7 +68,6 @@
   
   <url>
     <loc>https://generativeunity.henrikgieselmann.com/posts/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>
