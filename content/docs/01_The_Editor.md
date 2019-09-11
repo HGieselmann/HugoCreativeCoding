@@ -1,4 +1,3 @@
-
 ### Getting started with Unity
 So you managed your way through the Introduction and are still here. Awesome!
 The first step on your Journey to learn is to actually go and download Unity. While you could just head to unity3d.com and grab the latest and greatest Version of Unity Personal, I would suggest getting the Unity Hub. Unity Hub will help you manage your Projects as well as the Versions of Unity you have installed on your machine. As you dive deeper and deeper into Unity the day will come, where you hear of a new feature and you really want to try it. 
@@ -40,7 +39,6 @@ Okay. That’s what you need to now for now. Let’s move forward
 
 
 
-
 TODO
 Principles of Coding, Principles of Design
 Josef Albers at the bauhaus
@@ -52,7 +50,6 @@ We will recreate one using Unity
 Introducing the Bauhaus
 While teaching programming is rather straight forward, teaching art and design is not. In the  programming sessions of  this book I can teach you the syntax of the language and it will always apply. And if you do not abide by it’s rules things won’t work. (This would not be true if we were using Javascript btw.)
 Design and Art is different. Some would argue, that there are no rules. Pablo Picasso famously said, you need to learn the rules to break them. And then there was the Bauhaus, who actually aimed for that universal language of design as going so far as trying to fix the realtionship between color and and form. Wassily Kandinsky assigned yellow, red and blue to the forms triangle, rectangle and circle. While this seems outdated, a lot can be learned form their approach to teaching and understanding design.
-
 
 
 ### “Homage to the Square” in Unity
@@ -80,3 +77,28 @@ If you go into gameview, you will still only see one plane. This is because righ
 ![The Unity Editor](/img/staticAlbers.png)
 
 
+
+
+### Project - Q 1 Suprematistic
+This is the first exercise I would like to give. It’s just to get you up to speed with the basic Unity navigation.
+As you know the Bauhaus consisted of many artists and one of them was Laszlo Moholy-Nagy. 
+TODO LASZLO MOHOLY NAGY
+He created a painting I really like: “Q 1 Suprematisctic” (1923, Oil on canvas).
+Take a look at it here:
+https://www.moma.org/collection/works/80514
+https://thecharnelhouse.org/2014/06/19/laszlo-moholy-nagy-painting-and-photography/q-1-suprematistic-laszlo-moholy-nagy-american-born-hungary-1895-1946-q-1-suprematistic-1923-oil-on-canvas-37-12-x-37-12%22/
+- As expected by the name it references Suprematism.
+-This is great for us, because we can recreate such a painting in Unity using basic forms as well
+- While this of course a 2D-painting, you will need to make use of 3D space to recreate this easily
+- you can also check out more Suprematism works on Wikipedia or using Google Search
+
+
+### Environment Design
+Fancy a little more freedom then just basic shapes? That’s fine.
+I created an Assetpack with some basic 3D Objects. They should be enough to create some small Lowpoly Environment. You can also use them in any other project you’d like to create.
+I set up an example scene for you to check out.
+- In video games environment Artists is a job
+- 
+TODO
+Build scene
+Build Assets

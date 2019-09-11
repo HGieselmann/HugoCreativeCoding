@@ -63,8 +63,10 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/03_The_Console/">03 The Console</a></li>
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
 <li><a href="/docs/05_Functions/">05 Methods</a></li>
+<li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
+<li><a href="/docs/07_StartingToDesign/">07 Starting to Design</a></li>
 
-<li><p><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></p></li>
+<li><p><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
@@ -227,8 +229,9 @@ Here we again access an item in the List based on <code>i</code>. Now we access 
 Finally we set the Color of the squares by evaluating a Gradient. Gradient Evaluation is done by defining a number between 0 and 1. So we divide the current value of <code>i</code> by the number of squares we are going to create. Because both of the values are integers, we need to convert them using <code>(float)</code>. Otherwise we would get an integer back and that would not be helpful of course.
 Once you have set this up, make sure to define a Gradient in the UnityEditor. Otherwise it will have just one color and you will go bug hunting for nothing&hellip; (I’ve been there&hellip;)</p>
 
-<p>###For-each Loops
-“For each loops” work very similar, except you don’t need have to bother with the iterator and the initializer, because a for each loop executes over each item in a list or array.
+<h3 id="for-each-loops">For-each Loops</h3>
+
+<p>“For each loops” work very similar, except you don’t need have to bother with the iterator and the initializer, because a for each loop executes over each item in a list or array.
 Their syntax is very straight forward as well.
 We will extend our script from the For Loop with and For Each loop, that runs in the Update function. We will reuse our idea of Color shifting and apply it to all of the squares by iterating over them.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foreach (GameObject currentGameObject in squareList) {     <span style="color:#902000">float</span> h,s,v;     Color currentColor <span style="color:#666">=</span> currentGameObject.GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color;     Color.RGBToHSV(currentColor, out h, out s, out v);     h <span style="color:#666">+=</span> <span style="color:#40a070">0.001f</span>;     <span style="color:#007020;font-weight:bold">if</span>(h <span style="color:#666">&gt;</span> <span style="color:#40a070">1</span>){         h <span style="color:#666">=</span> <span style="color:#40a070">0</span>;     }     currentGameObject.GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> Color.HSVToRGB(h,s,v); }</code></pre></div></p>
@@ -237,8 +240,9 @@ We will extend our script from the For Loop with and For Each loop, that runs in
 All of this actually reads almost like english, which is nice. On the downside, we are not automatically handed an iterator.
 Both Loops are useful in their own right, so choose the appropriate or just stay with the for loop, that’s fine too.</p>
 
-<p>###While Loops
-There is yet another type of loop. The while loop.
+<h3 id="while-loops">While Loops</h3>
+
+<p>There is yet another type of loop. The while loop.
 While loops are the most basic type of loop and essentially just run as long as a condition stays true. Think of the Update function. It loops each frame, but of course has now counter to finish after a certain amount of Frames. That would be silly. Essentially it will loop as long as the game is running.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">while</span>(<span style="color:#007020">true</span>){
 	<span style="color:#60a0b0;font-style:italic">//Code to run
@@ -258,8 +262,9 @@ But you could of course use this in cases, when you want to base the iteration o
 
 <p>There</p>
 
-<p>###Do-While Loops
-There is one last kind of loop which C# offers. The “do-while” loop. As the name suggests it’s very tightly entangled with the while loop. It’s special feature is, that it will always execute at least once, because the evaluation of the condition follows after the first iteration step.
+<h3 id="do-while-loops">Do-While Loops</h3>
+
+<p>There is one last kind of loop which C# offers. The “do-while” loop. As the name suggests it’s very tightly entangled with the while loop. It’s special feature is, that it will always execute at least once, because the evaluation of the condition follows after the first iteration step.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
 <span style="color:#007020;font-weight:bold">do</span> 
 {
@@ -274,8 +279,8 @@ As you can imagine, this one doen’t bring that much to the table, so we are no
   
   <div>
     
-    <a href="https://github.com/alex-shpak/hugo-book/commit/0105e819dfe31cd29d6390a09107cb103db27518" title='Last modified July 10, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> July 10, 2019
+    <a href="https://github.com/alex-shpak/hugo-book/commit/294535dc28d8ad4051d6c4c7060c7d82c0ac0420" title='Last modified August 23, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> August 23, 2019
     </a>
   </div>
   
@@ -312,6 +317,9 @@ As you can imagine, this one doen’t bring that much to the table, so we are no
 </ul></li>
 <li><a href="#instantiation">Instantiation</a></li>
 <li><a href="#for-loops">For Loops</a></li>
+<li><a href="#for-each-loops">For-each Loops</a></li>
+<li><a href="#while-loops">While Loops</a></li>
+<li><a href="#do-while-loops">Do-While Loops</a></li>
 </ul></li>
 </ul></li>
 </ul>

@@ -43,6 +43,16 @@
   </url>
   
   <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/07_StartingToDesign/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/08_ClassesAndOOP/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/98_AdditionalResources/</loc>
     <priority>0</priority>
   </url>

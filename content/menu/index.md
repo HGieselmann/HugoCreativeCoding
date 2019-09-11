@@ -10,6 +10,8 @@ headless: true
 - [04 Conditionals]({{< relref "/docs/04_UserInput.md" >}})
 - [05 Methods]({{< relref "/docs/05_Functions.md" >}})
 - [06 Multiple Objects]({{< relref "/docs/06_MultipleObjects.md" >}})
+- [07 Starting to Design]({{< relref "docs/07_StartingToDesign.md" >}})
+- [08 Classes and OOP]({{< relref "docs/08_ClassesAndOOP.md" >}})
 
 - **Other**
 - [Github]({{< relref "/docs/99_Github.md" >}})

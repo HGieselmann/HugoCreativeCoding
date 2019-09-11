@@ -63,8 +63,10 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/03_The_Console/">03 The Console</a></li>
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
 <li><a href="/docs/05_Functions/">05 Methods</a></li>
+<li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
+<li><a href="/docs/07_StartingToDesign/">07 Starting to Design</a></li>
 
-<li><p><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></p></li>
+<li><p><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
@@ -111,7 +113,57 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"></article>
+<article class="markdown"><p>You actually know a lo t about methods already. We have been using them all along, yet now we will start creating our own. In methods you can bundle together lines of code that belong logically together. They are very helpful when you need to reuse those lines a lot but they are also helpful for structuring your code. Methods also take arguments and use them in their code-block. But let’s not get ahead of ourselves and look at a very simple function:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">SayHello</span>(){
+	Debug.Log(<span style="">”</span>Hello<span style="">”</span>);
+}</code></pre></div>
+Now if you would run this code nothing would happen. We only created some reusable piece of code. We need to “call” a function to actually run it:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">SayHello();
+SayHello();
+SayHello();</code></pre></div>
+This would print “Hello” to the console three times. But let’s take a look at the syntax of defining a function again. The <code>void</code> keyword is the return-type, meaning nothing. If you want the method to return a value you would start with the type to return. Next you give your function an descriptive name and finish it with brackets.
+Those brackets hold the arguments for you function, if it need them:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">Add</span>(<span style="color:#902000">int</span> a, <span style="color:#902000">int</span> b){
+	<span style="color:#007020;font-weight:bold">return</span> a <span style="color:#666">+</span> b
+}
+<span style="color:#902000">int</span> sum;
+sum <span style="color:#666">=</span> Add(<span style="color:#40a070">5</span> <span style="color:#666">+</span> <span style="color:#40a070">5</span>);
+Debug.Log(sum);</code></pre></div>
+Here we define a method which takes two integers and returns their sum. Now we can start using this function over and over again to add two values together.
+Now all of this is rather simplistic, so let’s take look at how we could take this into action. We will create a function, which takes an GameObject and shifts the color by a value we can also specify.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">ShiftColor</span>(<span style="color:#902000">float</span> shiftValue){
+            <span style="color:#902000">float</span> h, s, v;
+            Color oldColor <span style="color:#666">=</span> GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color;
+            Color.RGBToHSV(oldColor, out h, out s, out v);
+            h <span style="color:#666">+=</span> shiftValue;
+            <span style="color:#007020;font-weight:bold">if</span>(h <span style="color:#666">&gt;</span> <span style="color:#40a070">1</span>){
+                h <span style="color:#666">-=</span> <span style="color:#40a070">1</span>;
+            }
+            Color newColor <span style="color:#666">=</span> Color.HSVToRGB(h, s, v);
+            GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> newColor;
+    }</code></pre></div>
+You know the code for changing the color already, so just take note of method we are creating. We start again with void, because we handle everything inside the method. We chose a name for our method and then give it a float value as argument. Now we can change the amount of shift each time we invoke the method. Or we could have the shift depend on the Key we press:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">if</span> (Input.GetKeyDown(KeyCode.A))
+        {
+            ShiftColor(<span style="color:#40a070">0.05f</span>);
+        }
+        <span style="color:#007020;font-weight:bold">if</span> (Input.GetKeyDown(KeyCode.S))
+        {
+            ShiftColor(<span style="color:#40a070">0.1f</span>);
+        }
+        <span style="color:#007020;font-weight:bold">if</span> (Input.GetKeyDown(KeyCode.D))
+        {
+            ShiftColor(<span style="color:#40a070">0.5f</span>);
+        }</code></pre></div></p>
+
+<ul>
+<li>Discussion of Randomness</li>
+<li>animated Radomness</li>
+<li>recreate an image each touch</li>
+<li>Sprematism</li>
+<li>can we implement design rules to get “non random results”</li>
+</ul>
+</article>
 
       
 <div class="book-footer justify-between">

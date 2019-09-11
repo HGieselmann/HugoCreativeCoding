@@ -1,4 +1,3 @@
-
 ### Conditionals
 So we kow how to code some absolute basic movement. But that’s built upon the conveneience of the Sin Function and that’s really rather limited.
 So what if we could do things based off of some condition. Let’s say you press a button, move the mouse or tilt your phone?
@@ -84,7 +83,6 @@ They can even check for additional conditions.
 
 Sometimes it is necessary to have multiple if-statements stacked into each other. And this works fine, but you should avoid going deeper then to levels. This will make debugging your code really hard and messy and there are very likely other ways to deal with that sort of complexity.
 
-
 ### A word on color
 - we now have an animated Version of these squares, but Josef Albers was obviously concerned with colors in these things
 - at the Bauhaus he sure wan’t the only one, Johannes Itten as well
@@ -154,3 +152,13 @@ Color myColor = Color.Red + Color.Blue;
 Color math is actually just Vector Math. And Vector Math is nothing else as separating the components and dealing with red, green and blue one at a time.
 {{</expand>}}
 
+
+
+While the Bauhaus
+
+If you are a little older, like me, you will probably know what is coming up. In the early 2000s wherever there was a DVD Player waiting for something to happen, there was a bouncing DVD Logo. This served as a screensaver to prevent the CRT displays from burning in an image. This thing was so omnipresent that it later got featured on “The Office” and someone even dedicated it it’s own website: https://bouncingdvdlogo.com/
+But it’s also a very nice exercise for us to code.
+Of course we will add our own touch to it!
+TODO UNITY SCRIPT
+PROJECT WALKTHROUGH
+ Yo

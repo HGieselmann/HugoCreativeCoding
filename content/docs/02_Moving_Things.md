@@ -1,4 +1,3 @@
-
 ### On Design
 Throughout the first chapters we will use Josef Albers “Hommage to the Square” as a starting point for experimentation. This will be a great way to get started coding with small script and also see how just a few lines of code can change a lot of the feel of things.
 These two thing will perfetly go hand in hand, as Design, as well as Coding are Skills. You can read about them as much as you want, but you will only become good at it by actually designing stuff and actually writing code. This is actually an important point. A lot of the ideas of programming are in their core not hard to grasp. A lot of them are really straight forward. What makes programming complex is dividing bigger problems into smaller problems and even smaller problems. And becoming good at this thoughtprocess takes practice. When I went to Drawing school to prepare for my design studies I didn’t get any better until the moment my teacher Ivan forced me to come back with 100 drawings of simple things within a week. The Website drawabox.com has a challenge of drawing 250 boxes.
@@ -8,7 +7,6 @@ I recommend starting on paper, as technology sadly has a tendency to screw with 
 
 For our “Hommage to the Square” experimentation I started with some simple scribbles on what could be things we could easily do with code:
 TODO INSERT SCRIBBLES AND PSEUDOCODE
-
 
 
 ### Structure of a script
@@ -185,3 +183,6 @@ public class MovingAlbersVar : MonoBehaviour
 		}
 	}
 {{< / highlight >}}
+
+- learn parenting
+- 
