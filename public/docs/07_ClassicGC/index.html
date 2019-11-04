@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  
+    
+    07 Classic G C
+  
+ | Generative Unity</title>
+
+
+
+<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
+
+
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+</h2>
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2f docs\2f 07_ClassicGC\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+<li><a href="/docs/05_Functions/">05 Methods</a></li>
+<li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
+<li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
+<li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
+<li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
+<li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
+<li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
+<li><a href="/docs/12_Animation/">12 Animation</a></li>
+<li><a href="/docs/13_Physics/">13 Physics</a></li>
+<li><a href="/docs/14_Sound/">14 Sound</a></li>
+<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
+<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
+<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
+<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
+<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
+<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
+
+<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
+
+<li><p><strong>Other</strong></p></li>
+
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Additional Resources</a></p></li>
+
+<li><p><a href="/posts/">  </a></p></li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
+
+
+
+    </aside>
+
+    <div class="book-page">
+      <header class="align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>
+  
+    
+    07 Classic G C
+  
+</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h3 id="classic-cc-techniques-in-unity">Classic CC Techniques in Unity</h3>
+
+<p>If you came here as someone with a background in Processing or p5.js, you might be missing some very common processing techniques, that aren’t too obvious to recreate in Unity. The first thing being the complete handling of the background. In Processing you would handle this in the initial lines of code of your script. In Unity all this functionality is tied to the camera. We will look at setting this up in the editor first. But of course all these things are available via code as well.
+By default Unity will clear the complete Render Buffer each frame and render the default skybox as a background for your scene. The skybox sadly isn’t the most useful think when you want to create non-enviromental scenes. The most basic alternative to this is setting is a solid background color.
+<img src="/img/UnityCameraBackgroundSolidColor.jpg" alt="Setting the background to “solid color”" />
+This will clear the image buffer with the selected solid color in the field right below the clear flag. As mentioned before, you can of course access all of this via script as well.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">ShapeLerp</span> : MonoBehaviour
+{
+    public Camera myCamera;
+    <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
+    {
+        myCamera <span style="color:#666">=</span> Camera.main;
+        myCamera.clearFlags <span style="color:#666">=</span> CameraClearFlags.SolidColor;
+        myCamera.backgroundColor <span style="color:#666">=</span> Color.white;
+    }
+}</code></pre></div>
+This of course means, you could also change or animate the clear buffer color to your liking.
+Shape Lerper Example here</p>
+
+<p>Another very popular type of clearing the background is: not clearing. This means the previous rendered frame will stay in the renderbuffer and will only be overwritten in areas the camera deems worthy to behold. What’s worthy? The camera has a settings for near clipping and far clipping. Anything closer that near will not be seen by the camera, everything farther than the far setting will be ignored as well. This range is necessary to make computer graphics feasible.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      Why is it necessary?
+Think of one meter of distance. How far can we break this up? One meter is 100 cm, or 1000 Milimeters, or 1000000000000 picometers. Femtometers anyone? And now Consider Femtometers at 100km distance.
+Our Computers just can’t handle such values very well, and even more importantly: not efficient.
+The solution? Define a range the camera sees and split value we actually can hold in one piece of memory over that range. The larger the range, the less precision we actually get. But most of the time that works out just fine.
+    </div>
+  </label>
+</div>
+
+Built upon the idea of not clearing the render buffer are built many Processing sketches which involve random Walkers or painting like applications. The main piece of code we need to concern ourselves with is this:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"> private Camera cam;  <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>() {     cam <span style="color:#666">=</span> Camera.main;     cam.clearFlags <span style="color:#666">=</span> CameraClearFlags.SolidColor;     cam.backgroundColor <span style="color:#666">=</span> Color.white;       }  <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>() {     <span style="color:#007020;font-weight:bold">if</span> (Time.frameCount <span style="color:#666">&gt;</span> <span style="color:#40a070">2</span>){         cam.clearFlags <span style="color:#666">=</span> CameraClearFlags.Nothing;     } }</code></pre></div>
+We create a variable to get hold of the Camera in our scene and assign it using <code>Camera.main;</code>. Next we set the clearFlag of the Camera to Solid Color and assign white. We could have done this in the editor as well and if you assigned a background color on the camera it will be overridden by our code. Be aware of that.
+In the <code>Update()</code> method we simply wait for 2 Frames before changing the CameraClearFlag to nothing. From this point forward we keep the Framebuffer and can override it.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      Other Options?
+Of course you could solve how to create the initial background completely differently. You could have a Plane with an image on it and destroy it after two Frames, or just move it out of the way.
+    </div>
+  </label>
+</div>
+
+But to prove our point let’s recreate another very popular Processing Sketch: The Random Walk. The idea is, to have an Object, often the mere size of a pixel, grab a random number and based on it decide in which direction to move next.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public GameObject WalkerPrefab; private GameObject Walker; private Vector3 movementDirection; public <span style="color:#902000">float</span> movementDistance <span style="color:#666">=</span> <span style="color:#40a070">0.1f</span>; public <span style="color:#902000">float</span> walkerSize <span style="color:#666">=</span> <span style="color:#40a070">0.1f</span>;</code></pre></div>
+This is just the code for setting things up. We have to create variables for size and movement distance, because we are once again not dealing with pixels, so we want the creative control in the Unity Editor.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Walker <span style="color:#666">=</span> Instantiate(WalkerPrefab, Vector3.zero, Quaternion.identity); Walker.transform.localScale <span style="color:#666">*=</span> walkerSize;</code></pre></div>
+This is nothing but the typical initialization of our object in the start function. The interesting part obviously belongs into the Update method:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> randomNumber <span style="color:#666">=</span> Random.Range(<span style="color:#40a070">0</span>, <span style="color:#40a070">4</span>); <span style="color:#007020;font-weight:bold">if</span> (randomNumber <span style="color:#666">==</span> <span style="color:#40a070">0</span>) {     movementDirection <span style="color:#666">=</span> Vector3.up; } <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">if</span> (randomNumber <span style="color:#666">==</span> <span style="color:#40a070">1</span>) {     movementDirection <span style="color:#666">=</span> Vector3.right; } <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">if</span> (randomNumber <span style="color:#666">==</span> <span style="color:#40a070">2</span>) {     movementDirection <span style="color:#666">=</span> Vector3.down; } <span style="color:#007020;font-weight:bold">else</span> {     movementDirection <span style="color:#666">=</span> Vector3.left; }  Walker.transform.position <span style="color:#666">=</span> Walker.transform.position <span style="color:#666">+</span> movementDirection <span style="color:#666">*</span> movementDistance;</code></pre></div>
+To implement a simple random walk we just generate a Random integer between 0 and 3. Note that the second argument to Random.Range() is exclusive, so we have to add one to it. Then we just define the movement direction based on the random number.
+Lastly we just add the movementDirection to  the current position and assign it. The movement Distance is for us to get some creative control over the outcome and ist most likely tied to size of the Walker we crated.
+So this is what we got so far:
+IMAGE OF RANDOM WALKER WITHOUT FADE
+If you let it walk for a while, you will realize, the walker will sooner or later leave the bounds of the frame. This means we need to decide on way to deal with this.
+Consider edgecases, what happens out of bounds
+Next we need to find a way to fade the old frames out over time. In Processing the background takes an Alpha as argument and thus is then written on top of the framebuffer. In Unity the alpha of the background color is just ignored. This means we need to create a transparent front layer ourselves.
+To do so we create a simple plane just in front of the camera. For the plane we need to create a special material, which is configured to properly override the render buffer: The “Sprite &gt; Default” Material will do the trick just fine. Interestingly enough the alpha value we would want to set is <code>7</code>. Everything lower than this value will result in not fading out all values properly. But this value was also supposed to be the value to control the speed of fading. To get even more control over the speed of fading we can write a little script, which will enable and disable rendering for the plane in a certain interval.</p>
+
+<p>3D Scanner Effect
+3D Random Walker
+Random Walker with traces that draw shapes - Random Walker to show fading away stuff over time</p>
+
+<h3 id="the-fading-paint-effect">The Fading Paint Effect</h3>
+
+<p>Another very popular thing in Processing is to have some kind of Paint effects or even fading paint effects. In the 2D focused world of Processing, all of your shapes are drawn on a plane. This Plane is defined by Pixels. So it is very reasonable to just name the Pixel at whose position you would want to i.e. draw a circle. In Unity on the other hand we are dealing with 3D Space, which means we have to also think about the Z-Axis or the Depth of things. This makes the process somewhat more complex, but will also give us some interesting possibilities to play with.
+The key to solving this is to shoot an in invisible Ray starting at the camera Center through the Position of our mouse in ScreenSpace. If this Ray is hitting some object, we can retrieve information about the object we hit as well as the hit itself. Most importantly for us, the position at which we hit something.
+To put this into practice we need to actually hit something. This something will be a plane we position directly adverse to the Camera. We also need to scale it big enough to fill the area our Camera can see. We will then add a Rigidbody Component to it.
+<img src="/img/UnityCameraFacingPlaneForRaytracing.jpg" alt="Camera facing Plane for Raycasting" />
+The intial setup is very similar to our setup for creating the fading random Walker. We just add some variables for our brush.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public GameObject brush; private GameObject currentBrush; private Camera mainCamera; <span style="color:#666">//</span> Start is called before the first frame update <span style="color:#902000">void</span> Start() {     mainCamera <span style="color:#666">=</span> Camera.main;     mainCamera.clearFlags <span style="color:#666">=</span> CameraClearFlags.SolidColor;     mainCamera.backgroundColor <span style="color:#666">=</span> Color.white;      currentBrush <span style="color:#666">=</span> Instantiate(brush, Vector3.zero, Quaternion.identity); }</code></pre></div></p>
+
+<p>TODO: We can also do this with code: Code</p>
+
+<p>Scanner Effect on a 3D Object which draws shiny/neon spheres</p>
+</article>
+
+      
+<div class="book-footer justify-end">
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c07_ClassicGC.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#classic-cc-techniques-in-unity">Classic CC Techniques in Unity</a></li>
+<li><a href="#the-fading-paint-effect">The Fading Paint Effect</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

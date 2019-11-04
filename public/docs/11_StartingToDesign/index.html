@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  
+    
+    11 Starting to Design
+  
+ | Generative Unity</title>
+
+
+
+<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
+
+
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+</h2>
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2f docs\2f 11_StartingToDesign\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+<li><a href="/docs/05_Functions/">05 Methods</a></li>
+<li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
+<li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
+<li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
+<li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
+<li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
+<li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
+<li><a href="/docs/12_Animation/">12 Animation</a></li>
+<li><a href="/docs/13_Physics/">13 Physics</a></li>
+<li><a href="/docs/14_Sound/">14 Sound</a></li>
+<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
+<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
+<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
+<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
+<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
+<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
+
+<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
+
+<li><p><strong>Other</strong></p></li>
+
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Additional Resources</a></p></li>
+
+<li><p><a href="/posts/">  </a></p></li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
+
+
+
+    </aside>
+
+    <div class="book-page">
+      <header class="align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>
+  
+    
+    11 Starting to Design
+  
+</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h3 id="the-generative-design-pitfall">The Generative Design pitfall</h3>
+
+<p>This book claims to be about “Generative Design” and with such about Design in general. And that actually is a bold claim and one I am reaaaaly, really uncomfortable with. While it’s one thing to tell you how programming works, design is a whole different beast. Programming is based on rules. And rules are easy to describe and put on paper. If you forget to put a semicolon in the right place your program won’t run.
+Design on the other hand let’s you create the most outrageous crap and won’t tell you at all. Even worse, stuff I would think of as outrageous crap other people actually LIKE. There are no hard rules about right and wrong. And the “rules” that actually apply are fluid and evolving. The ideas at the Bauhaus, while interesting and great to study surely can’t be enforced as rules or our surroundings would be boring and bland.</p>
+
+<p>So now that we know that design is hard, hard process let me tell you: Generative Design is even worse. While creating with code your logical mind is in the works all the time, and it really just cares about the code and making things work. And once you check your design and you wake the left side of the brain, it will be all sleepy and say: “Say, yeahh I guess, I guess not&hellip;”, but the right side is already all over the place going crazy, just because it works. And believe me I’ve been there. Lots of times!
+The downer comes once you show it to people and they say: ‘meh’. They can’t see the code. They can’t see the hours you spent learning about loops and functions. They can’t see the time you spend fixing bugs. And sometimes they can’t see this beautiful mathematic idea at the heart of your code. They can’t recognize that. And it’s not their fault. It just means that the visual output you just spend hours on is just not that good. (And I think that is how WordArt came to be in the first place. Programmers creating crazy rainbow colored Fonts, just because the could.)</p>
+
+<h3 id="disclaimer">Disclaimer</h3>
+
+<p>So before we move on I just want to get a few things of my chest. I AM one of the people who way too often thought about technical stuff before design. I fell into that pit in almost any project again and again and I still have a hard time not letting those things get in the way of my design. This also means: I am very likely not at all an expert on design and how to apply it. So what follows are merely the basics and you should find input from sources who focus just on design and don’t have their eyes clouded by fancy tech stuff.</p>
+
+<h3 id="design-principles">Design principles</h3>
+
+<p>So to avoid these moments as best as we can, we will talk about design principles and how to apply them.
+The most important thing is, that principles are not rules. You can’t enforce them and you shouldn’t. But knowing about them helps a lot, because now you can try to teach you right side of the brain to look for some ideas it can recognize as well, while your left side of the brain get’s the time to actually wake up and have it’s say.</p>
+
+<h3 id="the-frame">The Frame</h3>
+
+<p>Framing and Composition can be interchangeable terms, but in the context of this book I wanted to talk specifically about the frame first.
+When you start a painting your work is typically limited by the size of your canvas. When you start sketching frames for a storyboard you typically start with creating a frame. Why? Because every creative decision is based on these borders. How else could you define if something is centered?
+Well&hellip; the digital world this isn’t so simple anymore. Webdevelopers know exactly what I am talking about. Every website must look good in a variety of formats: Your smartphone, your Laptop as well as the good old CRT monitor that mystically runs in some places.
+But worse: Consider the smartphone. In horizontal mode you are probably dealing with a 16:9 ratio, in vertical 9:16. Some manufacturers started creating 21:9 displays. With the foldable phones at the horizon, we are back at a 4:3 aspect ratio again, as well as the 16:9-ish ratio in folded mode. All in one device! And while your Laptop may as well sport a 16:9 aspect ratio, resolution and viewing distance might widely vary, again requiring dynamic adjustments to the proportions in the frame, especially if you are dealig eith type.
+Unity will allow you to support all theses aspect ratios and resolutions. At it heart it really, really doesn’t care where it put’s it’s pixels. And yet it allows you to enforce some rules. You only want to support 16:9 ratios? Done!
+So you should think about how you deal with this. Where and how do you plan to publish your work? On screens in an exhibition, or maybe projected onto a wall? Or will it be a mobile app people will enjoy on their phones? Are you planning to just release on web?
+To define your Unity Canvas, Unity provides a dropdown menu in the GameView.
+TODO INSERT SNAPSHOT.
+Provided are some common formats like the ones we just talked about. 16:9, 16:10 or 4:3. You can click the “+”-button at the bottom to add your own aspect ratio or resolution. Once added, you can select it, and the camera should instantly switch to that aspect ratio for preview.
+TODO CHECK HOW TO FORCE ASPECT RATIOS
+For now I would just choose one aspect ratio for each sketch you create and ignore the problems that arise form having variable aspect ratios as a problem. Once you have an app or program that has to be deployed to devices with unknown aspect ratios you can start considering how to deal with these problems.</p>
+
+<h3 id="composition">Composition</h3>
+
+<p>Composition is the art of placing your elements in the frame of your work. It’s about leading the eye of the beholder and making sure the alignment of elements supports the message you try to convey with your work. While you can show the same
+Write something useful here</p>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h3 id="vr-and-ar-applications">VR and AR Applications</h3>
+
+<p>Unity allows you to create  Interactive, Virtual Reality and Augmented Reality experiences. All of them force you to think in a completely new and different way about composition, as the viewer himself now, will create the composition. He will decide where to look and where to put his focus and interest. And while in VR you can at least create the whole world around the user, in AR you have to at least consider the user standing in a completely distracting environment. Your storytelling in these situations has to be fantastic, as this will be the driving force in leading the user through experience.
+    </div>
+  </label>
+</div>
+
+
+<h3 id="balance">Balance</h3>
+
+<p>Balancing is all about creating</p>
+
+<h3 id="basic-shapes-point-line-plane">Basic shapes point, line, plane</h3>
+
+<h3 id="relationen">Relationen</h3>
+
+<h3 id="structures">Structures</h3>
+
+<h3 id="colors">Colors</h3>
+
+<h3 id="textures">Textures</h3>
+
+<h3 id="animation">Animation</h3>
+
+<h3 id="iteration-and-formstorming">Iteration and Formstorming</h3>
+
+<h3 id="color">Color</h3>
+
+<p>###</p>
+</article>
+
+      
+<div class="book-footer justify-end">
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c11_StartingToDesign.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#the-generative-design-pitfall">The Generative Design pitfall</a></li>
+<li><a href="#disclaimer">Disclaimer</a></li>
+<li><a href="#design-principles">Design principles</a></li>
+<li><a href="#the-frame">The Frame</a></li>
+<li><a href="#composition">Composition</a></li>
+<li><a href="#balance">Balance</a></li>
+<li><a href="#basic-shapes-point-line-plane">Basic shapes point, line, plane</a></li>
+<li><a href="#relationen">Relationen</a></li>
+<li><a href="#structures">Structures</a></li>
+<li><a href="#colors">Colors</a></li>
+<li><a href="#textures">Textures</a></li>
+<li><a href="#animation">Animation</a></li>
+<li><a href="#iteration-and-formstorming">Iteration and Formstorming</a></li>
+<li><a href="#color">Color</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

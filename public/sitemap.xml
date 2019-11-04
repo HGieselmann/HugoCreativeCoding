@@ -33,12 +33,12 @@
   </url>
   
   <url>
-    <loc>https://generativeunity.henrikgieselmann.com/docs/05_MultipleObjects/</loc>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/06_MultipleObjects/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://generativeunity.henrikgieselmann.com/docs/06_MultipleObjects/</loc>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/07_ClassicGC/</loc>
     <priority>0</priority>
   </url>
   
@@ -49,6 +49,86 @@
   
   <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/08_ClassesAndOOP/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/09_DelegatesAndEvents/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/10_BestPractices/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/11_StartingToDesign/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/12_Animation/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/13_Physics/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/14_Sound/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/15_UserInterfaces/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/16_VFXGraph/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/17_ShadingAndLighting/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/18_TexturesAndImages/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/19_PostProcessingStack/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/20_MobileAndAR/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/21_P1_ScifiTunnel/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/22_P2_WeatherApp/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/23_P3_PianoDrivenEnvironment/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/24_P4_OpenCV_Project/</loc>
     <priority>0</priority>
   </url>
   

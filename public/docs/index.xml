@@ -65,17 +65,6 @@
     
     <item>
       <title></title>
-      <link>https://generativeunity.henrikgieselmann.com/docs/05_MultipleObjects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://generativeunity.henrikgieselmann.com/docs/05_MultipleObjects/</guid>
-      <description>Title: Master
-Author:
-Multiple Object Workflow If you followed along with some of the examples, you probably realized we are doing a lot of manual labor in changing things on the Unity Editor itself. Each Square has to get the new Script and so forth. Then again programming is a lazy mans art. The less manual labor we have to the better. In this Chapter we will introduce ways to handle multiple Squares at once.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://generativeunity.henrikgieselmann.com/docs/06_MultipleObjects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -85,11 +74,20 @@ Multiple Object Workflow If you followed along with some of the examples, you pr
     
     <item>
       <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/07_ClassicGC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/07_ClassicGC/</guid>
+      <description>Classic CC Techniques in Unity If you came here as someone with a background in Processing or p5.js, you might be missing some very common processing techniques, that aren’t too obvious to recreate in Unity. The first thing being the complete handling of the background. In Processing you would handle this in the initial lines of code of your script. In Unity all this functionality is tied to the camera.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://generativeunity.henrikgieselmann.com/docs/07_StartingToDesign/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/07_StartingToDesign/</guid>
-      <description>Nothing to see here. Move along.</description>
+      <description>The Generative Design pitfall This book claims to be about “Generative Design” and with such about Design in general. And that actually is a bold claim and one I am reaaaaly, really uncomfortable with. While it’s one thing to tell you how programming works, design is a whole different beast. Programming is based on rules. And rules are easy to describe and put on paper. If you forget to put a semicolon in the right place your program won’t run.</description>
     </item>
     
     <item>
@@ -103,14 +101,161 @@ Multiple Object Workflow If you followed along with some of the examples, you pr
     
     <item>
       <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/09_DelegatesAndEvents/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/09_DelegatesAndEvents/</guid>
+      <description> C# Language Features </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/10_BestPractices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/10_BestPractices/</guid>
+      <description>Designing Code Before we dive deeper into considerations about design, let’s take a very short break and discuss designing code. As with many things in design, there are often many, many ways to solve one and the same problem. You soon will, or already have seen, me writing code that you would have approached differently. And it is definitely possible that your solution is better. (And please let me know if you think I do some really stupid stuff!</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/11_StartingToDesign/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/11_StartingToDesign/</guid>
+      <description>The Generative Design pitfall This book claims to be about “Generative Design” and with such about Design in general. And that actually is a bold claim and one I am reaaaaly, really uncomfortable with. While it’s one thing to tell you how programming works, design is a whole different beast. Programming is based on rules. And rules are easy to describe and put on paper. If you forget to put a semicolon in the right place your program won’t run.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/12_Animation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/12_Animation/</guid>
+      <description> Animation Splines with code </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/13_Physics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/13_Physics/</guid>
+      <description>Physics and Raycasts!</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/14_Sound/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/14_Sound/</guid>
+      <description> Animation Splines with code </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/15_UserInterfaces/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/15_UserInterfaces/</guid>
+      <description>User Interfaces!</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/16_VFXGraph/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/16_VFXGraph/</guid>
+      <description>Lights and a bit about Shaders</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/17_ShadingAndLighting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/17_ShadingAndLighting/</guid>
+      <description>Title: Master
+Author:
+Lights and a bit about Shaders</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/18_TexturesAndImages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/18_TexturesAndImages/</guid>
+      <description>Disclaimer: This chapter is written based on Unity 2019.2 and ARFoundation Package Version 2.0.2. I can only properly show the setup for Android Phones as well, as I do not have an iOS development environment.
+Augmented Reality Definition Designing for Augemented Reality Augmented Reality is one of the most interesting fields in design right now. In contrast to print or webdesign many of the precieved rules are not yet written.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/19_PostProcessingStack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/19_PostProcessingStack/</guid>
+      <description>Disclaimer: This chapter is written based on Unity 2019.2 and ARFoundation Package Version 2.0.2. I can only properly show the setup for Android Phones as well, as I do not have an iOS development environment.
+Augmented Reality Definition Designing for Augemented Reality Augmented Reality is one of the most interesting fields in design right now. In contrast to print or webdesign many of the precieved rules are not yet written.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/20_MobileAndAR/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/20_MobileAndAR/</guid>
+      <description>Disclaimer: This chapter is written based on Unity 2019.2 and ARFoundation Package Version 2.0.2. I can only properly show the setup for Android Phones as well, as I do not have an iOS development environment.
+Augmented Reality Definition Designing for Augemented Reality Augmented Reality is one of the most interesting fields in design right now. In contrast to print or webdesign many of the precieved rules are not yet written.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/21_P1_ScifiTunnel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/21_P1_ScifiTunnel/</guid>
+      <description>Procedural Placement of Objects</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/22_P2_WeatherApp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/22_P2_WeatherApp/</guid>
+      <description>Getting External Data through APIs</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/23_P3_PianoDrivenEnvironment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/23_P3_PianoDrivenEnvironment/</guid>
+      <description>Embedding external Scripts and connecting Data from Hardware Devices</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://generativeunity.henrikgieselmann.com/docs/24_P4_OpenCV_Project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://generativeunity.henrikgieselmann.com/docs/24_P4_OpenCV_Project/</guid>
+      <description>Artificial Intelligence and External Script Communication</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://generativeunity.henrikgieselmann.com/docs/98_AdditionalResources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/98_AdditionalResources/</guid>
-      <description>Title: Master
-Author:
-Addtional Resources You finished everything ans ask yourself: What’s next? My style of writing isn’t yours? These are rescources which are somewhat related to the topic, but can ben written for other programming languages or software. Yet they still hold - in my eyes -tremendous value. So feel free to check them out!
-Books: - The nature of Code - Daniel Shiffman - Eloquent Javascript - Marijn Haverbeke - Graphic Deisgn: The New Basics - Ellen Lupton, Jennifer Cole Phillips</description>
+      <description>Addtional Resources You finished everything ans ask yourself: What’s next? My style of writing isn’t yours? These are rescources which are somewhat related to the topic, but can ben written for other programming languages or software. Yet they still hold - in my eyes -tremendous value. So feel free to check them out!
+Books: - The nature of Code - Daniel Shiffman - Eloquent Javascript - Marijn Haverbeke - Graphic Design: The New Basics - Ellen Lupton, Jennifer Cole Phillips</description>
     </item>
     
     <item>

@@ -1,67 +1,64 @@
 ### Multiple Object Workflow
-If you followed along with some of the examples, you probably realized we are doing a lot of manual labor in changing things on the Unity Editor itself. Each Square has to get the new Script and so forth. Then again programming is a lazy mans art. The less manual labor we have to do the better.
-In this Chapter we will introduce ways to handle multiple Squares at once. And Squares - of course cpuld be anything in the end. To do this conveniently in Unity we need to look at three Concepts:
+If you followed along with some of the examples, you probably realized we are doing a lot of manual labor in changing things on the Unity Editor itself. Each Cuboid has to get the new Script and so forth. Then again programming is a lazy mans art. The less manual labor we have to do the better.
+With the concepts introduced in this chapter, we will be able handle lots and lots of objects simultaneously. Hence it will also allow us to create more complex sketches.
+We will also look at interaction between multiple scripts. Finally keywords like `private` and `public` will hopefully make more sense.
+Thus in this Chapter we will introduce ways to create and handle multiple cuboids at runtime. And cuboids - of course could be anything really. To do this conveniently in Unity we need to look at three Concepts:
 1. Prefabs and Instantiation
-2. Lists and Arrays
+2. Arrays or Lists
 3. Loops
-In short, we will create objects through Instantiation. We will the use Lists to hold track of them and loops to iterate over these lists.
+In short, we will create objects through Instantiation. We will the use Arrays and Lists to keep track of them and loops to iterate over them
 What’s even better is, it opens up a lot of creative possibilities and ideas to talk about! 
 
 ### Prefabs and Instantiation
-Instantiation is the process of creating Objects from a script and it is tightly intertwined with the Concept of Prefabs. Prefabs are “prefabricated” Objects we can “save” in the project window.
-Creating Prefabs is superbly simple. You create the Object you want to create in the Hierarchy and then drag and drop it into the Project View.
+Instantiation is the process of creating Objects from a script and it is tightly intertwined with the Concept of Prefabs. Prefabs are “prefabricated” Objects we can “save” form the project view. They are in most cases the objects we want to then create through code.
+Creating Prefabs is superbly simple. Any object you have in your scene can be turned into a prefab. All you have to do is drag an item from the hierarchy into the project view. 
 TODO GIF PREFAB
-The tiny cube in front of the object turns blue if Unity knows about this object as an Prefab. It’s often advisable to create a specific folder for all your prefabs. The great thing is that Unity will keep all of it’s components attached to the prefab.
-##### You may want to dublicate your scene before following along.
-So if you go ahead and take a square with a script for movement already attached to it you will be able to instantiate it.
+The tiny cube in front of the object turns blue if Unity knows about this object as an Prefab. It’s often advisable to create a specific folder for all your prefabs. The great thing is that Unity will keep all of it’s components attached to the prefab. But it also opens up room for some consideration later on. Any behaviour we have added to a prefab will be there once we create an instance of it. This can be what you want, but it’s not necessarily so.
 Once you have created a prefab from an GameObject you can go ahead and delete it from the hierarchy.
+
+
 ### Instantiation
-Next we will need to create a script to actually handle the creation of all our stuff and because scripts in Unity can’t exists in empty space, we need to create a GameObject for this as well. Technically any object would work, yet an “Empty Object” would of course be the ideal choice. Empties only consist of a transform component and thus have no visual representation in the scene. Rename your Empty to something like “ScriptHolder” or “Manager”. 
-First we have to find a way to grab hold of our prefabed square. In Unity all Objects (that inherit from Monobehaviour) can be referenced as GameObject. So let’s create a variable for our square.
+With an prefab ready, we will need to create a script to actually handle the creation/instantiation of all our cuboids and because scripts in Unity can’t exists in empty space, we need to create a GameObject to hold our script. Technically any object would work, yet an “Empty Object” would of course be the ideal choice. Empties only consist of a transform component and thus have no visual representation in the scene, thus you are less likely to accidentally delete them. Rename your Empty to something like “ScriptHolder” or “Manager”. 
+First we have to find a way to grab hold of our prefabricated cuboid. In Unity all Objects (that inherit from Monobehaviour - we’ll discuss this in Chapter 08) can be referenced as GameObject. So let’s create a variable of type `GameObject` for our cuboid.
 {{<highlight c>}}
-public GameObject squarePrefab;
+public GameObject cuboidPrefab;
 {{</highlight>}}
-Now go back to Unity and check the Inspector. You will see a field named squarePrefab. You can now drag and drop the prefab you created from the Project view into the field on the inspector.
-Now the script *knows* about the prefab. Next we need to actually create an actual instance at runtime:
+Now go back to Unity and check the Inspector. You will see a field named cuboidPrefab. You can now drag and drop the prefab you created from the Project view into the field on the inspector.
+Add Gif here
+Now the script *knows* about the prefab. You might argue, that this process feels a little strange, and I am with you. I tend to forget this step and run into an error. But you’ll get used to it!
+Next we need to actually create an actual instance at runtime:
 {{<highlight c>}}
-Instantiate(squarePrefab, Vector3.back, Quaternion.identity);
+Instantiate(cuboidPrefab, Vector3.zero, Quaternion.identity);
 {{</highlight>}}
-The instantiate Method takes 3 argumentts: 1. The Object we want to Instantiate, A  Vector as Position in Space, and a Rotation. Rotation is passed as Quaternion. For now,  just use Quaternion.identity; Quaternions are scary things. We will deal with them later.
-If you run your scene now, you should have one one Square moving around. 
-Go ahead and duplicate that line.
-It should give you two Squares and yet you will probably only see one.
-Both are created in exactly the same space and Size again. Also both have the same color.
+The instantiate Method takes three argumentts: 
+1. The Object we want to Instantiate 
+2. A Vector as Position in Space 
+3. Rotation passed as a Quaternion. 
+For now,  just use `Quaternion.identity;`. Quaternions are scary things and `Quaternion.identity` will place them in the exact state you created the Prefab in, so that’s very, very likely correct anyway.
+If you run your scene now, you should have one Cuboid moving around, based on the script you had attached to it, when creating the prefab.
+Go ahead and duplicate that line. It should give you two cuboids and yet you will probably only see one. Both are created in exactly the same space and size. But you should be able to see two of them in the hierarchy.
 So we need to find a way to access a gameObject after instantiation. To do that we can just assign the created Object to variable the moment we create it:
 {{<highlight c>}}
-	var Square =Instantiate(_SquarePrefab, Vector3.back, Quaternion.identity);
+	var cuboid = Instantiate(cuboidPrefab, Vector3.back, Quaternion.identity);
 {{</highlight>}}
 {{<expand>}}
-### the ‘var’ Keyword
+#### the ‘var’ Keyword
 You might stumbled across the ‘var’ Keyword here. You will see code that never uses ‘var’ and code which makes a lot use of it. Generally speaking you should only use it when through the context it is unmistakeable which Type is referenced. This is mostly true for “Object stuff”. To keep it simple for now. As an Example:
 `GameObject myGameOject = new GameObject();`
 This would create a new empty GameObject. But the line of code isn’t a beauty, is it? That’s where var comes in:
 `var myGameObject = new GameObject();`
 Don’t worry about it too much for now. This will become second nature over time.
 {{</expand>}}
-Now we have a variable for our square. With this variable we can change the square from this script just like the way we used to with the script which was directly attached to the square itself. All we have to chang is adding Square in front of it.
+Now we have a variable for our cuboid. This variable allows us to access the the cuboid and all the properties of it, that are actually public. This is the first time `private` and `public` actually become relevant for us in a scripting sense.
 {{<highlight c>}}
-Square.transform.position = new Vector3(0,0,0);
+cuboid.transform.position = new Vector3(0,0,0);
 {{</highlight>}}
-To actually start recreating our sketch, we need two other squares with another variable.
-{{< highlight c>}}
-var Square =Instantiate(_SquarePrefab, Vector3.back, Quaternion.identity);
-var SquareM =Instantiate(_SquarePrefab, Vector3.back, Quaternion.identity);
-var SquareS =Instantiate(_SquarePrefab, Vector3.back, Quaternion.identity);
-{{</highlight>}}
-If you run this, we still face the problem of all squares overlapping in the exact same space. 
-
-
-Now this still is waaaaay too much manual labour for being in any kind practical. What if we needed a hundered or a thousand squares? You’d quit coding immediatly. Well don’t!
+So to actually recreate our Homage to the cuboid we would need to do this over and over again and then adjusting things and... nah...  We are not going to do that. As I said before. One core idea in programming is DRY - Don’t repeat yourself. Thus we are not going to do that!
 
 ### For Loops
-To be able to handle many Objects (or any kind repeating process) programmers came up with loops. Loops are blocks of code thate are executed over and over again until a certain condition is met. Maybe the most common implementation of a loop is the “for loop”. 
-For Loops in C# need three things to work: Initializer, condition and iterator. Think of it as having a jar of cookies and you are allowed to eat 50 cookies in a week. So you need to make sure how many you have eaten. So you take a piece of paper and start a tally sheet. This tally sheet is your initializer. The Initializer is just creating a variableto keep track of a number. Then each time you want a cookie you check wether you are still allowed to eat a cookie. That’s the condition. Once you have eaten the cookie you add one. That’s done using the iterator.
-Actually eating the cookie is the code the run. That’s wrapped in curly braces again.
+To be able to handle many Objects (or any kind repeating process) people came up with loops. Loops are blocks of code that are executed over and over again until a certain condition is met. Maybe the most common implementation of a loop is the “for loop”. 
+For Loops in C# need three things to work: Initializer, condition and iterator. Think of it as having a jar of cookies and you are allowed to eat 50 cookies in a week. So you need to make sure how many you have eaten so far. So you take a piece of paper and start a tally sheet. This tally sheet is your initializer. The Initializer is just creating a variable to keep track of a number. Then each time you want a cookie you check whether you are still allowed to eat a cookie or if you already had 50. That’s the condition. Once you have eaten the cookie you add one to your tally sheet. That’s done using the iterator.
+Actually eating the cookie is the code run in the loop. That’s wrapped in curly braces again.
 {{<highlight c>}}
 for (int i = 0; i < 5; i++)
 {
@@ -69,63 +66,83 @@ for (int i = 0; i < 5; i++)
 }
 {{</highlight>}}
 
-A For Loops starts with the `for` Keyword followed by brackets. The first thing is our tally list / Initializer. It works exaclty like creating any other variable in Unity. The three parts of a loop separeted by a semicolon. Next up is the condition. Conditions in for loops check if you counter is higher or lower then a certain threshold and if it evaluates to false the loop will stop. Last is the iterator which counts up. In this case the `i++` just means the variable I will be increased by one after each iteration. You could also put `i+2` to always add two to the number.
-In the curly brackets follows the code to run. Here we just run a counter in the console.
+A *for loop* starts with the `for` Keyword followed by parentheses. The first thing is our tally list / Initializer. It works exactly like creating any other variable in Unity, but you *have* to initialize it. What’s also to note is: Counting in computer science almost always starts with 0. Thus we will start with `int i = 0`! The three parts of a loop are separated by a semicolon. Next up is the condition. Conditions in for loops check if your counter is higher or lower then a certain threshold and if it evaluates to false the loop will stop. Last is the iterator which counts up. In this case the `i++` just means the variable `i` will be increased by one after each iteration. You could also put `i+1`.Actually you could advance your initializer in any stepsize: `i + 2`, `i+100`. They all work fine.
+In the curly brackets follows the code to run. In the above counter we just print the value of our counter `i` to the console.
 
-So that’s it for the theory. Let’s take a look at this in action.
-As we want to stay flexible with this, we will create some variables to first.
+### Arrays
+That’s it for the theory, let put this into practice. Earlier, when were discussing Instantiation, we said we need a variable to create a reference to our objects. But creating five variables, each to hold a cuboid would be very inefficient again. That’s why we also need to introduce Arrays. Arrays hold many things of one same type. A list in essence, except that they aren’t really list because list exist as well and you see.. this is messed up.
+Anyway... Arrays hold things of the same *type*. Like *float* or *integer*. Or *GameObject*! Creating Arrays is simple. You create them like any variable, but add `[]` after the type.
 {{<highlight c>}}
-public GameObject SquarePrefab; public int numberOfSquares = 3; public float shrink = 0.1f; private List<GameObject> squareList = new List<GameObject>(); public Gradient myColors = new Gradient();
+private GameObject[] myGameObjectArray;
 {{</highlight>}}
-
-Of course we still have the reference to our prefab in place. Next we create a variable to propagte the number of squares we want to create to the Unity Editor. We will also need to somehow define a way of scaling our squares with each iteration, so we add a shrinking factor.
-Next up is a `List<GameObject>` object. As it’s an Object we ne to create it using the `new` keyword. Lists are pretty much exactly what you expect them to be. They hold a List of things, but we need to specify what kind of things we want it to keep track of. In our case that’s GameObjects.
-Last up is a Gradient. We can define a Gradient and the evaluate the Color at a certain point. This will help us define good and harmonious colors. Defining the colors willl be done in the Unity Editor with the color picker.
-
-So now we need to look at the for loop which goes into the `Start()`  Function.
+Now we have created the Array, but we didn’t initialize it and thus can’t use it. The thing with Arrays is, that they always have a fixed length. So in the moment you *initialize* the array, you need to specify how many items you want to store in your list. For our cuboids, it’s as simple as this:
 {{<highlight c>}}
-for (int i = 0; i < numberOfSquares; i++) 	{
-	}
+private GameObject[] cuboids = new GameObject[5];
 {{</highlight>}}
-
-Starting the expressionwith the `for` Keyword we create a counter variable `i` and set it to 0. You could start with a different number, but typically 0 makes the most sense.
-Next up is the Condition to check for after each iteration. Here we use the variable we created earlier. This allows for artist control inside the Unity Editor. The last bit is the iterator. So this initializes our loop. Let’s look at the Code within the loop line by line.
-
+With arrays we simply have to specify the length of the Array again in brackets. But what if you wanted to do this based on a variable? You can create the variable for this on global scope and then initialize the array in `Start()` or `Update()`.
 {{<highlight c>}}
-for (int i = 0; i < numberOfSquares; i++) 	{     squareList.Add(Instantiate(SquarePrefab, Vector3.back * i/100, Quaternion.identity)); 
+    private GameObject[] myGameObjects;
+    public int arraySize = 5;
+    // Start is called before the first frame update
+    void Start()
+    {
+        myGameObjects = new GameObject[arraySize];
+    }
 {{</highlight>}}
-
-I guess this is the first line that could look really intimidating, but it’s not. Just try to read it kinda like english.
-To the `squareList` we `Add` something. That something does not exist yet, so we Instantiate it, just like we did before. What do we Instatntiate? Our `SquarePrefab`. Where? At a Vector pointing back multiplied by out Initializer divided by 100.
-This is what makes loops powerful. On the first iteration `i` equals 0 so, the position of the first square will be `(0,0,0)`.
-In the next iteration `i` equals 1 and `i/100` will equate to 0.01. So it will be slightly offset. Changing the value of division would change this factor. And of course we could have another variable here.
-So not so scary after all, right?
-So let’s check the next line.
+So you have some flexibility, but can’t change the actual length of the array. To finally access things inside an array we use the bracket notation again.
 {{<highlight c>}}
-squareList[i].transform.localScale *= 1 - (shrink * i);
+	Debug.Log(myGameObjects[0]);
 {{</highlight>}}
-Here we access an item in a list. Item `i`.
-We just added that item one line prior and counting lists start at 0. So we access exactly the item we just created.
-We then grab the transform component and change the localScale by multiplying it by some value.  Here we multiply the shrinking by `i` again. So the later the comes in the list, the smaller it will be.
-
-So next up:
+This would print the first object in the Array to the console. As we said earlier, counting always starts with `0`! So now let’s look at actually making use of this:
 {{<highlight c>}}
-squareList[i].GetComponent<MovingAlbers>().multiplier = 1 - ((i+1) * shrink * 2);
+    public GameObject myPrefab;
+    private GameObject[] myGameObjects;
+    public int arraySize = 5;
+    // Start is called before the first frame update
+    void Start()
+    {
+        myGameObjects = new GameObject[arraySize];
+        for(int i = 0; i < arraySize; i++)
+        {
+            myGameObjects[i] = Instantiate(myPrefab, Vector3.up * i, Quaternion.identity);
+        }
+    }
 {{</highlight>}}
-Here we again access an item in the List based on `i`. Now we access our MovingAlbers script and change the multiplier (which was a scaling factor on movement range). Here again we use `i` and our shrink value to modify the values.
+This code incorporates everything we have covered so far. We first create a variable for a prefab. We then create a variable for an array of Gameobjects and also create a variable for the size of the array. In `Start()` we then initialize the array to the size of the variable. Henceforth it can hold five objects right now. But at the moment all slots are empty.
+Next we create a *for loop* and it’s condition is that our initializer is smaller than our `arraySize` variable. During the loop we access each slot of the list by it’s number, using the iterator. We also use the iterator as an multiplier for the position, thus shifting each object up by one.
+Add result here
+This might seem complicated at first, but it’s not too bad, once you have created a few arrays and written a few for loops. It’s also very, very powerful! As you can image we could easily set the value for our `arraySize` to `10`, `100` or even a thousand. Think about how long it would take to create a hundred of these cuboids by hand!
+Before we take this concept even further, I suggest you try to recreate some of the examples we did in earlier chapters using arrays and for loops. Maybe you can also come up with new variations.
+Add in three examples with Scripts applied to prefabs
+
+All of these use the idea of having the behavior attached to the prefab itself. This can, or can not be the most practical way to go. We could also handle all of this directly through one script. Or we could add the behavior at runtime to the cuboid prefabs. In our case of some moving cuboids, all approaches could be equally fine and the way you implement this really comes down to taste. In more complex situations there might be a stronger indication to where a script is placed in a useful fashion.
+I want to show you the other possibilities not only for the sake of completeness but also because it allows us to discuss script interaction. Thus far all of our scripts were self contained little programs. They had no way of interacting or properly with one another. The great thing in this is, you could already know how to do this, you might just not be aware of that. 
 {{<highlight c>}}
-squareList[i].GetComponent<Renderer>().material.color = myColors.Evaluate((float)(i+1)/(float)numberOfSquares);
+using UnityEngine;
+
+public class Tests : MonoBehaviour
+{
+    public GameObject myPrefab;
+    private GameObject[] myGameObjects;
+    public int arraySize = 5;
+    // Start is called before the first frame update
+    void Start()
+    {
+        myGameObjects = new GameObject[arraySize];
+        myGameObjects[0].transform.position = Vector3.zero;
+
+        for(int i = 0; i < arraySize; i++)
+        {
+            myGameObjects[i] = Instantiate(myPrefab, Vector3.up * i, Quaternion.identity);
+            myGameObjects[i].AddComponent<Cuboid_MovingUp>();
+        }
+    }
+}
 {{</highlight>}}
-Finally we set the Color of the squares by evaluating a Gradient. Gradient Evaluation is done by defining a number between 0 and 1. So we divide the current value of `i` by the number of squares we are going to create. Because both of the values are integers, we need to convert them using `(float)`. Otherwise we would get an integer back and that would not be helpful of course.
-Once you have set this up, make sure to define a Gradient in the UnityEditor. Otherwise it will have just one color and you will go bug hunting for nothing... (I’ve been there...)
+This is based on the script we discussed earlier. Yet this one assumes you don’t have a script attached to your prefab. Thus what we do is attach our behavior at runtime. Using `AddComponent<>()` we can add any script or component Unity offers. Any script you have created in your project can simply be added here. So this script could handle all of your variants. All you needed to do was to change the component you add.
 
 
-
-
-
-
-
-
+Lists
 
 
 
@@ -181,3 +198,5 @@ do
 } while (i < 5);
 {{</highlight>}}
 As you can imagine, this one doen’t bring that much to the table, so we are not working out an example for this one. But I want you to be aware of it’s existence and it certainly has it’s use-cases.
+
+

@@ -100,7 +100,9 @@ public override string advertise(){
 		Return ad;
 {{</highlight>}}
 
-In our child class mountainBike we declared the advertise function again, but added the keyword `override` in front. The moment we instantiate our mountainBike the advertise functionin the base class is overriden and we can now finally advertise our fancy gearbox!
+In our child class mountainBike we declared the advertise function again, but added the keyword `override` in front. The moment we instantiate our mountainBike the advertise function in the base class is overriden and we can now finally advertise our fancy gearbox!
+
+
 
 
 

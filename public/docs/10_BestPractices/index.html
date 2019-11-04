@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  
+    
+    10 Best Practices
+  
+ | Generative Unity</title>
+
+
+
+<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
+
+
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+</h2>
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2f docs\2f 10_BestPractices\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+<li><a href="/docs/05_Functions/">05 Methods</a></li>
+<li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
+<li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
+<li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
+<li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
+<li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
+<li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
+<li><a href="/docs/12_Animation/">12 Animation</a></li>
+<li><a href="/docs/13_Physics/">13 Physics</a></li>
+<li><a href="/docs/14_Sound/">14 Sound</a></li>
+<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
+<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
+<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
+<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
+<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
+<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
+
+<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
+
+<li><p><strong>Other</strong></p></li>
+
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Additional Resources</a></p></li>
+
+<li><p><a href="/posts/">  </a></p></li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
+
+
+
+    </aside>
+
+    <div class="book-page">
+      <header class="align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>
+  
+    
+    10 Best Practices
+  
+</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h3 id="designing-code">Designing Code</h3>
+
+<p>Before we dive deeper into considerations about design, let’s take a very short break and discuss designing code. As with many things in design, there are often many, many ways to solve one and the same problem. You soon will, or already have seen, me writing code that you would have approached differently. And it is definitely possible that your solution is better. (And please let me know if you think I do some really stupid stuff!!LinkToContactSheet) But maybe it’s just a different approach to the problem. Five programmers will solve the same problem in 5 different ways and that’s fine.
+But there are can also be differences in the effort put in to solving the problem. Yes you can solve many problems naming your variables <code>x1</code> to <code>xn</code>. But will you remeber what <code>x1</code> and <code>x2</code> were meant to be, when you look at your code one month later? You probably can’t. So you will have to read through that again and try to figure out, what they were meant to be in the first place.
+ So this chapter is devoted to some basic conventions about writing beautiful code. We will just touch the basics, as you could write books about how to write well designed code - and of course people did.</p>
+
+<h3 id="understanding-well-designed-code">Understanding well designed code</h3>
+
+<p>So how do you recognize and later down the road write well designed code? Well designed code is easy to read and understand for other human beings. For example the code in the Unity Documentation. Most examples are short and precise. You can look at them and can easily understand how to implement the code. This comes down to many things:
+The formatting is precise and blocks of code are indented to make the structure of the code easily recognizeable by skimming over it.
+The variable and function names are well chosen. If you had absolutely now idea about coding and someone would ask you what the <code>Translate()</code> method does. What would have been your guess? <code>Rotate()</code> and <code>RotateAround()</code>? As those are examples they have some minimal comments that remind you of the documentation when you decide to copy and paste the code for testing into your project.</p>
+
+<h3 id="ending-up-with-good-code">Ending up with good code</h3>
+
+<p>So now we have a reference for what well designed code should look like. But how do we end up there?
+The first advice I’d like to give is once again: Start on paper! Thinking about what you want to do with your code is essential. Going straight down the road to code is problematic, as it clouds your thinking. Having a list of things your code needs to do on paper will also be a great reference for choosing variable and function names.
+You also should not abandon your code as soon as it runs. When you get into the coding frenzy, especially as a beginner, you will try things, comment stuff out and overall have not the knowledge to write beautiful code just like that. And that’s just fine. But dont’t abandon it the moment it actually runs. Then take the time to clean it, massage it and perfect it. There is nothing worse that a piece of code you leave behind, knowing it being a mess. You will not ever want to come back to it and fear the day you have to. Clean up after your done and safe your future self a lot of work!</p>
+
+<h3 id="elements-of-good-code-code-conventions">Elements of good code: Code Conventions</h3>
+
+<p>First of all, naming conventions are team-specific. If you as a team have a good reason to deviate from the language specific naming conventions, then do so. It’s more important to have a consistent codebase to work on, then to follow what everyone else is doing. Yet there are some rules or best practices that spread over the use of a language and it makes sense to abide to these.
+Mircosoft has a C# Guidline for this online, but it pretty much boils down to:
+- non-static variables/fields and parameters are <code>camelCase</code>
+- everything else is <code>PascalCase</code>
+So that’s easy to rather simple to remember, but just have a look at this code as an example.
+namespace MyPascalCaseNamespace{
+    class MyClass{</p>
+
+<p>Code Example?
+So</p>
+
+<h3 id="elements-of-good-code-naming">Elements of good code: Naming</h3>
+
+<p>One of the most important parts in writing good code is the naming of your variables, methods and classes. It all comes down to one thing: use meaningful names. If you had to read the code as a stranger for the first time, would you understand what it does? This means <code>radius</code> is better then <code>r</code>. If you have a circle and a sphere in your code <code>circleRadius</code> and <code>sphereRadius</code> would be good choices. Don’t be afraid of long names. By default your code editor is Visual Studio Code, so you have auto-completion as a feature built in. If a long name is more precise, use it!
+While a long precise name is fantastic, try not to clutter it with useless information. <code>radiusOfTheCircle</code> would just add useless clutter. So as precise as necessary and as short as possible is probably good advice to give.
+For variables use adjectives, for methods you should use verbs and for classes nouns as a rule of thumb. This makes sense in the way are used inside your code. When use choose a word for a concept, use the same word for the same concept every time. I.e. you write a custom trigger system, all your functions should use the word tigger in them and not suddenly use event or something like that.
+Again this can happen when you are deeply immersed into your coding flow, but when you are done, take step back and take the time to rename those functions and variables. It will make your life and that of other so, so much easier in the long run.</p>
+
+<h3 id="elements-of-good-code-functions">Elements of good code: Functions</h3>
+
+<p>The one hard rule for functions should be: Do one thing. While this sounds very obvious, we often tend to do another thing in the same function. If your function is named <code>createSphere</code> then it should not also color them randomly. That’s a different function. It should just do what the name of the function suggest it does.
+While assigning the color red would not be a severe problem, as the result would be really obvious, this is especially important for code that is not immediately visible for the user. If you realize your method does more that one thing, go ahead an refactor it.
+For function arguments you should try to reduce them as much as possible. There are functions that need to take three variables. Think of a Vector3 for example. You just have to assign x,y and z. But this also means you should never write a function that takes x,y and z as arguments, just pass the function a vector. This removes visual clutter and noise.</p>
+
+<h3 id="comments">Comments</h3>
+
+<p>In a perfect world you would not write a single comment in your code. But we all know the world isn’t perfect. So you will need to write them. But before you start writing a comment, ask yourself: Is there a way to change my code, to make it so well designed, that nobody would need to read this code? Maybe by clarifying a function name?
+Well it’ wasn’t possible&hellip; Too bad. Then add your comment above the section you want to comment. Make it short and clear and you are good to go.
+If you come across comments in code you read, maybe even your own code, ask yourself: Is the comment really describing or adding useful information to the code that follows the comment?
+If not, then maybe it should be removed. The thing with comments is: They age really terrible. If you start with a comment for a function and then later change that code because the way you implemented it changes, you might not think about changing the comment. It just happens. So always consider if the comments tell the truth.</p>
+
+<p>Bibliography:
+- “Clean Code:A Handbook of Agile Software Craftsmanship” by Robert C.Martin
+- Microsoft Framework Design Guidelines (<a href="https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/">https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/</a>)
+- Unity Documentation</p>
+
+<h1 id="optimization">Optimization</h1>
+</article>
+
+      
+<div class="book-footer justify-end">
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c10_BestPractices.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#designing-code">Designing Code</a></li>
+<li><a href="#understanding-well-designed-code">Understanding well designed code</a></li>
+<li><a href="#ending-up-with-good-code">Ending up with good code</a></li>
+<li><a href="#elements-of-good-code-code-conventions">Elements of good code: Code Conventions</a></li>
+<li><a href="#elements-of-good-code-naming">Elements of good code: Naming</a></li>
+<li><a href="#elements-of-good-code-functions">Elements of good code: Functions</a></li>
+<li><a href="#comments">Comments</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#optimization">Optimization</a></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

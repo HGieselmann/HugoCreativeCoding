@@ -1,7 +1,3 @@
-Title: Master  
-Author:   
-
-
 ### Addtional Resources
 
 You finished everything ans ask yourself: What’s next?
@@ -11,7 +7,10 @@ These are rescources which are somewhat related to the topic, but can ben writte
 Books:
 - The nature of Code - Daniel Shiffman
 - Eloquent Javascript - Marijn Haverbeke
-- Graphic Deisgn: The New Basics - Ellen Lupton, Jennifer Cole Phillips
+- Graphic Design: The New Basics - Ellen Lupton, Jennifer Cole Phillips
 
 Websites:
 Catlikecoding.com - Jasper Flick
+
+
+https://github.com/Microsoft/MapsSDK-Unity/wiki/Getting-Started

@@ -56,7 +56,6 @@ https://github.com/alex-shpak/hugo-book
   </style>
 
 <ul>
-<li><a href="/"><strong>Intro to Coding</strong></a></li>
 <li><a href="/docs/00_Introduction/">Introduction</a></li>
 <li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
@@ -64,9 +63,25 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
 <li><a href="/docs/05_Functions/">05 Methods</a></li>
 <li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
-<li><a href="/docs/07_StartingToDesign/">07 Starting to Design</a></li>
+<li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
+<li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
+<li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
+<li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
+<li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
+<li><a href="/docs/12_Animation/">12 Animation</a></li>
+<li><a href="/docs/13_Physics/">13 Physics</a></li>
+<li><a href="/docs/14_Sound/">14 Sound</a></li>
+<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
+<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
+<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
+<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
+<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
+<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
 
-<li><p><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></p></li>
+<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
@@ -203,25 +218,60 @@ If you go into gameview, you will still only see one plane. This is because righ
 
 <h3 id="project-q-1-suprematistic">Project - Q 1 Suprematistic</h3>
 
-<p>This is the first exercise I would like to give. It’s just to get you up to speed with the basic Unity navigation.
-As you know the Bauhaus consisted of many artists and one of them was Laszlo Moholy-Nagy.
-TODO LASZLO MOHOLY NAGY
-He created a painting I really like: “Q 1 Suprematisctic” (1923, Oil on canvas).
-Take a look at it here:
-<a href="https://www.moma.org/collection/works/80514">https://www.moma.org/collection/works/80514</a>
-<a href="https://thecharnelhouse.org/2014/06/19/laszlo-moholy-nagy-painting-and-photography/q-1-suprematistic-laszlo-moholy-nagy-american-born-hungary-1895-1946-q-1-suprematistic-1923-oil-on-canvas-37-12-x-37-12%22/">https://thecharnelhouse.org/2014/06/19/laszlo-moholy-nagy-painting-and-photography/q-1-suprematistic-laszlo-moholy-nagy-american-born-hungary-1895-1946-q-1-suprematistic-1923-oil-on-canvas-37-12-x-37-12%22/</a>
-- As expected by the name it references Suprematism.
--This is great for us, because we can recreate such a painting in Unity using basic forms as well
-- While this of course a 2D-painting, you will need to make use of 3D space to recreate this easily
-- you can also check out more Suprematism works on Wikipedia or using Google Search</p>
+<p>The first simple exercise is just about getting used to navigating the interface and getting used to positioning, rotating and scaling Objects. You will also need to create Materials in the Project View and assign them to your Objects. As an inspiration for our work I’d like to look at another Bauhaus Artist: Laszlo Moholy-Nagy.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h3 id="laszlo-moholy-nagy">Laszlo Moholy Nagy</h3>
+
+<p>Laszlo Moholy Nagy (1895 - 1946) was invited to the Bauhaus in 1923 by Walter Gropius. Moholy-Nagy was strongly influenced by constructivism and set a stronger industrialized tone at the school. He was braught in to teach the foundational course together with Josef Albers as well as new leader of the metal workshop. He at the Bauhaus till  1928 but later became director at the new Bauhaus in Chicago.
+    </div>
+  </label>
+</div>
+
+In 1923 Laszlo Moholy-Nagy created the painting “Q 1 Suprematisctic” (1923, Oil on canvas).
+<img src="/img/Laszlo-moholy-nagy-q-1-suprematistic.jpg" alt="Q 1 Suprematistic by Laszlo Moholy-Nagy" />
+As the title suggests it references the “Suprematism”, a russian art movement which focused on basic geometric shapes, just like the Bauhaus. As we are limited to basic primitives shapes in Unity as well - at least out of the box - this is a great way to get started playing around.</p>
+
+<p>Hints on getting this done:
+- Of course this is a painting and thus two-dimensional, but we will recreate this using primarily the three-dimensional primitives
+- You can either flatten your shapes or use an orthogonal Projection on your camera
+- For material try using Unlit &gt; Color and Sprite &gt; default</p>
+
+<p><img src="/img/UnitySuprematisticQ1Nagy.jpg" alt="A Unity version of Q 1 Suprematistic" />
+If you can’t find any pleasure in this painting, look for something else online as inspiration. Or move on to the next project which is going in a different direction.</p>
 
 <h3 id="environment-design">Environment Design</h3>
 
-<p>Fancy a little more freedom then just basic shapes? That’s fine.
-I created an Assetpack with some basic 3D Objects. They should be enough to create some small Lowpoly Environment. You can also use them in any other project you’d like to create.
-I set up an example scene for you to check out.</p>
+<p>If you are not all too deeply into the works of the Bauhaus that’s totally fine. Maybe Environment design is more to your taste?
+I created and Asset pack full of low poly Objects. These should be enough to create small scenes. Maybe you can even find a way to tell a story with your image. I suggest looking for inspiration and reference online as well. You shouldn’t recreate something as harshly as I did with the “Q 1 Suprematistic”, but reference always helps.
+Of course you can use these Assets in any other scene you want to create.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h3 id="low-poly-models">Low Poly Models</h3>
 
-<h2 id="in-video-games-environment-artists-is-a-job">- In video games environment Artists is a job</h2>
+<p>All 3D models consists of three essential elements: Points, Lines and Planes. (Hello Mr. Kandinsky!) But mathematics came in and said: Let’s use our terms and call them: Vertex, edge and polygon. So in the context of 3D the names stuck.
+Low poly objects thus are object which consist only of a few planes or polygons. This helps with performance on lower end devices but also has turned into a full on art style for illustrations and video games.</p>
+
+<h3 id="how-to-create-them">How to create them?</h3>
+
+<p>If you are completely new to the world of 3D, you might as yourself how I created these. I used the free open-source software Blender. You can grab it at www.blender.org. To learn to create object like these I suggest checking out the Youtube Channel of Grant Abbit. He has some good Videos on creating low poly works.</p>
+
+    </div>
+  </label>
+</div>
+</p>
 
 <p>TODO
 Build scene
@@ -233,8 +283,8 @@ Build Assets</p>
   
   <div>
     
-    <a href="https://github.com/alex-shpak/hugo-book/commit/0105e819dfe31cd29d6390a09107cb103db27518" title='Last modified July 10, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> July 10, 2019
+    <a href="https://github.com/alex-shpak/hugo-book/commit/1a52e0771b46f7b469713d9774bc3c1c2695475a" title='Last modified September 11, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> September 11, 2019
     </a>
   </div>
   
@@ -267,7 +317,6 @@ Build Assets</p>
 <li><a href="#project-q-1-suprematistic">Project - Q 1 Suprematistic</a></li>
 <li><a href="#environment-design">Environment Design</a></li>
 </ul></li>
-<li><a href="#in-video-games-environment-artists-is-a-job">- In video games environment Artists is a job</a></li>
 </ul></li>
 </ul>
 </nav>

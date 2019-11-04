@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  
+    
+    18 Textures and Images
+  
+ | Generative Unity</title>
+
+
+
+<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
+
+
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+</h2>
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2f docs\2f 18_TexturesAndImages\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+<li><a href="/docs/05_Functions/">05 Methods</a></li>
+<li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
+<li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
+<li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
+<li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
+<li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
+<li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
+<li><a href="/docs/12_Animation/">12 Animation</a></li>
+<li><a href="/docs/13_Physics/">13 Physics</a></li>
+<li><a href="/docs/14_Sound/">14 Sound</a></li>
+<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
+<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
+<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
+<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
+<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
+<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
+
+<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
+
+<li><p><strong>Other</strong></p></li>
+
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Additional Resources</a></p></li>
+
+<li><p><a href="/posts/">  </a></p></li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
+
+
+
+    </aside>
+
+    <div class="book-page">
+      <header class="align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>
+  
+    
+    18 Textures and Images
+  
+</strong>
+</header>
+
+      
+<article class="markdown">
+
+<p>Disclaimer: This chapter is written based on Unity 2019.2 and ARFoundation Package Version 2.0.2. I can only properly show the setup for Android Phones as well, as I do not have an iOS development environment.</p>
+
+<h3 id="augmented-reality-definition">Augmented Reality Definition</h3>
+
+<h3 id="designing-for-augemented-reality">Designing for Augemented Reality</h3>
+
+<p>Augmented Reality is one of the most interesting fields in design right now. In contrast to print or webdesign many of the precieved rules are not yet written. So you can still come up with radically new ways for designing in augmented reality and grab the attention of your users.
+On the other hand augmented reality already advanced enough for it to have some technological base that you can rely on. Apple came up with it’s ARKit framework for more recent iPhones and Googles Android System implements it’s ARCore Library to create Augmented Reality experiences. Adding on top of that are more and more devices like Microsoft’s Hololens bring these experiences directly into your field of vision.
+Better yet, the folks at Unity provide a Package called “ARFoundation” which aims to integrate ARCore, ARKit and many other XR Frameworks into one. Thus we as developers only have to deal with and ARFoundation and Unity will handle the implementation differences between iOS, Android an the other devices.
+As you can see Augmented Reality is a great place to experiment, work and design in right now.</p>
+
+<h3 id="setting-up-ar-foundation-for-android">Setting up AR Foundation for Android</h3>
+
+<p>To develop AR applications in Unity you first and foremost need an ARCore compatible device. Sadly that includes only the more recent flagship and upper middleclass phones. Check the List of compatible devices here:
+Link to compatible device list
+Next you need to make sure your devices (PC and Phone)are properly configured for android development. To check what to follow the guide Unity created:
+<a href="https://docs.unity3d.com/Manual/android-sdksetup.html">https://docs.unity3d.com/Manual/android-sdksetup.html</a>
+So once you are ready to start, create a new “3D” Project and open the Package Manager from Windows &gt; PackageManager</p>
+</article>
+
+      
+<div class="book-footer justify-end">
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c18_TexturesAndImages.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#augmented-reality-definition">Augmented Reality Definition</a></li>
+<li><a href="#designing-for-augemented-reality">Designing for Augemented Reality</a></li>
+<li><a href="#setting-up-ar-foundation-for-android">Setting up AR Foundation for Android</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

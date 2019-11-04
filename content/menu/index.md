@@ -2,7 +2,6 @@
 headless: true
 ---
 
-- [**Intro to Coding**]({{< relref "/" >}})
 - [Introduction]({{< relref "/docs/00_Introduction.md" >}})
 - [01 The Editor]({{< relref "/docs/01_The_Editor.md" >}})
 - [02 Moving Things]({{< relref "/docs/02_Moving_Things.md" >}})
@@ -10,8 +9,22 @@ headless: true
 - [04 Conditionals]({{< relref "/docs/04_UserInput.md" >}})
 - [05 Methods]({{< relref "/docs/05_Functions.md" >}})
 - [06 Multiple Objects]({{< relref "/docs/06_MultipleObjects.md" >}})
-- [07 Starting to Design]({{< relref "docs/07_StartingToDesign.md" >}})
+- [07 Classic GC Techniques]({{< relref "docs/07_ClassicGC.md" >}})
 - [08 Classes and OOP]({{< relref "docs/08_ClassesAndOOP.md" >}})
+- [09 Delegates and Events]({{< relref "docs/09_DelegatesAndEvents.md" >}})
+- [10 Best Practices]({{< relref "docs/10_BestPractices.md" >}})
+- [11 Design Considerations]({{< relref "docs/11_StartingToDesign.md" >}})
+- [12 User Interfaces]({{< relref "docs/12_UserInterfaces.md" >}})
+- [13 Animation]({{< relref "docs/13_Animation.md" >}})
+- [14 Lighting]({{< relref "docs/14_Lighting.md" >}})
+- [15 Textures]({{< relref "docs/15_Textures.md" >}})
+- [16 Shaders]({{< relref "docs/16_Shaders.md" >}})
+- [17 Audio]({{< relref "docs/17_Audio.md" >}})
+- [18 Augmented Reality]({{< relref "docs/18_Augmented.md" >}})
+- [19 Post-Processing]({{< relref "docs/19_PostProcessingStack.md" >}})
+- [20 P1 Sci-Fi Tunnel]({{< relref "docs/21_P1_ScifiTunnel.md" >}})
+- [21 P2 Weather Diorama]({{< relref "docs/22_P2_WeatherApp.md" >}})
+- [22 P3 Piano World]({{< relref "docs/23_P3_PianoDrivenEnvironment.md" >}})
 
 - **Other**
 - [Github]({{< relref "/docs/99_Github.md" >}})
