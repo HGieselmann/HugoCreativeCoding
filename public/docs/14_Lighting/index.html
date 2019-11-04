@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  
+    
+    14 Lighting
+  
+ | Generative Unity</title>
+
+
+
+<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
+
+
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+</h2>
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2f docs\2f 14_Lighting\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+<li><a href="/docs/05_Functions/">05 Methods</a></li>
+<li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
+<li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
+<li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
+<li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
+<li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
+<li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
+<li><a href="/docs/12_UserInterfaces/">12 User Interfaces</a></li>
+<li><a href="/docs/13_Animation/">13 Animation</a></li>
+<li><a href="/docs/14_Lighting/">14 Lighting</a></li>
+<li><a href="/docs/15_Textures/">15 Textures</a></li>
+<li><a href="/docs/16_Shaders/">16 Shaders</a></li>
+<li><a href="/docs/17_Audio/">17 Audio</a></li>
+<li><a href="/docs/18_Augmented/">18 Augmented Reality</a></li>
+<li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">20 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">21 P2 Weather Diorama</a></li>
+
+<li><p><a href="/docs/23_P3_PianoDrivenEnvironment/">22 P3 Piano World</a></p></li>
+
+<li><p><strong>Other</strong></p></li>
+
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Additional Resources</a></p></li>
+
+<li><p><a href="/posts/">  </a></p></li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
+
+
+
+    </aside>
+
+    <div class="book-page">
+      <header class="align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>
+  
+    
+    14 Lighting
+  
+</strong>
+</header>
+
+      
+<article class="markdown">
+
+<p>Title: Master<br />
+Author:</p>
+
+<p>For creatives light is super essential as soon as you leave the strictly graphical world. Light plays an important role in setting the scene and defining the mood. Think of the warm soft lighting during sundown at the beach, or a a dark alley only lit by a lone flickering streetlamp. The Lights alone can define the feeling we get, once we look at an image. The same scene in different lighting can tell completly different stories.
+create some examples here</p>
+
+<h3 id="light-sources">Light Sources</h3>
+
+<p>Unity provides you with several different light sources to create beautiful settings. All of them can be created from the Hierachy view, or by add a “Light” component to any Gameobject. Preferably an empty one, of course.
+The most basic light source Unity offers is the “Point Light”, which resembles your typical lightbulb in the real world. It shines light from on center point in all directions. The basic settings in Unity from them include color, intensity and range. Range might seem a bit odd, as you could expect intensity to be the driving factor in how far a light should shine, right? Actually they both decide on that, in which the Range is a hard limiter on the distance the light is contributing to the scene. We will discuss the reasoning behind this later.
+Next up is the “Spot Light”. The spot lights shines in light on a very specific spot and you can adjust the cone angle to be almost 180 degrees. It also features the ominous range value.
+The “Directional Light” casts it rays in perfect parallel manner into the scene. It is most often use as a sunlight. And while you might argue, that the sun is a perfect example of point light, it’s distance from earth makes acceptable to simplify them to perfectly parallel in this context.
+The last light source in the List is the “Area Light” and it tells you right on the dropdown menu that it’s “baked only”. One could argue that every light source should be an area light, but to actually properly calculate Area Lights you would have to sample Light rays from different points on the Light surface, and that’s terribly expensive to do. (But for more on that matter: see below.)</p>
+
+<h3 id="shadows">Shadows</h3>
+
+<p>If you were curious enough to add a light into the scene already, you might have realized that all of the real-time lights (Point, Spot, Directional) do not actually cast a shadow by default. To enable shadows on a light you have to enable them on the Light component by choosing either of the two possible shadow types: Hard or Soft.
+To keep it simple: Hard Shadows may not be very realistic, but in turn they are fast. Soft shadows are slower to calculate but look much more natural. Shadows come with a few confusing settings, and directional lights even have shadows in the overall graphics settings. You only need to concern yourself with these if you actually run into problems with your shadows.</p>
+
+<h3 id="real-time-vs-baked-lighting">Real-time vs baked lighting.</h3>
+
+<p>As in the real world lighting can be a rather technical subject as well. Maybe even more so, because the interactions of light in the real world are very, very complex and thus they are extremely resource intensive to calculate. Because of this complexity of the matter, lots of these technical details are out of the scope of this book. I will link to more advances discussions on the matter below.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h4 id="ray-tracing">Ray-tracing</h4>
+
+<p>To be able to recreate the interactions of lightrays in the environment programmers invented a technique called ray-tracing. This technique actually shoots rays of light out into the scene an calculates how they interact with a given surface. The rays then bounce further until a light ray has lost all it’s emissive power.
+This is done several, several time until you finally get an image that is noise free.
+Recent developments in hardware have led to ray-tracing becoming available in game-engines as well, but is only available on high-end hardware. Thus we will not make use of realtime ray-tracing as of now.
+    </div>
+  </label>
+</div>
+
+To cope with these limitations in rendering power Unity offers us two essential kinds of lighting. Real-time lighting and so called “baked” lighting.
+Real-time lights are re-calculated each frame. To handle this, they take quite a few shortcuts in accuracy: Real-time light doesn’t bounce. Real-time shadows a pretty much sharp, or blurred in a kind of fake way. And while this sounds depreciative I am actually more then fascinated about what you can achieve visually using these fakes. Also these light are real-time. This means they can change color or intensity. They can move. They are really fully interactive, which is great!
+“Baked” Lighting on the other hand is created using ray-tracing (s.o.). The advantages of baked lighting are manifold. Light that bounces around a scene will create a much softer and more realistic look. You will receive proper shadowing in corners as well as soft shadows.</p>
+
+<h4 id="baked-lighting-and-global-illumination">Baked Lighting and Global Illumination</h4>
+
+<p>Baking refers to actually pre-calculating how the light is bouncing around the scene and storing the information in images. These images are created and stored for each object that Unity recognizes as an “static” object. This process is done once on the machine of the creator - a.k.a. your machine - and then this high quality lighting has not be recalculated on a client machine, and thus can be pretty performant on slower machines as well.</p>
+
+<p>So how do you choose the best approach to lighting? Well, you can have both! You can select Lights and Objects which will never change to be static and thus be included in the light baking process. All lights and objects that need to be able to move around or change color can be left un-static and will be rendered as real-time objects. As light is always calculated additive, both rendering ways work fine together on an artistic level as well.
+Unity even provides a third option: “Precomputed real-time global illumination”. This option will not calculate Light Maps but rather so called Light “Assets”. These Light Assets store information about how Light would travel through the scene and then interact with static objects. This means the light can change at runtime and these changes will at least affect static objects in the scene.</p>
+
+<h3 id="lighting-settings">Lighting Settings</h3>
+
+<p>Now that we have some idea what actually happens in the background, let’s look at the settings themselves. The most important thing, and one that’s easily forgotten about, is actually setting all the meshes you want to be “Static”. On object you can find right next to the name a little checkbox for “Static”. All lights and all objects that are supposed to be baked, need to have this checkbox enabled. This might even trigger the background baking process already. If a loading bar appears in the lower right corner and your scene textures “pop” sometimes, that’s probably the case.
+To actually get some control on the creation of baked Lighting we need to check the Lighting Settings. You can access these via “Window &mdash;&gt; Rendering &mdash;&gt; Lighting Settings”.
+The first tab is about the Environment. Environment meaning everything Unity renders once rays don’t hit objects anymore. By default Unity has a Skybox set up for us. And in new scenes the default Directional light is here set up as sun as well, which leads to changes in horizon color when we rotate the directional light. In our topic of baking light, this horizon will lead to shadows tinted in the horizon color, as it is sampled as an emissive light source. Yet you can also change this from skybox to color or gradient.</p>
+
+<p>Additional resources:
+Light of the visual artist - Richard Yot
+Color and Light: A Guide for the realist painter - James Gurney</p>
+
+<p>Technical Discussions:
+<a href="https://learn.unity.com/tutorial/precomputed-realtime-gi-global-illumination">https://learn.unity.com/tutorial/precomputed-realtime-gi-global-illumination</a></p>
+</article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c14_Lighting.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#light-sources">Light Sources</a></li>
+<li><a href="#shadows">Shadows</a></li>
+<li><a href="#real-time-vs-baked-lighting">Real-time vs baked lighting.</a>
+<ul>
+<li><a href="#baked-lighting-and-global-illumination">Baked Lighting and Global Illumination</a></li>
+</ul></li>
+<li><a href="#lighting-settings">Lighting Settings</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

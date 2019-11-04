@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -73,7 +73,22 @@
   </url>
   
   <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/12_UserInterfaces/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/13_Animation/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/13_Physics/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/14_Lighting/</loc>
     <priority>0</priority>
   </url>
   
@@ -83,7 +98,17 @@
   </url>
   
   <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/15_Textures/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/15_UserInterfaces/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/16_Shaders/</loc>
     <priority>0</priority>
   </url>
   
@@ -93,7 +118,17 @@
   </url>
   
   <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/17_Audio/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/17_ShadingAndLighting/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://generativeunity.henrikgieselmann.com/docs/18_Augmented/</loc>
     <priority>0</priority>
   </url>
   

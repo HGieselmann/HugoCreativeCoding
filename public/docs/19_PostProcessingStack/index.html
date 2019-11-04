@@ -68,20 +68,18 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
 <li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
 <li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
-<li><a href="/docs/12_Animation/">12 Animation</a></li>
-<li><a href="/docs/13_Physics/">13 Physics</a></li>
-<li><a href="/docs/14_Sound/">14 Sound</a></li>
-<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
-<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
-<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
-<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/12_UserInterfaces/">12 User Interfaces</a></li>
+<li><a href="/docs/13_Animation/">13 Animation</a></li>
+<li><a href="/docs/14_Lighting/">14 Lighting</a></li>
+<li><a href="/docs/15_Textures/">15 Textures</a></li>
+<li><a href="/docs/16_Shaders/">16 Shaders</a></li>
+<li><a href="/docs/17_Audio/">17 Audio</a></li>
+<li><a href="/docs/18_Augmented/">18 Augmented Reality</a></li>
 <li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
-<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
-<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
-<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
-<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">20 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">21 P2 Weather Diorama</a></li>
 
-<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
+<li><p><a href="/docs/23_P3_PianoDrivenEnvironment/">22 P3 Piano World</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
@@ -130,28 +128,102 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown">
 
-<p>Disclaimer: This chapter is written based on Unity 2019.2 and ARFoundation Package Version 2.0.2. I can only properly show the setup for Android Phones as well, as I do not have an iOS development environment.</p>
+<p>The last thing we will cover before we move further into bigger projects will be the Unity Post Processing Stack. The Post Processing Stack is a bunch 2D Effects you can apply to the rendered image or during the rendering process. They for the most part try to emulate characteristics of films. Like Grain, Vignette and chromatic aberration. Others try to add faked realism to images by adding motion-blur and screenspace reflections.
+We will first look at how to get the post-processing stack setup and then shortly go over the various effects, before finally looking at some practical uses.</p>
 
-<h3 id="augmented-reality-definition">Augmented Reality Definition</h3>
+<h3 id="setup">Setup</h3>
 
-<h3 id="designing-for-augemented-reality">Designing for Augemented Reality</h3>
+<p>Since the introduction of Unity 2017.3 - and you should not be on an older version - the post processing stack is installed via the Package Manager. So Window &mdash;&gt;Package Manager and Look for “Post Processing” and Add the Package, if it is not already installed.
+Next you will need to add the “Post Processing Layer” component to the Camera. On the Component choose the “PostProcessing” as the Layer to render to.
+Next you will need to add an empty GameObject and add the “Post Processing Volume” Component to it. And for now also check the “Is Global” checkbox and as a Layer for the GameObject choose PostProcessing as well.
+Lastly you will need to create your first “Post-processing Profile” in the Project View and then drag it into the Profile slot on the Post Processing Volume. Now you should be ready to go!</p>
 
-<p>Augmented Reality is one of the most interesting fields in design right now. In contrast to print or webdesign many of the precieved rules are not yet written. So you can still come up with radically new ways for designing in augmented reality and grab the attention of your users.
-On the other hand augmented reality already advanced enough for it to have some technological base that you can rely on. Apple came up with it’s ARKit framework for more recent iPhones and Googles Android System implements it’s ARCore Library to create Augmented Reality experiences. Adding on top of that are more and more devices like Microsoft’s Hololens bring these experiences directly into your field of vision.
-Better yet, the folks at Unity provide a Package called “ARFoundation” which aims to integrate ARCore, ARKit and many other XR Frameworks into one. Thus we as developers only have to deal with and ARFoundation and Unity will handle the implementation differences between iOS, Android an the other devices.
-As you can see Augmented Reality is a great place to experiment, work and design in right now.</p>
+<h3 id="post-processing-effects">Post Processing Effects</h3>
 
-<h3 id="setting-up-ar-foundation-for-android">Setting up AR Foundation for Android</h3>
+<p>Now let’s look at the Post Processing Effects Unity supplies us with by default. I will just go over these shortly from a mostly artistic point of view, as playing around with them is easy enough. For technical discussion of the effects and their impact on performance check out the Unity Documentation.</p>
 
-<p>To develop AR applications in Unity you first and foremost need an ARCore compatible device. Sadly that includes only the more recent flagship and upper middleclass phones. Check the List of compatible devices here:
-Link to compatible device list
-Next you need to make sure your devices (PC and Phone)are properly configured for android development. To check what to follow the guide Unity created:
-<a href="https://docs.unity3d.com/Manual/android-sdksetup.html">https://docs.unity3d.com/Manual/android-sdksetup.html</a>
-So once you are ready to start, create a new “3D” Project and open the Package Manager from Windows &gt; PackageManager</p>
+<h4 id="ambient-occlusion">Ambient Occlusion</h4>
+
+<p>Ambient Occlusion is a fake that tries to emulate the shadowing in corners. This effect will already be naturally baked into your project if you use Global Illumination. Also it only makes sense if you have corners in your geometry, for a lot of the stuff we did it probably makes not sense to add Ambient Occlusion. For scenes like the Environment from chapter one you can play around with this and try how this affects your scene.</p>
+
+<h4 id="screenspace-reflections">Screenspace Reflections</h4>
+
+<p>Screenspace Reflections are an effect that adds fake reflections to your objects. As actual Ray-tracing in real-time is really, really computationally expensive and also exclusive to some hardware (Q3/2019) programmers came up with ways to add this fake, which takes the rendered image and applies it as reflection again.</p>
+
+<h4 id="auto-exposure">Auto Exposure</h4>
+
+<p>This effect is mostly interesting when you work with environment scenes that have drastic changes in lighting. This works like the Auto exposure on your smartphone camera. If you want full creative control over your work, this is probably not the best thing to use, as with Auto exposure on a professional camera.</p>
+
+<h4 id="depth-of-field">Depth of Field</h4>
+
+<p>By default cameras in Unity draw everything perfectly crisp. But if you look at recordings from cameras in the real world, that rarely is the case! Especially in cinematic works depth of field plays an very important role in creating depth in the frame, as well as focusing the viewers attention. Proper depth of field can help your works a lot!</p>
+
+<h4 id="bloom">Bloom</h4>
+
+<p>Bloom is an effect that you can sometimes observe in recordings from the realworld. Very bright spots of light will create some kind of halo effect. But if you look at recent games, you most definitely have seen bloom in effect. Most because it is heavily over-used. You would have to have really, really bad lenses when you have such strong blooming. Also do differences in how this effect is created in a real lens and in rendering engines bloom tends to begin to flicker really fast.
+So what I am trying to say: Use bloom if you must, but contain yourself!</p>
+
+<h4 id="chromatic-aberration">Chromatic Aberration</h4>
+
+<p>Chromatic Aberration is aiming to recreate the prism like effect camera lenses have mostly at the outer edges of the image. This effect is typically stronger in cheap lenses or lenses that have a very wide field of view. So this is very well suited for anything that mimics surveillance cameras or something like that. In most cases I would advice using this effect very subtle.</p>
+
+<h4 id="grain">Grain</h4>
+
+<p>Grain emulates the slight noise that almost every recorded video or film material has. I personally am a big fan of grain, if it is well portioned. Grain can help to break up harsh rendered edges and kinda “mush” things together, that otherwise have problems fitting together. Yet it should also be portioned in a way that it doen’t impose itself ontothe viewer.</p>
+
+<h4 id="lens-distortion">Lens Distortion</h4>
+
+<p>Lens Distortion is yet another effect that tries to mimic problems of the real world. This will warp the image from the center in either direction. While you should tread very lightly when using this in most cases, going crazy with the scale slider can yield interesting results I guess.</p>
+
+<h4 id="motion-blur">Motion Blur</h4>
+
+<p>Motion blur fakes the effect of the time of exposure when shooting images with real-world cameras. Classic film cameras have a rotating shutter, which is necessary to allow the camera to load the next frame. The fake in Unity uses the term “Shutter Angle” as means to set the length of the motion blur. A shutter angle of 360 would blur the full frame and would not be possible in the real world. Anything between 90 and 270 is probably useful. The Sample Count simply defines the Quality of the motion blur. More samples, more quality - worse performance.</p>
+
+<h4 id="vignette">Vignette</h4>
+
+<p>The Vignette Effect mimics a problem with real-world camera lenses. Due to the construction of camera lenses they tend to loose some of the brightness of at the corners of the frame. This effect is typically very subtle, but digital artists have realized that this also helps to draw the viewer into the center of the frame, as we tend to look at the bright elements. The best way to check this out is probably adding the effect and pushing the “Intentsity” slider all the way to 1. Then pull it back down - and then pull at least 30% off. There is a tendency to exaggerate with this effect.</p>
+
+<h4 id="color-grading">Color Grading</h4>
+
+<p>I kept the most exciting Post Process for the end - and this is the only tool I’ll go over in great detail. Color Grading is a very, very powerful tool and has become an absolute standard tool in any kind of video production. The fact that we have access to this in a real-time engine is fantastic. Color Grading allows is to change the colors of the whole scene to perfectly set the mood of our scene. You can affect in a very granular manner or go completely nuts with it.
+The first thing you will have to choose is the mode. This is pretty much about performance. Choose LowDefinition Range for slower devices, like mobile.
+Next up is tone-mapping. This is very important when you render your scene in HDR. This determines how very bright and dark values are handled and faded of when preparing them for display on your typical low dynamic range screen. You can either choose one of the presets or create your own. Neutral will try to not change hue and saturation while tonemapping. ACES - well, if you don’t know what ACES is, ignore it.</p>
+
+<p>Leaving the technical stuff to the side let’s get on with the fun stuff! First up is White Balance. White balance will affect the Color Temperature and Tinting of your scene. This slider is a little confusing as it maps from 0 to 100 and is then affecting your scene in the direct opposite way you might expect it. Normally Color temperature is defined in degrees Kelvin and lower temperatures give warmer tones, while a higher color temperature would result in a boost of cooler colors. So while Temperature works between the orange-ish and blue-ish values, Tinting will shift between green-ish and purple-ish colors.
+Examples for warm and cold scenes</p>
+
+<p>In the “Tone” section the first option is exposure, if you are in the High Definition Range Mode. With exposure you can affect the brightness of your image. 2 Stops is either range would be values you would not exceed in a normal scenario. If you have to, maybe rethink your lighting.
+The Color Filter emulates a colored filter in front of your lens. You can use this to tint your image in any way you want. While you could use this to also affect the brightness of your image, I would advice against it, as you have Exposure for that kind of operation. Thus make sure to keep the the Color you choose at max brightness in your Color Picker.
+TODO IMAGE OF COLOR PICKER AND EXAMPLE
+The Hue Shift will rotate all the colors in you image around the color wheel. This is typically a very unnatural effects and should be used with care. In cinematic Color Correction tools you can apply masks in many different ways, and with maks this effect can be used way more granular and thus way more useful.
+TODO Example Image or Gif
+Examples with shifting Colors
+Saturation is pretty obvious I guess. This will help you to create a super colorful or vibrant world, or just the contrary.
+TODO I know the drill&hellip;
+Increasing contrast will boost the bright areas even further and darken the dark areas. Decreasting contrast will “flatten” your image.
+EXAMPLE
+The Channel mixer is a more technical effect once again. Rendered images are saved in three color channels: Red, Green and Blue. With the channel mixer you can define the contribution of each channel to one of the channels. For example you could create an Black and White image just based on the information of the Red Channel.
+EXAMPLES
+The Trackballs are use for fine tuning the the colors of your image. With the ColorPicker-like circle you can define the color which you want to boost. The slider below will let you increase or decrease the over all brightness for that range.
+The Lift Wheel will work on the darker areas a.k.a the shadows of your image. Gamma will attack the mids and Gain will work on the highlights of your scene.
+Playing with these can really get you some interesting results and they are a very nice tool to have available as an artist.
+The most granular tool at your disposal are the “Grading Curves”. If you know any Photo processing software you might have seen them. What’s important to note is, that the Master Curve and Red, Green and Blue Curves are only available in the Low Definition Range Mode.
+In high definition you are left with “Hue vs Hue”, “Hue vs Sat”, “Sat vs Sat” as well as “Lum vs Sat”.
+With “Hue vs Hue” you can shift around colors just like the Hue Shift. But you get additional control. You could example only shift the red values into a more orange-ish tone.
+“Hue vs Sat” on the other hand will allow you to desaturate certain color ranges.
+“Lum vs Sat” will allow you to affect Saturat ion based on the brightness or luminance.
+“Sat vs Sat” may be the most odd of these effects. With this curve you can saturate or de-saturate ranges based on their current Saturation.</p>
 </article>
 
       
-<div class="book-footer justify-end">
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
+    </a>
+  </div>
   
   
   <div>
@@ -176,9 +248,21 @@ So once you are ready to start, create a new “3D” Project and open the Packa
 <ul>
 <li>
 <ul>
-<li><a href="#augmented-reality-definition">Augmented Reality Definition</a></li>
-<li><a href="#designing-for-augemented-reality">Designing for Augemented Reality</a></li>
-<li><a href="#setting-up-ar-foundation-for-android">Setting up AR Foundation for Android</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#post-processing-effects">Post Processing Effects</a>
+<ul>
+<li><a href="#ambient-occlusion">Ambient Occlusion</a></li>
+<li><a href="#screenspace-reflections">Screenspace Reflections</a></li>
+<li><a href="#auto-exposure">Auto Exposure</a></li>
+<li><a href="#depth-of-field">Depth of Field</a></li>
+<li><a href="#bloom">Bloom</a></li>
+<li><a href="#chromatic-aberration">Chromatic Aberration</a></li>
+<li><a href="#grain">Grain</a></li>
+<li><a href="#lens-distortion">Lens Distortion</a></li>
+<li><a href="#motion-blur">Motion Blur</a></li>
+<li><a href="#vignette">Vignette</a></li>
+<li><a href="#color-grading">Color Grading</a></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>

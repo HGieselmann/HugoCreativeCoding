@@ -68,20 +68,18 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
 <li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
 <li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
-<li><a href="/docs/12_Animation/">12 Animation</a></li>
-<li><a href="/docs/13_Physics/">13 Physics</a></li>
-<li><a href="/docs/14_Sound/">14 Sound</a></li>
-<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
-<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
-<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
-<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/12_UserInterfaces/">12 User Interfaces</a></li>
+<li><a href="/docs/13_Animation/">13 Animation</a></li>
+<li><a href="/docs/14_Lighting/">14 Lighting</a></li>
+<li><a href="/docs/15_Textures/">15 Textures</a></li>
+<li><a href="/docs/16_Shaders/">16 Shaders</a></li>
+<li><a href="/docs/17_Audio/">17 Audio</a></li>
+<li><a href="/docs/18_Augmented/">18 Augmented Reality</a></li>
 <li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
-<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
-<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
-<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
-<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">20 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">21 P2 Weather Diorama</a></li>
 
-<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
+<li><p><a href="/docs/23_P3_PianoDrivenEnvironment/">22 P3 Piano World</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
@@ -128,48 +126,211 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><p>You actually know a lo t about methods already. We have been using them all along, yet now we will start creating our own. In methods you can bundle together lines of code that belong logically together. They are very helpful when you need to reuse those lines a lot but they are also helpful for structuring your code. Methods also take arguments and use them in their code-block. But let’s not get ahead of ourselves and look at a very simple function:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">SayHello</span>(){
-	Debug.Log(<span style="">”</span>Hello<span style="">”</span>);
+<article class="markdown">
+
+<p>In this chapter we will talk about methods. We have been using them for a while now, without discussing them in detail. Methods are a collection of statements that do exactly one thing - or at least they should only do one thing. The <code>Update()</code> method is responsible for updating all the things you define each frame. The <code>Start()</code> method is responsible for setting things up in the beginning.
+Creating or “defining” our own functions will do a lot for us. For one it well help us to avoid repetition in our code. Due to this it will also help us to write way more readable code. You might have noticed, that some of the scripts have become rather confusing. Methods are a great way to bring some order back in there. Methods can also take in arguments they can process to either change or variate what they are doing or return to you a useful value.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h4 id="methods-vs-functions">Methods vs. functions</h4>
+
+<p>Methods are called “functions” in many other programming languages and many programmers started out in another language and still use the name function when they refer to C#. But they are the same thing and I can’t guarantee that I won’t slip up at one point and use function here or there.
+    </div>
+  </label>
+</div>
+</p>
+
+<h3 id="defining-methods">Defining methods</h3>
+
+<p>To <em>define</em> a very simple method we need to define two things: a so-called “return type” and name for our method. The most basic <em>return type</em> is <code>void</code> - meaning nothing. You don’t expect to get something returned to you. That why our <code>Update()</code> and <code>Start()</code> methods use <code>void</code> as a return type. They just do their thing. Methods that typically have a return type are math operations, like a <code>Distance()</code> function. You provide two points as input and expect the distance in return. Let’s look at some examples.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">TimeLogger</span>(){
+	Debug.Log(Time.time);
 }</code></pre></div>
-Now if you would run this code nothing would happen. We only created some reusable piece of code. We need to “call” a function to actually run it:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">SayHello();
-SayHello();
-SayHello();</code></pre></div>
-This would print “Hello” to the console three times. But let’s take a look at the syntax of defining a function again. The <code>void</code> keyword is the return-type, meaning nothing. If you want the method to return a value you would start with the type to return. Next you give your function an descriptive name and finish it with brackets.
-Those brackets hold the arguments for you function, if it need them:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">Add</span>(<span style="color:#902000">int</span> a, <span style="color:#902000">int</span> b){
-	<span style="color:#007020;font-weight:bold">return</span> a <span style="color:#666">+</span> b
-}
-<span style="color:#902000">int</span> sum;
-sum <span style="color:#666">=</span> Add(<span style="color:#40a070">5</span> <span style="color:#666">+</span> <span style="color:#40a070">5</span>);
-Debug.Log(sum);</code></pre></div>
-Here we define a method which takes two integers and returns their sum. Now we can start using this function over and over again to add two values together.
-Now all of this is rather simplistic, so let’s take look at how we could take this into action. We will create a function, which takes an GameObject and shifts the color by a value we can also specify.
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">ShiftColor</span>(<span style="color:#902000">float</span> shiftValue){
-            <span style="color:#902000">float</span> h, s, v;
-            Color oldColor <span style="color:#666">=</span> GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color;
-            Color.RGBToHSV(oldColor, out h, out s, out v);
-            h <span style="color:#666">+=</span> shiftValue;
-            <span style="color:#007020;font-weight:bold">if</span>(h <span style="color:#666">&gt;</span> <span style="color:#40a070">1</span>){
-                h <span style="color:#666">-=</span> <span style="color:#40a070">1</span>;
-            }
-            Color newColor <span style="color:#666">=</span> Color.HSVToRGB(h, s, v);
-            GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> newColor;
+This code defines a function that does not return anything, but prints the current time to the console. You could then call function at any point in your code, in the same script. Calling a method is as simple as using it’s name with parentheses bu without the return type keyword. So let’s look at a whole script for this:</p>
+
+<p><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">using UnityEngine;
+
+public class <span style="color:#002070;font-weight:bold">LogTime</span> : MonoBehaviour
+{
+    <span style="color:#902000">void</span> Start()
+    {
+        
+    }
+
+    <span style="color:#902000">void</span> Update()
+    {
+        TimeLogger();
+    }
+
+    <span style="color:#902000">void</span> TimeLogger()
+    {
+        Debug.Log(<span style="color:#4070a0">&#34;The current timestamp is:&#34;</span> <span style="color:#666">+</span> Time.time);
+    }
+
+}</code></pre></div>
+As you can see new methods are defined at the same level as the <code>Start()</code> and <code>Update()</code> method. And you can define them <em>below</em> the line where they are used. Actually we are defining the <code>Start()</code> and <code>Update()</code> methods in each script as well. The only difference between our methods and the methods predefined by Unity is, that Unity will try to call them automatically during execution, while we have to make sure our methods a called at some point.
+So how can a simple <code>void</code> method help us with our code? As an example let’s go back to the “Popping” cuboids from Chapter 04:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">ConditionalCuboids_Popping</span> : MonoBehaviour
+{
+    public <span style="color:#902000">float</span> movementSpeed <span style="color:#666">=</span> <span style="color:#40a070">0.25f</span>;
+    public <span style="color:#902000">float</span> bounds <span style="color:#666">=</span> <span style="color:#40a070">.5f</span>;
+
+    <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
+    {
+        transform.Translate(<span style="color:#40a070">0</span>, movementSpeed, <span style="color:#40a070">0</span>);
+        <span style="color:#007020;font-weight:bold">if</span> (transform.position.y <span style="color:#666">&gt;</span> bounds <span style="color:#666">+</span><span style="color:#40a070">.225f</span>)
+        {
+            transform.position <span style="color:#666">=</span> Vector3.up <span style="color:#666">*</span> <span style="color:#666">-</span>bounds;
+        }
+    }
+}</code></pre></div>
+While our <code>Update()</code> method is still reasonable in this case, to understand what is going on, we still have to read through rather “low level” code. We can clean this up by using methods. What is the line <code>transform.Translate(0, movementSpeed, 0);</code> actually doing? It’s moving the cuboid up. So let’s create a method for it.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#902000">void</span> <span style="color:#06287e">MoveCuboidUp</span>()
+    {
+        transform.Translate(<span style="color:#40a070">0</span>, movementSpeed, <span style="color:#40a070">0</span>);
     }</code></pre></div>
-You know the code for changing the color already, so just take note of method we are creating. We start again with void, because we handle everything inside the method. We chose a name for our method and then give it a float value as argument. Now we can change the amount of shift each time we invoke the method. Or we could have the shift depend on the Key we press:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">if</span> (Input.GetKeyDown(KeyCode.A))
+Now we can replace the original line with a <em>call</em> to this function:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">ConditionalCuboids_PoppingRefactored</span> : MonoBehaviour
+{
+    public <span style="color:#902000">float</span> movementSpeed <span style="color:#666">=</span> <span style="color:#40a070">0.25f</span>;
+    public <span style="color:#902000">float</span> bounds <span style="color:#666">=</span> <span style="color:#40a070">.5f</span>;
+
+    <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
+    {
+        MoveCuboidUp();
+        <span style="color:#007020;font-weight:bold">if</span> (transform.position.y <span style="color:#666">&gt;</span> bounds <span style="color:#666">+</span><span style="color:#40a070">.225f</span>)
         {
-            ShiftColor(<span style="color:#40a070">0.05f</span>);
+            transform.position <span style="color:#666">=</span> Vector3.up <span style="color:#666">*</span> <span style="color:#666">-</span>bounds;
         }
-        <span style="color:#007020;font-weight:bold">if</span> (Input.GetKeyDown(KeyCode.S))
+    }
+
+    <span style="color:#902000">void</span> <span style="color:#06287e">MoveCuboidUp</span>()
+    {
+        transform.Translate(<span style="color:#40a070">0</span>, movementSpeed, <span style="color:#40a070">0</span>);
+    }
+
+}</code></pre></div>
+What we are doing right now is called “refactoring”. We are restructuring and often simplifying or de-cluttering our code without actually changing what it does. Whenever you feel you are done with a script you should consider if there is any useful refactoring to be done. We haven’t done it so far, because we were missing the proper tools. But doing this helps you creating a beautiful and good to work with code base.
+So while we are at it? What more can we do? We have a part left where we check for the position and based on that pop the cuboid back down. We could put in a method called <code>CheckBoundsAndPopDown</code>. But wait! Didn’t we establish in the beginning that methods should only do one thing? They should!
+So let’s split both of them. Easy things first:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#902000">void</span> <span style="color:#06287e">PopCuboidDown</span>()
+    {
+        transform.position <span style="color:#666">=</span> Vector3.up <span style="color:#666">*</span> <span style="color:#666">-</span>bounds;
+    }</code></pre></div>
+Now all the methods we have been declaring so far just did things. But how can we simplify the <em>if-statement</em> further? It needs a boolean of <code>true</code> or <code>false</code> to evaluate. This where <em>return types</em> come in. We can make our method return either true or false like this:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#902000">bool</span> <span style="color:#06287e">CheckYGreaterBounds</span>()
+    {
+        <span style="color:#007020;font-weight:bold">return</span> transform.position.y <span style="color:#666">&gt;</span> bounds <span style="color:#666">+</span> <span style="color:#40a070">.225f</span>;
+    }</code></pre></div>
+Instead of <code>void</code> we simply define the type we want to return. It’s <code>bool</code> in our case, but could be anything really. Then we need to make sure our method contains a <code>return</code> statement followed by the value we want to return. In the upper code we just rely on the evaluation of the statement to return either true or false. With his done let’s look at our <code>Update()</code> method.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
+    {
+        MoveCuboidUp();
+        <span style="color:#007020;font-weight:bold">if</span> (CheckYGreaterBounds())
         {
-            ShiftColor(<span style="color:#40a070">0.1f</span>);
+            PopCuboidDown();
         }
-        <span style="color:#007020;font-weight:bold">if</span> (Input.GetKeyDown(KeyCode.D))
+    }</code></pre></div>
+Isn’t it a beauty? Consider coming back to this script in two weeks or a month. Checking <code>Update()</code> you know exactly what is going on in the script. You don’t have to work through each line to understand what the whole script is doing. An quite actually, why would you care how something is moving up or popping down. Or say, you need to change how the cuboid is moving up, you only need to check method <code>MoveCuboidUp()</code> and not all the code in the <code>Update()</code> method.</p>
+
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      ####Refactoring Tricks
+Assuming you are using the “Visual Studio Community” Edition that comes bundled with Unity, you can access some a shortcut in the IDE. If you select a line or multiple lines of code you want to refactor into a new method, you can simply press “Ctrl + .”. VS Community will then as you if you want to “Extract method”. Press enter and a new method including you code will be created. Also you can now instantly input a name for the method and method as well as method call will have the same name.
+    </div>
+  </label>
+</div>
+
+
+<h3 id="method-arguments">Method Arguments</h3>
+
+<p>The last thing we need to concern our selves with regarding methods are parameters and arguments. Parameters allow you to “pass” information to the method. This information is then in turn called an argument. You’ll see quite a few people using both things interchangeably.
+A very simple definition and call could look like this:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> <span style="color:#06287e">Add</span>(<span style="color:#902000">int</span> a, <span style="color:#902000">int</span> b){
+	<span style="color:#007020;font-weight:bold">return</span> a <span style="color:#666">+</span> b;
+}
+<span style="color:#902000">int</span> result <span style="color:#666">=</span> Add(<span style="color:#40a070">1</span>, <span style="color:#40a070">1</span>); <span style="color:#666">//</span> returns <span style="color:#40a070">2</span></code></pre></div>
+To add parameters to a method we simply declare their type, integer in this case, and a name for them in the parentheses we thus far left empty. In the method itself you can use these as normal variables. These are only visible to the method and you can’t use these variables outside the context of the method.
+To <em>pass</em> information you simply add arguments to the function call. In this case this could be literal numbers or any variables that contain an integer. Important is, you <strong>have</strong> to specify all arguments. You can’t just specify a single integer in the parentheses.
+No you can see the method we created is rather useless, but I hope it clarified the basic idea. Let’s actually look at a more advanced example:
+Insert Fading/Poppig Cuboids here
+While this is in essence the Popping example from before, I introduced some fading towards the bounds. Let’s first look at the beginning of the script:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">using UnityEngine;
+
+public class <span style="color:#002070;font-weight:bold">ConditionalCuboids_Fading</span> : MonoBehaviour
+{
+    public <span style="color:#902000">float</span> movementSpeed <span style="color:#666">=</span> <span style="color:#40a070">0.25f</span>;
+    public <span style="color:#902000">float</span> bounds <span style="color:#666">=</span> <span style="color:#40a070">.5f</span>;
+    private Color colorToSet;
+
+    private <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
+    {
+        colorToSet <span style="color:#666">=</span> GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color;
+    }
+
+    <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
+    {
+        MoveCuboidUp();
+        <span style="color:#007020;font-weight:bold">if</span> (CheckYGreaterBounds())
         {
-            ShiftColor(<span style="color:#40a070">0.5f</span>);
-        }</code></pre></div></p>
+            PopCuboidDown();
+        }
+
+        <span style="color:#007020;font-weight:bold">if</span> (transform.position.y <span style="color:#666">&lt;</span> <span style="color:#40a070">0</span>)
+        {
+            colorToSet.a <span style="color:#666">=</span> Map(transform.position.y, <span style="color:#666">-</span><span style="color:#40a070">.45f</span>, <span style="color:#666">-</span><span style="color:#40a070">.0f</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">1</span>);
+        }
+        <span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">if</span> (transform.position.y <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>)
+        {
+            colorToSet.a <span style="color:#666">=</span> Map(transform.position.y, <span style="color:#40a070">.225f</span>, <span style="color:#40a070">.45f</span>, <span style="color:#40a070">1</span>, <span style="color:#40a070">0</span>);
+        }
+
+        GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> colorToSet;
+
+    }
+    ...</code></pre></div>
+So what’s different? First of all, we now need to to create a Color variable, and in <code>Start()</code> we set it to the Color our Object currently has. So we can still define the color conveniently via the Material. We need to do this because we can’t directly set the Alpha value of a color on the material itself. We can though on a variable. So the last thing in <code>Update()</code> we do, is to update the color.
+In between do our typical movement and also change the alpha value of our color based on position on the Y axis. <code>ColorToSet.a</code> accesses the alpha component. What do we set it to? We use a method call and pass it five values! So let’s look at the <code>Map()</code> method.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#902000">float</span> <span style="color:#06287e">Map</span>(<span style="color:#902000">float</span> value, <span style="color:#902000">float</span> oldMin, <span style="color:#902000">float</span> oldMax, <span style="color:#902000">float</span> newMin, <span style="color:#902000">float</span> newMax)
+    {
+        <span style="color:#902000">float</span> oldAbs <span style="color:#666">=</span> value <span style="color:#666">-</span> oldMin;
+        <span style="color:#902000">float</span> oldMaxAbs <span style="color:#666">=</span> oldMax <span style="color:#666">-</span> oldMin;
+        <span style="color:#902000">float</span> normal <span style="color:#666">=</span> oldAbs <span style="color:#666">/</span> oldMaxAbs;
+        <span style="color:#902000">float</span> newMaxAbs <span style="color:#666">=</span> newMax <span style="color:#666">-</span> newMin;
+        <span style="color:#902000">float</span> newAbs <span style="color:#666">=</span> newMaxAbs <span style="color:#666">*</span> normal;
+        <span style="color:#902000">float</span> clampedNew <span style="color:#666">=</span> Mathf.Clamp01(newAbs <span style="color:#666">+</span> newMin);
+        <span style="color:#007020;font-weight:bold">return</span> clampedNew;
+    }</code></pre></div>
+The <code>Map()</code> method takes in a float value as well as values for two ranges. With it you can transfer values from one range to the other. In our example we have a range between <code>0.225</code> for the Upper Mid Cuboid and <code>0.45</code> for the Upper Cuboid. During this range we want to fade out the cuboid. But the Alpha values range from 0 to 1. Using this method we can easily convert between them.
+Imagine having all this in your code each time we call the <code>Map()</code> method. And yes, we surely could shorten this code, I hope you can see we not only shortened our code, but we also made sure we didn’t repeat ourselves. If now we have a problem with this mapping, we can then easily work through this method and fixing this problem will all the problem will fix all the problems with mapping.</p>
+
+<h3 id="magic-numbers">Magic Numbers</h3>
+
+<p>In this example you see some me using actual numbers/values as parameters. I.e.:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	colorToSet.a <span style="color:#666">=</span> Map(transform.position.y, <span style="color:#666">-</span><span style="color:#40a070">.45f</span>, <span style="color:#666">-</span><span style="color:#40a070">.0f</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">1</span>);</code></pre></div>
+While the <code>0</code> and <code>1</code> are probably fine, because there is no real typical reason to change those, for the others there might be a reason. Those are “magic numbers”. Numbers in the code that magically define how something works or doesn’t. You typically should avoid them at all costs. Create a variable for them! Magic numbers can be a real pain in the a** to debug, especially if you come back to code a while later.
+I left them, so I could make this point. You shouldn’t!</p>
+
+<p>Project 1:
+The first thing i suggest you do is, go through the scripts you have written so far and refactor them. An for at least a few try not to rely on the refactoring help of your IDE. Get the concept o writing them engraved into your brain!.
+Projects 2:
+While methods don’t actually allow is to do something utterly new, it allows is creating things that aren’t horribly tedious to do. So here are some more examples for our Cuboid: Go check them out.
+Add more examples here using methods
+Projects 3:
+Noise Walker
+Low poly Example</p>
 
 <ul>
 <li>Ari Danish</li>
@@ -186,8 +347,8 @@ You know the code for changing the color already, so just take note of method we
   
   <div>
     
-    <a href="https://github.com/alex-shpak/hugo-book/commit/1a52e0771b46f7b469713d9774bc3c1c2695475a" title='Last modified September 11, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> September 11, 2019
+    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
     </a>
   </div>
   
@@ -206,6 +367,22 @@ You know the code for changing the color already, so just take note of method we
 
     
   
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#defining-methods">Defining methods</a></li>
+<li><a href="#method-arguments">Method Arguments</a></li>
+<li><a href="#magic-numbers">Magic Numbers</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
 
 
 

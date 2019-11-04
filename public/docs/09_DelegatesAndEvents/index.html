@@ -68,20 +68,18 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
 <li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
 <li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
-<li><a href="/docs/12_Animation/">12 Animation</a></li>
-<li><a href="/docs/13_Physics/">13 Physics</a></li>
-<li><a href="/docs/14_Sound/">14 Sound</a></li>
-<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
-<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
-<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
-<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/12_UserInterfaces/">12 User Interfaces</a></li>
+<li><a href="/docs/13_Animation/">13 Animation</a></li>
+<li><a href="/docs/14_Lighting/">14 Lighting</a></li>
+<li><a href="/docs/15_Textures/">15 Textures</a></li>
+<li><a href="/docs/16_Shaders/">16 Shaders</a></li>
+<li><a href="/docs/17_Audio/">17 Audio</a></li>
+<li><a href="/docs/18_Augmented/">18 Augmented Reality</a></li>
 <li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
-<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
-<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
-<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
-<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">20 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">21 P2 Weather Diorama</a></li>
 
-<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
+<li><p><a href="/docs/23_P3_PianoDrivenEnvironment/">22 P3 Piano World</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
@@ -130,11 +128,153 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown">
 
-<h1 id="c-language-features">C# Language Features</h1>
+<p>In this chapter we will look at some other C# features and some loose ends we left along the way, because I didn’t want to bother you with them too early. The first thing we want to look at are C# Delegates and Events.</p>
+
+<h3 id="delegates-and-events">Delegates and Events</h3>
+
+<p>We discussed before how Objects can call functions on other objects. To pick a stupid example: I as a “Salesman” Object could personally call a customer and he could learn from me about all the wonderful things my car offers. I could invoke his “learn” function and the Data I send will be given to him directly.
+But what if I have a 100.000 customers. Should I make a call to all of them? While that would be a nice move, sending out a letter would be fine too, right?
+And that’s what Events are all about. If you have information for many, many customers or classes, you just send them out and anyone who subscribed to the event will get notified about it.
+So what are delegates and what are Events?
+The event is the letter you want to send out. The delegate is an agreement between you and the customer how the event is supposed to look like. Say the letterbox. Your customers expect letters in there, but if you suddenly start sending packages, then they can’t be received because they don’t fit the letterbox.
+In code this mean the delegate is an agreement between sender and receiver what kind of data is send with the event.</p>
+
+<p>So this system in itself is useful, but it also comes with some advantages for our code. Once this is set up, any class can subscribe to the event, without us ever changing the code in the class that is invoking the event. So this helps us stay flexible in our code.
+In larger projects this can also lead to shorter compilation times, which is always a plus!</p>
+
+<h3 id="how-to-setup-events">How to setup events?</h3>
+
+<p>Implementing delegates and Events into our projects consists of five essential steps:
+1. Create the agreement about the event a.k.a. the delegate
+2. Create the event based on that delegate
+3. Create the event handler to receive the event
+4. Subscribe to the event
+5. Raise/Call the event</p>
+
+<p>As an first very simple example, we will a have a sphere which is slowly shrinking, but once you press a button it will be set to it’s initial Size again. Arguably you could solve this without Events, but bear with me.</p>
+
+<p>So we need to create two Scripts. One for the sender of the event and one for the receiver. So let’s just call them Sender and Receiver. So first thing we then need to do is create the agreement or delegate. The delegate belongs into the Sender class.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">Sender</span> : MonoBehaviour
+{
+    public delegate <span style="color:#902000">void</span> ButtonPressedEventHandler();
+    <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>(){...}</code></pre></div>
+The delegate needs to be public so it can be seen by all the other classes. The <code>delegate</code> keyword tells C# that this actually IS a delegate. Now the <code>void</code> is up to us. Essentially we define a function, and if it is supposed to return a value, it can. But we don’t need it, so we’ll go with <code>void</code>. Lastly we define a name for the delegate. Naming follows the same ideas as for methods, but we will use this delegate for handling Events, thus suffixing <code>EventHandler</code> is good practice. This really just defines how the functions working with this need to look like.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h3 id="delegates-under-the-hood">Delegates under the hood</h3>
+
+<p>Delegates under the hood just enable you to store references to methods in variables. Then you can assign methods to that delegate and later call that delegate like a function. You can even add multiple functions to the delegate using <code>+=</code> and later call all of them at once. See Microsofts definition here: <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/">https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/</a>
+    </div>
+  </label>
+</div>
+</p>
+
+<p>Next we create the event itself.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"> public event ButtonPressedEventHandler buttonPressed;</code></pre></div>
+It is also public, as it needs to be seen by the subscribers. Followed by the <code>event</code> Keyword. The type is the name of the Delegate we just created and finally we give it a name.</p>
+
+<p>Now lt’s switch over to the recieving Script. Here we first need to create a function that is called when the event is raised. What’s really important here is that this function matches the definition of the delegate we created!
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">OnButtonPressed</span>(){
+        transform.localScale <span style="color:#666">=</span> Vector3.one <span style="color:#666">*</span> <span style="color:#40a070">5</span>;
+    }</code></pre></div>
+As you can see, the delegate we created has a return-type of void and takes no arguments. The same goes for our <code>OnButtonPressed</code> function. So that’s easy. On to step four!</p>
+
+<p>Now our receiver needs to subscribe to the event.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public GameObject sender;
+    
+    <span style="color:#902000">void</span> <span style="color:#06287e">OnEnable</span>()
+    {
+        sender.GetComponent<span style="color:#666">&lt;</span>Sender<span style="color:#666">&gt;</span>().buttonPressed <span style="color:#666">+=</span> OnButtonPressed;
+    }</code></pre></div>
+The first thing we do here is create a reference to the Sender Object as we have done many times before. So we will need to connect these in the Unity Editor!
+Then in the <code>OnEnable()</code> method we get the sender component and look for the <code>buttonPressed</code> event. We then add the <code>OnButtonPressed</code> method to the event a.k.a subscribe it to the event. Form now on, when ever the Event is raised, the <code>OnButtonPressed()</code> method is called.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h3 id="onenable">OnEnable()</h3>
+
+<p>What is OnEnable() and why do we use this? OnEnable() is similar to Start() and Update() one of those predefined functions inside Unity and they run in specific order. Thus there are recommendations on what kind of things you want to call when. If you want to go down the rabbit hole:
+<a href="https://docs.unity3d.com/Manual/ExecutionOrder.html">https://docs.unity3d.com/Manual/ExecutionOrder.html</a>
+    </div>
+  </label>
+</div>
+</p>
+
+<p>So how to raise the event?
+We of course need to do this back in our sender Script. And all we need to do is call the event like any other function we call:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	buttonPressed();</code></pre></div>
+So far so good. But let’s embed it into our code.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
+    {
+        <span style="color:#007020;font-weight:bold">if</span>(Input.GetKeyDown(KeyCode.A)){
+            <span style="color:#007020;font-weight:bold">if</span> (buttonPressed <span style="color:#666">!=</span> null){
+                buttonPressed();
+            }
+        }
+    }</code></pre></div>
+ In <code>Update()</code> we check for someone pressing the “A” key. Then we check if <code>buttonPressed</code> is not Null. If this returns <code>Null</code> it means button pressed has no subscribers and then there is no need to actually raise the event. Worse! If you don’t check for this, it will actually throw an Null reference exception at runtime!
+But if it’s not null, this will actually run just fine!
+This is awesome. But let’s clarify a bit more why this is awesome. Now we can add as many functions to this event as we want! Let’s just create a function to randomly color our sphere:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">void</span> <span style="color:#06287e">OnButtonPressedColor</span>(){
+ 
+        this.GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> new Color(Random.Range(<span style="color:#40a070">0f</span>,<span style="color:#40a070">1f</span>), Random.Range(<span style="color:#40a070">0f</span>,<span style="color:#40a070">1f</span>),Random.Range(<span style="color:#40a070">0f</span>,<span style="color:#40a070">1f</span>));
+    }</code></pre></div>
+We can then just subscribe this to the event as well:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">sender.GetComponent<span style="color:#666">&lt;</span>Sender<span style="color:#666">&gt;</span>().buttonPressed <span style="color:#666">+=</span> OnButtonPressedColor;</code></pre></div>
+Now we didn’t have to change anything in the sender class. The sender class doesn’t care or even know about what we did here! You could now easily add new classes that also implement this and would never again need to change the sender class.</p>
+
+<h3 id="unsubscribing-from-events">Unsubscribing from events</h3>
+
+<p>Now one thing that would be considered good practice is unsubscribing once your object get’s disabled or destroyed. That is as simple as subscribing actually. Just use <code>-=</code> in <code>OnDisable()</code>.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"> <span style="color:#902000">void</span> <span style="color:#06287e">OnDisable</span>(){
+        sender.GetComponent<span style="color:#666">&lt;</span>Sender<span style="color:#666">&gt;</span>().buttonPressed <span style="color:#666">-=</span> OnButtonPressed;
+        sender.GetComponent<span style="color:#666">&lt;</span>Sender<span style="color:#666">&gt;</span>().buttonPressed <span style="color:#666">-=</span> OnButtonPressedColor;
+    }</code></pre></div></p>
+
+<h4 id="static-events">Static events</h4>
+
+<p>While all of this is fine, it’s also a lot of stuff to take care of. So let’s look into simplifications, now that you know the full version of it. The easiest simplification is to make your event <code>static</code>.
+This allows us to not create an object Reference in the receiver first. You can just subscribe to the event calling the class like this:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Sender.buttonPressed <span style="color:#666">+=</span> OnButtonPressed;</code></pre></div></p>
+
+<h4 id="actions">Actions</h4>
+
+<p>We can even go further and reduce the delegate creation and event creation into one line. To do this we first need to import the System namespace. <code>using System;</code>
+Then we need to change the way we declare our delegate:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public <span style="color:#007020;font-weight:bold">static</span> Action buttonPressed;</code></pre></div>
+This will now be enough and an we can subscribe directly to this Action. In case you need to add parameters to your events, the syntax changes and you need to provide them in <code>&lt;&gt;</code> braces after the <code>Action</code> keyword. The following code would expect an integer and float as input values.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public <span style="color:#007020;font-weight:bold">static</span> Action<span style="color:#666">&lt;</span><span style="color:#902000">int</span>, <span style="color:#902000">float</span><span style="color:#666">&gt;</span> buttonPressed;</code></pre></div>
+And thus you need to supply values as arguments when calling the function!</p>
+
+<p>As you can see Actions can simplify delegates and events a lot. But I wanted to make sure to show you the whole process, so you are able to read code that uses the extended method.</p>
+
+<p>TODO
+- Example Multiple Classes
+- Example with a return type
+- Example with Func instead of Action
+- Properties</p>
 </article>
 
       
-<div class="book-footer justify-end">
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
+    </a>
+  </div>
   
   
   <div>
@@ -155,7 +295,19 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#c-language-features">C# Language Features</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#delegates-and-events">Delegates and Events</a></li>
+<li><a href="#how-to-setup-events">How to setup events?</a></li>
+<li><a href="#unsubscribing-from-events">Unsubscribing from events</a>
+<ul>
+<li><a href="#static-events">Static events</a></li>
+<li><a href="#actions">Actions</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
   </aside>

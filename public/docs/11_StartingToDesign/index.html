@@ -68,20 +68,18 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
 <li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
 <li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
-<li><a href="/docs/12_Animation/">12 Animation</a></li>
-<li><a href="/docs/13_Physics/">13 Physics</a></li>
-<li><a href="/docs/14_Sound/">14 Sound</a></li>
-<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
-<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
-<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
-<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/12_UserInterfaces/">12 User Interfaces</a></li>
+<li><a href="/docs/13_Animation/">13 Animation</a></li>
+<li><a href="/docs/14_Lighting/">14 Lighting</a></li>
+<li><a href="/docs/15_Textures/">15 Textures</a></li>
+<li><a href="/docs/16_Shaders/">16 Shaders</a></li>
+<li><a href="/docs/17_Audio/">17 Audio</a></li>
+<li><a href="/docs/18_Augmented/">18 Augmented Reality</a></li>
 <li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
-<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
-<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
-<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
-<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">20 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">21 P2 Weather Diorama</a></li>
 
-<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
+<li><p><a href="/docs/23_P3_PianoDrivenEnvironment/">22 P3 Piano World</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
@@ -130,6 +128,10 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown">
 
+<h3 id="disclaimer">Disclaimer</h3>
+
+<p>So before we move on I just want to get a few things of my chest. I AM one of the people who way too often thought about technical stuff before design. I fell into that pit in almost any project again and again and I still have a hard time not letting those things get in the way of my design. This also means: I am very likely not at all an expert on design and how to apply it. So what follows are merely the basics and you should find input from sources who focus just on design and don’t have their eyes clouded by fancy tech stuff.</p>
+
 <h3 id="the-generative-design-pitfall">The Generative Design pitfall</h3>
 
 <p>This book claims to be about “Generative Design” and with such about Design in general. And that actually is a bold claim and one I am reaaaaly, really uncomfortable with. While it’s one thing to tell you how programming works, design is a whole different beast. Programming is based on rules. And rules are easy to describe and put on paper. If you forget to put a semicolon in the right place your program won’t run.
@@ -137,10 +139,6 @@ Design on the other hand let’s you create the most outrageous crap and won’t
 
 <p>So now that we know that design is hard, hard process let me tell you: Generative Design is even worse. While creating with code your logical mind is in the works all the time, and it really just cares about the code and making things work. And once you check your design and you wake the left side of the brain, it will be all sleepy and say: “Say, yeahh I guess, I guess not&hellip;”, but the right side is already all over the place going crazy, just because it works. And believe me I’ve been there. Lots of times!
 The downer comes once you show it to people and they say: ‘meh’. They can’t see the code. They can’t see the hours you spent learning about loops and functions. They can’t see the time you spend fixing bugs. And sometimes they can’t see this beautiful mathematic idea at the heart of your code. They can’t recognize that. And it’s not their fault. It just means that the visual output you just spend hours on is just not that good. (And I think that is how WordArt came to be in the first place. Programmers creating crazy rainbow colored Fonts, just because the could.)</p>
-
-<h3 id="disclaimer">Disclaimer</h3>
-
-<p>So before we move on I just want to get a few things of my chest. I AM one of the people who way too often thought about technical stuff before design. I fell into that pit in almost any project again and again and I still have a hard time not letting those things get in the way of my design. This also means: I am very likely not at all an expert on design and how to apply it. So what follows are merely the basics and you should find input from sources who focus just on design and don’t have their eyes clouded by fancy tech stuff.</p>
 
 <h3 id="design-principles">Design principles</h3>
 
@@ -161,11 +159,6 @@ Provided are some common formats like the ones we just talked about. 16:9, 16:10
 TODO CHECK HOW TO FORCE ASPECT RATIOS
 For now I would just choose one aspect ratio for each sketch you create and ignore the problems that arise form having variable aspect ratios as a problem. Once you have an app or program that has to be deployed to devices with unknown aspect ratios you can start considering how to deal with these problems.</p>
 
-<h3 id="composition">Composition</h3>
-
-<p>Composition is the art of placing your elements in the frame of your work. It’s about leading the eye of the beholder and making sure the alignment of elements supports the message you try to convey with your work. While you can show the same
-Write something useful here</p>
-
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
@@ -182,9 +175,17 @@ Write something useful here</p>
 </div>
 
 
+<h3 id="composition-and-balance">Composition and Balance</h3>
+
+<p>Composition is the art of placing your elements in the frame of your work. It’s about leading the eye of the beholder and making sure the alignment of elements supports the message you try to convey with your work. While you can show the same
+Write something useful here</p>
+
 <h3 id="balance">Balance</h3>
 
-<p>Balancing is all about creating</p>
+<p>Balancing is all about creating
+Symmetrical, Asymmetrical, Radial</p>
+
+<p>Rule of thirds</p>
 
 <h3 id="basic-shapes-point-line-plane">Basic shapes point, line, plane</h3>
 
@@ -202,11 +203,47 @@ Write something useful here</p>
 
 <h3 id="color">Color</h3>
 
+<h3 id="a-word-on-color">A word on color</h3>
+
+<ul>
+<li>we now have an animated Version of these squares, but Josef Albers was obviously concerned with colors in these things</li>
+<li>at the Bauhaus he sure wan’t the only one, Johannes Itten as well</li>
+<li>Before them Goethe took a shot at Color theory</li>
+<li>while they had their problems, to fix the rise of the screen comes with it’s own very specific set of problems</li>
+<li>with this also came complex ideas like Gamma Correction and Linear Light</li>
+
+<li><p>it also came with color spaces
+it even got worse, if you design for the screen you essentially design for Your screen!
+Even if you have to the perfectly calibrated monitor, your enduser does not.
+Their Computers come with stuff like “Night Light” which shifts colors towards red at night
+The world of Color is imperfect!
+The world of Color is also very, very subjective! They are changed by cultural background and personal preference. A color scheme that resonates strongly with one person might not so much with another person.</p></li>
+
+<li><p>Color Wheel</p></li>
+
+<li><p>Color combinations</p></li>
+
+<li><p>where to inspiration (nature)</p></li>
+
+<li><p>good color is hard to master and is learned by experimentation</p></li>
+</ul>
+
+<p>Designers which I think work great with color:
+James Turell
+Colorlisa.com</p>
+
 <p>###</p>
 </article>
 
       
-<div class="book-footer justify-end">
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
+    </a>
+  </div>
   
   
   <div>
@@ -231,11 +268,11 @@ Write something useful here</p>
 <ul>
 <li>
 <ul>
-<li><a href="#the-generative-design-pitfall">The Generative Design pitfall</a></li>
 <li><a href="#disclaimer">Disclaimer</a></li>
+<li><a href="#the-generative-design-pitfall">The Generative Design pitfall</a></li>
 <li><a href="#design-principles">Design principles</a></li>
 <li><a href="#the-frame">The Frame</a></li>
-<li><a href="#composition">Composition</a></li>
+<li><a href="#composition-and-balance">Composition and Balance</a></li>
 <li><a href="#balance">Balance</a></li>
 <li><a href="#basic-shapes-point-line-plane">Basic shapes point, line, plane</a></li>
 <li><a href="#relationen">Relationen</a></li>
@@ -245,6 +282,7 @@ Write something useful here</p>
 <li><a href="#animation">Animation</a></li>
 <li><a href="#iteration-and-formstorming">Iteration and Formstorming</a></li>
 <li><a href="#color">Color</a></li>
+<li><a href="#a-word-on-color">A word on color</a></li>
 </ul></li>
 </ul></li>
 </ul>

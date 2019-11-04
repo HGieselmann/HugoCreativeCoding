@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  
+    
+    17 Audio
+  
+ | Generative Unity</title>
+
+
+
+<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
+
+
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+</h2>
+
+
+
+    
+  
+  
+  
+
+  <style>
+  nav ul a[href$="\2f docs\2f 17_Audio\2f "] {
+      color: #004ed0;
+  }
+  </style>
+
+<ul>
+<li><a href="/docs/00_Introduction/">Introduction</a></li>
+<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
+<li><a href="/docs/05_Functions/">05 Methods</a></li>
+<li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
+<li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
+<li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
+<li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
+<li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
+<li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
+<li><a href="/docs/12_UserInterfaces/">12 User Interfaces</a></li>
+<li><a href="/docs/13_Animation/">13 Animation</a></li>
+<li><a href="/docs/14_Lighting/">14 Lighting</a></li>
+<li><a href="/docs/15_Textures/">15 Textures</a></li>
+<li><a href="/docs/16_Shaders/">16 Shaders</a></li>
+<li><a href="/docs/17_Audio/">17 Audio</a></li>
+<li><a href="/docs/18_Augmented/">18 Augmented Reality</a></li>
+<li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">20 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">21 P2 Weather Diorama</a></li>
+
+<li><p><a href="/docs/23_P3_PianoDrivenEnvironment/">22 P3 Piano World</a></p></li>
+
+<li><p><strong>Other</strong></p></li>
+
+<li><p><a href="/docs/99_Github/">Github</a></p></li>
+
+<li><p><a href="/docs/98_AdditionalResources/">Additional Resources</a></p></li>
+
+<li><p><a href="/posts/">  </a></p></li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+  
+<script>
+(function() {
+  var menu = document.querySelector('aside.book-menu nav')
+  addEventListener('beforeunload', function(event) {
+    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  });
+  menu.scrollTop = localStorage.getItem('menu.scrollTop')
+})()
+</script>
+
+
+
+    </aside>
+
+    <div class="book-page">
+      <header class="align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>
+  
+    
+    17 Audio
+  
+</strong>
+</header>
+
+      
+<article class="markdown">
+
+<p>“Audio is 50%!”. I don’t know how often I heard this sentence over the years yet. And yet it surly isn’t wrong! Audio adds a completely new layer to the works you create. And for some cases I guess you could argue “Audio is even 60% of the experience!”. While you can easily close your eyes or look away, you can’t so easily block out all the sound that’s around you.
+Write more on the importance of Audio</p>
+
+<p>No that we have established the importance of audio in our projects, let’s look at some of the things we need to take care of, when dealing with audio in Unity. In comparison with cinema, audio in a interactive 3D world can’t be just layed out perfectly in one Audio track. Left and Right now isn’t based on the screen you look at anymore, but based on the view-axis of the camera in 3D space. If we try to convey a realistic experience, we also need a way to increase volume as soon as we come closer, and slowly fade it away while the camera departs from the source.</p>
+
+<p>Luckily enough Unity makes the process of setting these things up very convenient. To set it up in the first place, all we need is an “Audio Listener” and an “Audio Source”. The Audio Listener component comes pre setup with every scene you create and is attached to your camera. You only really need to think about it, when you deal with multiple cameras in your scene, because only one Audio Listener can be active at any given time. It has so settings to take care of and can only be turned on and off. So that’s nice!
+TODO Image of Audio Listener on Camera
+The Audio Source component on the other hand is a little more complex:
+TODO Image of Audio Source on
+The first thing you will need to supply to your Audio Source is an actual AudioClip. To add an AudioClip to your project in the first place, you can just drag and drop an AudioFile into your project view. Or use “RightClick &mdash;&gt; Import New Asset&hellip;” in the project view. Then just drag an drop it into the AudioClip on your Audio Source component. If you now go ahead an enter Play mode, you will immediatly begin to hear the AudioClip you added. This works, becuse “PlayOnAwake” by default is active. You will also find some settings that will be immediately obvious: Loop, mute, pitch and Volume. Bypassing effects should be pretty much self explanatory as well.
+This all becomes more interesting once you push the Spatial blend slider all the way to the right. This will activate the 3D Sound settings you find below. To test this out, make sure your camera and Audio source are in the exact same space in your world. Then enter Play Mode and you grab your camera and move it around in the scene, while the scene is playing. You should hear the Audio Clip fading away with distance.
+How harsh this falloff will be can be defined in the curve below. The predefined Logarithmic Rolloff is how sound would react in the real world. If you want a more artistic approach to your Audio, you can switch this to a Linear falloff or even create a Custom falloff.
+If you are not yet an audio nerd it is probably a good idea, to just play around with these settings to get a feeling for what they actually do. You can even add on Audio effect components like Echo and Reverb. I will not go over these in detail, as audio and audio effects are a huge topic in themselves. But remember, that all of these effects have to be calculated at run-time. So if there are Audio Clips that i.e. always have to to be distorted, it’s better to apply such effects in an external program before even importing this into unity.</p>
+
+<p>Now that we have established how audio is handled on basic level inside Unity, let’s look at handling audio in a real-world scenario. I guess there are two kinds of audio sources we will have to deal with regularly. One is environment audio that is played from objects in your scene constantly. Think of a tree in the wind. You would want to have it play the rustling of the leaves all the time. So it makes very much sense to have the audio source directly inside your prefab and have it looping as long as your scene runs.
+Add a tiny tree that rustles in the wind
+Other sounds you probably want to manage in some way. You maybe want to change the background music or play Sounds when you click on a button in a menu. Now it would be really annoying to add an Audio Source to every button in your menu. This is where Audio Manager classes come in.</p>
+
+<h3 id="singletons">Singletons</h3>
+
+<p>Manager classes are typically an implementation of the Singleton Pattern. The idea of a singelton is, to make sure you only have exactly one instance of the class in your scene. This instance will then handle whatever needs be handled.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" style="display: none" />
+    <div class="book-expand-content markdown-inner">
+      <h3 id="singletons-can-be-bad">Singletons can be bad&hellip;</h3>
+
+<p>There are reasons for why Singletons are a bad idea. And Robert Nystrom goes over them in great detail in his book “Game Programming Patterns”. But as a beginner, as I assume you are, you can feel free to ignore that. But be aware of it and once you start bigger projects be sure to read up on this!
+    </div>
+  </label>
+</div>
+
+So let’s look at the implementation of an generic Singleton inside Unity.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">using UnityEngine;
+
+public class <span style="color:#002070;font-weight:bold">Singleton</span> : MonoBehaviour
+{
+    public <span style="color:#007020;font-weight:bold">static</span> Singleton instance;
+    <span style="color:#902000">void</span> <span style="color:#06287e">Awake</span>(){
+        <span style="color:#007020;font-weight:bold">if</span> (instance <span style="color:#666">==</span> null){
+            instance <span style="color:#666">=</span> this;
+        }<span style="color:#007020;font-weight:bold">else</span>{
+            Destroy(gameObject);
+        }
+    }
+
+    public <span style="color:#902000">void</span> <span style="color:#06287e">Log</span>(){
+        Debug.Log(<span style="color:#4070a0">&#34;This got called.&#34;</span>);
+    }
+}</code></pre></div></p>
+
+<p>We create a class “Singleton”  and then as first step declare a variable named “instance” of type “Singleton”. Thus we store a reference to ourself. Once this object is created Awake() gets called. This most likely the moment you press play, but could be at any time during your game. Then we check if instance is already assigned. If that’s not the case, we choose this object as the instance. If an instance already exists, Destroy the current which just tried to become the instance.
+Because our class is <code>public</code> and <code>static</code> we can access it from any other class in the scene:</p>
+
+<p>So this is how to setup a basic singleton.
+So how can we use this to actually manage Audio in our scene?</p>
+
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">using UnityEngine;
+using UnityEngine.Audio;
+ 
+public class <span style="color:#002070;font-weight:bold">AudioManager</span> : MonoBehaviour
+{
+    public <span style="color:#007020;font-weight:bold">static</span> AudioManager Instance;
+ 
+    public AudioSource Music;
+    public AudioSource Sfx;
+ 
+    <span style="color:#902000">void</span> <span style="color:#06287e">Awake</span>(){
+        <span style="color:#007020;font-weight:bold">if</span> (Instance <span style="color:#666">==</span> null){
+            Instance <span style="color:#666">=</span> this;
+        }<span style="color:#007020;font-weight:bold">else</span>{
+            Destroy(gameObject);
+        }
+ 
+        Music <span style="color:#666">=</span> this.gameObject.AddComponent<span style="color:#666">&lt;</span>AudioSource<span style="color:#666">&gt;</span>();
+        Sfx <span style="color:#666">=</span> this.gameObject.AddComponent<span style="color:#666">&lt;</span>AudioSource<span style="color:#666">&gt;</span>();
+    }
+ 
+    public <span style="color:#902000">void</span> <span style="color:#06287e">PlayMusic</span>(AudioClip musicClip){
+        Music.clip <span style="color:#666">=</span> musicClip;
+        Music.Play();
+        Music.loop <span style="color:#666">=</span> <span style="color:#007020">true</span>;
+    }
+ 
+    public <span style="color:#902000">void</span> <span style="color:#06287e">PlaySFX</span>(AudioClip sfxClip){
+        Sfx.PlayOneShot(sfxClip);
+    }
+}
+ </code></pre></div>
+
+<p>As you can see we just recreate the same pattern as with our basic Singleton. The rest of the class deals with actually playing Audio. We create an AudioSource for background music and one for sound effects we might want to play. We then create a function for each of them. The difference between the two functions is how we actually play the Audio.
+In the PlayMusic() method we set the music clip and then use the <code>Play()</code> function to actually play the clip.
+In the PlaySFX method we use the <code>PlayOneShot()</code> method. The difference between the two is, that we can fire multiple sounds at the the same time when using <code>PlayOneShot()</code>, while we can make use of the loop feature, when having a dedicated AudioSource for an AudioClip.</p>
+
+<p>So how do we call this?
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">using UnityEngine;
+ 
+public class <span style="color:#002070;font-weight:bold">Caller1</span> : MonoBehaviour
+{
+    public AudioClip SoundFx;
+ 
+    private <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>(){
+        <span style="color:#007020;font-weight:bold">if</span>(Input.GetKeyDown(KeyCode.A)){
+            AudioManager.Instance.PlaySFX(SoundFx);
+        }
+    }
+}</code></pre></div>
+This pretty much straight forward, as we just call the function on the Audio Manager. The only thing you have to note, that we store the actual Audio Clip on the caller. The manager is just responsible for playing the Audio, which Audio to play is in the responsibility of the object that is calling the Manager.</p>
+
+<p>Talk about Audio Mixers?? Rly?</p>
+
+<p>Projects
+- Generative with Audio playing, reacting
+- Audio Visualizer</p>
+
+<h2 id="multiple-audio-input-for-better-music-visualization">- Multiple Audio Input for better Music Visualization</h2>
+</article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c17_Audio.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#singletons">Singletons</a></li>
+</ul></li>
+<li><a href="#multiple-audio-input-for-better-music-visualization">- Multiple Audio Input for better Music Visualization</a></li>
+</ul></li>
+</ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+  
+  
+  
+</body>
+
+</html>

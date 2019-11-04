@@ -68,20 +68,18 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
 <li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
 <li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
-<li><a href="/docs/12_Animation/">12 Animation</a></li>
-<li><a href="/docs/13_Physics/">13 Physics</a></li>
-<li><a href="/docs/14_Sound/">14 Sound</a></li>
-<li><a href="/docs/15_UserInterfaces/">15 User Interfaces</a></li>
-<li><a href="/docs/16_VFXGraph/">16 Visual Effects Graph</a></li>
-<li><a href="/docs/17_ShadingAndLighting/">17 Shading and Lighting</a></li>
-<li><a href="/docs/18_TexturesAndImages/">18 Images and Textures</a></li>
+<li><a href="/docs/12_UserInterfaces/">12 User Interfaces</a></li>
+<li><a href="/docs/13_Animation/">13 Animation</a></li>
+<li><a href="/docs/14_Lighting/">14 Lighting</a></li>
+<li><a href="/docs/15_Textures/">15 Textures</a></li>
+<li><a href="/docs/16_Shaders/">16 Shaders</a></li>
+<li><a href="/docs/17_Audio/">17 Audio</a></li>
+<li><a href="/docs/18_Augmented/">18 Augmented Reality</a></li>
 <li><a href="/docs/19_PostProcessingStack/">19 Post-Processing</a></li>
-<li><a href="/docs/20_MobileAndAR/">20 Mobile and AR</a></li>
-<li><a href="/docs/21_P1_ScifiTunnel/">21 P1 Sci-Fi Tunnel</a></li>
-<li><a href="/docs/22_P2_WeatherApp/">22 P2 Weather Diorama</a></li>
-<li><a href="/docs/23_P3_PianoDrivenEnvironment/">23 P3 Piano World</a></li>
+<li><a href="/docs/21_P1_ScifiTunnel/">20 P1 Sci-Fi Tunnel</a></li>
+<li><a href="/docs/22_P2_WeatherApp/">21 P2 Weather Diorama</a></li>
 
-<li><p><a href="/docs/24_P4_OpenCV_Project/">24 P4 OpenCV</a></p></li>
+<li><p><a href="/docs/23_P3_PianoDrivenEnvironment/">22 P3 Piano World</a></p></li>
 
 <li><p><strong>Other</strong></p></li>
 
@@ -133,24 +131,42 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="the-console-your-best-friend">The Console - Your best friend</h3>
 
 <p>This chapter is a short but important intermezzo.
-Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your code! As we are Coding in C#  your computer will be very, very picky about the code you write. So if you haven’t already fabricated an error. Go ahead and do so. Any typo is good enough.
+Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your scene! C# as a programming language is very, very picky about it’s syntax and what works and what not. “Strongly typed” is the fancy computer science term for that. C# even expects you to to care about capitalization. We as humans are prone to making mistakes and thus sooner or later you are bound to produce an error. If you haven’t, go ahead and deliberately do so. Any typo is good enough:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">transform.positio <span style="color:#666">=</span> transform.positio <span style="color:#666">+</span> new Vector3(<span style="color:#40a070">1</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">0</span>)<span style="color:#666">*</span> Time.deltaTime;</code></pre></div>
 <img src="/img/consoleError.jpg" alt="Console Error" />
-But not only will he complain, he will also try to tell you what it is he does not understand:
+As soon as you do your computer will complain. But not only will he complain, he will also try to tell you what it is he does not understand:
 <code>Assets\Scripts\MovingAlbersVar.cs(19,19): error CS1061: 'Transform' does not contain a definition for 'positio' and no accessible extension method 'positio' accepting a first argument of type 'Transform' could be found (are you missing a using directive or an assembly reference?)</code>
-In this case, he tells us, taht he knows about Transform but has no concept of “positio”. And well, of course he doesn’t.
-He also prints out the line in which he has problems understanding you, this is really helpful for debugging.
-What you always have to remember is, that this never means, taht you are bad programmer. Mistakes happen. Especially in the beginning. But they will stay and that’s okay. That’s the reason why IDEs and CodeEditors try to check everything before you even try to compile your code.
-So now that we have established that the console is our friend and not our enemy, let’s take a look at some nice additional features it has to help us when we are stuck.</p>
+In this case, he tells us, that he knows about Transform but has no concept of “positio”. And well, of course he doesn’t!
+He is also kind enough to also print out the line in which he has problems understanding you. So this is typically the place where you should start your process of debugging. You can even just double-click on the error message and Unity will directly take you to the line that is causing the error.
+Dealing with errors can be very disheartening. But!&hellip; what you always have to remember is, that this never means, that you are bad programmer. Mistakes happen! Especially in the beginning. They will stay and that’s fine. Everyone knows this happens and that’s why every code editor will try to do it’s best to prevent you from making errors in the first place. Auto-completion for example can help to avoid errors. Any red squiggly line in the code editor is an attempt to tell you Unity will produce an Error in the code.</p>
 
-<h3 id="the-power-of-debug-log">The power of Debug.Log</h3>
+<p>Apart from errors Unity also displays “Warnings” here. Warnings aren’t going to break your code immediately. This could for example happen if you use functions that are “Obsolete”. Meaning they are still here for legacy reasons, but will in later Versions of Unity be removed from the code. If you are just playing around, feel free to ignore stuff like this, but at least look into what the alternative is in the future.
+Warnings can be manifold, so if you are run into one and the displayed message isn’t helpful try looking it up in your favorite search engine.</p>
+
+<p>TODO Inspector Debug Mode</p>
+
+<h3 id="the-power-of-debug-log">The power of “Debug.Log”</h3>
 
 <p>Often in programming we think about what we want to achieve and yet the computer does not do what we want him to. Especially as a beginner we often assume the computer knows something it doesn’t. So we can actually ask the Computer to tell us what he thinks is going on.
-You could for example print out the value for our sinus Variable at each frame to check if it is reallystaying between 0 and 1.
+You could for example print out the value for our sinus Variable at each frame to check if it is really staying between 0 and 1.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Debug.Log(sinus);</code></pre></div>
 If you now run your code, and check the Console you should se the value printed out each Frame.
-You can have as many Debug.Log Statements in your code as you want, but they will slow down the execution of your code, so once you don’t need one anymore, get rid of it.
-If you consider using it latyer, you can just comment it out.</p>
+You can have as many Debug.Log Statements in your code as you want, but they will slow down the execution of your code, so once you don’t need one anymore, get rid of it. They also should not be in your code anymore, once you “ship” it.
+If you have a Debug.Log statement in your code, which you don’t need right now, but think it could be useful down the line, you can also just comment it out for the moment being.
+And while this is a really helpful way to get a better grasp of your code, you shouldn’t get in the habit of cluttering them all over the place in your code.</p>
+
+<h3 id="breakpoints">Breakpoints</h3>
+
+<p>In addition to Debug.Log you can also use so called breakpoints. Breakpoints allow you to specify a line of code inside your IDE and once your program reaches that line, Unity will switch back to the IDE and you can click on all the variables and check their current values. This is a fantastic tool for debugging your code. you can even go into Playmode directly from the IDE. But it sadly is restricted to IDEs, so you will need to use Visual Studio Community oder Jetbrains Rider, while Code Editors like Visual Studio Code will not suffice.
+Here is how to use them in Visual Studio Community, which ships with Unity:
+Inside the Code Editor on the far left of the document window you will see grey bar. You can simply click in on that bar in front of the line you want to use as a breakpoint. At this line a red dot will appear and the line will be colored red, meaning your breakpoint is set up.
+In the topbar of your IDE you will find a button called “Attach to Unity” and a drop down arrow right beneath it which will allow you to also choose “Attach to Unity and Play”. Select either one. If you opt for the first one you have to switch to Unity and enter play mode manually.
+Once the light you specified is encountered Unity will switch back to your VS Community and mark the line yellow. It will also pop up a few windows on the bottom, i.e. a list of all the variables currently active and which values are assigned to them. You can fully explore the object.
+Once you have found your problem you can easily press the red dot again and it will vanish, bringing everything back to normal.
+ScreenShots!
+Walk through line by line missing!
+F10 and F11
+You cant edit code while you are debugging!!!</p>
 
 <h3 id="still-stuck">Still stuck?</h3>
 
@@ -169,8 +185,8 @@ You will always find the most recent version of the docs online, but if you happ
   
   <div>
     
-    <a href="https://github.com/alex-shpak/hugo-book/commit/1a52e0771b46f7b469713d9774bc3c1c2695475a" title='Last modified September 11, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> September 11, 2019
+    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
+      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
     </a>
   </div>
   
@@ -198,7 +214,8 @@ You will always find the most recent version of the docs online, but if you happ
 <li>
 <ul>
 <li><a href="#the-console-your-best-friend">The Console - Your best friend</a></li>
-<li><a href="#the-power-of-debug-log">The power of Debug.Log</a></li>
+<li><a href="#the-power-of-debug-log">The power of “Debug.Log”</a></li>
+<li><a href="#breakpoints">Breakpoints</a></li>
 <li><a href="#still-stuck">Still stuck?</a></li>
 </ul></li>
 </ul></li>
