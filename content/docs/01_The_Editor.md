@@ -57,7 +57,7 @@ Now I know that there are many people who are not so much into the Bauhaus. And 
 
 ### “Homage to the Cuboid” in Unity
 
-![The Unity Editor](/img/HomageToTheCuboid.png)
+{{< figure src="/img/HomageToTheCuboid.jpg" title="Homage to the Cuboid" width="75%">}}
 
 So in this chapter we will create our own “Homage to the cuboid” as shown above. As you can see this will be a rather simple thing to create: We need five cubes and scale and position them. But we will also need a material for each of them. And we need to place our camera.<br>
 But first things first. Create a new scene using `ctrl + n`. You can delete everything from the new scene except the camera. This will change the background color, as the light Unity considered being the sun is gone. We will deal with this later.<br>
@@ -67,11 +67,11 @@ Then just move them apart to liken the image above. If you want to do it more ma
 Now we are missing color. Our cubes are black, because we deleted the only light source in the scene and we don’t want to bring it back! We will use so called “un-lit” shaders for now, as they will allow us to just pick colors. Lights in the scene will not affect these shaders and thus these will be more appropriate for our Josef Albers like studies. <br>
 To create a material that works fur us, create one from the “Assets” menu or in the project view using `right-click ---> create ---> Material`. After naming the material we need to change to the before mentioned shader. In the inspector find the drop-down at the top, that says Shader. In it navigate to the `UI ---> Unlit ---> Transparent` Shader. You will face many options, but we concern ourselves only with the color. Choose one by clicking on the color field.
 
-GIF
+{{< figure src="/img/SelectColor.gif" title="Assign Materials via Drag and Drop" width="50%">}}
 
 You can then duplicate your materials and choose one color for each cube. To apply the materials to the cuboids you can simple drag and drop them onto the cuboids in the hierarchy or onto the object in the viewport.
 
-Gif
+{{< figure src="/img/AssignMaterials.gif" title="Assign Materials via Drag and Drop" width="100%">}}
 
 We will have to adjust our camera to match the example above. If you have Gameview and Scene view open next to each other you can try to push the camera where you need it. But that alone won’t work, because I chose an orthographic view for my sketch. The orthographic view will render all lines in parallel and thus will ignore any perspective. I thought this might work better for our Bauhaus Homage. To change this, select the camera and select “orthographic” from the projection drop-down. And while we are here, we can also change the background color:
 

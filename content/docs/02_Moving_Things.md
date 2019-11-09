@@ -12,15 +12,14 @@ TODO INSERT SCRIBBLES AND PSEUDOCODE
 # 02 - Moving Things
 ### Structure of a script
 
-So let’s start writing our first script. There are multiple ways to create a script, the one I prefer is creating it via `Right-click -> C# Script` in the Project View. The advantage here is: you can choose the folder in which the Script should be located and you don’t have to start organizing your files after the fact.<br>
-But you can also create scripts directly from the Inspector by clicking on “Add Component” and in the search panel simply write the name you want to give to the script. If there isn’t any other component or script with the same name in your project Unity will assume you want to create a script with that name. I called my first script: “MovingCuboids_Lifting”.<br>
+So let’s start writing our first script. There are multiple ways to create a script, the one I prefer is creating it via `Right-click -> C# Script` in the Project View. The advantage here is: you can choose the folder in which the Script should be located and you don’t have to start organizing your files after the fact. <br>
+But you can also create scripts directly from the Inspector by clicking on “Add Component” and in the search panel simply write the name you want to give to the script. If there isn’t any other component or script with the same name in your project Unity will assume you want to create a script with that name. I called my first script: “MovingCuboids_Lifting”. <br>
 With your script created just open it using double-click. Your default Code Editor will open. This can take a while depending on your system, especially when you open the editor for the first time.
 {{< expand >}}
 ### Code Editors and IDEs
-The default Code Editor for you probably is “Visual Studio Community Edition” or “Visual Studio for Mac”. These are so-called “IDEs” - Integrated Development Environments. These are powerful tools for editing Code, they can integrate with Unity and come with many advanced features. The downside to them is, they tend to be slow to start up. And on a laptop they can be draining on your battery, as they thoroughly check your code in the background. So if you are on a low end machine it can be wise to look for a “Code Editor”. They are a lightweight alternative, but in comparison lack some advanced features.<br>
-Great Code Editors are “Visual Studio Code” by Microsoft or “Atom” by GitHub, which is also part of Microsoft. There is also Sublime Text.<br>
+The default Code Editor for you probably is “Visual Studio Community Edition” or “Visual Studio for Mac”. These are so-called “IDEs” - Integrated Development Environments. These are powerful tools for editing Code, they can integrate with Unity and come with many advanced features. The downside to them is, they tend to be slow to start up. And on a laptop they can be draining on your battery, as they thoroughly check your code in the background. So if you are on a low end machine it can be wise to look for a “Code Editor”. They are a lightweight alternative, but in comparison lack some advanced features. <br>
+Great Code Editors are “Visual Studio Code” by Microsoft or “Atom” by GitHub, which is also part of Microsoft. There is also Sublime Text. <br>
 If you want to check out an IDE that is becoming more and more popular with Unity programmers look out for “Rider” by JetBrains. They also offer the very helpful Plug In “ReSharper” for Visual Studio.
-
 {{</expand >}}
 Every Unity Script comes with some “boilerplate” Code to get you started. It looks like this:
 
@@ -48,16 +47,13 @@ Every Unity Script comes with some “boilerplate” Code to get you started. It
 
 
 
-The first few lines are “using” statements. All lines in C# that end with a semicolon are considered a “statement”. The “using” statements reference “namespaces” or libraries on your computer into the script. And I think libraries is a nice description for it.. Think of it like a book club and you define beforehand which books you want to talk about. It’s tedious to talk about “The Lord of the Rings” if the other person hasn’t read the book.
-
+The first few lines are “using” statements. All lines in C# that end with a semicolon are considered a “statement”. The “using” statements reference “namespaces” or libraries on your computer into the script. And I think libraries is a nice description for it.. Think of it like a book club and you define beforehand which books you want to talk about. It’s tedious to talk about “The Lord of the Rings” if the other person hasn’t read the book. <br>
 Using these statements you expect Unity know about everything in the UnityEngine itself, as well as the chapters “Collections” and “Collections.Generic” from the “System” book. You can see we can access or require sub-parts using the so called “dot notation”.
 
-Next up is the class. Every script we write defines a class. You could have multiple classes in the same file, but that is not considered good practice in C#. Classes really are an advanced topic, so for now, let’s just say they bundle a bunch of code together. Take note of the MovingCuboids_Lifting as the class name. This corresponds to the name we gave our script file and they always need to have the same name. If you change the classname, you have to change the filename and vice versa.
-
+Next up is the class. Every script we write defines a class. You could have multiple classes in the same file, but that is not considered good practice in C#. Classes really are an advanced topic, so for now, let’s just say they bundle a bunch of code together. Take note of the MovingCuboids_Lifting as the class name. This corresponds to the name we gave our script file and they always need to have the same name. If you change the classname, you have to change the filename and vice versa. <br>
 Everything that belongs to this class is wrapped inside the following curly brackets. Curly braces define a block of Code. You can see this in the Code for the Start and Update Methods as well. All our code belongs inside the curly braces of the class, except for everything related to namespaces.
 
-Moving on to “Methods”.! Start and Update are Methods that Unity recognizes and calls during the execution of the program. The Start function is called first and only once before the program starts running. Here you would define everything you wanted to set up.
-
+Moving on to “Methods”. Start and Update are Methods that Unity recognizes and calls during the execution of the program. The Start function is called first and only once before the program starts running. Here you would define everything you wanted to set up. <br>
 The Update method is then called each frame and keeps running until you end the program. Here we have to write all our Code that changes or animates over the time of the execution of the script.
 
 {{< expand >}}
@@ -83,40 +79,34 @@ The first one is integers. Integers contain all “whole” numbers no matter if
 {{<highlight c>}}
 int integerVariable;
 {{</highlight>}}
-This code declares an integer variable with the name “integerVariable”. Right now it holds no value and if would try to access it, you would encounter an error.
-
+This code declares an integer variable with the name “integerVariable”. Right now it holds no value and if would try to access it, you would encounter an error. <br>
 You can assign values to variables using the `=` sign.
 {{<highlight c>}}
 int integerVariable;
 integerVariable = 1;
 {{</highlight>}}
-This would initialize our integerVariable to “1”. 
-
+This would initialize our integerVariable to “1”. <br>
 We could also do this in just one step:
 {{<highlight c>}}
 int integerVariable = 1;
 {{</highlight>}}
 Assignment is always done form the right side of the `=` sign to the left. This also means, that any code on the right side will first be evaluated before it is assigned to the variable on the left:
-
 {{<highlight c>}}
 int integerVariable = 1+1;
 {{</highlight>}}
-`integerVariable’ would now hold the value “2”.
-
+`integerVariable’ would now hold the value “2”. <br>
 Next up are “floats” and “doubles”. Both hold all the non-whole numbers. The difference between the two is, that double use the double amount of memory to save values and can store higher precision values. But this also means that doubles take longer to calculate. That’s why in Unity we typically use floats, unless we absolutely need double precision. So why even TALK about doubles already? Because floats are a little weird...
 {{<highlight c>}}
 float floatVariable = 1.1f;
 Double doubleVariable = 1.1;
 {{</highlight>}}
-Look at that code. See something fishy? 
+Look at that code. See something fishy? <br>
 Whenever we declare a float we have to append the value with a lowercase “f” to tell C# that this is indeed a float-value we want to use and **not** a double. 
 {{<highlight c>}}
 float floatVariable = 1.1;
 {{</highlight>}}
-If we don’t do this, our code will actually not run! The above line will cause an error. The compiler can’t know which value it is, we want to store inside and if he assumes that there is a chance, that he would have to lose data in the process of converting on type to the other, he won’t do it. 
-
-The compiler will though convert values from one type to the other if he can be sure that no data loss can happen. This is called “implicit” conversion. Implicit conversion happens from integers to floats and floats to doubles and of course integers to doubles.
-
+If we don’t do this, our code will actually not run! The above line will cause an error. The compiler can’t know which value it is, we want to store inside and if he assumes that there is a chance, that he would have to lose data in the process of converting on type to the other, he won’t do it. <br>
+The compiler will though convert values from one type to the other if he can be sure that no data loss can happen. This is called “implicit” conversion. Implicit conversion happens from integers to floats and floats to doubles and of course integers to doubles. <br>
 If you want to force conversion for types it’s called “explicit” conversion and we do this using a “cast”:
 {{<highlight c>}}
 float floatVariable = (float)1.1;
@@ -148,15 +138,12 @@ Vector3s are defined by Unity and essentially bundle three floats in one variabl
 Now this might sound complicated, but for now just roll with it. We will look deeper into this once we reach the chapter about classes and object orientation.
 
 ### On Pseudo Code
-Throughout the first chapters we will use our “Homage to the Cuboid” as a starting point for experimentation. This will be a great way to get started coding with very small scripts and also see how just a few lines of code can create interesting results.
-
+Throughout the first chapters we will use our “Homage to the Cuboid” as a starting point for experimentation. This will be a great way to get started coding with very small scripts and also see how just a few lines of code can create interesting results. <br>
 But before you actually start to code, it’s often a great idea to think about what you want to achieve. There is also great value putting this down on paper. So let’s look at the options we have right now. We have been looking at the transform component in the editor, and this gives us exactly nine values to manipulate: X,Y and Z for each transformation: translation, rotation and scale.
 
 TODO Sketch of possible actions:
 So let’s start with translation, bringing a little snake-like movement into our homage. We will aim for something like this:
-
-Image of moving Cuboids
-
+{{< figure src="/img/MovingCuboids_Shifting_X.gif" title="Cuboids Shifting on the X Axis" width="50%">}}
 Now that we have a creative vision let’s start out with something called “Pseudo Code”. Pseudo code is the idea of writing something code like, but on a really high level. An abstraction which will make it easier to write the code itself later. You can use comments in your code to put down pseudo code. Comments start with double slashes `//` and everything that follows in that line will ignored by the compiler.
 
 We know that we can assign values to variables, and that we only want to change the value on one axis, so let’s use the X axis for now.
