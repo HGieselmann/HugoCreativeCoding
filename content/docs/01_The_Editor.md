@@ -1,13 +1,14 @@
 # 01 - The Editor
 ### Installing Unity
-
 The first step on your journey to learn is to download and install Unity. While you could just head to unity3d.com and grab the latest and greatest version of Unity, I would suggest getting the Unity Hub. The Unity Hub will help you manage your projects and the Versions of Unity you have installed on your machine. As you dive deeper and deeper into Unity, the day will come, where you hear of a new feature and you want to explore it. Then you can install any additional version from Unity Hub and manage all the versions of Unity you have installed. It will also remember in which version you opened a project last time. But just grabbing the current version is just fine. If you go for the latter, choose an “LTS” version, like 2019.4. LTS is short for longtime support and has the best chances of getting all bugs fixed.
 
-I will assume you will manage to download and install Unity Hub yourself. So let’s look at managing Unity Versions and Projects with Unity Hub.
+I will assume you will manage to download and install Unity Hub yourself. So let’s look at managing Unity Versions and Projects with Unity Hub. On the “Installs” Tab UnityHub will tell, you that you don’t have a version of Unity installed. Thus simply click on the “Add” Button in the upper right corner. 
+{{< figure src="/img/UnityHubVersionManagement.png" title="Installed Unity versions in UnityHub" width="50%">}}
+In the next menu you can just go with the version UnityHub suggests, which will be the latest stable release. On the follwing one you can make some choices. Unity offers support to export to multiple platforms, but if you don’t want to code for i.e. facebook, you don’t need to waste space for their Source Development Kit(SDK).
+But you probably keep the checkbox with “Microsoft Visual Studio Community”. This will be our Code Editor. Click Next and let Unity do it’s thing.
+{{< figure src="/img/UnityHubVersionManagement2.png" title="Additional Options to install" width="50%">}}
 
-TODO Add Unity Hub version Management as soon as 2019.4 is out!
-
-When you start Unity Hub, it will show you all your latest projects. If you don’t have one, just press the “New” Button to create One. In the next panel, you can set the Project Name and the location where you want to store your project. Unity hub will create a folder with your chosen project name. So no need to create that folder yourself.
+Under “Projects” Unity Hub will show you all your latest projects. If you don’t have one, just press the “New” Button to create One. In the next panel, you can set the Project Name and the location where you want to store your project. Unity hub will create a folder with your chosen project name. So no need to create that folder yourself.
 You will also have to choose a Template. “3D” is the default option. You will also have options for 2D and depending on the version you installed for “Lightweight RP / LWRP” or “High Definition Renderpipeline / HDRP”. It could also be, that Lightweight Renderpipeline Unity lists this as “Universal Renderpipeline”. Sooner rather than later this will become the default. Yet we will for now go with the classic “3D” version. Hit create and Unity will take a while to initialize your new project and start up the Editor.
 
 Once Unity opens up, you should see something like this:
