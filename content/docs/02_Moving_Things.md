@@ -12,18 +12,13 @@ TODO INSERT SCRIBBLES AND PSEUDOCODE
 # 02 - Moving Things
 ### Structure of a script
 
-So let’s start writing our first script. There are multiple ways to create a script, the one I prefer is creating it via `Right-click -> C# Script` in the Project View. The advantage here is: you can choose the folder in which the Script should be located and you don’t have to start organizing your files after the fact.
-
-But you can also create scripts directly from the Inspector by clicking on “Add Component” and in the search panel simply write the name you want to give to the script. If there isn’t any other component or script with the same name in your project Unity will assume you want to create a script with that name. I called my first script: “MovingCuboids_Lifting”.
-
+So let’s start writing our first script. There are multiple ways to create a script, the one I prefer is creating it via `Right-click -> C# Script` in the Project View. The advantage here is: you can choose the folder in which the Script should be located and you don’t have to start organizing your files after the fact.<br>
+But you can also create scripts directly from the Inspector by clicking on “Add Component” and in the search panel simply write the name you want to give to the script. If there isn’t any other component or script with the same name in your project Unity will assume you want to create a script with that name. I called my first script: “MovingCuboids_Lifting”.<br>
 With your script created just open it using double-click. Your default Code Editor will open. This can take a while depending on your system, especially when you open the editor for the first time.
-
 {{< expand >}}
 ### Code Editors and IDEs
-The default Code Editor for you probably is “Visual Studio Community Edition” or “Visual Studio for Mac”. These are so-called “IDEs” - Integrated Development Environments. These are powerful tools for editing Code, they can integrate with Unity and come with many advanced features. The downside to them is, they tend to be slow to start up. And on a laptop they can be draining on your battery, as they thoroughly check your code in the background. So if you are on a low end machine it can be wise to look for a “Code Editor”. They are a lightweight alternative, but in comparison lack some advanced features.
-
-Great Code Editors are “Visual Studio Code” by Microsoft or “Atom” by GitHub, which is also part of Microsoft. There is also Sublime Text.
-
+The default Code Editor for you probably is “Visual Studio Community Edition” or “Visual Studio for Mac”. These are so-called “IDEs” - Integrated Development Environments. These are powerful tools for editing Code, they can integrate with Unity and come with many advanced features. The downside to them is, they tend to be slow to start up. And on a laptop they can be draining on your battery, as they thoroughly check your code in the background. So if you are on a low end machine it can be wise to look for a “Code Editor”. They are a lightweight alternative, but in comparison lack some advanced features.<br>
+Great Code Editors are “Visual Studio Code” by Microsoft or “Atom” by GitHub, which is also part of Microsoft. There is also Sublime Text.<br>
 If you want to check out an IDE that is becoming more and more popular with Unity programmers look out for “Rider” by JetBrains. They also offer the very helpful Plug In “ReSharper” for Visual Studio.
 
 {{</expand >}}
@@ -295,8 +290,7 @@ While scaling will be very similar to what we just did, rotation can be a little
 {{<highlight c>}}
 transform.Rotate(0, 1, 0);
 {{</highlight>}}
-This would rotate the object around the Y axis by a given value.
-
+This would rotate the object around the Y axis by a given value.<br>
 What you can’t do however is assign a Vector3 directly to the Rotation value. Rotations in Unity are stored in Quaternions. Quaternions take in four values and help in avoiding some problems with rotations in 3D space. To set Rotation values, you would need to use this method:
 {{<highlight c>}}
 transform.rotation = Quaternion.Euler(0,1,0);

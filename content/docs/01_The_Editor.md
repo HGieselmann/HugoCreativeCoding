@@ -4,37 +4,34 @@ The first step on your journey to learn is to download and install Unity. While 
 
 I will assume you will manage to download and install Unity Hub yourself. So let’s look at managing Unity Versions and Projects with Unity Hub. On the “Installs” Tab UnityHub will tell, you that you don’t have a version of Unity installed. Thus simply click on the “Add” Button in the upper right corner. 
 {{< figure src="/img/UnityHubVersionManagement.png" title="Installed Unity versions in UnityHub" width="50%">}}
-In the next menu you can just go with the version UnityHub suggests, which will be the latest stable release. On the follwing one you can make some choices. Unity offers support to export to multiple platforms, but if you don’t want to code for i.e. facebook, you don’t need to waste space for their Source Development Kit(SDK).
-But you probably keep the checkbox with “Microsoft Visual Studio Community”. This will be our Code Editor. Click Next and let Unity do it’s thing.
+In the next menu you can just go with the version UnityHub suggests, which will be the latest stable release. On the follwing one you can make some choices. Unity offers support to export to multiple platforms, but if you don’t want to code for i.e. facebook, you don’t need to waste space for their Source Development Kit(SDK). <br> But you probably keep the checkbox with “Microsoft Visual Studio Community”. This will be our Code Editor. Click Next and let Unity do it’s thing.
 {{< figure src="/img/UnityHubVersionManagement2.png" title="Additional Options to install" width="50%">}}
-
-Under “Projects” Unity Hub will show you all your latest projects. If you don’t have one, just press the “New” Button to create One. In the next panel, you can set the Project Name and the location where you want to store your project. Unity hub will create a folder with your chosen project name. So no need to create that folder yourself.
-You will also have to choose a Template. “3D” is the default option. You will also have options for 2D and depending on the version you installed for “Lightweight RP / LWRP” or “High Definition Renderpipeline / HDRP”. It could also be, that Lightweight Renderpipeline Unity lists this as “Universal Renderpipeline”. Sooner rather than later this will become the default. Yet we will for now go with the classic “3D” version. Hit create and Unity will take a while to initialize your new project and start up the Editor.
-
+Under “Projects” Unity Hub will show you all your latest projects. If you don’t have one, just press the “New” Button to create One. 
+{{< figure src="/img/UnityHubProjects.png" title="Unity Hub Projects Window" width="50%">}}
+In the next panel, you can set the Project Name and the location where you want to store your project. Unity hub will create a folder with your chosen project name. So no need to create that folder yourself.  You will also have to choose a Template. “3D” is the default option. You will also have options for 2D and depending on the version you installed for “Lightweight RP / LWRP” or “High Definition Renderpipeline / HDRP”. It could also be, that Lightweight Renderpipeline Unity lists this as “Universal Renderpipeline”. Sooner rather than later this will become the default. Yet we will for now go with the classic “3D” version. Hit create and Unity will take a while to initialize your new project and start up the Editor. <br>
 Once Unity opens up, you should see something like this:
-![The Unity Editor](/img/UnityEditor.jpg)
+{{< figure src="/img/UnityEditor.jpg" title="Standard Unity UI" width="75%">}}
 
-Unitys “default Layout” is divided in roughly 4 parts.
+Unitys “default Layout” is divided in roughly 4 parts.<br>
 The Hierarchy Window is shows all the Objects that are present in your scene. Using the black arrows you can collapse or expand the hierarchy depending on your needs. On the top you will also see a drop-down arrow, because Unity can open multiple scenes at once.
-![The Unity Editor](/img/UnityHierarchyEditor.jpg)
+{{< figure src="/img/UnityHierarchy.jpg" title="The Hierarchy View" width="75%">}}
 
 The “Project” Window holds all Objects inside your project. You can browse this just like any directories in your operating system. You can also create folders to organize yourself. If you were to browse to your project Folder on your hard drive, you would see this structure inside the “Assets” folder. Name all your files and folders from the get go, because things can get messy real quick and not taking care of your Folder-Structure can end being a major source of frustration further down the line. Using right-click you can copy, paste, duplicate and even create new Objects. Info about the selected object will show up in the Inspector. (See below)
-![The Unity Editor](/img/UnityProject.jpg)
-
+{{< figure src="/img/UnityProject.jpg" title="The Project View" width="75%">}}
 
 The “Inspector” window shows you information on the selected object. This information comprises so called “Components”. While every Object will have a “Transform” Component the rest of the List will differ. We will look at a lot of components in this book. Just remember where to find them.
-![The Unity Editor](/img/UnityInspector.jpg)
+{{< figure src="/img/UnityInspector.jpg" title="The Inspector View" width="75%">}}
 
-The “Scene” view is your portal to viewing you current Scene. Here you move around and manipulate the objects in your scene using “Gizmos”. To move around in the scene view, you need to remember three shortcuts: 
-*Alt + Left-click* Drag to rotate
-*Alt + Right-click* Drag to zoom
-*Alt + Middle-click* Drag to pan the camera
-![The Unity Editor](/img/UnityScene.jpg)
+The “Scene” view is your portal to viewing you current Scene. Here you move around and manipulate the objects in your scene using “Gizmos”. To move around in the scene view, you need to remember three shortcuts: <br>
+*Alt + Left-click* Drag to rotate<br>
+*Alt + Right-click* Drag to zoom<br?
+*Alt + Middle-click* Drag to pan the camera<br>
+{{< figure src="/img/UnityScene.jpg" title="The Scene View" width="75%">}}
 
-Once you select and Object using left-click a *gizmo* will appear. The default should be the “move” gizmo. Hover over one of the axis and left-click-drag to move the Object along the selected axis. There are also tools for Rotation and Scale. To switch between the three you could use the buttons on the upper left toolbar. But you shouldn’t. Use the Shortcuts:
-W - Move
-E - Rotate
-R - Scale
+Once you select and Object using left-click a *gizmo* will appear. The default should be the “move” gizmo. Hover over one of the axis and left-click-drag to move the Object along the selected axis. There are also tools for Rotation and Scale. To switch between the three you could use the buttons on the upper left toolbar. But you shouldn’t. Use the Shortcuts:<br>
+W - Move<br>
+E - Rotate<br>
+R - Scale<br>
 {{<expand>}}
 If you wonder how these shortcuts come to be. Why not “R” for Rotate? Because it’s convenient for heavy users. As your thumb will always rest on “alt” for navigation, you will have quick access to the main tools for the editor.
 Also this corresponds to the Industry-Standard keyboard shortcuts many users know from Digital Content Creation Packages like Maya or Houdini.
@@ -44,11 +41,9 @@ There is also an alternative way to move around the viewport. If you hold down t
 
 
 ### Introducing the Bauhaus
-When I started writing this “book” I asked myself, what kind of “sketches” or projects I should create. Working in 3D is a complex manner and most of the time relies on external assets. But some of you may not have the possibility to download and install them. And while many readers have some knowledge about how to create 3D assets themselves I don’t want to rely on that. So what to do? Well, the answer was just all over the place. 2019 - the year I started writing - is the “Bauhausjahr”. Or the year which marks the 100th birthday of the Bauhaus movement. And while the Bauhaus isn’t that easy to pin down and I am not an art historian by any means there were things to extract for this book.
-
-They focused on reduction to simple shapes and are popular for their *Triangle, Rectangle and Circle* logo. All shapes we can create in a 3D Software. Most of them come as “Primitives” in a 3D package. Even more so, 3D engines built all objects from triangles! The extreme geometric reduction in the works of the Bauhaus often built on patterns and structures, things we can easily recreate using math.
-
-And while all of this was convenient, the thing I consider to be most important is experimentation. Many of the teachers at the Bauhaus encouraged their students to experiment. This spirit I’d like to pass onto you. With all the things we create, play around, try things, break things. It is the best way to learn these things. 
+When I started writing this “book” I asked myself, what kind of “sketches” or projects I should create. Working in 3D is a complex manner and most of the time relies on external assets. But some of you may not have the possibility to download and install them. And while many readers have some knowledge about how to create 3D assets themselves I don’t want to rely on that. So what to do? Well, the answer was just all over the place. 2019 - the year I started writing - is the “Bauhausjahr”. Or the year which marks the 100th birthday of the Bauhaus movement. And while the Bauhaus isn’t that easy to pin down and I am not an art historian by any means there were things to extract for this book.<br>
+They focused on reduction to simple shapes and are popular for their *Triangle, Rectangle and Circle* logo. All shapes we can create in a 3D Software. Most of them come as “Primitives” in a 3D package. Even more so, 3D engines built all objects from triangles! The extreme geometric reduction in the works of the Bauhaus often built on patterns and structures, things we can easily recreate using math.<br>
+And while all of this was convenient, the thing I consider to be most important is experimentation. Many of the teachers at the Bauhaus encouraged their students to experiment. This spirit I’d like to pass onto you. With all the things we create, play around, try things, break things. It is the best way to learn these things. <br>
 
 ### Homage to the Cuboid
 One teacher at the Bauhaus was Josef Albers. 
@@ -64,17 +59,13 @@ Now I know that there are many people who are not so much into the Bauhaus. And 
 
 ![The Unity Editor](/img/HomageToTheCuboid.png)
 
-So in this chapter we will create our own “Homage to the cuboid” as shown above. As you can see this will be a rather simple thing to create: We need five cubes and scale and position them. But we will also need a material for each of them. And we need to place our camera.
+So in this chapter we will create our own “Homage to the cuboid” as shown above. As you can see this will be a rather simple thing to create: We need five cubes and scale and position them. But we will also need a material for each of them. And we need to place our camera.<br>
+But first things first. Create a new scene using `ctrl + n`. You can delete everything from the new scene except the camera. This will change the background color, as the light Unity considered being the sun is gone. We will deal with this later.<br>
+Next create two cubes. You can do this by either creating them form the Menu: `GameObject ---> 3D Objects ---> Cube` or by doing a `right-click ---> 3D Objects ---> Cube` in the Hierarchy view. In the inspector make sure to set the Translation and Rotation for both cubes to `0`. We will then use one Ube as a reference for a perfect cube and the other on we will squash down using the scale tool. I scaled it down to have a scale of `0.1` on the Y-Axis. You can then duplicate this cube 4 times. You can do this in the hierarchy or just press `ctrl + d`. <br>
+Then just move them apart to liken the image above. If you want to do it more mathematically you need to move in steps of `0.225`. Once you are satisfied with your result, you can delete the reference cube. 
 
-But first things first. Create a new scene using “ctrl + n”. You can delete everything from the new scene except the camera. This will change the background color, as the light Unity considered being the sun is gone. We will deal with this later.
-
-Next create two cubes. You can do this by either creating them form the Menu: “GameObject ---> 3D Objects ---> Cube” or by doing a “right-click ---> 3D Objects ---> Cube” in the Hierarchy view. In the inspector make sure to set the Translation and Rotation for both cubes to “0”. We will then use one Ube as a reference for a perfect cube and the other on we will squash down using the scale tool. I scaled it down to have a scale of “0.1” on the Y-Axis. You can then duplicate this cube 4 times. You can do this in the hierarchy or just press “ctrl + d”. 
-
-Then just move them apart to liken the image above. If you want to do it more mathematically you need to move in steps of “0.225”. Once you are satisfied with your result, you can delete the reference cube. 
-
-Now we are missing color. Our cubes are black, because we deleted the only light source in the scene and we don’t want to bring it back! We will use so called “un-lit” shaders for now, as they will allow us to just pick colors. Lights in the scene will not affect these shaders and thus these will be more appropriate for our Josef Albers like studies. 
-
-To create a material that works fur us, create one from the “Assets” menu or in the project view using “right-click ---> create ---> Material”. After naming the material we need to change to the before mentioned shader. In the inspector find the drop-down at the top, that says Shader. In it navigate to the “UI ---> Unlit ---> Transparent” Shader. You will face many options, but we concern ourselves only with the color. Choose one by clicking on the color field.
+Now we are missing color. Our cubes are black, because we deleted the only light source in the scene and we don’t want to bring it back! We will use so called “un-lit” shaders for now, as they will allow us to just pick colors. Lights in the scene will not affect these shaders and thus these will be more appropriate for our Josef Albers like studies. <br>
+To create a material that works fur us, create one from the “Assets” menu or in the project view using `right-click ---> create ---> Material`. After naming the material we need to change to the before mentioned shader. In the inspector find the drop-down at the top, that says Shader. In it navigate to the `UI ---> Unlit ---> Transparent` Shader. You will face many options, but we concern ourselves only with the color. Choose one by clicking on the color field.
 
 GIF
 
