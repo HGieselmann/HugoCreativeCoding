@@ -1,4 +1,4 @@
-### User Interfaces
+# 12 - User Interfaces
 For many of these more “sketch-like” scenes we have been creating you probably don’t need any kind of user interface. But say you want to bring them all together to show off your progress in Unity.
 Or you could use Unity as way of creating a UI Design Test app, that could actually be easily deployed to Android or iOS phones.
 Thus we will look at how UIs are laid out in Unity and how the script setup works. We will also get our feet wet with Scene Management, which will allow us to actually switch between scenes at runtime and even retain the User Interface along the way.

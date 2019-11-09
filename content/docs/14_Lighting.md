@@ -1,6 +1,4 @@
-Title: Master  
-Author:   
-
+# 14 - Lighting
 For creatives light is super essential as soon as you leave the strictly graphical world. Light plays an important role in setting the scene and defining the mood. Think of the warm soft lighting during sundown at the beach, or a a dark alley only lit by a lone flickering streetlamp. The Lights alone can define the feeling we get, once we look at an image. The same scene in different lighting can tell completly different stories.
 create some examples here
 ### Light Sources

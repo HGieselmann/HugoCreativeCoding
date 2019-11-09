@@ -1,1 +1,0 @@
-# Animation Splines with code #

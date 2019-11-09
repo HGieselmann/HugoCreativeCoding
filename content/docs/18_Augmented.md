@@ -1,6 +1,7 @@
 Disclaimer: This chapter is written based on Unity 2019.2 and ARFoundation Package Version 2.0.2. I can only properly show the setup for Android Phones as well, as I do not have an iOS development environment.
 
-### Augmented Reality Definition
+# Augmented Reality
+### What is Augmented Reality?
 ### Designing for Augemented Reality
 Augmented Reality is one of the most interesting fields in design right now. In contrast to print or webdesign many of the precieved rules are not yet written. So you can still come up with radically new ways for designing in augmented reality and grab the attention of your users.
 On the other hand augmented reality already advanced enough for it to have some technological base that you can rely on. Apple came up with it’s ARKit framework for more recent iPhones and Googles Android System implements it’s ARCore Library to create Augmented Reality experiences. Adding on top of that are more and more devices like Microsoft’s Hololens bring these experiences directly into your field of vision.

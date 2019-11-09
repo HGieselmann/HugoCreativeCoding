@@ -1,3 +1,4 @@
+# 05 - Methods
 In this chapter we will talk about methods. We have been using them for a while now, without discussing them in detail. Methods are a collection of statements that do exactly one thing - or at least they should only do one thing. The `Update()` method is responsible for updating all the things you define each frame. The `Start()` method is responsible for setting things up in the beginning. 
 Creating or “defining” our own functions will do a lot for us. For one it well help us to avoid repetition in our code. Due to this it will also help us to write way more readable code. You might have noticed, that some of the scripts have become rather confusing. Methods are a great way to bring some order back in there. Methods can also take in arguments they can process to either change or variate what they are doing or return to you a useful value.
 {{<expand>}}

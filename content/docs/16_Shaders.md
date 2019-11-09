@@ -1,4 +1,4 @@
-### Shaders
+# 16 - Shaders
 A shader is little piece of software, or a script, that tells the graphics card how to interpret the Lighting information an object is receiving and how to interpret that light. Unlit shaders can generate these informations for themselves.
 A very simple example would be a red sphere and a white light in the scene. If the light source is sending white light, how is the sphere ending up red? How it is determining the specular light on the sphere? How is the falloff in brightness calculated? All of this done inside the shader. And while we could probably wrap our head around this, things get immensely complicated once you talk about topics like reflection or refraction.
 Luckily Unity provides us a lot of pre-built shaders. We have been using them since chapter one. But while they can be very complex, they are also very powerful an interesting.

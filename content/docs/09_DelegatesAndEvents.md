@@ -1,5 +1,7 @@
-In this chapter we will look at some other C# features and some loose ends we left along the way, because I didn’t want to bother you with them too early. The first thing we want to look at are C# Delegates and Events.
+# 09 - More Language Features
 ### Delegates and Events
+In this chapter we will look at some other C# features and some loose ends we left along the way, because I didn’t want to bother you with them too early. The first thing we want to look at are C# Delegates and Events.
+
 We discussed before how Objects can call functions on other objects. To pick a stupid example: I as a “Salesman” Object could personally call a customer and he could learn from me about all the wonderful things my car offers. I could invoke his “learn” function and the Data I send will be given to him directly.
 But what if I have a 100.000 customers. Should I make a call to all of them? While that would be a nice move, sending out a letter would be fine too, right?
 And that’s what Events are all about. If you have information for many, many customers or classes, you just send them out and anyone who subscribed to the event will get notified about it.

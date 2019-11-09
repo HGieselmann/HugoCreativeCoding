@@ -1,3 +1,4 @@
+# 17 - Audio
 “Audio is 50%!”. I don’t know how often I heard this sentence over the years yet. And yet it surly isn’t wrong! Audio adds a completely new layer to the works you create. And for some cases I guess you could argue “Audio is even 60% of the experience!”. While you can easily close your eyes or look away, you can’t so easily block out all the sound that’s around you.
 Write more on the importance of Audio
 
@@ -6,7 +7,7 @@ No that we have established the importance of audio in our projects, let’s loo
 Luckily enough Unity makes the process of setting these things up very convenient. To set it up in the first place, all we need is an “Audio Listener” and an “Audio Source”. The Audio Listener component comes pre setup with every scene you create and is attached to your camera. You only really need to think about it, when you deal with multiple cameras in your scene, because only one Audio Listener can be active at any given time. It has so settings to take care of and can only be turned on and off. So that’s nice!
 TODO Image of Audio Listener on Camera
 The Audio Source component on the other hand is a little more complex:
-TODO Image of Audio Source on
+TODO Image of Audio Source on 
 The first thing you will need to supply to your Audio Source is an actual AudioClip. To add an AudioClip to your project in the first place, you can just drag and drop an AudioFile into your project view. Or use “RightClick ---> Import New Asset...” in the project view. Then just drag an drop it into the AudioClip on your Audio Source component. If you now go ahead an enter Play mode, you will immediatly begin to hear the AudioClip you added. This works, becuse “PlayOnAwake” by default is active. You will also find some settings that will be immediately obvious: Loop, mute, pitch and Volume. Bypassing effects should be pretty much self explanatory as well.
 This all becomes more interesting once you push the Spatial blend slider all the way to the right. This will activate the 3D Sound settings you find below. To test this out, make sure your camera and Audio source are in the exact same space in your world. Then enter Play Mode and you grab your camera and move it around in the scene, while the scene is playing. You should hear the Audio Clip fading away with distance.
 How harsh this falloff will be can be defined in the curve below. The predefined Logarithmic Rolloff is how sound would react in the real world. If you want a more artistic approach to your Audio, you can switch this to a Linear falloff or even create a Custom falloff.
@@ -47,6 +48,21 @@ We create a class “Singleton”  and then as first step declare a variable nam
 Because our class is `public` and `static` we can access it from any other class in the scene:
 
 
+{{<highlight c>}}
+using UnityEngine;
+
+public class Caller : MonoBehaviour
+{
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.A)){
+            Singleton.instance.Log();
+        }
+    }
+}
+{{</highlight>}}
+
 So this is how to setup a basic singleton.
 So how can we use this to actually manage Audio in our scene?
 
@@ -86,7 +102,7 @@ public class AudioManager : MonoBehaviour
 {{</highlight>}}
 
 As you can see we just recreate the same pattern as with our basic Singleton. The rest of the class deals with actually playing Audio. We create an AudioSource for background music and one for sound effects we might want to play. We then create a function for each of them. The difference between the two functions is how we actually play the Audio.
-In the PlayMusic() method we set the music clip and then use the `Play()` function to actually play the clip.
+In the PlayMusic() method we set the music clip and then use the `Play()` function to actually play the clip. 
 In the PlaySFX method we use the `PlayOneShot()` method. The difference between the two is, that we can fire multiple sounds at the the same time when using `PlayOneShot()`, while we can make use of the loop feature, when having a dedicated AudioSource for an AudioClip.
 
 So how do we call this?
@@ -112,4 +128,5 @@ Projects
 - Generative with Audio playing, reacting
 - Audio Visualizer
 - Multiple Audio Input for better Music Visualization
--
+- 
+

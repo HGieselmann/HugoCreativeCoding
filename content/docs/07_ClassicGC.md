@@ -1,6 +1,6 @@
-### Classic CC Techniques in Unity
+# 07 - Classic CC Techniques in Unity
 If you came here as someone with a background in Processing or p5.js, you might be missing some very common processing techniques, that aren’t too obvious to recreate in Unity. The first thing being the complete handling of the background. In Processing you would handle this in the initial lines of code of your script. In Unity all this functionality is tied to the camera. We will look at setting this up in the editor first. But of course all these things are available via code as well.
-By default Unity will clear the complete Render Buffer each frame and render the default skybox as a background for your scene. The skybox sadly isn’t the most useful think when you want to create non-enviromental scenes. The most basic alternative to this is setting is a solid background color. 
+By default Unity will clear the complete Render Buffer each frame and render the default skybox as a background for your scene. The skybox obviously isn’t the most useful think when you want to create non-enviromental scenes. The most basic alternative to this is setting is a solid background color. 
 ![Setting the background to “solid color”](/img/UnityCameraBackgroundSolidColor.jpg)
 This will clear the image buffer with the selected solid color in the field right below the clear flag. As mentioned before, you can of course access all of this via script as well.
 {{<highlight c>}}

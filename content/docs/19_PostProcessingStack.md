@@ -1,3 +1,4 @@
+# 19 - Post Processing
 The last thing we will cover before we move further into bigger projects will be the Unity Post Processing Stack. The Post Processing Stack is a bunch 2D Effects you can apply to the rendered image or during the rendering process. They for the most part try to emulate characteristics of films. Like Grain, Vignette and chromatic aberration. Others try to add faked realism to images by adding motion-blur and screenspace reflections.
 We will first look at how to get the post-processing stack setup and then shortly go over the various effects, before finally looking at some practical uses.
 ### Setup

@@ -5,23 +5,31 @@ And for both worlds a great process for starting out exists. In the design world
 Pseudo Code is just a few written lines of what needs to happen. You can then try ordering them in the way the code would require execution, if you can estimate that. These can just look like your average cooking recipe. In essence they are the same.
 I recommend starting on paper, as technology sadly has a tendency to screw with your thinking process, but it can also be a good idea to bring your pseudocode into your script as a comment.
 
-For our “Hommage to the Square” experimentation I started with some simple scribbles on what could be things we could easily do with code:
+For our “Homage to the Square” experimentation I started with some simple scribbles on what could be things we could easily do with code:
 TODO INSERT SCRIBBLES AND PSEUDOCODE
 
 
+# 02 - Moving Things
 ### Structure of a script
 
-So let’s finally start writing our first script. There are multiple ways to create script, the one I prefer is creating it via `RightClick -> C# Script` in the Project View. The advantage here is: you can directly choose the folder in which the Script should be located and you don’t have to start organizing your files after the fact.
+So let’s start writing our first script. There are multiple ways to create a script, the one I prefer is creating it via `Right-click -> C# Script` in the Project View. The advantage here is: you can choose the folder in which the Script should be located and you don’t have to start organizing your files after the fact.
+
 But you can also create scripts directly from the Inspector by clicking on “Add Component” and in the search panel simply write the name you want to give to the script. If there isn’t any other component or script with the same name in your project Unity will assume you want to create a script with that name. I called my first script: “MovingCuboids_Lifting”.
-With your script created just open it using double-click. Your default Code Editor will open. This can take while depending on your system, especially when you open the editor for the first time.
+
+With your script created just open it using double-click. Your default Code Editor will open. This can take a while depending on your system, especially when you open the editor for the first time.
+
 {{< expand >}}
-## Code Editors and IDEs
-The default Code Editor for you probably is “Visual Studio Community Edition” oder “Visual Studio for Mac”. These are so-called “IDEs” - Integrated Development Environments. These are powerful tools for editing Code, they can integrate with Unity and come with many advanced features. The downside to them is, they tend to be slow to start up. And on a laptop they can be draining on your battery, as they thoroughly check your code in the background. So if you are on a low end machine it can be wise to look for a “Code Editor”. They are a lightweight alternative, but in comparison lack some advanced features.
-Great Code Editors are “Visual Studio Code” by Microsoft or “Atom” by Github, which is also part o Microsoft. There is also Sublime Text.
+### Code Editors and IDEs
+The default Code Editor for you probably is “Visual Studio Community Edition” or “Visual Studio for Mac”. These are so-called “IDEs” - Integrated Development Environments. These are powerful tools for editing Code, they can integrate with Unity and come with many advanced features. The downside to them is, they tend to be slow to start up. And on a laptop they can be draining on your battery, as they thoroughly check your code in the background. So if you are on a low end machine it can be wise to look for a “Code Editor”. They are a lightweight alternative, but in comparison lack some advanced features.
+
+Great Code Editors are “Visual Studio Code” by Microsoft or “Atom” by GitHub, which is also part of Microsoft. There is also Sublime Text.
+
 If you want to check out an IDE that is becoming more and more popular with Unity programmers look out for “Rider” by JetBrains. They also offer the very helpful Plug In “ReSharper” for Visual Studio.
 
 {{</expand >}}
 Every Unity Script comes with some “boilerplate” Code to get you started. It looks like this:
+
+
 {{<highlight c>}}
 
 	using System.Collections;
@@ -30,7 +38,7 @@ Every Unity Script comes with some “boilerplate” Code to get you started. It
 
 	public class New : MonoBehaviour
 	{
-	// Start is called before the first frame updat
+	// Start is called before the first frame updates
 		void Start()
 		{
 	
@@ -43,23 +51,32 @@ Every Unity Script comes with some “boilerplate” Code to get you started. It
 	}
 {{</highlight>}}
 
+
+
 The first few lines are “using” statements. All lines in C# that end with a semicolon are considered a “statement”. The “using” statements reference “namespaces” or libraries on your computer into the script. And I think libraries is a nice description for it.. Think of it like a book club and you define beforehand which books you want to talk about. It’s tedious to talk about “The Lord of the Rings” if the other person hasn’t read the book.
+
 Using these statements you expect Unity know about everything in the UnityEngine itself, as well as the chapters “Collections” and “Collections.Generic” from the “System” book. You can see we can access or require sub-parts using the so called “dot notation”.
 
-Next up is the class. Every script we write defines a class. You could have multiple classes in one and the same file, but that is not considered good practice in C#. Classes really are an advanced topic, so for now, let’s just say they bundle a bunch of code together. Take note of the MovingCuboids_Lifting as the class name. This corresponds to the name we gave our script file and they always need to have the same name. If you change the classname you have to change the filename and vice versa.
+Next up is the class. Every script we write defines a class. You could have multiple classes in the same file, but that is not considered good practice in C#. Classes really are an advanced topic, so for now, let’s just say they bundle a bunch of code together. Take note of the MovingCuboids_Lifting as the class name. This corresponds to the name we gave our script file and they always need to have the same name. If you change the classname, you have to change the filename and vice versa.
+
 Everything that belongs to this class is wrapped inside the following curly brackets. Curly braces define a block of Code. You can see this in the Code for the Start and Update Methods as well. All our code belongs inside the curly braces of the class, except for everything related to namespaces.
+
 Moving on to “Methods”.! Start and Update are Methods that Unity recognizes and calls during the execution of the program. The Start function is called first and only once before the program starts running. Here you would define everything you wanted to set up.
+
 The Update method is then called each frame and keeps running until you end the program. Here we have to write all our Code that changes or animates over the time of the execution of the script.
+
 {{< expand >}}
 ## What is a Frame?
-Images are rendered to your screen, one image at a time. If the distance between two images is short enough we percieve this as fluid motion. Movies are typically shot with 24 Frames per Second. Unity by default is set up to render 60 Frames per Second, which is the most common refreshrate for Monitors.
+Images are rendered to your screen, one image at a time. If the distance between two images is short enough, we perceive this as fluid motion. Movies are typically shot with 24 Frames per Second. Unity by default is set up to render 60 Frames per Second, which is the most common refresh rate for Monitors.
 {{< /expand >}}
 In general all your code is executed from top to bottom. So if you would move your using statements to the bottom, Unity or your IDE would start complaining.
+
 That concludes our first little overview of script structure.
 
 ### Variables
 The first thing Coding Concept we will dissect in detail is “Variables” . Variables are often described as boxes with a name on. You can put stuff in and later retrieve the content of the Box. You can store pretty much anything in variables.
-In C# variables have a “Type”. This makes C# a (mostly) “type safe” language. To stay with our box example, If you create a box you have to define what kind of things go inside. If you happen to have a heart-shaped box, you can only store heart-shaped things in there. If you create a round box you can only store round things in it.
+
+In C# variables have a “Type”. This makes C# a (mostly) “type safe” language. To stay with our box example, If you create a box you have to define what kind of things go inside. If you happen to have a heart-shaped box, you can only store heart-shaped things in there. If you create a round box, you can only store round things in it.
 
 #### Numbers
 C# comes with eleven (!) ways to talk about numbers. We will simplify this and only talk about three of them.
@@ -71,18 +88,21 @@ The first one is integers. Integers contain all “whole” numbers no matter if
 {{<highlight c>}}
 int integerVariable;
 {{</highlight>}}
-This code declares an integer variable with the name “integerVariable”. Right now it holds no value and if would try to access it you would encounter an error.
-You can assign to variables using the `=` sign.
+This code declares an integer variable with the name “integerVariable”. Right now it holds no value and if would try to access it, you would encounter an error.
+
+You can assign values to variables using the `=` sign.
 {{<highlight c>}}
 int integerVariable;
 integerVariable = 1;
 {{</highlight>}}
 This would initialize our integerVariable to “1”. 
+
 We could also do this in just one step:
 {{<highlight c>}}
 int integerVariable = 1;
 {{</highlight>}}
-Assignment is always done form the right side of the `=` sign to the left. This also means, that any code on the right side will first be evaluated before it is assigned to the varible on the left:
+Assignment is always done form the right side of the `=` sign to the left. This also means, that any code on the right side will first be evaluated before it is assigned to the variable on the left:
+
 {{<highlight c>}}
 int integerVariable = 1+1;
 {{</highlight>}}
@@ -98,8 +118,10 @@ Whenever we declare a float we have to append the value with a lowercase “f”
 {{<highlight c>}}
 float floatVariable = 1.1;
 {{</highlight>}}
-If we don’t do this, our code will actually not run! The above line will cause an error. The compiler can’t know which value it is, we want to store inside and if he assumes that there is chance, that he would have to loose data in the process of converting on type to the other, he won’t do it. 
+If we don’t do this, our code will actually not run! The above line will cause an error. The compiler can’t know which value it is, we want to store inside and if he assumes that there is a chance, that he would have to lose data in the process of converting on type to the other, he won’t do it. 
+
 The compiler will though convert values from one type to the other if he can be sure that no data loss can happen. This is called “implicit” conversion. Implicit conversion happens from integers to floats and floats to doubles and of course integers to doubles.
+
 If you want to force conversion for types it’s called “explicit” conversion and we do this using a “cast”:
 {{<highlight c>}}
 float floatVariable = (float)1.1;
@@ -117,23 +139,29 @@ string myString = “Hello! I am text.”;
 {{< expand >}}
 #### Conversion
 {{< /expand >}}
-What needs to be said about strings really???
+What needs to be said about strings, really???
 
 #### Objects
 Objects are the last important Data-Type we really need to know about. Objects really is a generalization for many things. Unity comes with a lot of types we will use.
+
 The first things we will see are Vectors. 
 {{<highlight c>}}
 vector3 myVector = new Vector3(1,1,1);
 {{</highlight>}}
 Vector3s are defined by Unity and essentially bundle three floats in one variable. What’s really important here is the `new` Keyword. It tells C# to allocate some space in memory for it. So if we create variables for classes, then we need to instance them using the new keyword. 
+
 Now this might sound complicated, but for now just roll with it. We will look deeper into this once we reach the chapter about classes and object orientation.
 
 ### On Pseudo Code
 Throughout the first chapters we will use our “Homage to the Cuboid” as a starting point for experimentation. This will be a great way to get started coding with very small scripts and also see how just a few lines of code can create interesting results.
-But before you actually start to code it’s often a great idea to actually think about what you want to achieve. There is also great value putting this down on paper. So let’s look at the options we have right now. We have been looking at the transform component in the editor, and this gives us exactly nine values to manipulate: X,Y and Z for each transformation: translation, rotation and scale.
+
+But before you actually start to code, it’s often a great idea to think about what you want to achieve. There is also great value putting this down on paper. So let’s look at the options we have right now. We have been looking at the transform component in the editor, and this gives us exactly nine values to manipulate: X,Y and Z for each transformation: translation, rotation and scale.
+
 TODO Sketch of possible actions:
 So let’s start with translation, bringing a little snake-like movement into our homage. We will aim for something like this:
+
 Image of moving Cuboids
+
 Now that we have a creative vision let’s start out with something called “Pseudo Code”. Pseudo code is the idea of writing something code like, but on a really high level. An abstraction which will make it easier to write the code itself later. You can use comments in your code to put down pseudo code. Comments start with double slashes `//` and everything that follows in that line will ignored by the compiler.
 
 We know that we can assign values to variables, and that we only want to change the value on one axis, so let’s use the X axis for now.
@@ -145,7 +173,7 @@ The `sin()` method will continuously create a value for us between 0 and 1. Wher
 {{<highlight c>}}
 //x = Sinus of Time
 {{</highlight>}}
-This is actually the basic idea. Now that we have that, we need to figure out how to create the offset between each of the Cuboids. We have to create some kind of an Offset for them. But what do we have to Offset? If we Offset X as a whole, we just move the cuboids apart, we actually need to offset the value the `sin()` function creates and thus need to offset the time value itself. We will also need to be able to adjust this value for each Cuboid individually. 
+This is actually the basic idea. Now that we have that, we need to figure out how to create the offset between each of the Cuboids. We have to create some kind of Offset for them. But what do we have to Offset? If we Offset X as a whole, we just move the cuboids apart, we actually need to offset the value the `sin()` function creates and thus need to offset the time value itself. We will also need to be able to adjust this value for each Cuboid individually. 
 {{<highlight c>}}
 //x = Sinus of (Time + Offset per Cuboid)
 {{</highlight>}}
@@ -169,6 +197,7 @@ This would set all our transform values to zero. But as we said, we only want to
 	transform.position = new Vector3(0, transform.position.y, transform.position.z);
 {{</highlight>}}
 This code will set our X value to 0, but retain the current values for Y and Z and thus all our positioning we did in the Unity Editor for these axis will stay put.
+
 Now to get our motion going, we need to get a hold of time and calculate the sin. Time we can grab from the Time object using `Time.time`. To calculate a sin from it we can access the “Math” class using `Mathf`.
 {{<highlight c>}}
 	float sin = Mathf.Sin(Time.time);
@@ -183,6 +212,7 @@ While we are still missing the offset, we also have a very strong movement, and 
 
 ### Public and private variables
 In our pseudo code we found, we need to create an offset for each of our Cuboids. And while we **could** go ahead an create a script for each of them, that would be very tedious work. It would also be a very awful violation of the “DRY” programming principle: “Don’t repeat yourself!”. Thus what we need is a variable we can adjust per Cuboid.
+
 We will put this variable above the Start function but inside the class:
 {{<highlight c>}}
 public class MovingCuboids_Shifting : MonoBehaviour
@@ -195,8 +225,11 @@ public class MovingCuboids_Shifting : MonoBehaviour
 }
 {{</highlight>}}
 Notice something new? We just made our variable `public`. Public variables can mainly be seen and set by other scripts. But in Unity they also show up on the component in the Inspector.
+
 Screenshot here
+
 So now we can set this value for each Cuboid separately. By default all variables and functions are private and you don’t need to put the private keyword. But sometimes it helps to clarify your code.
+
 Now that we have a value we can adjust, let’s incorporate it into our script:
 {{<highlight c>}}
 public float timeOffset = 0;
@@ -206,7 +239,8 @@ public float timeOffset = 0;
         transform.position = new Vector3(sinus, transform.position.y, transform.position.z);
     }
 {{</highlight>}}
-Now look a the placement of our offset. What do you think would happen if put it outside of the parentheses? All operations in C# follow the basic rules of precedence, but if your in doubt about them feel free to just add more parentheses.
+Now look at the placement of our offset. What do you think would happen if put it outside of the parentheses? All operations in C# follow the basic rules of precedence, but if you’re in doubt about them feel free to just add more parentheses.
+
 Lastly we want to add a scaling factor on the movement range of the cuboids:
 {{<highlight c>}}
 float movementScale = 0.25f;
@@ -242,7 +276,8 @@ float movementScale = 0.25f;
         transform.position = new Vector3(sinus, transform.position.y, transform.position.z);
     }
 {{</highlight>}}
-When and where yo put your operations depends on the situation, partly depends on style but should mostly be about readability. Which of these would you think is most clear to any other person reading this?
+When and where you put your operations depends on the situation, partly depends on style but should mostly be about readability. Which of these would you think is most clear to any other person reading this?
+
 You could even go so far as to create a completely new variable for the scaled sinus, which is very precise and thus a very good way to write your code.
 {{<highlight c>}}
 public float timeOffset = 0;
@@ -261,7 +296,8 @@ While scaling will be very similar to what we just did, rotation can be a little
 transform.Rotate(0, 1, 0);
 {{</highlight>}}
 This would rotate the object around the Y axis by a given value.
-What you can’t do however is assign a Vector3 directly to the Rotation value. Rotations in Unity are stored in Quaternions. Quaternions take in four values and help in avoiding some problems with rotations in 3D space. To set Rotation values, you would need to use this mehtod:
+
+What you can’t do however is assign a Vector3 directly to the Rotation value. Rotations in Unity are stored in Quaternions. Quaternions take in four values and help in avoiding some problems with rotations in 3D space. To set Rotation values, you would need to use this method:
 {{<highlight c>}}
 transform.rotation = Quaternion.Euler(0,1,0);
 {{</highlight>}}
@@ -274,12 +310,12 @@ To conclude this chapter I again would like to ask you to spend some time and pl
 Add examples here!
 
 Project 2 - Space Exploration
-This project is a little bit more advanced as it uses external models again and you will need to make use of “Parenting” in the hierarchy view.
+This project is a little more advanced as it uses external models again and you will need to make use of “Parenting” in the hierarchy view.
 Download the Assets here:
 Add Assets and results here!
 
 
-- learn parenting
+ - learn "parenting”
 - LowPoly Planets
 - Transform.Rotate
 - Transform.Rotate around

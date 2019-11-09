@@ -1,18 +1,18 @@
-### Conditionals
-So we know how to code some absolute basic movement. But all of that is built conveniently on the `Sin()` function and it will just always run, we have no way of interfering with it.
+# 04 - Conditionals
+So we know how to code some absolute basic movement. But all of that is built conveniently on the `Sin()` function and it will just always run, we have no way of interacting with it.
 What if we could do things based off of some condition. Let’s say you press a button, move the mouse or tilt your phone?
-This is where “Conditionals” come in. Conditionals will manage how your code will “flow”, and they belong to group of programming ideas that people refer to as “Control Flow”. Conditionals in their widest used form come as “if-else” statements. The ideas is, to run code if a certain condition is met a.k.a “True”. You then can have a statement that defines what happens if the condition turns out not to be true, but that’s not a hard requirement.
+This is where “Conditionals” come in. Conditionals will manage how your code will “flow”, and they belong to a group of programming ideas that people refer to as “Control Flow”. Conditionals in their widest used form come as “if-else” statements. The ideas is, to run code if a certain condition is met - a.k.a “true”. You can then have a statement that defines what happens if the condition turns out not to be true, but that’s not a hard requirement.
 {{<highlight c>}}
-if(True){
+if(true){
 	// This Code would run
 }
-if (False){
+if (false){
 	// This code would not run
 }
 {{< / highlight  >}}
-As you can see, the syntax for this is pretty straight forward. You start out with a simple `if` put True or False in parentheses and add your code in curly braces.
-While this is perfectly valid code, it’s also pretty nonsensical. The first condition is True and will always be True and the second piece of code will never run. That makes no sense at all.
-To make sense of this we need to introduce a new Type: The boolean. Exactly like floats or integers you can create variables for booleans and do “calculations” with them. Yet these calculations need to return true or false. Here are some example:
+As you can see, the syntax for this is pretty straight forward. You start out with a simple `if` put `true` or `false` in parentheses and add your code in curly braces.
+While this is perfectly valid code, it’s also pretty nonsensical. The first condition is `true` and will always be `true` and the second piece of code will never run. That makes no sense at all!
+To make sense of this we need to introduce a new Type: The boolean. Exactly like floats or integers you can create variables for booleans and do “calculations” with them. Yet these calculations need to return `true` or `false`. Here are some example:
 {{<highlight c>}}
 bool myBool = 2 > 1; //returns True;
 bool myOtherBool = 2 < 1; //returns False;
@@ -24,8 +24,8 @@ You can actually use a few of these operators:
 `<=` smaller or equal
 `==` is equal to
 `!=` not equal to
-While all of these are pretty straight forward I want to point your attention shortly on the is equal to operator. It uses double equals. As you know we already have single equals in use to assign values to variables.
-Using boolean variables or expressions in the parentheses we can make these if statements actually useful. For example we could check if our the sinus value on our moving cuboids is negative and then inverse it into a positive number:
+While all of these are pretty straight forward I want to point your attention shortly on the “is equal to” operator. It uses double equals. As you know we already have single equals in use to assign values to variables, thus double equals is required for comparison.
+Using boolean variables or expressions in the parentheses we can make these if statements actually useful. For example we could check if the sinus value on our moving cuboids is negative and then inverse it into a positive number:
 {{<highlight c>}}
 if (sinus < 0){
 	sinus  = sinus *-1;
@@ -33,7 +33,7 @@ if (sinus < 0){
 {{</highlight>}}
 In the above code the expression `sinus < 0` would evaluate to a boolean of either `true` or `false`. Leading to a bouncing motion of the cuboids, as we essentially mirror the negative values of sinus into positive values.
 Add Gif of result
-*If-statements* also come in two more variants: *If-else* and *If-else if-else*. The idea behind the should be pretty clear from the naming itself, but let’s explore them in detail. While a single *if-statement* will just return to the main-body of code if the condition is not met, an else statement will execute another piece of code. Think of an amusement park ride. You are either tall enough, or not:
+*If-statements* also come in two more variants: *If-else* and *If-if else-else*. The idea behind these should be pretty clear from the naming itself, but let’s explore them in detail. While a single *if-statement* will just return to the main-body of code if the condition isn’t met, an else statement will execute another piece of code. Think of an amusement park ride. You are either tall enough and can enter or you are too short and will be send away...
 {{<highlight c>}}
 bool isAllowedOnRide;
 float height = 150; // in cm
@@ -45,7 +45,7 @@ if (height >= 150){
 	Debug.Log(”You are too small, kid. Sorry...);
 }
 {{</highlight>}}
-This code would make sure either one of both blocks is run. If you would simply use an *if-statement* to set the boolean, you could run into an error.
+This code would make sure either one of both blocks is run. 
 The last option are *If-else if-else* statements, in which you you could actually have as many *else ifs* as you like. An example could be a code that checks which team won in a football match, or if the match ended in a tie.
 {{<highlight c>}}
 int TeamAGoals = 2;
@@ -153,11 +153,15 @@ public class ConditionalCuboids_Shifting_XAKeyDeltaTime : MonoBehaviour
 
 
 ### Input Manager
-All of the above will pretty much only get us access to Keys on the Keyboard. What about controllers and mouse input? For these Unity provides the very convenient Input Manager. It allows you to ask for named input like “Jump” or “Horizontal”.  A single axis can then be also controlled by multiple buttons. If you are familiar with. I.e. the “horizontal” input will by default react to the “left/right” keys as well as “a” and “D”. It will even react to joystick input from a controller.
-These possibilities now lead to a different behavior as well. It’s not enough to return a boolean for the horizontal axis, because there are more states to consider then on/off. We have to at least consider three: Left, Right and No Input. To represent this values will typically be in between -1 and 1. Negative values corresponding to left and positive value corresponding to right.
-To see which values are read by Unity and how they are configured you need to check the Input Panel in te Player Settings: “Edit ---> Player Settings ---> Input”.
+All of the above will pretty much only get us access to keys on the Keyboard. What about controllers and mouse input? For these Unity provides the very convenient Input Manager. It allows you to ask for named input like “Jump” or “Horizontal”.  A single axis can then also be controlled by multiple buttons. If you are familiar with video games, you might have seen that you can control a car with “wasd” as well as the arrow keys. In Unity the “horizontal” input will by default react to the “left/right” keys as well as “a” and “D”. It will even react to joystick input from a controller.
+These possibilities now lead to a different behavior as well. It’s not enough to return a boolean for the horizontal axis, because there are more states to consider then on/off. We have to at least consider three: Left, Right and No Input. To represent this, values will typically be in between -1 and 1. Negative values corresponding to *left* and positive value corresponding to *right*.
+To see which values are read by Unity and how they are configured you need to check the Input panel in the Player Settings: “Edit ---> Player Settings ---> Input”.
 Insert Image here
-If you pop open one of the Axis you can see which buttons are mapped to those and the name connected to them. The name is what you would eventually use in your code to access them:
+If you pop open one of the Axis you can see which buttons are mapped to the axis and the name connected with it. The name is what you would eventually use in your code to access them:
+{{<highlight c>}}
+float movementDirection = Input.GetAxis(”Horizontal”);
+{{</highlight>}}
+One thing to note: You are asking for the axis by name. You code editor can and will not help you here with spell-checking. If you mis-type “Horizontal”, your code won’t run!
 
 ### Mouse Input
 So as I can’t assume you have a game controller laying about, let’s play with mouse Input. Mouse Input is special in a way: You have to some how deal with mouse movement speed.
@@ -190,6 +194,8 @@ public class ConditionalCuboids_Popping_MouseSpeed : MonoBehaviour
 }
 {{</highlight>}}
 
+
+
 ###
  TODO Mouse Input Clicking?
 
@@ -197,7 +203,7 @@ public class ConditionalCuboids_Popping_MouseSpeed : MonoBehaviour
 The folks at Unity are currently working on a new Input System, that remedies some of the problems of the current one. This should most likely not concern you too much, but if you think of working on something, that needs crazy input options, you should probably take a look at that!
 
 ### Colors in Unity
-Color of course is it’s own type in Unity. This means colors need to be created using the `new` Keyword. The arguments we can pass to the constuctor are red, green blue and an optional alpha value. 
+Color of course is it’s own type in Unity. This means colors need to be created using the `new` Keyword. The arguments we can pass to the constructor are red, green, blue and an optional alpha value. 
 {{<highlight c>}}
 Color myRed = new Color(1,0,0); // This would be pure red
 Color myGreen = new Color(0,1,0); // This would be pure green
@@ -207,20 +213,20 @@ Color myTransparent = new Color(.5f, .5f, .5f, .5f); // This would be a transpar
 {{<expand>}}
 Unity comes with some static colors as well, which you can use for convenience. `Color.black` for example could be used just to quickly define a default value.
 {{</expand>}}
-Given this, working with colors is pretty much straight forward, what is a little awkward on the other hand, is assigning the Colors. We need to access the Color Component on the Material Component on the Renderer Component on our object. It’s a long line of code for just a small assignment and it looks like this:
+Given this, working with colors is pretty much straight forward. A little awkward on the other hand is assigning the colors. We need to access the Color Component on the Material Component on the Renderer Component on our object. It’s a long line of code for just a small assignment and it looks like this:
 {{<highlight c>}}
 GetComponent<Renderer>().material.color = new Color(1,0,0);
 {{</highlight>}}
-Using this we could change the Color of our squares on Button press. But we would have to define color on each square and we could not do much else.
-Luckily Unity provides us with some Methods to retrieve or set Colors differently using the Hue, Saturation and Value approach.
+Using this we could change the Color of our cuboids on Button press. But using this, we can only set them to predefined colors or using randomness.
+Luckily Unity provides us with some Methods to retrieve or set colors differently using the Hue, Saturation and Value approach.
 Setting HSV Colors works very similar to creating Colors using the RGBA approach.
 - {{<highlight C>}}
 Color myColor = Color.HSVToRGB(0,1,1);
 {{</highlight>}}
-But it also yields the same reults. We can define a color. We just use other means to do so. More interesting would be to actually manipulate colors. Unity does not provide a way to do this. But we can build our own manipulation tools!
-The code for this stars growing and will also use some Syntax we haven’t seen so far and yet it is rather straight forward. First we need to declare variables for hue, saturation and value. All of them will be handled as values between 0 and 1 and thus are defined as floats. Then we create a variable for our the current Color of the GameObject and retrieve it .
-Then we use a “static” method on the color class which we pass the current color and tell, to which variables it should assign the three HSV values.
-With those now assigned, we can manipulate one of those values. Here we choose Hue to shift the color around the colorwheel. We also add a Condition to check if we surpass 1, if so, we subtract 1 to also go in circles.
+But it also yields the same reults. We can define a color. We just use other means to do so. More interesting would be to actually manipulate colors. Unity does not provide a way to do this out of the box. But we can build our own manipulation tools!
+The code for this starts growing and will also use some syntax we haven’t seen so far and yet it is rather straight forward. First we need to declare variables for hue, saturation and value. All of them will be handled as values between 0 and 1 and thus are defined as floats. Then we create a variable for our the current color of the GameObject and retrieve it .
+Then we use a “static” method on the color class which we pass the current color and tell it to which variables it should assign the three HSV values.
+With those now assigned, we can manipulate one of those values. Here we choose Hue to shift the color around the color wheel. We also add a Condition to check if we surpass 1, if so, we subtract 1 to make sure we start on the other side of the circle again.
 Finally we construct a new Color from hue, saturation and value and assign it back to our Square.
 {{<highlight c>}}
 float h,s,v;
@@ -232,6 +238,7 @@ if(h > 1){
 }
 GetComponent<Renderer>().material.color = Color.HSVToRGB(h,s,v);
 {{</highlight>}}
+
 {{< expand>}}
 ### Color Math
 Unity also allows for doing basic math operations between Colors. The following Code would give you magenta.

@@ -1,3 +1,4 @@
+# 13 - Animation
 Animation is huge topic. Animation can be about bringing characters to life or about just creating a pleasing transition between two pages in app. Animation can be about huge strides and yet shines when the most subtle feelings of an character
 
 Philisophical shit about Animation
