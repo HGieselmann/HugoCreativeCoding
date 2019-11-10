@@ -5,18 +5,15 @@ Maybe you have already encountered the console. Whenever you write code, your co
 {{<highlight c>}}
 transform.positio = transform.positio + new Vector3(1, 0, 0)* Time.deltaTime;
 {{</highlight>}}
-![Console Error](/img/consoleError.jpg)
+{{< figure src="/img/consoleError.jpg" title="Error in the Console" width="100%">}}
 As soon as you do this, your computer will complain. But not only will he complain, he will also try to tell you what it is he does not understand:<br>
-`Assets\Scripts\MyScript.cs(19,19): error CS1061: 'Transform' does not contain a definition for 'positio' and no accessible extension method 'positio' accepting a first argument of type 'Transform' could be found (are you missing a using directive or an assembly reference?)`
+`Assets\Scripts\MyScript.cs(19,19): error CS1061: 'Transform' does not contain a definition for 'positio' and no accessible extension method 'positio' accepting a first argument of type 'Transform' could be found (are you missing a using directive or an assembly reference?)`<br>
 Here, he tells us he knows about Transform but does not understand “positio”. And sure enough he doesn’t.<br>
 He is also kind enough to print out the line in which he has problems understanding you. So this is the place where you should start your process of debugging. You can even just double-click on the error message and Unity will take you to the line that is causing the error.<br>
 Dealing with errors can be very disheartening. But!... what you always have to remember is that this never means that you are bad programmer. Mistakes happen! Especially in the beginning. They will stay and that’s fine. Everyone knows this happens, and that’s why every code editor will try to do it’s best to prevent you from making errors. Auto-completion for example can help to avoid errors. Any red squiggly line in the code editor is an attempt to notify you, that Unity will produce an Error in the code.
 
 Apart from errors Unity also displays “Warnings” here. Warnings will not break your code. This could for example happen if you use functions that are “Obsolete”. Meaning they are still here for legacy reasons, but will in later Versions of Unity be removed from the code. If you are just playing around, ignore stuff like this, but at least consider what the alternative is.<br>
 Warnings can be manifold, so if you run into one and the displayed message isn’t a helpful try looking it up in your favorite search engine.
-
-TODO Inspector Debug Mode
-
 
 ### The power of “Debug.Log”
 Often in programming we think about what we want to achieve and yet the computer does not do what we want him to. Especially as a beginner we often assume the computer knows something it doesn’t. So we can ask the Computer to tell us what he understands is going on. <br>
@@ -30,17 +27,22 @@ If you have a Debug.Log statement in your code, which you don’t need but think
 And while this is a helpful way to get a better grasp of your code, you shouldn’t get in the habit of cluttering them all over the place in your code.
 
 
+### Debug Inspector
+Now it would be tedious to expose every private variable you want to see on a script via `Debug.Log()`. Unity also provides us with the “Debug mode” in the Inspector. To enable it, all you have to do is, click on the tiny “burger-menu” in the upper right corner of the Inspector and select “Debug”. Here you can also switch back to the “normal” mode. <br>
+{{< figure src="/img/DebugInspector.jpg" title="Inspector in Debug Mode" width="100%">}}
+As soon as “debug mode” is enabled, you should see private variables from your script show up next to the public ones. Unity will then also expose a lot of under the hood options and variables and with these create a lot of clutter inside your inspector. Thus you don’t want this to be the default.
+
 ### Breakpoints
 Besides Debug.Log you can also use so called breakpoints. Breakpoints allow you to specify a line of code inside your IDE and once your program reaches that line, Unity will switch back to the IDE and you can click on all the variables and check their current values. This is a fantastic tool for debugging your code. you can even go into playmode from the IDE. But it is restricted to IDEs, so you will need to use Visual Studio Community or Jetbrains Rider, while Code Editors like Visual Studio Code will not suffice.<br>
 Here is how to use them in Visual Studio Community, which ships with Unity:<br>
 Inside the Code Editor on the far left of the document window you will see grey bar. You can click on that bar in front of the line you want to use as a breakpoint. At this line a red dot will appear and it will color the line red, meaning it set your breakpoint up.<br>
+{{< figure src="/img/VSBreakPoint.jpg" title="Added BreakPoint in Visual Studio" width="100%">}}
 In the top bar of your IDE you will find a button called “Attach to Unity” and a drop-down arrow right beneath it which will allow you to choose “Attach to Unity and Play”. Select either. If you opt for the first one you have to switch to Unity and manually enter play mode.<br>
-Once the light you specified is encountered Unity will switch back to your VS Community and mark the line yellow. It will also pop up a few windows on the bottom, i.e. a list of all the variables active and which values are assigned to them. You can explore the object.<br>
+Once the line you specified is encountered, Unity will switch back to your VS Community and mark the line yellow. It will also pop up a few windows on the bottom, i.e. a list of all the variables active and which values are assigned to them. You can explore the object.<br>
+{{< figure src="/img/VSStepThrough.jpg" title="Hold on Breakpoint" width="100%">}}
+Using the `F10` and `F11` Keys you can step through the code. *Step In* will become interesting once we have looked at Methods in chapter five. For now F10 will allow you to go through the code line by line. This allows you to see what exactly is going on inside your script.
+To stop debugging you can press the red “Stop Button” that appeard the moment you pressed start, or stop the scene inside Unity. I should note, that by default you will not be able to edit code while debugging is running. And for now you should keep it that way.
 Once you have found your problem you can press the red dot again and it will vanish, bringing everything back to normal.<br>
-ScreenShots!
-Walk through line by line missing!
-F10 and F11
-You can’t edit code while you are debugging!!!
 
 
 ### Still stuck?

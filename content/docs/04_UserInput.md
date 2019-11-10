@@ -32,7 +32,7 @@ if (sinus < 0){
 }
 {{</highlight>}}
 In the above code the expression `sinus < 0` would evaluate to a boolean of either `true` or `false`. Leading to a bouncing motion of the cuboids, as we essentially mirror the negative values of sinus into positive values.
-Add Gif of result
+{{< figure src="/img/04MovingCuboids_ShiftingX.gif" title="Mirrored X Animation" width="50%">}}
 *If-statements* also come in two more variants: *If-else* and *If-if else-else*. The idea behind these should be pretty clear from the naming itself, but let’s explore them in detail. While a single *if-statement* will just return to the main-body of code if the condition isn’t met, an else statement will execute another piece of code. Think of an amusement park ride. You are either tall enough and can enter or you are too short and will be send away...
 {{<highlight c>}}
 bool isAllowedOnRide;
@@ -57,8 +57,7 @@ if (TeamAGoals > TeamBGoals){ 	DebugLog(”Team A Wins!”);
 	Debug.Log(”Tie!”);
 }
 {{</highlight>}}
-We can of course make use of these in our Homage to decide for one approach or another using these statements. An example could look like this:
-Example here
+We can of course make use of these in our Homage to decide for one approach or another using these statements. 
 Based on a boolean we promoted to the Editor we can offset the bouncing direction.
 {{<highlight c>}}
 using UnityEngine;
@@ -84,19 +83,23 @@ public class ConditionalCuboids_Shifting_XZ_AppartSimple : MonoBehaviour
     }
 }
 {{</highlight>}}
-Here we promote a boolean to the Unity Editor. Booleans will show up as checkboxes. So now we can select in the Editor the Cuboids we want to move along another axis. We’ll explore examples of this while working with UserInput.
+Here we promote a boolean to the Unity Editor. Booleans will show up as checkboxes. So now we can select in the Editor the Cuboids we want to move along another axis. An example could look like this:
+{{< figure src="/img/04MovingCuboids_ShiftingX_Appart.gif" title="Cuboids shifting on either X or Z" width="50%">}}
 
 ### Getting User Input
 As Unity is in it’s core a game engine one of it’s core features is to do something based on User Input. Every game obviously needs this way of interaction. Unity offers a variety of Inputs. You can check if a button has pressed and get a short pulse like answer, or as for a continuous answer while a button is pressed down. These Inputs will provide you with a simple `true` or `false` answer. For more complex input methods like game controllers and joysticks you can receive their current values. You can even grab values like touches and orientation from mobile devices.<br>
 The most basic Input we can get is “anyKey”.
 Include Gif here with Button Pressed visualization
 {{<highlight c>}}
-if (Input.anyKey) {     transform.position = new Vector3(transform.position.x, sinus,transform.position.z);  }
+if (Input.anyKey)
+{
+    transform.position = new Vector3(transform.position.x, sinus,transform.position.z); 
+}
 {{</highlight>}}
 `Input.anyKey` will return `true` as long as any Input is received. And while it’s fine for our purpose, there really aren’t that many practical uses to *anyKey*. Most likely you will want to check for a specific button. To ask for these, you also need to choose what kind of event you are interested in. Here are the basic methods to use:<br>
-GetKey() - Returns `true` while Key is pressed.<br>
-GetKeyDown() - Returns `true` the moment the Key is pressed down<br>
-GetKeyUp() - Returns `true` the moment the button is released<br>
+`GetKey()` - Returns `true` while Key is pressed.<br>
+`GetKeyDown()` - Returns `true` the moment the Key is pressed down<br>
+`GetKeyUp()` - Returns `true` the moment the button is released<br>
 You will also need to specify the Key you want to check using “KeyCodes”:<br>
 {{<highlight c>}}
 if (Input.GetKeyDown(KeyCode.A){

@@ -1,4 +1,4 @@
-See further down
+CHAPTER INTRO - REWORK THIS
 
 These two thing will perfetly go hand in hand, as Design, as well as Coding are Skills. You can read about them as much as you want, but you will only become good at it by actually designing stuff and actually writing code. This is actually an important point. A lot of the ideas of programming are in their core not hard to grasp. A lot of them are really straight forward. What makes programming complex is dividing bigger problems into smaller problems and even smaller problems. And becoming good at this thoughtprocess takes practice. When I went to Drawing school to prepare for my design studies I didn’t get any better until the moment my teacher Ivan forced me to come back with 100 drawings of simple things within a week. The Website drawabox.com has a challenge of drawing 250 boxes.
 And for both worlds a great process for starting out exists. In the design world you start out by doing scribbles or storyboards to get an idea of what the result should look like. In coding you should start with so called “Pseudo Code”.
@@ -47,7 +47,7 @@ Every Unity Script comes with some “boilerplate” Code to get you started. It
 
 
 
-The first few lines are “using” statements. All lines in C# that end with a semicolon are considered a “statement”. The “using” statements reference “namespaces” or libraries on your computer into the script. And I think libraries is a nice description for it.. Think of it like a book club and you define beforehand which books you want to talk about. It’s tedious to talk about “The Lord of the Rings” if the other person hasn’t read the book. <br>
+The first few lines are “using” statements. All lines in C# that end with a semicolon are considered a “statement”. The “using” statements reference “namespaces” or libraries on your computer into the script. And I think libraries is a nice description for it. Think of it like a book club and you define beforehand which books you want to talk about. It’s tedious to talk about “The Lord of the Rings” if the other person hasn’t read the book. <br>
 Using these statements you expect Unity know about everything in the UnityEngine itself, as well as the chapters “Collections” and “Collections.Generic” from the “System” book. You can see we can access or require sub-parts using the so called “dot notation”.
 
 Next up is the class. Every script we write defines a class. You could have multiple classes in the same file, but that is not considered good practice in C#. Classes really are an advanced topic, so for now, let’s just say they bundle a bunch of code together. Take note of the MovingCuboids_Lifting as the class name. This corresponds to the name we gave our script file and they always need to have the same name. If you change the classname, you have to change the filename and vice versa. <br>
@@ -189,7 +189,7 @@ Here we calculate the Sin value of the current time and store it in a float vari
 	float sin = Mathf.Sin(Time.time);
 	transform.position = new Vector3(sin, transform.position.y, transform.position.z);
 {{</highlight>}}
-TODO Zwischenstands ergebnis hier
+{{< figure src="/img/MovingCuboids_Shifting_X_Intermediate.gif" title="Well... it’s a start..." width="50%">}}
 While we are still missing the offset, we also have a very strong movement, and we might want to control both of these.
 
 ### Public and private variables
@@ -207,9 +207,7 @@ public class MovingCuboids_Shifting : MonoBehaviour
 }
 {{</highlight>}}
 Notice something new? We just made our variable `public`. Public variables can mainly be seen and set by other scripts. But in Unity they also show up on the component in the Inspector.
-
-Screenshot here
-
+{{< figure src="/img/ExposedVariables.jpg" title="Variables exposed in the Inspector" width="50%">}}
 So now we can set this value for each Cuboid separately. By default all variables and functions are private and you don’t need to put the private keyword. But sometimes it helps to clarify your code.
 
 Now that we have a value we can adjust, let’s incorporate it into our script:
@@ -271,6 +269,8 @@ float movementScale = 0.25f;
         transform.position = new Vector3(scaledSinus, transform.position.y, transform.position.z);
     }
 {{</highlight>}}
+Whichever way you choose. You should now have something like this happening. You can pat yourself on the back. All of this an important first step!
+{{< figure src="/img/MovingCuboids_Shifting_X.gif" title="Cuboids Shifting on the X Axis" width="50%">}}
 
 ### Rotation
 While scaling will be very similar to what we just did, rotation can be a little harder. But this is totally dependent on your needs. If you only need to rotate an object around an axis, rotation can be as simple as:
@@ -282,13 +282,15 @@ What you can’t do however is assign a Vector3 directly to the Rotation value. 
 {{<highlight c>}}
 transform.rotation = Quaternion.Euler(0,1,0);
 {{</highlight>}}
+{{< figure src="/img/MovingCuboids_Rotating25.gif" title="RotatingCuboids" width="50%">}}
 
 Add Parenting rotation Script here
 
 ### Projects
 Project 1 - Variants
 To conclude this chapter I again would like to ask you to spend some time and play with the concepts you learned in this chapter some more. Here are some things I came up with you could achieve only using the concepts we introduced so far.
-Add examples here!
+{{< figure src="/img/MovingCuboids_ScalingXZ.gif" title="Cuboids Scaling on X and Z" width="50%">}}
+{{< figure src="/img/MovingCuboids_ScalingY.gif" title="Cuboids Scaling on the Y Axis" width="50%">}}
 
 Project 2 - Space Exploration
 This project is a little more advanced as it uses external models again and you will need to make use of “Parenting” in the hierarchy view.
