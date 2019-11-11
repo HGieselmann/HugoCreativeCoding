@@ -107,6 +107,7 @@ if (Input.GetKeyDown(KeyCode.A){
 }
 {{</highlight>}}
 To decide for a Key we want to check for we use “KeyCodes”. You can simply provide them in the parentheses. `KeyCode.A` will check for the “A” Key on the Keyboard. `KeyCode.B` will check for the “B” Key on the keyboard and so forth. Some of these KeyCodes can be a little unintuitive. I.e. checking for `KeyCode.1` won’t work. You have to specify `KeyCode.Alpha1`. “Alpha” for Alphanumerical. If you can’t seem to find the key you are looking for eith the help of your IDE, check your go to search engine.
+{{< figure src="/img/ConditionalCuboids_Shifting_X_Anykey.gif" title="Cuboids Shifting on Keypress" width="50%">}}
 
 ### Delta Time
 Take a look back at the example above. That code works fine, but we also kind of introduced a bug into our code. The moment we press the “A” Key all our squares jump and then keep moving. A more pleasing result would be to have them starting of where we stopped them when releasing the button before. So let’s think about our code. Where exactly does the movement come from?<br>
@@ -124,7 +125,7 @@ if (Input.GetKey(KeyCode.A))
 }
 {{</highlight>}}
 Now you can use timePressed instead of Time.time in your sin-Function. And the Animation should continue where it left of.
-Add smoothly advancing cuboids here
+{{< figure src="/img/ConditionalCuboids_Shifting_X_AnykeyDeltaTime.gif" title="Much Better!" width="50%">}}
 Here is the full code for that:<br>
 {{<highlight c>}}
 using UnityEngine;
@@ -159,7 +160,7 @@ public class ConditionalCuboids_Shifting_XAKeyDeltaTime : MonoBehaviour
 All of the above will pretty much only get us access to keys on the Keyboard. What about controllers and mouse input? For these Unity provides the very convenient Input Manager. It allows you to ask for named input like “Jump” or “Horizontal”.  A single axis can then also be controlled by multiple buttons. If you are familiar with video games, you might have seen that you can control a car with “wasd” as well as the arrow keys. In Unity the “horizontal” input will by default react to the “left/right” keys as well as “a” and “D”. It will even react to joystick input from a controller.<br>
 These possibilities now lead to a different behavior as well. It’s not enough to return a boolean for the horizontal axis, because there are more states to consider then on/off. We have to at least consider three: Left, Right and No Input. To represent this, values will typically be in between -1 and 1. Negative values corresponding to *left* and positive value corresponding to *right*.<br>
 To see which values are read by Unity and how they are configured you need to check the Input panel in the Player Settings: “Edit ---> Player Settings ---> Input”.
-Insert Image here
+{{< figure src="/img/UnityInputManager.jpg" title="The Unity Input Manager" width="50%">}}
 If you pop open one of the Axis you can see which buttons are mapped to the axis and the name connected with it. The name is what you would eventually use in your code to access them:
 {{<highlight c>}}
 float movementDirection = Input.GetAxis(”Horizontal”);
@@ -169,28 +170,26 @@ One thing to note: You are asking for the axis by name. You code editor can and 
 ### Mouse Input
 So as I can’t assume you have a game controller laying about, let’s play with mouse Input. Mouse Input is special in a way: You have to some how deal with mouse movement speed.<br>
 Thus the Input from “Mouse X” and “Mouse Y” will be the mouse delta, or the distance it traveled during the last frame. We could this create a variant that’s based on the overall speed of our mouse!
-Insert gif here
+{{< figure src="/img/ConditionalCuboids_Popping_MouseSpeed.gif" title="Movement based on MouseSpeed" width="50%">}}
 {{<highlight c>}}
-using UnityEngine;
-
 public class ConditionalCuboids_Popping_MouseSpeed : MonoBehaviour
 {
     public float movementSpeed = 0.01f;
     private float movement = 0f;
-    public float bounds = .5f;
+    private float bounds = .5f +.1125f;
 
     void Update()
     {
         movement = Input.GetAxis("Mouse X") + Input.GetAxis("Mouse Y");
         movement *= movementSpeed;
         transform.Translate(0, movement, 0);
-        if (transform.position.y > bounds +.225f)
+        if (transform.position.y > bounds)
         {
-            transform.position -= Vector3.up;
+            transform.position -= Vector3.up * 1.1125f;
         }
-        else if(transform.position.y < -bounds - .225f)
+        else if(transform.position.y < -bounds)
         {
-            transform.position += Vector3.up;
+            transform.position += Vector3.up * 1.1125f;
         }
         movement = 0f;
     }
@@ -206,7 +205,9 @@ public class ConditionalCuboids_Popping_MouseSpeed : MonoBehaviour
 The folks at Unity are currently working on a new Input System, that remedies some of the problems of the current one. This should most likely not concern you too much, but if you think of working on something, that needs crazy input options, you should probably take a look at that!
 
 ### Colors in Unity
-Color of course is it’s own type in Unity. This means colors need to be created using the `new` Keyword. The arguments we can pass to the constructor are red, green, blue and an optional alpha value. 
+This part is probably a stub
+We have been working with colors for a while now, but it always was manually selecting them through the Unity Editor. But we can also work with them on a code basis. <br>
+Color are their own `type` in Unity. This means colors need to be created using the `new` Keyword. The arguments we can pass to the constructor are red, green, blue and an optional alpha value. 
 {{<highlight c>}}
 Color myRed = new Color(1,0,0); // This would be pure red
 Color myGreen = new Color(0,1,0); // This would be pure green
@@ -220,7 +221,7 @@ Given this, working with colors is pretty much straight forward. A little awkwar
 {{<highlight c>}}
 GetComponent<Renderer>().material.color = new Color(1,0,0);
 {{</highlight>}}
-Using this we could change the Color of our cuboids on Button press. But using this, we can only set them to predefined colors or using randomness.<br>
+While we are now able to change the color, we can just switch it to predefined values. How about we try to create a little more flexibility?<br>
 Luckily Unity provides us with some Methods to retrieve or set colors differently using the Hue, Saturation and Value approach.<br>
 Setting HSV Colors works very similar to creating Colors using the RGBA approach.
 - {{<highlight C>}}
