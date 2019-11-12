@@ -243,6 +243,8 @@ if(h > 1){
 GetComponent<Renderer>().material.color = Color.HSVToRGB(h,s,v);
 {{</highlight>}}
 
+{{<gist HGieselmann 6b47e6aeda78995e404c2dd7d4ddc274>}}
+
 {{< expand>}}
 ### Color Math
 Unity also allows for doing basic math operations between Colors. The following Code would give you magenta.
@@ -252,11 +254,33 @@ Color myColor = Color.Red + Color.Blue;
 Color math is actually just Vector Math. And Vector Math is nothing else as separating the components and dealing with red, green and blue one at a time.
 {{</expand>}}
 
+### Gradients
+TODO
 
 
-If you are a little older, like me, you will probably know what is coming up. In the early 2000s wherever there was a DVD Player waiting for something to happen, there was a bouncing DVD Logo. This served as a screensaver to prevent the CRT displays from burning in an image. This thing was so omnipresent that it later got featured on “The Office” and someone even dedicated it it’s own website: https://bouncingdvdlogo.com/
-But it’s also a very nice exercise for us to code.<br>
-Of course we will add our own touch to it!
+
+### Projects 1
+Your most obvious choice should be to go ahead and create more Cuboids! At least I did. <br>
+Can you think of a way to recreate these? What would your steps be? The first two should be easy, but how would you solve the last one? Make sure to try these yourself before you peek at the code!
+{{< figure src="/img/ConditionalCuboids_ShiftingXZ.gif" width="25%">}}
+{{<expand>}}
+Gist here
+{{</expand>}}
+{{< figure src="/img/ConditionalCuboids_Popping_Popping.gif" width="25%">}}
+{{<expand>}}
+Gist here
+{{</expand>}}
+{{< figure src="/img/ConditionalCuboids_BouncingBall.gif" width="25%">}}
+{{<expand>}}
+Gist here
+{{</expand>}}
+Can you think of a way to recreate these? What would your steps be? The first two should be easy, but how would you solve the last one?
+
+###  Projects 2
+If you are a little older, like me, you will probably know what is coming up. <br> 
+In the early 2000s wherever there was a DVD Player waiting for something to happen, there was a bouncing DVD Logo. This served as a screensaver to prevent the CRT displays from burning in an image. This thing was so omnipresent that it later got featured on “The Office” and someone even dedicated it it’s own website: https://bouncingdvdlogo.com/ <br>
+But it’s also a very nice exercise for us to code. <br>
+Of course we will add our own touch to it! <br>
 TODO UNITY SCRIPT
 PROJECT WALKTHROUGH
  Yo
