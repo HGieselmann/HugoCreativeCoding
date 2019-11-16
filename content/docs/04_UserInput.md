@@ -62,7 +62,7 @@ Based on a boolean we promoted to the Editor we can offset the bouncing directio
 {{<highlight c>}}
 using UnityEngine;
 
-public class ConditionalCuboids_Shifting_XZ_AppartSimple : MonoBehaviour
+public class ConditionalCuboidsShiftingXZAppartSimple : MonoBehaviour
 {
     public float timeOffset = 0;
     public float movementScale = 0.25f;
@@ -130,7 +130,7 @@ Here is the full code for that:<br>
 {{<highlight c>}}
 using UnityEngine;
 
-public class ConditionalCuboids_Shifting_XAKeyDeltaTime : MonoBehaviour
+public class ConditionalCuboidsShiftingXAKeyDeltaTime : MonoBehaviour
 {
     
     public float timeOffset = 0;
@@ -172,7 +172,7 @@ So as I can’t assume you have a game controller laying about, let’s play wit
 Thus the Input from “Mouse X” and “Mouse Y” will be the mouse delta, or the distance it traveled during the last frame. We could this create a variant that’s based on the overall speed of our mouse!
 {{< figure src="/img/ConditionalCuboids_Popping_MouseSpeed.gif" title="Movement based on MouseSpeed" width="50%">}}
 {{<highlight c>}}
-public class ConditionalCuboids_Popping_MouseSpeed : MonoBehaviour
+public class ConditionalCuboidsPoppingMouseSpeed : MonoBehaviour
 {
     public float movementSpeed = 0.01f;
     private float movement = 0f;
@@ -204,62 +204,7 @@ public class ConditionalCuboids_Popping_MouseSpeed : MonoBehaviour
 ### New Input System
 The folks at Unity are currently working on a new Input System, that remedies some of the problems of the current one. This should most likely not concern you too much, but if you think of working on something, that needs crazy input options, you should probably take a look at that!
 
-### Colors in Unity
-This part is probably a stub
-We have been working with colors for a while now, but it always was manually selecting them through the Unity Editor. But we can also work with them on a code basis. <br>
-Color are their own `type` in Unity. This means colors need to be created using the `new` Keyword. The arguments we can pass to the constructor are red, green, blue and an optional alpha value. 
-{{<highlight c>}}
-Color myRed = new Color(1,0,0); // This would be pure red
-Color myGreen = new Color(0,1,0); // This would be pure green
-Color myBlue = new Color(0,0,1); // This would be pure green;
-Color myTransparent = new Color(.5f, .5f, .5f, .5f); // This would be a transparent middle gray
-{{</highlight>}}
-{{<expand>}}
-Unity comes with some static colors as well, which you can use for convenience. `Color.black` for example could be used just to quickly define a default value.
-{{</expand>}}
-Given this, working with colors is pretty much straight forward. A little awkward on the other hand is assigning the colors. We need to access the Color Component on the Material Component on the Renderer Component on our object. It’s a long line of code for just a small assignment and it looks like this:
-{{<highlight c>}}
-GetComponent<Renderer>().material.color = new Color(1,0,0);
-{{</highlight>}}
-While we are now able to change the color, we can just switch it to predefined values. How about we try to create a little more flexibility?<br>
-Luckily Unity provides us with some Methods to retrieve or set colors differently using the Hue, Saturation and Value approach.<br>
-Setting HSV Colors works very similar to creating Colors using the RGBA approach.
-- {{<highlight C>}}
-Color myColor = Color.HSVToRGB(0,1,1);
-{{</highlight>}}
-But it also yields the same reults. We can define a color. We just use other means to do so. More interesting would be to actually manipulate colors. Unity does not provide a way to do this out of the box. But we can build our own manipulation tools!<br>
-The code for this starts growing and will also use some syntax we haven’t seen so far and yet it is rather straight forward. First we need to declare variables for hue, saturation and value. All of them will be handled as values between 0 and 1 and thus are defined as floats. Then we create a variable for our the current color of the GameObject and retrieve it .<br>
-Then we use a “static” method on the color class which we pass the current color and tell it to which variables it should assign the three HSV values.<br>
-With those now assigned, we can manipulate one of those values. Here we choose Hue to shift the color around the color wheel. We also add a Condition to check if we surpass 1, if so, we subtract 1 to make sure we start on the other side of the circle again.<br>
-Finally we construct a new Color from hue, saturation and value and assign it back to our Square.
-{{<highlight c>}}
-float h,s,v;
-Color currentColor = GetComponent<Renderer>().material.color;
-Color.RGBToHSV(currentColor, out h, out s, out v);
-h += 0.05f;
-if(h > 1){
-	h - 1;
-}
-GetComponent<Renderer>().material.color = Color.HSVToRGB(h,s,v);
-{{</highlight>}}
-
-{{<gist HGieselmann 6b47e6aeda78995e404c2dd7d4ddc274>}}
-
-{{< expand>}}
-### Color Math
-Unity also allows for doing basic math operations between Colors. The following Code would give you magenta.
-{{<highlight c>}}
-Color myColor = Color.Red + Color.Blue;
-{{</highlight>}}
-Color math is actually just Vector Math. And Vector Math is nothing else as separating the components and dealing with red, green and blue one at a time.
-{{</expand>}}
-
-### Gradients
-TODO
-
-
-
-### Projects 1
+### Project 1
 Your most obvious choice should be to go ahead and create more Cuboids! At least I did. <br>
 Can you think of a way to recreate these? What would your steps be? The first two should be easy, but how would you solve the last one? Make sure to try these yourself before you peek at the code!
 {{< figure src="/img/ConditionalCuboids_ShiftingXZ.gif" width="25%">}}
@@ -274,15 +219,15 @@ Gist here
 {{<expand>}}
 Gist here
 {{</expand>}}
-Can you think of a way to recreate these? What would your steps be? The first two should be easy, but how would you solve the last one?
 
-###  Projects 2
-If you are a little older, like me, you will probably know what is coming up. <br> 
-In the early 2000s wherever there was a DVD Player waiting for something to happen, there was a bouncing DVD Logo. This served as a screensaver to prevent the CRT displays from burning in an image. This thing was so omnipresent that it later got featured on “The Office” and someone even dedicated it it’s own website: https://bouncingdvdlogo.com/ <br>
-But it’s also a very nice exercise for us to code. <br>
-Of course we will add our own touch to it! <br>
-TODO UNITY SCRIPT
-PROJECT WALKTHROUGH
- Yo
+###  Project 2
+- Bouncing Light in a room?
+- 
+
+ 
+### Project 3
+Landspeeder Flight through desert
+Talk about collsions
+
 
 

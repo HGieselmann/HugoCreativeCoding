@@ -30,7 +30,7 @@ Every Unity Script comes with some “boilerplate” Code to get you started. It
 	using System.Collections.Generic;
 	using UnityEngine;
 
-	public class New : MonoBehaviour
+	public class MyNewClass : MonoBehaviour
 	{
 	// Start is called before the first frame updates
 		void Start()
@@ -157,6 +157,7 @@ The `sin()` method will continuously create a value for us between 0 and 1. Wher
 {{</highlight>}}
 This is actually the basic idea. Now that we have that, we need to figure out how to create the offset between each of the Cuboids. We have to create some kind of Offset for them. But what do we have to Offset? If we Offset X as a whole, we just move the cuboids apart, we actually need to offset the value the `sin()` function creates and thus need to offset the time value itself. We will also need to be able to adjust this value for each Cuboid individually. 
 {{<highlight c>}}
+// pseudo Code
 //x = Sinus of (Time + Offset per Cuboid)
 {{</highlight>}}
 So let’s get coding!
@@ -197,7 +198,7 @@ In our pseudo code we found, we need to create an offset for each of our Cuboids
 
 We will put this variable above the Start function but inside the class:
 {{<highlight c>}}
-public class MovingCuboids_Shifting : MonoBehaviour
+public class MovingCuboidsShifting : MonoBehaviour
 {
     
     public float timeOffset = 0;
@@ -209,10 +210,39 @@ public class MovingCuboids_Shifting : MonoBehaviour
 Notice something new? We just made our variable `public`. Public variables can mainly be seen and set by other scripts. But in Unity they also show up on the component in the Inspector.
 {{< figure src="/img/ExposedVariables.jpg" title="Variables exposed in the Inspector" width="50%">}}
 So now we can set this value for each Cuboid separately. By default all variables and functions are private and you don’t need to put the private keyword. But sometimes it helps to clarify your code.
+{{< hint info>}}
+### Serialize Field
+But, the `public` keyword does more than just exposing the variable to the Unity Editor. It will allow other scripts in your project to access this variable and read it or change it. And this is a gateway opening up for bugs. Taht’s why we want keep our variables `private` as possible. To remedy this problem Unity offers the Tag `[SerializeField]`. It will expose your variable to the Unity editor and keep in private for other scripts. Win - Win!
+{{<highlight c>}}
+[SerializeField]
+private float timeOffset = 0;
+{{</highlight>}}
+This is the preferred way of working. And while it may seem like unnecessary clutter for now, this will make your life easier down the road. Using this workflow, all the decisions you make regarding making variables public will be conscious.
+{{</hint>}}
 
+### Variable Scope
+The last thing regarding variables we need to talk about is “variable scope”. Scope is about which you are able to access at which point in your code. In our code we at the moment have two places in which we create variables. On top of the class and inside the Update loop. Variables you create at the top of the file, or to be precise directly inside the `{}` of the *class* have “global scope”. They can be accessed in any function or loop in the class. <br>
+Variables you create inside a method like `Update()` or `Start()` have “local scope”. The can only be accessed inside the method or loop they were created in.<br>
+{{<highlight c>}}
+public class exampleClass : MonoBehaviour{
+	private int myInteger = 0; // This is at global scope
+	Start(){
+		private int myOtherInteger = 0; // This is at local scope
+		myInteger = 1; // This works
+		myOtherInteger = 1; // This works as well
+	}
+	Update(){
+		myInteger = 2; // This works
+		myOtherInteger = 2; // This DOES NOT WORK!! 
+	}
+{{</highlight>}}
+In general you have access to the variables declared on “level”up and at the same level but you don’t have access to the variables at one finer level of detail. They are “out of scope”.
+
+### Putting it in practice
 Now that we have a value we can adjust, let’s incorporate it into our script:
 {{<highlight c>}}
-public float timeOffset = 0;
+[SerializeField]
+private float timeOffset = 0;
     void Update()
     {
         float sinus = Mathf.Sin(Time.time + timeOffset);
@@ -227,7 +257,8 @@ float movementScale = 0.25f;
 {{</highlight>}}
 No we can ask the interesting question where to put this. And there are actually many options, but let’s consider the obvious ones:
 {{<highlight c>}}
-public float timeOffset = 0;
+[SerializeField]
+private float timeOffset = 0;
 float movementScale = 0.25f;
     void Update()
     {
@@ -237,7 +268,8 @@ float movementScale = 0.25f;
 {{</highlight>}}
 And:
 {{<highlight c>}}
-public float timeOffset = 0;
+[SerializeField]
+private float timeOffset = 0;
 float movementScale = 0.25f;
     void Update()
     {
@@ -247,6 +279,7 @@ float movementScale = 0.25f;
 {{</highlight>}}
 Or the one I actually like best:
 {{<highlight c>}}
+[SerializeField]
 public float timeOffset = 0;
 float movementScale = 0.25f;
     void Update()
@@ -260,7 +293,8 @@ When and where you put your operations depends on the situation, partly depends 
 
 You could even go so far as to create a completely new variable for the scaled sinus, which is very precise and thus a very good way to write your code.
 {{<highlight c>}}
-public float timeOffset = 0;
+[SerializeField]
+private float timeOffset = 0;
 float movementScale = 0.25f;
     void Update()
     {
@@ -290,7 +324,7 @@ Add Parenting rotation Script here
 Project 1 - Variants
 To conclude this chapter I again would like to ask you to spend some time and play with the concepts you learned in this chapter some more. Here are some things I came up with you could achieve only using the concepts we introduced so far.
 {{< figure src="/img/MovingCuboids_ScalingXZ.gif" title="Cuboids Scaling on X and Z" width="50%">}}
-{{< figure src="/img/MovingCuboids_ScalingY.gif" title="Cuboids Scaling on the Y Axis" width="50%">}}
+{{< figure src="/img/MovingCuboids_ScalingY.gif" title="Cuboids moving on the Y Axis" width="50%">}}
 
 Project 2 - Space Exploration
 This project is a little more advanced as it uses external models again and you will need to make use of “Parenting” in the hierarchy view.
