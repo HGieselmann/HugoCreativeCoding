@@ -200,33 +200,40 @@ While the `0` and `1` are probably fine, because there is no real typical reason
 I left them, so I could make this point. You shouldn’t!
 
 ### Colors in Unity
-This part is probably a stub
-We have been working with colors for a while now, but it always was manually selecting them through the Unity Editor. But we can also work with them on a code basis. <br>
-Color are their own `type` in Unity. This means colors need to be created using the `new` Keyword. The arguments we can pass to the constructor are red, green, blue and an optional alpha value. 
+We have been working with colors for a while now, but it always was manually selecting them through the Unity Editor. And you will see, that this has some advantages to it. *But* setting and manipulating color has it’s value, so we will look into it! <br>
+{{<hint warning>}}
+Color is a complex matter on so, so many levels. This sub-chapter will discuss color on a superficial level and how you could deal with it in Unity. A *slightly* deeper discussion can be found in chapter 11. In this chapter I will assume that you, as an interested person, have some basic knowledge about basic digital color theory. If you have no idea what RGB and HSL are, check the *expand* directly below.
+{{</hint>}}
+{{<expand>}}
+#### The most important ideas about digital color
+Everything we are designing in Unity right now is supposed to be displayed on a screen. Screens, in contrast to printed imagery, emit light. As it turns out adding red, green and blue light in the correct proportions will give you white light. Every pixel on your screen consist of these three colors. We thus talk about the *additive* color. Mixing these three components together will give us a very wide range of perceptible colors to display. For example mixing Red and Green will give you Yellow. Blue and Green will result in Cyan.<br>
+While this concept is very nice for computers to understand, we typically don’t talk about color in terms of a combination of red, green and blue. <br>
+“The suspect wore a 50% red, 50% green and 100% blue sweater.” <br>
+Yeah, we don’t do that. We say:<br>
+“The suspect wore a light blue sweater.” <br>
+This is why people came up with “HSL”/”HSV” or Hue, Saturation and Lightness/Value. Now we can define a Hue around the color wheel, the saturation and it’s lightness or brightness. From a programming point of view it also makes some color manipulations easier, because we can access the more “human readable” components directly. <br>
+{{</expand>}}
+Color is its own *type* in Unity. This means colors need to be created using the `new` Keyword. The arguments we can pass to the constructor are red, green, blue and an optional alpha value. The values you need to supply the method will be floats ranging between 0 and 1. Everything beyond 1 will simply be clamped at 1.
 {{<highlight c>}}
 Color myRed = new Color(1,0,0); // This would be pure red
 Color myGreen = new Color(0,1,0); // This would be pure green
 Color myBlue = new Color(0,0,1); // This would be pure green;
 Color myTransparent = new Color(.5f, .5f, .5f, .5f); // This would be a transparent middle gray
 {{</highlight>}}
-{{<expand>}}
+{{<hint info>}}
 Unity comes with some static colors as well, which you can use for convenience. `Color.black` for example could be used just to quickly define a default value.
-{{</expand>}}
+{{</hint>}}
 Given this, working with colors is pretty much straight forward. A little awkward on the other hand is assigning the colors. We need to access the Color Component on the Material Component on the Renderer Component on our object. It’s a long line of code for just a small assignment and it looks like this:
 {{<highlight c>}}
 GetComponent<Renderer>().material.color = new Color(1,0,0);
 {{</highlight>}}
-While we are now able to change the color, we can just switch it to predefined values. How about we try to create a little more flexibility?<br>
+While we are now able to change the color, we can just switch it to predefined values. How about we try to create a little more flexibility? <br>
 Luckily Unity provides us with some Methods to retrieve or set colors differently using the Hue, Saturation and Value approach.<br>
-Setting HSV Colors works very similar to creating Colors using the RGBA approach.
+Setting HSV Colors works very similar to creating Colors using the RGBA approach. Instead of red, green and blue, we define values for hue, saturation and value as floats.
 - {{<highlight C>}}
 Color myColor = Color.HSVToRGB(0,1,1);
 {{</highlight>}}
-But it also yields the same reults. We can define a color. We just use other means to do so. More interesting would be to actually manipulate colors. Unity does not provide a way to do this out of the box. But we can build our own manipulation tools!<br>
-The code for this starts growing and will also use some syntax we haven’t seen so far and yet it is rather straight forward. First we need to declare variables for hue, saturation and value. All of them will be handled as values between 0 and 1 and thus are defined as floats. Then we create a variable for our the current color of the GameObject and retrieve it .<br>
-Then we use a “static” method on the color class which we pass the current color and tell it to which variables it should assign the three HSV values.<br>
-With those now assigned, we can manipulate one of those values. Here we choose Hue to shift the color around the color wheel. We also add a Condition to check if we surpass 1, if so, we subtract 1 to make sure we start on the other side of the circle again.<br>
-Finally we construct a new Color from hue, saturation and value and assign it back to our Square.
+But it also yields the same reults. We can define a color. We just use other means to do so. More interesting would be to actually manipulate colors. Unity does not provide a way to do this out of the box. But we can build our own manipulation tools! <br>
 {{<highlight c>}}
 float h,s,v;
 Color currentColor = GetComponent<Renderer>().material.color;
@@ -237,29 +244,56 @@ if(h > 1){
 }
 GetComponent<Renderer>().material.color = Color.HSVToRGB(h,s,v);
 {{</highlight>}}
-
+The code for this starts growing and will also use some syntax we haven’t seen so far and yet it is rather straight forward. First we need to declare variables for hue, saturation and value. All of them will be handled as values between 0 and 1 and thus are defined as floats. Then we create a variable for our the current color of the GameObject and retrieve it . <br>
+Then we use a “static” method on the color class which we pass the current color and tell it to which variables it should assign the three HSV values.<br>
+With those now assigned, we can manipulate one of those values. Here we choose Hue to shift the color around the color wheel. We also add a Condition to check if we surpass 1, if so, we subtract 1 to make sure we start on the other side of the color wheel again.<br>
+Finally we construct a new Color from hue, saturation and value and assign it back to our Square.
+{{< figure src="/img/MethodColorShift.gif" title="Cuboids Shifting on the X Axis" width="75%">}}
+In the above example, you can see this working on button press. You can see this works relatively okay for monochromatic color schemes. You will find that this approach will fail on other color schemes. But go ahead and try it!
+Here is the full code:
+{{<expand>}}
 {{<gist HGieselmann 6b47e6aeda78995e404c2dd7d4ddc274>}}
+{{</expand>}}
 
-{{< expand>}}
 ### Color Math
 Unity also allows for doing basic math operations between Colors. The following Code would give you magenta.
 {{<highlight c>}}
 Color myColor = Color.Red + Color.Blue;
 {{</highlight>}}
-Color math is actually just Vector Math. And Vector Math is nothing else as separating the components and dealing with red, green and blue one at a time.
-{{</expand>}}
+Color math is actually just Vector Math. And Vector Math is nothing else as separating the components and dealing with red, green and blue one at a time. 
 
 ### Gradients
-TODO
+{{< figure src="/img/MethodFadingWithGradient.gif" title="Cuboids shifting, fading and evaluating a Gradient" width="75%">}}
+Another way very pleasing way to work with colors are gradients. While you could define your Gradients through code, we will just look defining them in the editor and then evaluating them at run time. While this is little bit like shifting colors around, it will also give us more artistic control, which is always nice. <br>
+To create an Gradient, we declare it as an global variable. <br>
+{{<highlight c>}}
+[SerializeField]
+ private Gradient popGradient = new Gradient();
+{{</highlight>}}
+We can now create our gradient inside the Unity, by clicking on the white color bar in the editor. 
+{{< figure src="/img/Gradient.jpg" title="Gradient Tool in Unity" width="75%">}}
+On the “Gradient” popup window you can define the gradient by adding new colors on the bottom bar and alpha values on the top bar. In this sketch I calculated and added alpha seperatly to the mix. <br>
+In code, we can then evaluate the color at a position between 0 and 1 or left and right respectively. 
+{{<highlight c>}}
+Color curGradientColor = popGradient.Evaluate(transform.position.y + 0.45f);
+
+{{</highlight>}}
+As you can see any value can be used to evaluate this. For my sketch the position in Y makes sense to use.
+The full code for the sketch can be found here:
+{{<expand>}}
+{{<gist HGieselmann cfbb7a7231876dedc8d738da35cdd65c>}}
+{{</expand>}}
 
 
 
-Project 1:<br>
+
+### Project 1:<br>
 The first thing i suggest you do is, go through the scripts you have written so far and refactor them. An for at least a few try not to rely on the refactoring help of your IDE. Get the concept o writing them engraved into your brain!.<br>
-Projects 2:<br>
+
+### Projects 2:<br>
 While methods don’t actually allow is to do something utterly new, it allows is creating things that aren’t horribly tedious to do. So here are some more examples for our Cuboid: Go check them out.<br>
 Add more examples here using methods
-Projects 3:<br>
+### Projects 3:<br>
 Noise Walker
 Low poly Example
 More advanced land speeder?
