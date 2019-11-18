@@ -1,125 +1,157 @@
 # 06 - Multiple Objects
 ### Multiple Object Workflow
-If you followed along with some of the examples, you probably realized we are doing a lot of manual labor. We have to deal a lot with the Unity Editor. We have to apply new scripts to each Cuboid manually. Then again programming is a lazy mans art. The less manual labor we have to do, the better.<br>
-With the concepts introduced in this chapter, we will be able handle lots and lots of objects simultaneously. Hence it will also allow us to create more complex sketches.<br>
-We will also look at interaction between multiple scripts. Finally keywords like `private` and `public` will hopefully make more sense.<br>
-Thus in this Chapter we will introduce ways to create and handle multiple cuboids at runtime. And cuboids - of course could be anything really. To do this conveniently in Unity we need to look at three Concepts:<br>
-1. Prefabs and Instantiation<br>
-2. Arrays and/or Lists<br>
-3. Loops<br>
-In short, we will create objects through Instantiation. We will the use Arrays and Lists to keep track of them and loops to iterate over them.<br>
-What’s even better is, it opens up a lot of creative possibilities and ideas to talk about! 
+If you followed along with some of the examples, you probably realized we do a lot of manual labor. We deal with the Unity Editor a lot. We apply all the new scripts manually to each Cuboid. Then again programming is a lazy mans art. The less manual labor we have to do, the better. <br>
+With the concepts introduced in this chapter, we will be able handle lots and lots of objects simultaneously. Hence it will also allow us to create more complex sketches. <br>
+To do this conveniently in Unity we need to look at three Concepts: <br>
+1. Prefabs and Instantiation <br>
+2. Arrays and/or Lists <br>
+3. Loops <br>
+In short, we will create objects through Instantiation. We will the use Arrays and Lists to keep track of them and loops to iterate over them. <br>
+What’s even better is, it opens up a lot of creative possibilities and ideas to talk about! <br>
+We will also look at interaction between multiple scripts. Finally keywords like `private` and `public` will hopefully make more sense.
 
 ### Prefabs and Instantiation
-Instantiation is the process of creating or “instantiating” objects from a script and it is tightly intertwined with the Concept of Prefabs. Prefabs are “prefabricated” Objects we can create through the project view. They are in most cases the objects we want to then instantiate through code.<br>
-Creating Prefabs is surprisingly simple. Any object you have in your scene can be turned into a prefab. All you have to do is drag an item from the hierarchy into the project view. 
-TODO GIF PREFAB
-The tiny cube in front of the object turns blue if Unity knows about this object as an Prefab. It’s often advisable to create a specific folder for all your prefabs. Unity will keep all of it’s components attached to the prefab. But it also opens up room for some consideration later on. Any behaviour we have added to a prefab will be there once we create an instance of it.<br>
-Once you have created a prefab from a GameObject you can go ahead and delete it from the hierarchy.
+Instantiation is the process of creating or “instantiating” objects from a script and it is tightly intertwined with the Concept of Prefabs. Prefabs are “prefabricated” Objects we can create through the project view. In most cases these prefabs are the object we want to instantiate through code at runtime.
+Creating Prefabs is surprisingly simple. Any object you have in your scene can be turned into a prefab. All you have to do is drag an item from the hierarchy into the project view. Go ahead and create an cuboid prefab from any of your sketches.
+{{< figure src="/img/CreatePrefab.gif" title="Creating a Prefab via Drag and Drop" width="100%">}}
+The tiny cube in front of the object turns blue if Unity knows about this object as an Prefab. It’s often advisable to create a specific folder for all your prefabs. <br>
+Unity will keep all of the components currently attached to the prefab. Any behaviour we have added to a prefab will be there once we create an instance of it. For example a cuboid with a script that makes it move automatically attached to it, will lead to this exact same movement the moment you Instantiate it at runtime. <br>
+Once you have created a prefab from a GameObject you can go ahead and delete it from the hierarchy, if you don’t need it there anymore.
 
 
 ### Instantiation
-With an prefab ready, we will need to create a script to actually handle the creation/instantiation of all our cuboids and because scripts in Unity can’t exists in empty space, we need to create a GameObject to hold our script. Technically any object would work, yet an “Empty Object” would of course be the ideal choice. Empties only consist of a transform component and thus have no visual representation in the scene. Rename your Empty to something like “ScriptHolder” or “Manager”. <br>
+With an prefab ready, we will need to create a script to actually handle the creation/instantiation of all our cuboids. Because scripts in Unity can’t exists in empty space, we need to create a GameObject to hold our script. Technically any object would work, yet an “Empty Object” would of course be the ideal choice. *Empties* only consist of a transform component and thus have no visual representation in the scene. Rename your Empty to something like “ScriptHolder” or “Manager”. <br>
 First we have to find a way to grab hold of our prefabricated cuboid. In Unity all Objects (that inherit from Monobehaviour - we’ll discuss this in Chapter 08) can be referenced as GameObject. So let’s create a variable of type `GameObject` for our cuboid.
 {{<highlight c>}}
-public GameObject cuboidPrefab;
+[SerializeField]
+private GameObject cuboidPrefab;
 {{</highlight>}}
 Now go back to Unity and check the Inspector. You will see a field named cuboidPrefab. You can now drag and drop the prefab you created from the Project view into the field on the inspector.
-Add Gif here
-Now the script *knows* about the prefab. You might argue, that this process feels a little strange, and I am with you. I tend to forget this step and run into an error. But you’ll get used to it!<br>
+{{< figure src="/img/DragPrefab.gif" title="Connecting a prefab to your script" width="1000%">}}
+Now the script *knows* about the prefab. You might argue, that this process feels a little strange, and I am with you. I tend to forget this step and run into an error. But you’ll get used to it! <br>
 Next we need to actually create an actual instance at runtime:
 {{<highlight c>}}
 Instantiate(cuboidPrefab, Vector3.zero, Quaternion.identity);
 {{</highlight>}}
-The instantiate Method takes three arguments: <br>
+The `Instantiate()` Method takes three arguments: <br>
 1. The Object we want to Instantiate <br>
-2. A Vector as Position in Space <br>
+2. A Vector3 as Position in Space <br>
 3. Rotation passed as a Quaternion. <br>
-For now, just use `Quaternion.identity;`. Quaternions are scary things and `Quaternion.identity` will place them in the exact state you created the Prefab in, so that’s very, very likely correct.<br>
-If you run your scene now, you should have one Cuboid moving around, based on the script you had attached to it, when creating the prefab.<br>
-Go ahead and duplicate that line and run the code again. It should give you two cuboids and yet you should only see one. Both are created in exactly the same space and size. But you should be able to see two of them in the hierarchy.<br>
-So we need to find a way to access a GameObject after instantiation. To do that we can just assign the created Object to variable the moment we create it:
+For now, just use `Quaternion.identity;`. Quaternions are scary things and `Quaternion.identity` will place them in the exact state you created the Prefab in, so that’s very likely correct anyway. <br>
+If you run your scene now, you should have one Cuboid moving around, based on the script you had attached to it, when creating the prefab. <br>
+Go ahead and duplicate that line and run the code again. It should give you two cuboids and yet you should only see one. Both are created in exactly the same space and size. But you should be able to see two of them in the hierarchy. You could go ahead and change the position at which you instantiate the object, or we could position it after instantiation. <br>
+To move it afterwards, we need to find a way to access a GameObject after instantiation. To do that we can just assign the created Object to variable the moment we create it:
 {{<highlight c>}}
 	var cuboid = Instantiate(cuboidPrefab, Vector3.back, Quaternion.identity);
 {{</highlight>}}
-{{<expand>}}
+{{<hint info>}}
 #### the ‘var’ Keyword
 You might stumbled across the ‘var’ Keyword here. You will see code that never uses ‘var’ and code which makes a lot use of it. Generally speaking you should only use it when through the context it is unmistakeable which Type is referenced. This is mostly true for “Object stuff”. To keep it simple for now. As an Example:
 `GameObject myGameOject = new GameObject();`<br>
 This would create a new empty GameObject. But the line of code isn’t a beauty, is it? That’s where var comes in:<br>
 `var myGameObject = new GameObject();`<br>
 Don’t worry about it too much for now. This will become second nature over time.
-{{</expand>}}
-Now we have a variable for our cuboid. This variable allows us to access the the cuboid and all the properties of it, that are actually public. This is the first time `private` and `public` actually become relevant for us in a scripting sense.
+{{</hint>}}
+Now we have a variable for our cuboid. This variable allows us to access the the cuboid and all the properties of it, that are actually public.
 {{<highlight c>}}
 cuboid.transform.position = new Vector3(0,0,0);
 {{</highlight>}}
-So to actually recreate our Homage to the cuboid we would need to do this over and over again and then adjusting things and... nah...  We are not going to do that! As I said before, we want to simplify things!
+This is the first time `private` and `public` actually become relevant for us in a scripting sense. Try accessing some of the variables we created on the script. You will probably not be able to access them, as we made almost all of them private. The transform component on the other hand is public by default. <br>
+So to actually recreate our Homage to the cuboid we would need to do this over and over again and then adjusting things and... nah...  We are not going to do that! As I said before, we want to simplify things! Let’s head into loops!
 
 ### For Loops
 To be able to handle many Objects (or any kind repeating process) programming languages offer “loops”. Loops are blocks of code that are executed over and over again until a certain condition is met. Maybe the most common implementation of a loop is the “for loop”. <br>
-For Loops in C# need three things to work: Initializer, condition and iterator. Think of it as having a jar of cookies and you are allowed to eat 50 cookies in a week. So you need to make sure how many you have eaten so far. So you take a piece of paper and start a tally sheet. This tally sheet is your initializer. The Initializer is just creating a variable to keep track of a number. Then each time you want a cookie you check whether you are still allowed to eat a cookie or if you already had 50. That’s the condition. Once you have eaten the cookie you add one to your tally sheet. That’s done using the iterator.<br>
-Actually eating the cookie is the code run in the loop. That’s wrapped in curly braces again.
+For Loops in C# need three things to work: Initializer, condition and iterator. To think of an example, assume having a jar of cookies and you are allowed to eat 50 cookies in a week. So you need to make sure how many you have eaten so far. So you take a piece of paper and start a tally sheet. This tally sheet is your initializer. The Initializer is just creating a variable to keep track of a number. <br>
+Then each time you want a cookie you check whether you are still allowed to eat a cookie or if you already had 50. That’s the condition. Once you have eaten the cookie you add one to your tally sheet. That’s done using the iterator. <br>
+Actually eating the cookie is the code in the loop. That’s wrapped in curly braces again.
 {{<highlight c>}}
 for (int i = 0; i < 5; i++)
 {
     Debug.Log(i);
 }
 {{</highlight>}}
-A *for loop* starts with the `for` Keyword followed by parentheses. The first thing is our tally list / Initializer. It works exactly like creating any other variable in Unity, but you *have* to initialize it. What’s also to note is: Counting in computer science almost always starts with 0. Thus we will start with `int i = 0`! The three parts of a loop are separated by a semicolon. Next up is the condition. Conditions in for loops check if your counter is higher or lower then a certain threshold and if it evaluates to false the loop will stop. Last is the iterator which counts up. In this case the `i++` just means the variable `i` will be increased by one after each iteration. You could also put `i+1`.Actually you could advance your initializer in any stepsize: `i + 2`, `i+100`. They all work fine.<br>
-In the curly brackets follows the code to run. In the above counter we just print the value of our counter `i` to the console.
+A *for loop* starts with the `for` Keyword followed by parentheses. The first thing is our tally list / Initializer. It works exactly like creating any other variable in Unity, but you *have* to initialize it. What’s also to note is: Counting in computer science almost always starts with 0. Thus we will start with `int i = 0`! The three parts of a loop are separated by a semicolon. Next up is the condition. Conditions in for loops check if your counter is higher or lower then a certain threshold and if it evaluates to false the loop will stop. Finally, the iterator determines by which value to increase or decrease your tally list. In this case the `i++` just means the variable `i` will be increased by one after each iteration. You could also put `i+1`. Actually you can advance your initializer in any step size: `i + 2`, `i + 100` or even `i - 1`. They all work fine. <br>
+In curly braces follows the code to run. In the above counter we just print the value of our counter `i` to the console.
 
-
+### Create example with for loop here
 
 ### Arrays
-That’s it for the theory, let put this into practice. Earlier, when were discussing Instantiation, we said we need a variable to create a reference to our objects. But creating five variables, each to hold a cuboid would be very inefficient again. That’s why we also need to introduce Arrays. Arrays hold many things of one same type. A list in essence, except that they aren’t really list because list exist as well and you see.. this is messed up.<br>
+That’s it for the theory, lets put this into practice. Earlier, when were discussing Instantiation, we said we need a variable to create a reference to our objects. But creating five variables, each to hold a cuboid would be a pain. That’s why we also introduce Arrays. Arrays hold many things of one same type. A list in essence, except that they aren’t really list because list exist as well and... well... this is messed up. They are seperate things and we’ll look at Lists a little later.<br>
 Anyway... Arrays hold things of the same *type*. Like *float* or *integer*. Or *GameObject*! Creating Arrays is simple. You create them like any variable, but add `[]` after the type.
 {{<highlight c>}}
 private GameObject[] myGameObjectArray;
 {{</highlight>}}
-Now we have created the Array, but we didn’t initialize it and thus can’t use it. The thing with Arrays is, that they always have a fixed length. So in the moment you *initialize* the array, you need to specify how many items you want to store in your list. For our cuboids, it’s as simple as this:
+Now we have created the Array, but we didn’t initialize it and thus can’t use it. The thing with Arrays is, that they always have a fixed length. So in the moment you *initialize* the array, you need to specify how many items you want to store in your list. For our cuboid example, it’s as simple as this:
 {{<highlight c>}}
 private GameObject[] cuboids = new GameObject[5];
 {{</highlight>}}
-With arrays we simply have to specify the length of the Array again in brackets. But what if you wanted to do this based on a variable? You can create the variable for this on global scope and then initialize the array in `Start()` or `Update()`.
+We have to specify the length of the Array again in brackets after the type. But what if you wanted to do this based on a variable? You can create the variable for this on global scope and then initialize the array in `Start()` or `Update()`.
 {{<highlight c>}}
-    private GameObject[] myGameObjects;
+    private GameObject[] cuboids
     public int arraySize = 5;
     // Start is called before the first frame update
     void Start()
     {
-        myGameObjects = new GameObject[arraySize];
+        cuboids = GameObject[arraySize];
     }
 {{</highlight>}}
-So you have some flexibility, but can’t change the actual length of the array. To finally access things inside an array we use the bracket notation again.
+This construct gives you some flexibility, but you can’t change the actual length of the array. <br>
+To access things inside an array we use the bracket notation again.
 {{<highlight c>}}
-	Debug.Log(myGameObjects[0]);
+	Debug.Log(cuboids[0]);
 {{</highlight>}}
-This would print the first object in the Array to the console. As we said earlier, counting always starts with `0`! So now let’s look at actually making use of this:
+This would print the first object in the Array to the console. As we said earlier, counting always starts with `0`! Thus `myGameObject[1]` would give you the second entry and so forth. <br>
+So now let’s look at actually making use of this:
 {{<highlight c>}}
-    public GameObject myPrefab;
-    private GameObject[] myGameObjects;
-    public int arraySize = 5;
-    // Start is called before the first frame update
+    public GameObject cuboidPrefab;
+    private GameObject[] cuboids = new GameObject[5];
     void Start()
     {
-        myGameObjects = new GameObject[arraySize];
         for(int i = 0; i < arraySize; i++)
         {
-            myGameObjects[i] = Instantiate(myPrefab, Vector3.up * i, Quaternion.identity);
+            myGameObjects[i] = Instantiate(cuboidPrefab, Vector3.up * i, Quaternion.identity);
         }
     }
 {{</highlight>}}
-This code incorporates everything we have covered so far. We first create a variable for a prefab. We then create a variable for an array of Gameobjects and also create a variable for the size of the array. In `Start()` we then initialize the array to the size of the variable. Henceforth it can hold five objects right now. But at the moment all slots are empty.<br>
-Next we create a *for loop* and it’s condition is that our initializer is smaller than our `arraySize` variable. During the loop we access each slot of the list by it’s number, using the iterator. We also use the iterator as an multiplier for the position, thus shifting each object up by one.
-Add result here
-This might seem complicated at first, but it’s not too bad, once you have created a few arrays and written a few for loops. It’s also very, very powerful! As you can image we could easily set the value for our `arraySize` to `10`, `100` or even a thousand. Think about how long it would take to create a hundred of these cuboids by hand!<br>
-Before we take this concept even further, I suggest you try to recreate some of the examples we did in earlier chapters using arrays and for loops. Maybe you can also come up with new variations.<br>
+This code incorporates everything we have covered so far. We first create a variable `myPrefab`. We then create a variable for an array of GameObjects and also create a variable for the size of the array. In `Start()` method we then initialize the array to the size of the variable. Henceforth it can hold five objects right now. But at the moment all slots are empty. <br>
+Next we need to create a *for loop* and it’s condition is that our initializer is smaller than our `arraySize` variable. During the loop w-e access each slot of the list by it’s number, using the iterator. We also use the iterator as an multiplier for the position, thus shifting each object up by one.
+{{< figure src="/img/MultiShiftingX.gif" title="Multiple Cubes Shifting" width="75%">}}
+As you can see, the cuboids now move happily along in sync. But they all still have same color and all of them have the exact same offset. <br>
+
+### Script Communication
+So what if we want to change the color of these? We need to find a way to access the Color component of the objects. And we have done this before in Chapter 5. But this time we access the GameObject in our array first.
+{{<highlight c>}}
+for(int i = 0; i < cuboids.Length; i++) {     cuboids[i] = Instantiate(cuboidPrefab, Vector3.up * (stepSize * i), Quaternion.identity);     cuboids[i].GetComponent<Renderer>().material.color = colors[i];
+}
+{{</highlight>}}
+As you can see, we are able to access components on other objects, if we stored a reference to the object beforehand. Here we instantiate the object, and store it directly in a slot in our array. We can then directly use this stored reference on the next line to grab the Renderer on that object and set its color. <br>
+But how about the time offset? <br>
+This works exactly the same. Every script we create an add to an object is a component like every other component Unity provides. Instead of *Renderer* we can now as for the Script we had attached to the cuboid when we created the prefab. This is what it looks like for me:
+{{<highlight c>}}
+float timeOffset = 0.25f;
+
+for(int i = 0; i < cuboids.Length; i++)
+{
+    cuboids[i] = Instantiate(cuboidPrefab, Vector3.up * (stepSize * i), Quaternion.identity);
+    cuboids[i].GetComponent<Renderer>().material.color = colors[i];
+    cuboids[i].GetComponent<CuboidShiftingX>().timeOffset = timeOffset * i;
+}
+{{</highlight>}}
+The script I had attached to it, was obviously called “CuboidShiftingX”. In this component I access the 
+timeOffset variable and set it. 
+{{<hint danger>}}
+Now YOU should run into an error here. Thus far, we have all our variables set to `private`. This will prevent you from accessing and setting this value from outside. To make this possible, go into the script you have attached to the prefab and change the value you want to change to `public`. Now Unity will grant you access to this variable.
+{{</hint>}}
+As you can also see I multiply this with another `timeOffset` I created in the first line. This will just shift it a little for each cube and not offset it by a whole second.
+This is also to show explicitly, that you can have the same variable name on different scripts. They are completly different things!
+{{< figure src="/img/MultiShiftingXFull.gif" title="Multiple Cubes Shifting" width="75%">}}
+If you feel that this syntax is complicated, take the time an rebuild some of the sketches we build so far. Also feel free to play around with the number of cuboids you create this way. Make sure to feel comfortable with the idea of Arrays and the usage of `i` in this context. Arrays are important and we will leverage their power a lot from now on.
+
 Add in three examples with Scripts applied to prefabs
 
 
 ### A single script
-All of these use the idea of having the behavior attached to the prefab itself. This can, or can not be the most practical way to go. We could also handle all of this directly through one script. Or we could add the behavior at runtime to the cuboid prefabs. In our case of some moving cuboids, all approaches could be equally fine and the way you implement this really comes down to taste. In more complex situations there might be a stronger indication to where a script is placed in a useful fashion.<br>
+All of the examples above use the idea of having the behavior attached to the prefab itself. This can, or can not be the most practical way to go. We could also handle all of this directly through one script. Or we could add the behavior at runtime to the cuboid prefabs. In our case of some moving cuboids, all approaches could be equally fine and the way you implement this really comes down to taste. In more complex situations there might be a stronger indication to where a script is placed in a useful fashion. <br>
 I want to show you the other possibilities not only for the sake of completeness but also because it allows us to discuss script interaction. Thus far all of our scripts were self contained little programs. They had no way of interacting or properly with one another. The great thing in this is, you could already know how to do this, you might just not be aware of that. 
 {{<highlight c>}}
 using UnityEngine;
@@ -146,25 +178,24 @@ public class Tests : MonoBehaviour
 This is based on the script we discussed earlier. Yet this one assumes you don’t have a script attached to your prefab. Thus what we do is attach our behavior at runtime. Using `AddComponent<>()` we can add any script or component Unity offers. Any script you have created in your project can simply be added here. So this script could handle all of your variants. All you needed to do was to change the component you add.
 
 ### Half time!
-Just as a head up. Once you have reached this point of the chapter you have reached half time. And even better. Everything that follows is pretty much just more of the same. Just a little different. So if you are good with everything you’ve read so far, the rest will be a piece of cake!<br>
+Just as a head up. Once you have reached this point of the chapter you have reached half time. And even better. Everything that follows is pretty much just more of the same. Just a little different. So if you are good with everything you’ve read so far, the rest will be a piece of cake! <br>
 First we will cover variants of the “for loop” and then we will look into Lists - essentially a variant of the Array. We will finish this chapter with a look at multi-dimensional arrays.
 
 Redo this
 ### For-each Loops
-As I mentioned at the beginning of the chapter, C# offer different variants of loops. They were mostly created to make some common problems more convenient. “For-each” loops work similar to “for” loops, except you don’t need have to bother with the iterator and the initializer, because a for each loop executes over each item in a list or array.<br>
+As I mentioned at the beginning of the chapter, C# offer different variants of loops. They were mostly created to make some common problems more convenient. “For-each” loops work similar to “for” loops, except you don’t need have to bother with the iterator and the initializer, because a for each loop executes over each item in a list or array. <br>
 Their syntax is very straight forward as well.
 {{<highlight c>}}
 foreach (GameObject currentGameObject in cuboidList) { 	currentGameObject.GetComponent<Renderer>().material.color = Color.Black; }
 
 {{</highlight>}}
 
-You start with the `foreach` Keyword and follow that up by the Type of Object you want to iterate over. We have a list of GameObjects, so we iterate over those. Then we create a name, which allows us to actually access the GameObject in each iteration. This is what `cuboidList[i]` would be in “for” loops. Lastly we just specify the list we want to iterate over after puttig the `in` Keyword.<br>
+You start with the `foreach` Keyword and follow that up by the Type of Object you want to iterate over. We have a list of GameObjects, so we iterate over those. Then we create a name, which allows us to actually access the GameObject in each iteration. This is what `cuboidList[i]` would be in “for” loops. Lastly we just specify the list we want to iterate over after puttig the `in` Keyword. <br>
 All of this actually reads almost like english, which is nice. On the downside, we are not automatically handed an iterator.
 
 Redo this
 ### While Loops
-There is yet another type of loop. The while loop.
-
+There is yet another type of loop. The while loop. <br>
 While loops are the most basic type of loop and essentially just run as long as a condition stays true. Think of the Update function. It loops each frame, but of course has now counter to finish after a certain amount of Frames. That would be silly. Essentially it will loop as long as the game is running.
 {{<highlight c>}}
 while(true){
@@ -185,7 +216,7 @@ while( i < 10){
 	//Code to run each iteration
 }
 {{</highlight>}}
-This code would actually work just fine. It’s essentially recreating the for loop, we have been looking at earlier, we just created in manually.<br>
+This code would actually work just fine. It’s essentially recreating the for loop, we have been looking at earlier, we just created in manually. <br>
 But you could of course use this in cases, when you want to base the iteration on some kind of outside variable. Just make sure to be able to change the value from inside the while loop.
 
 Redo this
@@ -222,7 +253,7 @@ An example using Lists and the behaviour directly attached to the prefab, would 
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiCuboids_Lists : MonoBehaviour
+public class MultiCuboidsLists : MonoBehaviour
 {
     public GameObject cuboidPrefab;
     public float cuboidDistance = 0.225f;
@@ -277,7 +308,7 @@ All of this works exactly the same using three dimensions:
 {{<highlight c>}}
 using UnityEngine;
  
-public class MultiDimensionalCuboids_RotationStacked : MonoBehaviour
+public class MultiDimensionalCuboidsRotationStacked : MonoBehaviour
 {
     public GameObject cuboidPrefab;
     float yOffset = 0.225f;
@@ -324,3 +355,9 @@ public class MultiDimensionalCuboids_RotationStacked : MonoBehaviour
 }
 {{</highlight>}}
 
+
+
+Examples of possible Things
+
+- landspeeder with noisy stones on the floor
+- landspeeder with crazy floors, tunnels
