@@ -151,21 +151,23 @@ Add in three examples with Scripts applied to prefabs
 
 
 ### A single script
-All of the examples above use the idea of having the behavior attached to the prefab itself. This can, or can not be the most practical way to go. We could also handle all of this directly through one script. Or we could add the behavior at runtime to the cuboid prefabs. In our case of some moving cuboids, all approaches could be equally fine and the way you implement this really comes down to taste. In more complex situations there might be a stronger indication to where a script is placed in a useful fashion. <br>
-I want to show you the other possibilities not only for the sake of completeness but also because it allows us to discuss script interaction. Thus far all of our scripts were self contained little programs. They had no way of interacting or properly with one another. The great thing in this is, you could already know how to do this, you might just not be aware of that. 
+All of the examples above use the idea of having the behavior attached to the prefab itself. To make this even more flexible, we could add our behavior at run time as well. <br>
+
+Replace by Gist
 {{<highlight c>}}
 using UnityEngine;
 
 public class Tests : MonoBehaviour
 {
-    public GameObject myPrefab;
+    [Serialize Field]
+    private GameObject myPrefab;
     private GameObject[] myGameObjects;
-    public int arraySize = 5;
+    [SerializeField]
+    private int arraySize = 5;
     // Start is called before the first frame update
     void Start()
     {
         myGameObjects = new GameObject[arraySize];
-        myGameObjects[0].transform.position = Vector3.zero;
 
         for(int i = 0; i < arraySize; i++)
         {
@@ -175,34 +177,37 @@ public class Tests : MonoBehaviour
     }
 }
 {{</highlight>}}
-This is based on the script we discussed earlier. Yet this one assumes you don’t have a script attached to your prefab. Thus what we do is attach our behavior at runtime. Using `AddComponent<>()` we can add any script or component Unity offers. Any script you have created in your project can simply be added here. So this script could handle all of your variants. All you needed to do was to change the component you add.
+Using `AddComponent<>()` we can add any script or component Unity offers. Any script you have created in your project is available as a component and can be added this way. So this script could handle all of your variants. All you needed to do was to change the component you add. <br>
+I hope you can see how much easier this approach is. All you need is a Prefab for your cube without any behavior. Everything else can be managed from this script. 
+Now you *could* go ahead and even manage the behavior through this script. But that down the line, that really becomes messy. As we have the option to work in different scripts and classes, we should make use of this. Robert C. Martin created the term “Single responsibility principal” for this. And it is a good idea to honor this principle.
 
 ### Half time!
 Just as a head up. Once you have reached this point of the chapter you have reached half time. And even better. Everything that follows is pretty much just more of the same. Just a little different. So if you are good with everything you’ve read so far, the rest will be a piece of cake! <br>
 First we will cover variants of the “for loop” and then we will look into Lists - essentially a variant of the Array. We will finish this chapter with a look at multi-dimensional arrays.
 
-Redo this
 ### For-each Loops
-As I mentioned at the beginning of the chapter, C# offer different variants of loops. They were mostly created to make some common problems more convenient. “For-each” loops work similar to “for” loops, except you don’t need have to bother with the iterator and the initializer, because a for each loop executes over each item in a list or array. <br>
+As I mentioned at the beginning of the chapter, C# offers different variants of loops. They were mostly created to make some common problems more convenient. “For-each” loops work similar to “for” loops, except you don’t need have to bother with the iterator and the initializer. *For-each* loops iterate over every item in the list and don’t need an iterator. <br>
 Their syntax is very straight forward as well.
 {{<highlight c>}}
-foreach (GameObject currentGameObject in cuboidList) { 	currentGameObject.GetComponent<Renderer>().material.color = Color.Black; }
+private GameObject[] cuboidList = new GameObject[5];
+foreach (GameObject currentGameObject in cuboidList) {
+	CurrentGameObject = Instantiate(cuboidPrefab, Vector3.zero, Quaternion.identity); 	currentGameObject.GetComponent<Renderer>().material.color = Color.Black; }
 
 {{</highlight>}}
 
-You start with the `foreach` Keyword and follow that up by the Type of Object you want to iterate over. We have a list of GameObjects, so we iterate over those. Then we create a name, which allows us to actually access the GameObject in each iteration. This is what `cuboidList[i]` would be in “for” loops. Lastly we just specify the list we want to iterate over after puttig the `in` Keyword. <br>
-All of this actually reads almost like english, which is nice. On the downside, we are not automatically handed an iterator.
+You start with the `foreach` Keyword. In parentheses you follow that up with the type of object you want to iterate over. We have a list of GameObjects, so we iterate over those. Next we create a name, which allows us to actually access the current GameObject in each iteration. This is what `cuboidList[i]` would be in “for” loops. Lastly we just specify the array or list we want to iterate over. We just need to add the little word `in`.
+All of this actually reads almost like English. On the downside, we are not automatically handed an iterator. Thus if we can not position our cuboids based on that iterator. <br>
+Here you can see, why there are different kinds of loops. *For-each* loops are great if you just want to search for an item in a list. Or you want to apply a certain mechanic to all items in the list. *But* if you want to do this based on the position of the object *in* the list, the good old *for* loop is better suited to handle this.
 
-Redo this
 ### While Loops
-There is yet another type of loop. The while loop. <br>
-While loops are the most basic type of loop and essentially just run as long as a condition stays true. Think of the Update function. It loops each frame, but of course has now counter to finish after a certain amount of Frames. That would be silly. Essentially it will loop as long as the game is running.
+The last to loops have become more uncommon over time, yet they too still have their uses! <br>
+“While” loops are the most basic type of loop and essentially just run as long as a condition stays true. Think of the Update function. It loops each frame, but of course has no counter to finish after a certain amount of Frames. That would be silly. Essentially it will loop as long as the game is running. The syntax for while loops is very basic:
 {{<highlight c>}}
 while(true){
 	//Code to run
 }
 {{</highlight>}}
-That would be an infinite loop. `true` can never just become false. So this will run forever.
+All you need is the `while` keyword followed by the condition in parentheses. The condition has to evaluate to a boolean. In the above example I set this to `true`. That would be an infinite loop. `true` can never just become false. So this will run forever and will freeze your program. So you have to be careful how you construct your conditions with while loops.
 {{<highlight c>}}
 While(1 > 0){
 	//Code to run
@@ -216,10 +221,12 @@ while( i < 10){
 	//Code to run each iteration
 }
 {{</highlight>}}
-This code would actually work just fine. It’s essentially recreating the for loop, we have been looking at earlier, we just created in manually. <br>
-But you could of course use this in cases, when you want to base the iteration on some kind of outside variable. Just make sure to be able to change the value from inside the while loop.
+This code would actually work just fine. It’s essentially recreating the for loop. <br>
+But you could of course use this in cases, when you want to base the iteration on some kind of outside variable. Just make sure to be able to make the condition can become false based on operations inside the while loop.
 
-Redo this
+Build a Sektch with While loops
+
+
 ### Do-While Loops
 There is one last kind of loop which C# offers. The “do-while” loop. As the name suggests it’s very tightly entangled with the while loop. It’s special feature is, that it will always execute at least once, because the evaluation of the condition follows after the first iteration step.
 {{<highlight c>}}
@@ -230,25 +237,30 @@ do
     i++;
 } while (i < 5);
 {{</highlight>}}
-As you can imagine, this one doen’t bring that much to the table, so we are not working out an example for this one. But I want you to be aware of it’s existence and it certainly has it’s use-cases.
+
+Example Project here?? ??!!
 
 
 ### Lists
-While you could say that Arrays are essentially *Lists* in C# they are two slightly different things. And most of the differences matter more to the advanced programmer: Arrays have a fixed size and can thus be placed as one continuous block in memory, while Lists are dynamic and are able to resize. This leads to both of them having advantages in one area over the other. And a good rule of thumb is: If you can get away with an Array of a fixed size, use it! At least in Unity.
+While you could say that arrays are essentially *Lists* in C# they are two slightly different things. And most of the differences matter more to the advanced programmer: Arrays have a fixed size and can thus be placed as one continuous block in memory, while Lists are dynamic and are able to resize. This leads to both of them having advantages in one area over the other. And a good rule of thumb is: If you can get away with an Array of a fixed size, use it! At least in Unity.
 {{<expand>}}
-### More general C#
+{{<hint info>}}
+### More general C# 
 C# as a language is used for widely different things and many of these don’t require to update at constant 60 FPS. Thus you will see people advise to use Lists over Arrays in most cases. Lists come with more features out of the box and thus are more convenient to use. When performance is not your main concern, that is absolutely correct. If you deal with small scenes I’d say it is also fair to use lists. Once you have to deal with lots and lots of objects and are concerned about performance, definitely use arrays.
+{{</hint>}}
 {{</expand>}}
-Anyway, we will create the same thing with Lists as well. For our five cuboids all of this really doesn’t matter! 
+With technicalities out of the way, let’s look at recreating one of our sketches we built with arrays using lists.
 {{<highlight c>}}
 private List<GameObject> cuboids = new List<GameObject>();
 {{</highlight>}}
-Lists need to created using the “List” keyword which is followed by a generic type `T` in angle brackets and the name you want to give to your List. You will also need to create it using the `new` keyword. Mind the parentheses at the end!<br>
+You create Lists using the `List` Keyword followed by a type `T` in angle brackets and the name you want to give to your List. You will also need to create it using the `new` keyword. Mind the parentheses at the end! <br>
 To add objects to your List during runtime you can simply use the `Add()` method provided by lists.
 {{<highlight c>}}
 	cuboids.Add(myGameObject));
 {{</highlight>}}
-An example using Lists and the behaviour directly attached to the prefab, would look like this:
+An example using Lists and the behavior directly attached to the prefab, would look like this:
+REPLACE BY GIST
+
 {{<highlight c>}}
 using System.Collections.Generic;
 using UnityEngine;
@@ -267,6 +279,8 @@ public class MultiCuboidsLists : MonoBehaviour
     }
 }
 {{</highlight>}}
+
+Add Sketch
 Accessing items in a list is actually done in the same way Arrays access items: Using bracket notation.
 {{<highlight c>}}
     void Update(){
@@ -277,16 +291,18 @@ Accessing items in a list is actually done in the same way Arrays access items: 
         }
     }
 {{</highlight>}}
-As you can see Lists and Arrays are kinda similar, but take a look at all the methods Lists supply. You can not only `Add()` or `Remove()` elements from them. There are many useful things, like `Sort()`, `Clear()` and even `ToArray()` methods.<br>
-I suggest you play around with both options t get a feel for them. Just recreate something you already created before.
-
+As you can see Lists and Arrays are similar. But take a look at all the methods Lists supply. You can not only `Add()` or `Remove()` elements from them. There are many useful things, like `Sort()`, `Clear()` and even `ToArray()` methods. These methods and their flexibility regarding length are the main features you should look out for, when deciding between lists and arrays.<br>
+I suggest you play around with both options to get a feel for them.
 
 ### Multi-Dimensional Arrays
-So what if you wanted to position your objects not just in a single axis, but in multiple axis? Now you could probably come with something. Or you would just use multidimensional arrays. They work and behave just like one-dimensional arrays, but you will have to stack your loops. You can create as many dimensions as you want, but we will only look at two and three dimensions.
+So what if you wanted to position your objects not just in a single axis, but in multiple axis? Now you could probably come up with some way to handle this using ifs or modulos. Or you would just use multidimensional arrays. They work and behave just like one-dimensional arrays, but you will have to nest your loops. You can create as many dimensions as you want, but we will only look at two and three dimensions.
 {{<highlight c>}}
 private GameObject[,] cuboidArray = new GameObject[5, 5];
 {{</highlight>}}
-This code would create a two-dimensional Array with an array Length of 5 in each dimension. Now most likey you want to assign GameObjects to your Array using an *for loop*. What you will need to do now is nest two for loops into each other, with a different iterator for each loop.
+This code would create a two-dimensional Array with an array Length of 5 in each dimension. Now most likely you want to assign GameObjects to your Array using an *for loop*. What you will need to do now is nest two for loops into each other, with a different iterator for each loop.
+
+Convert to Gist?
+Replace by script that values single responsibility
 {{<highlight c>}}
 public int arraySize = 5;
 public float offset = 1.5f;
@@ -304,7 +320,17 @@ for (int i = 0; i < arraySize; i++)
 }
 {{</highlight>}}
 As you can see, all we need to do is use `i` and `j` in our array accessor. To spread out the cuboids, we use `i` on the x axis for positioning and `j` for the z axis. The offset will spread them out with some space between them.<br>
+{{< figure src="/img/MultiDimensionRotation.gif" title="Multiple Cubes Shifting" width="75%">}}
+{{<hint danger>}}
+Please, be careful with these though! It is really easy to underestimate how many objects you create by just typing in some numbers. An 2D array of 10x10 is a 100 cuboids. An 3D array of 10x10x10 is 1000. Put in 100 and suddenly you expect Unity to create a million cuboids! <br>
+Now depending on your background, you might think: “A million squares isn’t that much...”. Think of the way we handle these right now. There is absolutely no optimization done. Each of them is considered equal with all of its components. Thus... Be careful, save your work early and often before you pump up those numbers. (And now go ahead and crash Unity, as I know you will...)
+{{</hint>}}
+
 All of this works exactly the same using three dimensions:
+
+Replace by Gists!
+Replace by script that values single responsibility
+
 {{<highlight c>}}
 using UnityEngine;
  
@@ -355,9 +381,11 @@ public class MultiDimensionalCuboidsRotationStacked : MonoBehaviour
 }
 {{</highlight>}}
 
+{{< figure src="/img/MultiDimensionRotationStacked.gif" title="Three dimensional Array" width="75%">}}
+
 
 
 Examples of possible Things
-
+- move through randomly placed Objects
 - landspeeder with noisy stones on the floor
 - landspeeder with crazy floors, tunnels
