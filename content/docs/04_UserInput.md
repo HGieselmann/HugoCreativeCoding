@@ -64,9 +64,12 @@ using UnityEngine;
 
 public class ConditionalCuboidsShiftingXZAppartSimple : MonoBehaviour
 {
-    public float timeOffset = 0;
-    public float movementScale = 0.25f;
-    public bool inverted;
+    [SerializeField]
+    private float timeOffset = 0;
+    [SerializeField]
+    private float movementScale = 0.25f;
+    [SerializeField]
+    private bool inverted;
     void Update()
     {
         float sinus = Mathf.Sin(Time.time + timeOffset);
@@ -132,9 +135,11 @@ using UnityEngine;
 
 public class ConditionalCuboidsShiftingXAKeyDeltaTime : MonoBehaviour
 {
-    
-    public float timeOffset = 0;
-    public float movementScale = 0.25f;
+    [SerializeField]
+    private float timeOffset = 0;
+    [SerializeField]
+    private float movementScale = 0.25f;
+    [SerializeField]
     private float timePressed = 0;
     void Update()
     {
@@ -174,8 +179,11 @@ Thus the Input from “Mouse X” and “Mouse Y” will be the mouse delta, or 
 {{<highlight c>}}
 public class ConditionalCuboidsPoppingMouseSpeed : MonoBehaviour
 {
-    public float movementSpeed = 0.01f;
+    [SerializeField]
+    private float movementSpeed = 0.01f;
+    [SerializeField]
     private float movement = 0f;
+    [SerializeField]
     private float bounds = .5f +.1125f;
 
     void Update()
@@ -204,7 +212,8 @@ public class ConditionalCuboidsPoppingMouseSpeed : MonoBehaviour
 ### New Input System
 The folks at Unity are currently working on a new Input System, that remedies some of the problems of the current one. This should most likely not concern you too much, but if you think of working on something, that needs crazy input options, you should probably take a look at that!
 
-### Project 1
+### Projects
+#### Project 1
 Your most obvious choice should be to go ahead and create more Cuboids! At least I did. <br>
 Can you think of a way to recreate these? What would your steps be? The first two should be easy, but how would you solve the last one? Make sure to try these yourself before you peek at the code!
 {{< figure src="/img/ConditionalCuboids_ShiftingXZ.gif" width="25%">}}
@@ -220,12 +229,12 @@ Gist here
 Gist here
 {{</expand>}}
 
-###  Project 2
+#### Project 2
 - Bouncing Light in a room?
 - 
 
  
-### Project 3
+#### Project 3
 Landspeeder Flight through desert
 Talk about collsions
 

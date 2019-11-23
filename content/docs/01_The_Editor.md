@@ -85,7 +85,8 @@ Because Unity limits you to basic shapes out of the box, you could try to recrea
 
 For Copyright issues I won’t put my recreations here, but I think “Q1 Suprematistic” by László Moholy-Nagy could be something easy to recreate. Or paintings like “De Stijl” by Peter Keler. They both use only basic shapes in different sizes and You pretty much only need to concern yourself with the final 2D output and can ignore third. If you want more of a challenge, you could also try to recreate the “Stacking Tables” by Josef Albers. With these you could also try to create a hierarchy inside the Hierarchy view using drag and drop. This will become handy later.
 
-### Environment Design
+### Projects
+#### Environment Design
 In this second challenge you have a lot more freedom to create your own. I created and asset pack full of low poly Objects. These should be enough to create small environment scenes. Maybe you can even tell a story with your image. I suggest looking for inspiration and reference online.
 
 You can use these Assets in any other scene you want to create. 
@@ -94,7 +95,7 @@ Explain how to download an import these assets.
 
 
 {{<expand>}}
-### Low Poly Models
+#### Low Poly Models
 All 3D models comprises three essential elements: Points, Lines and Planes. (Hello Mr. Kandinsky!) But mathematics came in and said: Let’s use our terms and call them: Vertex, edge and polygon. So in 3D the names stuck.
 
 Low poly objects thus are objects which consist only of a few planes or polygons. This helps with performance on lower end devices but also has turned into a full on art style for illustrations and video games.

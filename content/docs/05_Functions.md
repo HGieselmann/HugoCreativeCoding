@@ -285,7 +285,11 @@ You can see the full code here:
 {{</expand>}}
 
 ### Randomness and Noise
-Noise and randomness are two key ingredients in creating generative art. They allow you to create ever evolving and always changing things. Depending on the depths of layering you create these will virtually never repeat. Yet they are also a major source of creating uninteresting and bland work. Especially Randomness. As a designer you want to have control over your work and it’s outcome. You want to transform the randomness to make use of it’s power and yet never bend to its rules. <br>
+Noise and randomness are two key ingredients in creating generative art. They allow you to create ever evolving and always changing things. Depending on the depths of layering you create these will virtually never repeat. <br>
+Randomness will generate completely random values each time you call the method. Randomness has no concept of the previous value or any connection to it. All it knows about it the rage in which it is supposed to generate values.
+Noise is related to randomness as it returns different values over time. Yet these are not random, they have a pattern and will repeat over time. Noise is great, because it’s very flexible. You can configure it to throw values that seem almost random yet you can also return very smooth values. Here is a simple comparisson of the two:
+{{< figure src="/img/MethodCuboidsRandomNoiseComparisson.gif" title="Randomness and noise" width="75%">}}
+Yet they are also a major source of creating uninteresting and bland work. Especially Randomness. As a designer you want to have control over your work and it’s outcome. You want to transform the randomness to make use of it’s power and yet never bend to its rules. <br>
 Thus to understand the problems of Randomness lets create a bad example! - Random Color: <br>
 {{< figure src="/img/MethodShiftingRandomColor.gif" title="Random Color each Frame" width="75%">}}
 {{<expand>}}
@@ -324,16 +328,20 @@ Randomness isn’t really a great choice to create animation, due to it’s in-c
 {{<expand>}}
 {{<gist HGieselmann 91ac048488ae7c080ebb5a600ac7d242>}}
 {{</expand>}}
-Given, this isn’t our sweetest result so far, but it is a lot better and feels more consistent than the complete Randomness in the beginning.
+Given, this isn’t our sweetest result so far, but it is a lot better and feels more consistent than the complete Randomness in the beginning. But we will use the concept of randomness more and more throughout the next chapters.
+
+#### Noise
 
 
-### Project 1: <br>
+
+### Projects
+#### Project 1: <br>
 The first thing I suggest you do is, go through the scripts you have written so far and refactor them. An for at least a few, try not to rely on the refactoring help of your IDE. Get the concept o writing them engraved into your brain!.<br>
 
-### Projects 2:<br>
+#### Projects 2:<br>
 While methods don’t actually allow is to do something utterly new, it allows is creating things that aren’t horribly tedious to do. So here are some more examples for our Cuboid: Go check them out.<br>
 Add more examples here using methods
-### Projects 3:<br>
+#### Projects 3:<br>
 Noise Walker
 Low poly Example
 More advanced land speeder?
