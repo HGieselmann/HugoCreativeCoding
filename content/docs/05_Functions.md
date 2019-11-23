@@ -35,7 +35,7 @@ public class LogTime: MonoBehaviour
 As you can see, we define new methods at the same level as the `Start()` and `Update()` method. And you can define them *below* the line where you call them. Actually, we are defining the `Start()` and `Update()` methods in each script. The only difference between our methods and the methods pre-defined by Unity is, that Unity will try to call them automatically during execution, while we have to make sure our methods a called at some point.<br>
 
 So how can a simple `void` method help us with our code? As an example, let’s go back to the “Popping” cuboids from Chapter 04:
-{{< figure src=”/img/ConditionalCuboids_Popping_Popping.gif" width="50%">}}
+{{< figure src="/img/ConditionalCuboids_Popping_Popping.gif" width="50%">}}
 
 {{<highlight c>}}
 public class ConditionalCuboidsPopping : MonoBehaviour
@@ -312,7 +312,19 @@ int myInt = Random.Range(0,2); // Returns either 0 or 1
 {{<highlight c>}}
 float myFloat = Random.Range(0f, 1f);
 {{</highlight>}}
-
+{{<expand>}}
+{{<hint info>}}
+#### Overloading methods
+You can create these overloads for methods in your own code as well. Just define two or more methods with one and the same name and different numbers of arguments. But make sure it actually makes sense to create overloads, as you can see, this can lead to some confusion and thus quickly can lead to bugs, especially if you work with other people on a team.
+{{</hint>}}
+{{</expand>}}
+With this technical weirdness out of the way, let us look at actually creating more interesting results than the color craze up there. <br>
+Randomness isn’t really a great choice to create animation, due to it’s in-continuous nature. But it is a great way to do choices. Thus we could change the color of our cuboids based on a random value. But instead of doing this each frame and creating absolutely random colors, we can do it on condition and only choose from a certain set of colors:
+{{< figure src="/img/MethodCuboidsBauhausSplit.gif" title="Choosing random color from collection" width="75%">}}
+{{<expand>}}
+{{<gist HGieselmann 91ac048488ae7c080ebb5a600ac7d242>}}
+{{</expand>}}
+Given, this isn’t our sweetest result so far, but it is a lot better and feels more consistent than the complete Randomness in the beginning.
 
 
 ### Project 1: <br>
