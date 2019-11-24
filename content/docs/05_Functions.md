@@ -331,8 +331,19 @@ Randomness isn’t really a great choice to create animation, due to it’s in-c
 Given, this isn’t our sweetest result so far, but it is a lot better and feels more consistent than the complete Randomness in the beginning. But we will use the concept of randomness more and more throughout the next chapters.
 
 #### Noise
-
-
+We established earlier how noise is different, so let us jump straight into using it.
+{{<highlight c>}}
+float myNoise = Mathf.Perlin(Time.time, Time,time);
+{{</highlight>}}
+As you can see the noise method is located inside the `Mathf` namespace and it’s called Perlin. The noise method C# implements is actually “Perlin Noise” which was invented by Ken Perlin in 1983. The way this noise works is, we look up a position in X and Y on a black and white noise plane. The result is returned as a float. This means, if you need animated noise, you need to pass values to the method that are changing over time. Like Time.
+{{< figure src="/img/MethodCuboidsRandomNoiseShifting.gif" title="Noise Shifting" width="75%">}}
+What you can see here nicely is how the patterns in the noise repeats with time. 
+{{<highlight c>}}
+float noiseX = Mathf.PerlinNoise(Time.time * movementScale + timeOffset, Time.time + timeOffset); float noiseZ = Mathf.PerlinNoise(Time.time * movementScale + timeOffset +.5f, Time.time + timeOffset +.5f); transform.position = new Vector3(noiseX, transform.position.y, noiseZ );
+{{</highlight>}}
+Getting this kind of animation relies on two kinds of Offsets. The first offset I put as a hard coded `0.5f` for the noiseZ value. This will guarantee that the movement will not just happen along one axis. <br>
+The other offset is a custom offset per cuboid you can set in the Editor. This Offset will create the time offset you can create for the cuboids. You can play around with this value and the order in which you set the offset to create different results.
+We will come across noise lot’s more over the following chapters.
 
 ### Projects
 #### Project 1: <br>
@@ -349,9 +360,6 @@ More advanced land speeder?
 
 
 
-
- - Ari Danish
-- Discussion of Randomness
 - animated Randomness
 - recreate an image each touch
 -  Suprematism
@@ -359,4 +367,9 @@ More advanced land speeder?
 
 - Land speeder with things placed through noise
 - 
+
+### Additional Resources:
+ - [Ari Danish - Working with Noise](https://vimeo.com/75313908) <br>
+
+
 
