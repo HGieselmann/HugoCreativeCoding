@@ -1,24 +1,53 @@
 # 09 - More Language Features
-### Delegates and Events
-In this chapter we will look at some other C# features and some loose ends we left along the way, because I didn’t want to bother you with them too early. The first thing we want to look at are C# Delegates and Events.
 
-We discussed before how Objects can call functions on other objects. To pick a stupid example: I as a “Salesman” Object could personally call a customer and he could learn from me about all the wonderful things my car offers. I could invoke his “learn” function and the Data I send will be given to him directly.
-But what if I have a 100.000 customers. Should I make a call to all of them? While that would be a nice move, sending out a letter would be fine too, right?
-And that’s what Events are all about. If you have information for many, many customers or classes, you just send them out and anyone who subscribed to the event will get notified about it.
-So what are delegates and what are Events?
-The event is the letter you want to send out. The delegate is an agreement between you and the customer how the event is supposed to look like. Say the letterbox. Your customers expect letters in there, but if you suddenly start sending packages, then they can’t be received because they don’t fit the letterbox.
+In this chapter we will look at some other C# features and some loose ends we left along the way, because I didn’t want to bother you with them too early. These aren’t things you definitely need to know from the get go, but they will make you a better programmer. And as soon as you wish to tackle slightly larger projects, make sure to come back here.
+
+### Properties
+C# properties allow you to specify how other scripts can access private variables in your scripts. This comes in handy, if you want a variable to be able to read a value form outside, but don’t want to be able to set it from outside. Reigning this in is done using getter and setters. These are defined in curly brackets right after the variable name.
+{{<highlight c>}}
+public int myPublicInt;
+public int myProperty {get; set; }
+{{</highlight>}}
+If you look at the code we have a public variable and a public property. These two are pretty much the same thing. But we can work with these getter and setter some more.
+{{<highlight c>}}
+public int myProperty {get; }
+{{</highlight>}}
+Now if you try to write to that variable you will run into an compiler error or won’t even be able to compile. So now any Script can read that value, but no script can change the value. You even can’t change it from within the script. But we can manage that:
+{{<highlight c>}}
+public int myProperty {get; private set;}
+{{</highlight>}}
+This will allow you to read the script from outside and manipulate it from the inside. This will allow you to protect your variables from accidentally changing them from some other script. So if you don’t need to set these variables from outside, use this method to prevent bugs. <br>
+You could of course also use these to prohibit reading and only allow to write from outside. Any combination is possible. <br>
+So what we have seen so far are “auto properties”. They are shorthand code for something that is usually a little longer. In Unity code you will most often see auto properties, but there are fully fledged properties as well.
+{{<highlight c>}}
+public string myStringProperty {     get { return myStringProperty; }     set { myStringProperty = value; } }
+{{</highlight>}}
+This will result in exactly the same behaviour it is just more explicit. But using this larger syntax you can also add additional functionality to your getters and setters. You can change the way you return these values. Thus you could for example check if the value you want to check is actually valid inside your context.
+{{<highlight c>}}
+public string myStringProperty {     get { return myStringProperty; }     set     {         if (value > 100)         {             myStringProperty = 100         }         else         {             myStringProperty = value;         }     } }
+{{</highlight>}}
+So you can add any kind of code into the context of getting and setting values. Obviously you shouldn’t overdo this, but the functionality is there. <br>
+Again, you will mostly see me use the auto properties in Unity, which will help protect variables. But if you come across larger chunks of code that start with get or set, you will know how to interpret these.
+
+
+### Delegates and Events
+We discussed earlier how Objects can call functions on other objects. To pick a stupid example: I as a “Salesman” Object could personally call a customer and he could learn from me about all the wonderful things my car offers. I could invoke his “learn” function and the Data I send will be given to him directly.<br>
+But what if I have a 100.000 customers. Should I make a call to all of them? While that would be a nice move, sending out a letter would be fine too, right?<br>
+And that’s what Events are all about. If you have information for many, many customers or classes, you just send them out and anyone who subscribed to the event will get notified about it.<br>
+So what are delegates and what are Events?<br>
+The event is the letter you want to send out. The delegate is an agreement between you and the customer how the event is supposed to look like. Say the letterbox. Your customers expect letters in there, but if you suddenly start sending packages, then they can’t be received because they don’t fit the letterbox.<br>
 In code this mean the delegate is an agreement between sender and receiver what kind of data is send with the event.
 
-So this system in itself is useful, but it also comes with some advantages for our code. Once this is set up, any class can subscribe to the event, without us ever changing the code in the class that is invoking the event. So this helps us stay flexible in our code.
+So this system in itself is useful, but it also comes with some advantages for our code. Once this is set up, any class can subscribe to the event, without us ever changing the code in the class that is invoking the event. So this helps us stay flexible in our code.<br>
 In larger projects this can also lead to shorter compilation times, which is always a plus!
 
-### How to setup events?
-Implementing delegates and Events into our projects consists of five essential steps:
-1. Create the agreement about the event a.k.a. the delegate
-2. Create the event based on that delegate
-3. Create the event handler to receive the event
-4. Subscribe to the event
-5. Raise/Call the event
+### How to setup events?<br>
+Implementing delegates and Events into our projects consists of five essential steps:<br>
+1. Create the agreement about the event a.k.a. the delegate<br>
+2. Create the event based on that delegate<br>
+3. Create the event handler to receive the event<br>
+4. Subscribe to the event<br>
+5. Raise/Call the event<br>
 
 As an first very simple example, we will a have a sphere which is slowly shrinking, but once you press a button it will be set to it’s initial Size again. Arguably you could solve this without Events, but bear with me.
 
@@ -58,8 +87,8 @@ public GameObject sender;
         sender.GetComponent<Sender>().buttonPressed += OnButtonPressed;
     }
 {{</highlight>}}
-The first thing we do here is create a reference to the Sender Object as we have done many times before. So we will need to connect these in the Unity Editor!
-Then in the `OnEnable()` method we get the sender component and look for the `buttonPressed` event. We then add the `OnButtonPressed` method to the event a.k.a subscribe it to the event. Form now on, when ever the Event is raised, the `OnButtonPressed()` method is called.
+The first thing we do here is create a reference to the Sender Object as we have done many times before. So we will need to connect these in the Unity Editor!<br>
+Then in the `OnEnable()` method we get the sender component and look for the `buttonPressed` event. We then add the `OnButtonPressed` method to the event a.k.a subscribe it to the event. Form now on, when ever the Event is raised, the `OnButtonPressed()` method is called.<br>
 {{<expand>}}
 ### OnEnable()
 What is OnEnable() and why do we use this? OnEnable() is similar to Start() and Update() one of those predefined functions inside Unity and they run in specific order. Thus there are recommendations on what kind of things you want to call when. If you want to go down the rabbit hole:
@@ -82,8 +111,8 @@ void Update()
         }
     }
 {{</highlight>}}
- In `Update()` we check for someone pressing the “A” key. Then we check if `buttonPressed` is not Null. If this returns `Null` it means button pressed has no subscribers and then there is no need to actually raise the event. Worse! If you don’t check for this, it will actually throw an Null reference exception at runtime!
-But if it’s not null, this will actually run just fine!
+ In `Update()` we check for someone pressing the “A” key. Then we check if `buttonPressed` is not Null. If this returns `Null` it means button pressed has no subscribers and then there is no need to actually raise the event. Worse! If you don’t check for this, it will actually throw an Null reference exception at runtime!<br>
+But if it’s not null, this will actually run just fine!<br>
 This is awesome. But let’s clarify a bit more why this is awesome. Now we can add as many functions to this event as we want! Let’s just create a function to randomly color our sphere:
 {{<highlight c>}}
 void OnButtonPressedColor(){
@@ -107,14 +136,14 @@ Now one thing that would be considered good practice is unsubscribing once your 
 {{</highlight>}}
 
 #### Static events
-While all of this is fine, it’s also a lot of stuff to take care of. So let’s look into simplifications, now that you know the full version of it. The easiest simplification is to make your event `static`.
+While all of this is fine, it’s also a lot of stuff to take care of. So let’s look into simplifications, now that you know the full version of it. The easiest simplification is to make your event `static`.<br>
 This allows us to not create an object Reference in the receiver first. You can just subscribe to the event calling the class like this:
 {{<highlight c>}}
 Sender.buttonPressed += OnButtonPressed;
 {{</highlight>}}
 
 #### Actions
-We can even go further and reduce the delegate creation and event creation into one line. To do this we first need to import the System namespace. `using System;`
+We can even go further and reduce the delegate creation and event creation into one line. To do this we first need to import the System namespace. `using System;`<br>
 Then we need to change the way we declare our delegate:
 {{<highlight c>}}
 public static Action buttonPressed;
@@ -123,18 +152,19 @@ This will now be enough and an we can subscribe directly to this Action. In case
 {{<highlight c>}}
 public static Action<int, float> buttonPressed;
 {{</highlight>}}
-And thus you need to supply values as arguments when calling the function!
-
+And thus you need to supply values as arguments when calling the function!<br>
 As you can see Actions can simplify delegates and events a lot. But I wanted to make sure to show you the whole process, so you are able to read code that uses the extended method.
-
 
 TODO
 - Example Multiple Classes
 - Example with a return type
 - Example with Func instead of Action
-- Properties
 
 
 
 
 
+### Pojects
+- Death Events and delegates
+- Cuboids to interact with
+- 
