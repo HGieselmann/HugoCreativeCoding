@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-  
-    
-    06 Multiple Objects
-  
- | Generative Unity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="" />
+<meta property="og:description" content="06 - Multiple Objects Multiple Object Workflow If you followed along with some of the examples, you probably realized we do a lot of manual labor. We deal with the Unity Editor a lot. We apply all the new scripts manually to each Cuboid. Then again programming is a lazy mans art. The less manual labor we have to do, the better. With the concepts introduced in this chapter, we will be able handle lots and lots of objects simultaneously." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://generativeunity.henrikgieselmann.com/docs/06_MultipleObjects/" />
 
-
-
-<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
-
-
+<title>06 Multiple Objects | Generative Unity</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/book.min.d54f2886415be97240a76611f87e576a761d64c07020a767fa0ffd1bdc8bda93.css" integrity="sha256-1U8ohkFb6XJAp2YR&#43;H5XanYdZMBwIKdn&#43;g/9G9yL2pM=">
+
+
+<script defer src="/search.min.c7e8bbeb9de0f5f1c6a8f366185decb422a6bcedb2634e90922203068af6af5c.js" integrity="sha256-x&#43;i7653g9fHGqPNmGF3stCKmvO2yY06QkiIDBor2r1w="></script>
 
 <!--
 Made with Book Theme
@@ -33,36 +26,35 @@ https://github.com/alex-shpak/hugo-book
 </head>
 
 <body>
-  <input type="checkbox" style="display: none" id="menu-control" />
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
 
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+  <a href="https://generativeunity.henrikgieselmann.com"><span>Generative Unity</span>
+  </a>
 </h2>
 
 
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2f 06_MultipleObjects\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
-<ul>
+
+
+    <ul>
 <li><a href="/docs/00_Introduction/">Introduction</a></li>
 <li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
 <li><a href="/docs/03_The_Console/">03 The Console</a></li>
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
 <li><a href="/docs/05_Functions/">05 Methods</a></li>
-<li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
+<li><a href="/docs/06_MultipleObjects/"class=active>06 Multiple Objects</a></li>
 <li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
 <li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
 <li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
@@ -97,163 +89,203 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  
 <script>
 (function() {
-  var menu = document.querySelector('aside.book-menu nav')
-  addEventListener('beforeunload', function(event) {
-    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
   });
-  menu.scrollTop = localStorage.getItem('menu.scrollTop')
-})()
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
 </script>
-
-
 
     </aside>
 
     <div class="book-page">
-      <header class="align-center justify-between book-header">
+      <header class="flex align-center justify-between book-header">
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>
-  
-    
-    06 Multiple Objects
-  
-</strong>
+  <strong>06 Multiple Objects</strong>
 </header>
 
       
 <article class="markdown">
 
+<h1 id="06-multiple-objects">06 - Multiple Objects</h1>
+
 <h3 id="multiple-object-workflow">Multiple Object Workflow</h3>
 
-<p>If you followed along with some of the examples, you probably realized we are doing a lot of manual labor in changing things on the Unity Editor itself. Each Cuboid has to get the new Script and so forth. Then again programming is a lazy mans art. The less manual labor we have to do the better.
-With the concepts introduced in this chapter, we will be able handle lots and lots of objects simultaneously. Hence it will also allow us to create more complex sketches.
-We will also look at interaction between multiple scripts. Finally keywords like <code>private</code> and <code>public</code> will hopefully make more sense.
-Thus in this Chapter we will introduce ways to create and handle multiple cuboids at runtime. And cuboids - of course could be anything really. To do this conveniently in Unity we need to look at three Concepts:
-1. Prefabs and Instantiation
-2. Arrays or Lists
-3. Loops
-In short, we will create objects through Instantiation. We will the use Arrays and Lists to keep track of them and loops to iterate over them
-What’s even better is, it opens up a lot of creative possibilities and ideas to talk about!</p>
+<p>If you followed along with some of the examples, you probably realized we do a lot of manual labor. We deal with the Unity Editor a lot. We apply all the new scripts manually to each Cuboid. Then again programming is a lazy mans art. The less manual labor we have to do, the better. <br>
+With the concepts introduced in this chapter, we will be able handle lots and lots of objects simultaneously. Hence it will also allow us to create more complex sketches. <br>
+To do this conveniently in Unity we need to look at three Concepts: <br>
+1. Prefabs and Instantiation <br>
+2. Arrays and/or Lists <br>
+3. Loops <br>
+In short, we will create objects through Instantiation. We will the use Arrays and Lists to keep track of them and loops to iterate over them. <br>
+What’s even better is, it opens up a lot of creative possibilities and ideas to talk about! <br>
+We will also look at interaction between multiple scripts. Finally keywords like <code>private</code> and <code>public</code> will hopefully make more sense.</p>
 
 <h3 id="prefabs-and-instantiation">Prefabs and Instantiation</h3>
 
-<p>Instantiation is the process of creating Objects from a script and it is tightly intertwined with the Concept of Prefabs. Prefabs are “prefabricated” Objects we can “save” form the project view. They are in most cases the objects we want to then create through code.
-Creating Prefabs is superbly simple. Any object you have in your scene can be turned into a prefab. All you have to do is drag an item from the hierarchy into the project view.
-TODO GIF PREFAB
-The tiny cube in front of the object turns blue if Unity knows about this object as an Prefab. It’s often advisable to create a specific folder for all your prefabs. The great thing is that Unity will keep all of it’s components attached to the prefab. But it also opens up room for some consideration later on. Any behaviour we have added to a prefab will be there once we create an instance of it. This can be what you want, but it’s not necessarily so.
-Once you have created a prefab from an GameObject you can go ahead and delete it from the hierarchy.</p>
+<p>Instantiation is the process of creating or “instantiating” objects from a script and it is tightly intertwined with the Concept of Prefabs. Prefabs are “prefabricated” Objects we can create through the project view. In most cases these prefabs are the object we want to instantiate through code at runtime.
+Creating Prefabs is surprisingly simple. Any object you have in your scene can be turned into a prefab. All you have to do is drag an item from the hierarchy into the project view. Go ahead and create an cuboid prefab from any of your sketches.
+<figure>
+    <img src="/img/CreatePrefab.gif" width="100%"/> <figcaption>
+            <h4>Creating a Prefab via Drag and Drop</h4>
+        </figcaption>
+</figure>
+
+The tiny cube in front of the object turns blue if Unity knows about this object as an Prefab. It’s often advisable to create a specific folder for all your prefabs. <br>
+Unity will keep all of the components currently attached to the prefab. Any behaviour we have added to a prefab will be there once we create an instance of it. For example a cuboid with a script that makes it move automatically attached to it, will lead to this exact same movement the moment you Instantiate it at runtime. <br>
+Once you have created a prefab from a GameObject you can go ahead and delete it from the hierarchy, if you don’t need it there anymore.</p>
 
 <h3 id="instantiation">Instantiation</h3>
 
-<p>With an prefab ready, we will need to create a script to actually handle the creation/instantiation of all our cuboids and because scripts in Unity can’t exists in empty space, we need to create a GameObject to hold our script. Technically any object would work, yet an “Empty Object” would of course be the ideal choice. Empties only consist of a transform component and thus have no visual representation in the scene, thus you are less likely to accidentally delete them. Rename your Empty to something like “ScriptHolder” or “Manager”.
+<p>With an prefab ready, we will need to create a script to actually handle the creation/instantiation of all our cuboids. Because scripts in Unity can’t exists in empty space, we need to create a GameObject to hold our script. Technically any object would work, yet an “Empty Object” would of course be the ideal choice. <em>Empties</em> only consist of a transform component and thus have no visual representation in the scene. Rename your Empty to something like “ScriptHolder” or “Manager”. <br>
 First we have to find a way to grab hold of our prefabricated cuboid. In Unity all Objects (that inherit from Monobehaviour - we’ll discuss this in Chapter 08) can be referenced as GameObject. So let’s create a variable of type <code>GameObject</code> for our cuboid.
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public GameObject cuboidPrefab;</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[SerializeField]
+private GameObject cuboidPrefab;</code></pre></div>
 Now go back to Unity and check the Inspector. You will see a field named cuboidPrefab. You can now drag and drop the prefab you created from the Project view into the field on the inspector.
-Add Gif here
-Now the script <em>knows</em> about the prefab. You might argue, that this process feels a little strange, and I am with you. I tend to forget this step and run into an error. But you’ll get used to it!
+<figure>
+    <img src="/img/DragPrefab.gif" width="1000%"/> <figcaption>
+            <h4>Connecting a prefab to your script</h4>
+        </figcaption>
+</figure>
+
+Now the script <em>knows</em> about the prefab. You might argue, that this process feels a little strange, and I am with you. I tend to forget this step and run into an error. But you’ll get used to it! <br>
 Next we need to actually create an actual instance at runtime:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Instantiate(cuboidPrefab, Vector3.zero, Quaternion.identity);</code></pre></div>
-The instantiate Method takes three argumentts:
-1. The Object we want to Instantiate
-2. A Vector as Position in Space
-3. Rotation passed as a Quaternion.
-For now,  just use <code>Quaternion.identity;</code>. Quaternions are scary things and <code>Quaternion.identity</code> will place them in the exact state you created the Prefab in, so that’s very, very likely correct anyway.
-If you run your scene now, you should have one Cuboid moving around, based on the script you had attached to it, when creating the prefab.
-Go ahead and duplicate that line. It should give you two cuboids and yet you will probably only see one. Both are created in exactly the same space and size. But you should be able to see two of them in the hierarchy.
-So we need to find a way to access a gameObject after instantiation. To do that we can just assign the created Object to variable the moment we create it:
+The <code>Instantiate()</code> Method takes three arguments: <br>
+1. The Object we want to Instantiate <br>
+2. A Vector3 as Position in Space <br>
+3. Rotation passed as a Quaternion. <br>
+For now, just use <code>Quaternion.identity;</code>. Quaternions are scary things and <code>Quaternion.identity</code> will place them in the exact state you created the Prefab in, so that’s very likely correct anyway. <br>
+If you run your scene now, you should have one Cuboid moving around, based on the script you had attached to it, when creating the prefab. <br>
+Go ahead and duplicate that line and run the code again. It should give you two cuboids and yet you should only see one. Both are created in exactly the same space and size. But you should be able to see two of them in the hierarchy. You could go ahead and change the position at which you instantiate the object, or we could position it after instantiation. <br>
+To move it afterwards, we need to find a way to access a GameObject after instantiation. To do that we can just assign the created Object to variable the moment we create it:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	var cuboid <span style="color:#666">=</span> Instantiate(cuboidPrefab, Vector3.back, Quaternion.identity);</code></pre></div>
-<div class="book-expand">
-  <label>
-    <div class="book-expand-head flex justify-between">
-      <span>Expand</span>
-      <span>↕</span>
-    </div>
-    <input type="checkbox" style="display: none" />
-    <div class="book-expand-content markdown-inner">
-      <h4 id="the-var-keyword">the ‘var’ Keyword</h4>
+<blockquote class="book-hint info">
+  <h4 id="the-var-keyword">the ‘var’ Keyword</h4>
 
 <p>You might stumbled across the ‘var’ Keyword here. You will see code that never uses ‘var’ and code which makes a lot use of it. Generally speaking you should only use it when through the context it is unmistakeable which Type is referenced. This is mostly true for “Object stuff”. To keep it simple for now. As an Example:
-<code>GameObject myGameOject = new GameObject();</code>
-This would create a new empty GameObject. But the line of code isn’t a beauty, is it? That’s where var comes in:
-<code>var myGameObject = new GameObject();</code>
+<code>GameObject myGameOject = new GameObject();</code><br>
+This would create a new empty GameObject. But the line of code isn’t a beauty, is it? That’s where var comes in:<br>
+<code>var myGameObject = new GameObject();</code><br>
 Don’t worry about it too much for now. This will become second nature over time.
-    </div>
-  </label>
-</div>
+</blockquote>
 
-Now we have a variable for our cuboid. This variable allows us to access the the cuboid and all the properties of it, that are actually public. This is the first time <code>private</code> and <code>public</code> actually become relevant for us in a scripting sense.
+Now we have a variable for our cuboid. This variable allows us to access the the cuboid and all the properties of it, that are actually public.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">cuboid.transform.position <span style="color:#666">=</span> new Vector3(<span style="color:#40a070">0</span>,<span style="color:#40a070">0</span>,<span style="color:#40a070">0</span>);</code></pre></div>
-So to actually recreate our Homage to the cuboid we would need to do this over and over again and then adjusting things and&hellip; nah&hellip;  We are not going to do that. As I said before. One core idea in programming is DRY - Don’t repeat yourself. Thus we are not going to do that!</p>
+This is the first time <code>private</code> and <code>public</code> actually become relevant for us in a scripting sense. Try accessing some of the variables we created on the script. You will probably not be able to access them, as we made almost all of them private. The transform component on the other hand is public by default. <br>
+So to actually recreate our Homage to the cuboid we would need to do this over and over again and then adjusting things and&hellip; nah&hellip;  We are not going to do that! As I said before, we want to simplify things! Let’s head into loops!</p>
 
 <h3 id="for-loops">For Loops</h3>
 
-<p>To be able to handle many Objects (or any kind repeating process) people came up with loops. Loops are blocks of code that are executed over and over again until a certain condition is met. Maybe the most common implementation of a loop is the “for loop”.
-For Loops in C# need three things to work: Initializer, condition and iterator. Think of it as having a jar of cookies and you are allowed to eat 50 cookies in a week. So you need to make sure how many you have eaten so far. So you take a piece of paper and start a tally sheet. This tally sheet is your initializer. The Initializer is just creating a variable to keep track of a number. Then each time you want a cookie you check whether you are still allowed to eat a cookie or if you already had 50. That’s the condition. Once you have eaten the cookie you add one to your tally sheet. That’s done using the iterator.
-Actually eating the cookie is the code run in the loop. That’s wrapped in curly braces again.
+<p>To be able to handle many Objects (or any kind repeating process) programming languages offer “loops”. Loops are blocks of code that are executed over and over again until a certain condition is met. Maybe the most common implementation of a loop is the “for loop”. <br>
+For Loops in C# need three things to work: Initializer, condition and iterator. To think of an example, assume having a jar of cookies and you are allowed to eat 50 cookies in a week. So you need to make sure how many you have eaten so far. So you take a piece of paper and start a tally sheet. This tally sheet is your initializer. The Initializer is just creating a variable to keep track of a number. <br>
+Then each time you want a cookie you check whether you are still allowed to eat a cookie or if you already had 50. That’s the condition. Once you have eaten the cookie you add one to your tally sheet. That’s done using the iterator. <br>
+Actually eating the cookie is the code in the loop. That’s wrapped in curly braces again.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> <span style="color:#40a070">5</span>; i<span style="color:#666">++</span>)
 {
     Debug.Log(i);
-}</code></pre></div></p>
+}</code></pre></div>
+A <em>for loop</em> starts with the <code>for</code> Keyword followed by parentheses. The first thing is our tally list / Initializer. It works exactly like creating any other variable in Unity, but you <em>have</em> to initialize it. What’s also to note is: Counting in computer science almost always starts with 0. Thus we will start with <code>int i = 0</code>! The three parts of a loop are separated by a semicolon. Next up is the condition. Conditions in for loops check if your counter is higher or lower then a certain threshold and if it evaluates to false the loop will stop. Finally, the iterator determines by which value to increase or decrease your tally list. In this case the <code>i++</code> just means the variable <code>i</code> will be increased by one after each iteration. You could also put <code>i+1</code>. Actually you can advance your initializer in any step size: <code>i + 2</code>, <code>i + 100</code> or even <code>i - 1</code>. They all work fine. <br>
+In curly braces follows the code to run. In the above counter we just print the value of our counter <code>i</code> to the console.</p>
 
-<p>A <em>for loop</em> starts with the <code>for</code> Keyword followed by parentheses. The first thing is our tally list / Initializer. It works exactly like creating any other variable in Unity, but you <em>have</em> to initialize it. What’s also to note is: Counting in computer science almost always starts with 0. Thus we will start with <code>int i = 0</code>! The three parts of a loop are separated by a semicolon. Next up is the condition. Conditions in for loops check if your counter is higher or lower then a certain threshold and if it evaluates to false the loop will stop. Last is the iterator which counts up. In this case the <code>i++</code> just means the variable <code>i</code> will be increased by one after each iteration. You could also put <code>i+1</code>.Actually you could advance your initializer in any stepsize: <code>i + 2</code>, <code>i+100</code>. They all work fine.
-In the curly brackets follows the code to run. In the above counter we just print the value of our counter <code>i</code> to the console.</p>
+<h3 id="create-example-with-for-loop-here">Create example with for loop here</h3>
 
 <h3 id="arrays">Arrays</h3>
 
-<p>That’s it for the theory, let put this into practice. Earlier, when were discussing Instantiation, we said we need a variable to create a reference to our objects. But creating five variables, each to hold a cuboid would be very inefficient again. That’s why we also need to introduce Arrays. Arrays hold many things of one same type. A list in essence, except that they aren’t really list because list exist as well and you see.. this is messed up.
+<p>That’s it for the theory, lets put this into practice. Earlier, when were discussing Instantiation, we said we need a variable to create a reference to our objects. But creating five variables, each to hold a cuboid would be a pain. That’s why we also introduce Arrays. Arrays hold many things of one same type. A list in essence, except that they aren’t really list because list exist as well and&hellip; well&hellip; this is messed up. They are seperate things and we’ll look at Lists a little later.<br>
 Anyway&hellip; Arrays hold things of the same <em>type</em>. Like <em>float</em> or <em>integer</em>. Or <em>GameObject</em>! Creating Arrays is simple. You create them like any variable, but add <code>[]</code> after the type.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">private GameObject[] myGameObjectArray;</code></pre></div>
-Now we have created the Array, but we didn’t initialize it and thus can’t use it. The thing with Arrays is, that they always have a fixed length. So in the moment you <em>initialize</em> the array, you need to specify how many items you want to store in your list. For our cuboids, it’s as simple as this:
+Now we have created the Array, but we didn’t initialize it and thus can’t use it. The thing with Arrays is, that they always have a fixed length. So in the moment you <em>initialize</em> the array, you need to specify how many items you want to store in your list. For our cuboid example, it’s as simple as this:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">private GameObject[] cuboids <span style="color:#666">=</span> new GameObject[<span style="color:#40a070">5</span>];</code></pre></div>
-With arrays we simply have to specify the length of the Array again in brackets. But what if you wanted to do this based on a variable? You can create the variable for this on global scope and then initialize the array in <code>Start()</code> or <code>Update()</code>.
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    private GameObject[] myGameObjects;
+We have to specify the length of the Array again in brackets after the type. But what if you wanted to do this based on a variable? You can create the variable for this on global scope and then initialize the array in <code>Start()</code> or <code>Update()</code>.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    private GameObject[] cuboids
     public <span style="color:#902000">int</span> arraySize <span style="color:#666">=</span> <span style="color:#40a070">5</span>;
     <span style="color:#60a0b0;font-style:italic">// Start is called before the first frame update
 </span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
     {
-        myGameObjects <span style="color:#666">=</span> new GameObject[arraySize];
+        cuboids <span style="color:#666">=</span> GameObject[arraySize];
     }</code></pre></div>
-So you have some flexibility, but can’t change the actual length of the array. To finally access things inside an array we use the bracket notation again.
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	Debug.Log(myGameObjects[<span style="color:#40a070">0</span>]);</code></pre></div>
-This would print the first object in the Array to the console. As we said earlier, counting always starts with <code>0</code>! So now let’s look at actually making use of this:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    public GameObject myPrefab;
-    private GameObject[] myGameObjects;
-    public <span style="color:#902000">int</span> arraySize <span style="color:#666">=</span> <span style="color:#40a070">5</span>;
-    <span style="color:#60a0b0;font-style:italic">// Start is called before the first frame update
-</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
+This construct gives you some flexibility, but you can’t change the actual length of the array. <br>
+To access things inside an array we use the bracket notation again.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	Debug.Log(cuboids[<span style="color:#40a070">0</span>]);</code></pre></div>
+This would print the first object in the Array to the console. As we said earlier, counting always starts with <code>0</code>! Thus <code>myGameObject[1]</code> would give you the second entry and so forth. <br>
+So now let’s look at actually making use of this:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    public GameObject cuboidPrefab;
+    private GameObject[] cuboids <span style="color:#666">=</span> new GameObject[<span style="color:#40a070">5</span>];
+    <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
     {
-        myGameObjects <span style="color:#666">=</span> new GameObject[arraySize];
         <span style="color:#007020;font-weight:bold">for</span>(<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> arraySize; i<span style="color:#666">++</span>)
         {
-            myGameObjects[i] <span style="color:#666">=</span> Instantiate(myPrefab, Vector3.up <span style="color:#666">*</span> i, Quaternion.identity);
+            myGameObjects[i] <span style="color:#666">=</span> Instantiate(cuboidPrefab, Vector3.up <span style="color:#666">*</span> i, Quaternion.identity);
         }
     }</code></pre></div>
-This code incorporates everything we have covered so far. We first create a variable for a prefab. We then create a variable for an array of Gameobjects and also create a variable for the size of the array. In <code>Start()</code> we then initialize the array to the size of the variable. Henceforth it can hold five objects right now. But at the moment all slots are empty.
-Next we create a <em>for loop</em> and it’s condition is that our initializer is smaller than our <code>arraySize</code> variable. During the loop we access each slot of the list by it’s number, using the iterator. We also use the iterator as an multiplier for the position, thus shifting each object up by one.
-Add result here
-This might seem complicated at first, but it’s not too bad, once you have created a few arrays and written a few for loops. It’s also very, very powerful! As you can image we could easily set the value for our <code>arraySize</code> to <code>10</code>, <code>100</code> or even a thousand. Think about how long it would take to create a hundred of these cuboids by hand!
-Before we take this concept even further, I suggest you try to recreate some of the examples we did in earlier chapters using arrays and for loops. Maybe you can also come up with new variations.
-Add in three examples with Scripts applied to prefabs</p>
+This code incorporates everything we have covered so far. We first create a variable <code>myPrefab</code>. We then create a variable for an array of GameObjects and also create a variable for the size of the array. In <code>Start()</code> method we then initialize the array to the size of the variable. Henceforth it can hold five objects right now. But at the moment all slots are empty. <br>
+Next we need to create a <em>for loop</em> and it’s condition is that our initializer is smaller than our <code>arraySize</code> variable. During the loop w-e access each slot of the list by it’s number, using the iterator. We also use the iterator as an multiplier for the position, thus shifting each object up by one.
+<figure>
+    <img src="/img/MultiShiftingX.gif" width="75%"/> <figcaption>
+            <h4>Multiple Cubes Shifting</h4>
+        </figcaption>
+</figure>
 
-<p>All of these use the idea of having the behavior attached to the prefab itself. This can, or can not be the most practical way to go. We could also handle all of this directly through one script. Or we could add the behavior at runtime to the cuboid prefabs. In our case of some moving cuboids, all approaches could be equally fine and the way you implement this really comes down to taste. In more complex situations there might be a stronger indication to where a script is placed in a useful fashion.
-I want to show you the other possibilities not only for the sake of completeness but also because it allows us to discuss script interaction. Thus far all of our scripts were self contained little programs. They had no way of interacting or properly with one another. The great thing in this is, you could already know how to do this, you might just not be aware of that.
+As you can see, the cuboids now move happily along in sync. But they all still have same color and all of them have the exact same offset. <br></p>
+
+<h3 id="script-communication">Script Communication</h3>
+
+<p>So what if we want to change the color of these? We need to find a way to access the Color component of the objects. And we have done this before in Chapter 5. But this time we access the GameObject in our array first.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">for</span>(<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> cuboids.Length; i<span style="color:#666">++</span>) {     cuboids[i] <span style="color:#666">=</span> Instantiate(cuboidPrefab, Vector3.up <span style="color:#666">*</span> (stepSize <span style="color:#666">*</span> i), Quaternion.identity);     cuboids[i].GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> colors[i];
+}</code></pre></div>
+As you can see, we are able to access components on other objects, if we stored a reference to the object beforehand. Here we instantiate the object, and store it directly in a slot in our array. We can then directly use this stored reference on the next line to grab the Renderer on that object and set its color. <br>
+But how about the time offset? <br>
+This works exactly the same. Every script we create an add to an object is a component like every other component Unity provides. Instead of <em>Renderer</em> we can now as for the Script we had attached to the cuboid when we created the prefab. This is what it looks like for me:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0.25f</span>;
+
+<span style="color:#007020;font-weight:bold">for</span>(<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> cuboids.Length; i<span style="color:#666">++</span>)
+{
+    cuboids[i] <span style="color:#666">=</span> Instantiate(cuboidPrefab, Vector3.up <span style="color:#666">*</span> (stepSize <span style="color:#666">*</span> i), Quaternion.identity);
+    cuboids[i].GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> colors[i];
+    cuboids[i].GetComponent<span style="color:#666">&lt;</span>CuboidShiftingX<span style="color:#666">&gt;</span>().timeOffset <span style="color:#666">=</span> timeOffset <span style="color:#666">*</span> i;
+}</code></pre></div>
+The script I had attached to it, was obviously called “CuboidShiftingX”. In this component I access the
+timeOffset variable and set it.
+<blockquote class="book-hint danger">
+  Now YOU should run into an error here. Thus far, we have all our variables set to <code>private</code>. This will prevent you from accessing and setting this value from outside. To make this possible, go into the script you have attached to the prefab and change the value you want to change to <code>public</code>. Now Unity will grant you access to this variable.
+</blockquote>
+
+As you can also see I multiply this with another <code>timeOffset</code> I created in the first line. This will just shift it a little for each cube and not offset it by a whole second.
+This is also to show explicitly, that you can have the same variable name on different scripts. They are completly different things!
+<figure>
+    <img src="/img/MultiShiftingXFull.gif" width="75%"/> <figcaption>
+            <h4>Multiple Cubes Shifting</h4>
+        </figcaption>
+</figure>
+
+If you feel that this syntax is complicated, take the time an rebuild some of the sketches we build so far. Also feel free to play around with the number of cuboids you create this way. Make sure to feel comfortable with the idea of Arrays and the usage of <code>i</code> in this context. Arrays are important and we will leverage their power a lot from now on.</p>
+
+<p>Add in three examples with Scripts applied to prefabs</p>
+
+<h3 id="a-single-script">A single script</h3>
+
+<p>All of the examples above use the idea of having the behavior attached to the prefab itself. To make this even more flexible, we could add our behavior at run time as well. <br></p>
+
+<p>Replace by Gist
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">using UnityEngine;
 
 public class <span style="color:#002070;font-weight:bold">Tests</span> : MonoBehaviour
 {
-    public GameObject myPrefab;
+    [Serialize Field]
+    private GameObject myPrefab;
     private GameObject[] myGameObjects;
-    public <span style="color:#902000">int</span> arraySize <span style="color:#666">=</span> <span style="color:#40a070">5</span>;
+    [SerializeField]
+    private <span style="color:#902000">int</span> arraySize <span style="color:#666">=</span> <span style="color:#40a070">5</span>;
     <span style="color:#60a0b0;font-style:italic">// Start is called before the first frame update
 </span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
     {
         myGameObjects <span style="color:#666">=</span> new GameObject[arraySize];
-        myGameObjects[<span style="color:#40a070">0</span>].transform.position <span style="color:#666">=</span> Vector3.zero;
 
         <span style="color:#007020;font-weight:bold">for</span>(<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> arraySize; i<span style="color:#666">++</span>)
         {
@@ -262,29 +294,35 @@ public class <span style="color:#002070;font-weight:bold">Tests</span> : MonoBeh
         }
     }
 }</code></pre></div>
-This is based on the script we discussed earlier. Yet this one assumes you don’t have a script attached to your prefab. Thus what we do is attach our behavior at runtime. Using <code>AddComponent&lt;&gt;()</code> we can add any script or component Unity offers. Any script you have created in your project can simply be added here. So this script could handle all of your variants. All you needed to do was to change the component you add.</p>
+Using <code>AddComponent&lt;&gt;()</code> we can add any script or component Unity offers. Any script you have created in your project is available as a component and can be added this way. So this script could handle all of your variants. All you needed to do was to change the component you add. <br>
+I hope you can see how much easier this approach is. All you need is a Prefab for your cube without any behavior. Everything else can be managed from this script.
+Now you <em>could</em> go ahead and even manage the behavior through this script. But that down the line, that really becomes messy. As we have the option to work in different scripts and classes, we should make use of this. Robert C. Martin created the term “Single responsibility principal” for this. And it is a good idea to honor this principle.</p>
 
-<p>Lists</p>
+<h3 id="half-time">Half time!</h3>
+
+<p>Just as a head up. Once you have reached this point of the chapter you have reached half time. And even better. Everything that follows is pretty much just more of the same. Just a little different. So if you are good with everything you’ve read so far, the rest will be a piece of cake! <br>
+First we will cover variants of the “for loop” and then we will look into Lists - essentially a variant of the Array. We will finish this chapter with a look at multi-dimensional arrays.</p>
 
 <h3 id="for-each-loops">For-each Loops</h3>
 
-<p>“For each loops” work very similar, except you don’t need have to bother with the iterator and the initializer, because a for each loop executes over each item in a list or array.
+<p>As I mentioned at the beginning of the chapter, C# offers different variants of loops. They were mostly created to make some common problems more convenient. “For-each” loops work similar to “for” loops, except you don’t need have to bother with the iterator and the initializer. <em>For-each</em> loops iterate over every item in the list and don’t need an iterator. <br>
 Their syntax is very straight forward as well.
-We will extend our script from the For Loop with and For Each loop, that runs in the Update function. We will reuse our idea of Color shifting and apply it to all of the squares by iterating over them.
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">foreach (GameObject currentGameObject in squareList) {     <span style="color:#902000">float</span> h,s,v;     Color currentColor <span style="color:#666">=</span> currentGameObject.GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color;     Color.RGBToHSV(currentColor, out h, out s, out v);     h <span style="color:#666">+=</span> <span style="color:#40a070">0.001f</span>;     <span style="color:#007020;font-weight:bold">if</span>(h <span style="color:#666">&gt;</span> <span style="color:#40a070">1</span>){         h <span style="color:#666">=</span> <span style="color:#40a070">0</span>;     }     currentGameObject.GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> Color.HSVToRGB(h,s,v); }</code></pre></div></p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">private GameObject[] cuboidList <span style="color:#666">=</span> new GameObject[<span style="color:#40a070">5</span>];
+foreach (GameObject currentGameObject in cuboidList) {
+	CurrentGameObject <span style="color:#666">=</span> Instantiate(cuboidPrefab, Vector3.zero, Quaternion.identity); 	currentGameObject.GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> Color.Black; }</code></pre></div></p>
 
-<p>As you can see the Syntax here is relativley straight forward: You start with the <code>foreach</code> Keyword and follow that up by the Type of Object you want to iterate over. We have a list of GameObjects, so we iterate over those. Then we create a name, which allows us to actually access the GameObject in each iteration. This is what <code>squareList[i]</code> would be in for loops. Lastly we just specify the list we want to iterate over after puttig the <code>in</code> Keyword.
-All of this actually reads almost like english, which is nice. On the downside, we are not automatically handed an iterator.
-Both Loops are useful in their own right, so choose the appropriate or just stay with the for loop, that’s fine too.</p>
+<p>You start with the <code>foreach</code> Keyword. In parentheses you follow that up with the type of object you want to iterate over. We have a list of GameObjects, so we iterate over those. Next we create a name, which allows us to actually access the current GameObject in each iteration. This is what <code>cuboidList[i]</code> would be in “for” loops. Lastly we just specify the array or list we want to iterate over. We just need to add the little word <code>in</code>.
+All of this actually reads almost like English. On the downside, we are not automatically handed an iterator. Thus if we can not position our cuboids based on that iterator. <br>
+Here you can see, why there are different kinds of loops. <em>For-each</em> loops are great if you just want to search for an item in a list. Or you want to apply a certain mechanic to all items in the list. <em>But</em> if you want to do this based on the position of the object <em>in</em> the list, the good old <em>for</em> loop is better suited to handle this.</p>
 
 <h3 id="while-loops">While Loops</h3>
 
-<p>There is yet another type of loop. The while loop.
-While loops are the most basic type of loop and essentially just run as long as a condition stays true. Think of the Update function. It loops each frame, but of course has now counter to finish after a certain amount of Frames. That would be silly. Essentially it will loop as long as the game is running.
+<p>The last to loops have become more uncommon over time, yet they too still have their uses! <br>
+“While” loops are the most basic type of loop and essentially just run as long as a condition stays true. Think of the Update function. It loops each frame, but of course has no counter to finish after a certain amount of Frames. That would be silly. Essentially it will loop as long as the game is running. The syntax for while loops is very basic:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007020;font-weight:bold">while</span>(<span style="color:#007020">true</span>){
 	<span style="color:#60a0b0;font-style:italic">//Code to run
 </span><span style="color:#60a0b0;font-style:italic"></span>}</code></pre></div>
-That would be an infinite loop. <code>true</code> can never just become false. So this will run forever.
+All you need is the <code>while</code> keyword followed by the condition in parentheses. The condition has to evaluate to a boolean. In the above example I set this to <code>true</code>. That would be an infinite loop. <code>true</code> can never just become false. So this will run forever and will freeze your program. So you have to be careful how you construct your conditions with while loops.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">While(<span style="color:#40a070">1</span> <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>){
 	<span style="color:#60a0b0;font-style:italic">//Code to run
 </span><span style="color:#60a0b0;font-style:italic"></span>}</code></pre></div>
@@ -294,10 +332,10 @@ This again would be an infinite loop, because <code>1 &gt; 0</code> will always 
 	i<span style="color:#666">++</span>;
 	<span style="color:#60a0b0;font-style:italic">//Code to run each iteration
 </span><span style="color:#60a0b0;font-style:italic"></span>}</code></pre></div>
-This code would actually work just fine. It’s essentially recreating the for loop, we have been looking at earlier, we just created in manually.
-But you could of course use this in cases, when you want to base the iteration on some kind of outside variable. Just make sure to be able to change the value from inside the while loop.</p>
+This code would actually work just fine. It’s essentially recreating the for loop. <br>
+But you could of course use this in cases, when you want to base the iteration on some kind of outside variable. Just make sure to be able to make the condition can become false based on operations inside the while loop.</p>
 
-<p>There</p>
+<p>Build a Sektch with While loops</p>
 
 <h3 id="do-while-loops">Do-While Loops</h3>
 
@@ -307,29 +345,169 @@ But you could of course use this in cases, when you want to base the iteration o
 {
     Debug.Log(i);
     i<span style="color:#666">++</span>;
-} <span style="color:#007020;font-weight:bold">while</span> (i <span style="color:#666">&lt;</span> <span style="color:#40a070">5</span>);</code></pre></div>
-As you can imagine, this one doen’t bring that much to the table, so we are not working out an example for this one. But I want you to be aware of it’s existence and it certainly has it’s use-cases.</p>
+} <span style="color:#007020;font-weight:bold">while</span> (i <span style="color:#666">&lt;</span> <span style="color:#40a070">5</span>);</code></pre></div></p>
+
+<p>Example Project here?? ??!!</p>
+
+<h3 id="lists">Lists</h3>
+
+<p>While you could say that arrays are essentially <em>Lists</em> in C# they are two slightly different things. And most of the differences matter more to the advanced programmer: Arrays have a fixed size and can thus be placed as one continuous block in memory, while Lists are dynamic and are able to resize. This leads to both of them having advantages in one area over the other. And a good rule of thumb is: If you can get away with an Array of a fixed size, use it! At least in Unity.
+<div class="book-expand">
+  <label>
+    <div class="book-expand-head flex justify-between">
+      <span>Expand</span>
+      <span>↕</span>
+    </div>
+    <input type="checkbox" class="hidden" />
+    <div class="book-expand-content markdown-inner">
+      <blockquote class="book-hint info">
+  <h3 id="more-general-c">More general C#</h3>
+
+<p>C# as a language is used for widely different things and many of these don’t require to update at constant 60 FPS. Thus you will see people advise to use Lists over Arrays in most cases. Lists come with more features out of the box and thus are more convenient to use. When performance is not your main concern, that is absolutely correct. If you deal with small scenes I’d say it is also fair to use lists. Once you have to deal with lots and lots of objects and are concerned about performance, definitely use arrays.
+</blockquote>
+    </div>
+  </label>
+</div>
+
+With technicalities out of the way, let’s look at recreating one of our sketches we built with arrays using lists.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">private List<span style="color:#666">&lt;</span>GameObject<span style="color:#666">&gt;</span> cuboids <span style="color:#666">=</span> new List<span style="color:#666">&lt;</span>GameObject<span style="color:#666">&gt;</span>();</code></pre></div>
+You create Lists using the <code>List</code> Keyword followed by a type <code>T</code> in angle brackets and the name you want to give to your List. You will also need to create it using the <code>new</code> keyword. Mind the parentheses at the end! <br>
+To add objects to your List during runtime you can simply use the <code>Add()</code> method provided by lists.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	cuboids.Add(myGameObject));</code></pre></div>
+An example using Lists and the behavior directly attached to the prefab, would look like this:
+REPLACE BY GIST</p>
+
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">using System.Collections.Generic;
+using UnityEngine;
+
+public class <span style="color:#002070;font-weight:bold">MultiCuboidsLists</span> : MonoBehaviour
+{
+    public GameObject cuboidPrefab;
+    public <span style="color:#902000">float</span> cuboidDistance <span style="color:#666">=</span> <span style="color:#40a070">0.225f</span>;
+    private List<span style="color:#666">&lt;</span>GameObject<span style="color:#666">&gt;</span> cuboids <span style="color:#666">=</span> new List<span style="color:#666">&lt;</span>GameObject<span style="color:#666">&gt;</span>();
+ 
+    <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
+    {
+        <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> <span style="color:#40a070">5</span>; i<span style="color:#666">++</span>){
+            cuboids.Add(Instantiate(cuboidPrefab, Vector3.up <span style="color:#666">*</span> (cuboidDistance <span style="color:#666">*</span> i), Quaternion.identity));
+        }
+    }
+}</code></pre></div>
+
+<p>Add Sketch
+Accessing items in a list is actually done in the same way Arrays access items: Using bracket notation.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>(){
+        <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> <span style="color:#40a070">5</span>; i<span style="color:#666">++</span>)
+        {
+            Vector3 position <span style="color:#666">=</span> Vector3.left <span style="color:#666">*</span>  Mathf.Sin(Time.time <span style="color:#666">*</span> cuboidDistance <span style="color:#666">*</span> i);
+            cuboids[i].transform.position <span style="color:#666">=</span> position;
+        }
+    }</code></pre></div>
+As you can see Lists and Arrays are similar. But take a look at all the methods Lists supply. You can not only <code>Add()</code> or <code>Remove()</code> elements from them. There are many useful things, like <code>Sort()</code>, <code>Clear()</code> and even <code>ToArray()</code> methods. These methods and their flexibility regarding length are the main features you should look out for, when deciding between lists and arrays.<br>
+I suggest you play around with both options to get a feel for them.</p>
+
+<h3 id="multi-dimensional-arrays">Multi-Dimensional Arrays</h3>
+
+<p>So what if you wanted to position your objects not just in a single axis, but in multiple axis? Now you could probably come up with some way to handle this using ifs or modulos. Or you would just use multidimensional arrays. They work and behave just like one-dimensional arrays, but you will have to nest your loops. You can create as many dimensions as you want, but we will only look at two and three dimensions.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">private GameObject[,] cuboidArray <span style="color:#666">=</span> new GameObject[<span style="color:#40a070">5</span>, <span style="color:#40a070">5</span>];</code></pre></div>
+This code would create a two-dimensional Array with an array Length of 5 in each dimension. Now most likely you want to assign GameObjects to your Array using an <em>for loop</em>. What you will need to do now is nest two for loops into each other, with a different iterator for each loop.</p>
+
+<p>Convert to Gist?
+Replace by script that values single responsibility
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public <span style="color:#902000">int</span> arraySize <span style="color:#666">=</span> <span style="color:#40a070">5</span>;
+public <span style="color:#902000">float</span> offset <span style="color:#666">=</span> <span style="color:#40a070">1.5f</span>;
+
+<span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
+    {
+<span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> arraySize; i<span style="color:#666">++</span>)
+        {
+            <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> j <span style="color:#666">=</span> <span style="color:#40a070">0</span>; j <span style="color:#666">&lt;</span> arraySize; j<span style="color:#666">++</span>)
+            {
+                Vector3 cuboidPlacement <span style="color:#666">=</span> new Vector3(i <span style="color:#666">*</span> offset, <span style="color:#40a070">0</span>, j <span style="color:#666">*</span> offset);
+                cuboidArray[i,j] <span style="color:#666">=</span> Instantiate(cuboidPrefab, cuboidPlacement, Quaternion.identity);
+            }
+        }
+}</code></pre></div>
+As you can see, all we need to do is use <code>i</code> and <code>j</code> in our array accessor. To spread out the cuboids, we use <code>i</code> on the x axis for positioning and <code>j</code> for the z axis. The offset will spread them out with some space between them.<br>
+<figure>
+    <img src="/img/MultiDimensionRotation.gif" width="75%"/> <figcaption>
+            <h4>Multiple Cubes Shifting</h4>
+        </figcaption>
+</figure>
+
+<blockquote class="book-hint danger">
+  Please, be careful with these though! It is really easy to underestimate how many objects you create by just typing in some numbers. An 2D array of 10x10 is a 100 cuboids. An 3D array of 10x10x10 is 1000. Put in 100 and suddenly you expect Unity to create a million cuboids! <br>
+Now depending on your background, you might think: “A million squares isn’t that much&hellip;”. Think of the way we handle these right now. There is absolutely no optimization done. Each of them is considered equal with all of its components. Thus&hellip; Be careful, save your work early and often before you pump up those numbers. (And now go ahead and crash Unity, as I know you will&hellip;)
+</blockquote>
+</p>
+
+<p>All of this works exactly the same using three dimensions:</p>
+
+<p>Replace by Gists!
+Replace by script that values single responsibility</p>
+
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">using UnityEngine;
+ 
+public class <span style="color:#002070;font-weight:bold">MultiDimensionalCuboidsRotationStacked</span> : MonoBehaviour
+{
+    public GameObject cuboidPrefab;
+    <span style="color:#902000">float</span> yOffset <span style="color:#666">=</span> <span style="color:#40a070">0.225f</span>;
+    public <span style="color:#902000">int</span> arraySize;
+    public <span style="color:#902000">float</span> offset <span style="color:#666">=</span> <span style="color:#40a070">1.5f</span>;
+    public <span style="color:#902000">float</span> rotationSpeed;
+    private GameObject[,,] cuboidArray;
+    public Gradient colorGradient;
+ 
+    <span style="color:#60a0b0;font-style:italic">// Start is called before the first frame update
+</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()
+    {
+        cuboidArray <span style="color:#666">=</span> new GameObject[arraySize, arraySize, arraySize];
+        <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> arraySize; i<span style="color:#666">++</span>)
+        {
+            <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> j <span style="color:#666">=</span> <span style="color:#40a070">0</span>; j <span style="color:#666">&lt;</span> arraySize; j<span style="color:#666">++</span>)
+            {
+                <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> k <span style="color:#666">=</span> <span style="color:#40a070">0</span>; k <span style="color:#666">&lt;</span> arraySize; k<span style="color:#666">++</span>)
+                {
+                    Vector3 cuboidPlacement <span style="color:#666">=</span> new Vector3(i <span style="color:#666">*</span> offset, k <span style="color:#666">*</span> yOffset, j <span style="color:#666">*</span> offset);
+                    cuboidArray[i,j,k] <span style="color:#666">=</span> Instantiate(cuboidPrefab, cuboidPlacement, Quaternion.identity);
+                    cuboidArray[i,j,k].GetComponent<span style="color:#666">&lt;</span>Renderer<span style="color:#666">&gt;</span>().material.color <span style="color:#666">=</span> colorGradient.Evaluate((<span style="color:#902000">float</span>)k <span style="color:#666">/</span> arraySize);
+                }
+                
+            }
+        }
+    }
+ 
+    <span style="color:#60a0b0;font-style:italic">// Update is called once per frame
+</span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
+    {
+        <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> arraySize; i<span style="color:#666">++</span>)
+        {
+            <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> j <span style="color:#666">=</span> <span style="color:#40a070">0</span>; j <span style="color:#666">&lt;</span> arraySize; j<span style="color:#666">++</span>)
+            {
+                <span style="color:#007020;font-weight:bold">for</span> (<span style="color:#902000">int</span> k <span style="color:#666">=</span> <span style="color:#40a070">0</span>; k <span style="color:#666">&lt;</span> arraySize; k<span style="color:#666">++</span>)
+                {
+                    cuboidArray[i,j,k].transform.Rotate(Vector3.up, rotationSpeed);
+                }
+                
+            }
+        }
+    }
+}</code></pre></div>
+
+<figure>
+    <img src="/img/MultiDimensionRotationStacked.gif" width="75%"/> <figcaption>
+            <h4>Three dimensional Array</h4>
+        </figcaption>
+</figure>
+
+
+<p>Examples of possible Things
+- move through randomly placed Objects
+- landspeeder with noisy stones on the floor
+- landspeeder with crazy floors, tunnels</p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
-    </a>
-  </div>
-  
-  
-  <div>
-    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c06_MultipleObjects.md" target="_blank" rel="noopener">
-      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
-    </a>
-  </div>
-  
-</div>
-
 
       
     </div>
@@ -337,10 +515,10 @@ As you can imagine, this one doen’t bring that much to the table, so we are no
     
   
 
-  <aside class="book-toc level-3 fixed">
+  <aside class="book-toc levels-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#06-multiple-objects">06 - Multiple Objects</a>
 <ul>
 <li>
 <ul>
@@ -348,10 +526,16 @@ As you can imagine, this one doen’t bring that much to the table, so we are no
 <li><a href="#prefabs-and-instantiation">Prefabs and Instantiation</a></li>
 <li><a href="#instantiation">Instantiation</a></li>
 <li><a href="#for-loops">For Loops</a></li>
+<li><a href="#create-example-with-for-loop-here">Create example with for loop here</a></li>
 <li><a href="#arrays">Arrays</a></li>
+<li><a href="#script-communication">Script Communication</a></li>
+<li><a href="#a-single-script">A single script</a></li>
+<li><a href="#half-time">Half time!</a></li>
 <li><a href="#for-each-loops">For-each Loops</a></li>
 <li><a href="#while-loops">While Loops</a></li>
 <li><a href="#do-while-loops">Do-While Loops</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#multi-dimensional-arrays">Multi-Dimensional Arrays</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -361,8 +545,7 @@ As you can imagine, this one doen’t bring that much to the table, so we are no
 
 
   </main>
-  
-  
+
   
 </body>
 

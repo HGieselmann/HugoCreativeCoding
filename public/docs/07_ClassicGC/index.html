@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-  
-    
-    07 Classic G C
-  
- | Generative Unity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="" />
+<meta property="og:description" content="07 - Classic CC Techniques in Unity If you came here as someone with a background in Processing or p5.js, you might be missing some very common processing techniques, that aren’t too obvious to recreate in Unity. The first thing being the complete handling of the background. In Processing you would handle this in the initial lines of code of your script. In Unity all this functionality is tied to the camera." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://generativeunity.henrikgieselmann.com/docs/07_ClassicGC/" />
 
-
-
-<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
-
-
+<title>07 Classic G C | Generative Unity</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/book.min.d54f2886415be97240a76611f87e576a761d64c07020a767fa0ffd1bdc8bda93.css" integrity="sha256-1U8ohkFb6XJAp2YR&#43;H5XanYdZMBwIKdn&#43;g/9G9yL2pM=">
+
+
+<script defer src="/search.min.c7e8bbeb9de0f5f1c6a8f366185decb422a6bcedb2634e90922203068af6af5c.js" integrity="sha256-x&#43;i7653g9fHGqPNmGF3stCKmvO2yY06QkiIDBor2r1w="></script>
 
 <!--
 Made with Book Theme
@@ -33,29 +26,28 @@ https://github.com/alex-shpak/hugo-book
 </head>
 
 <body>
-  <input type="checkbox" style="display: none" id="menu-control" />
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
 
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+  <a href="https://generativeunity.henrikgieselmann.com"><span>Generative Unity</span>
+  </a>
 </h2>
 
 
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2f 07_ClassicGC\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
-<ul>
+
+
+    <ul>
 <li><a href="/docs/00_Introduction/">Introduction</a></li>
 <li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
@@ -63,7 +55,7 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
 <li><a href="/docs/05_Functions/">05 Methods</a></li>
 <li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
-<li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
+<li><a href="/docs/07_ClassicGC/"class=active>07 Classic GC Techniques</a></li>
 <li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
 <li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
 <li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
@@ -97,41 +89,33 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  
 <script>
 (function() {
-  var menu = document.querySelector('aside.book-menu nav')
-  addEventListener('beforeunload', function(event) {
-    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
   });
-  menu.scrollTop = localStorage.getItem('menu.scrollTop')
-})()
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
 </script>
-
-
 
     </aside>
 
     <div class="book-page">
-      <header class="align-center justify-between book-header">
+      <header class="flex align-center justify-between book-header">
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>
-  
-    
-    07 Classic G C
-  
-</strong>
+  <strong>07 Classic G C</strong>
 </header>
 
       
 <article class="markdown">
 
-<h3 id="classic-cc-techniques-in-unity">Classic CC Techniques in Unity</h3>
+<h1 id="07-classic-cc-techniques-in-unity">07 - Classic CC Techniques in Unity</h1>
 
 <p>If you came here as someone with a background in Processing or p5.js, you might be missing some very common processing techniques, that aren’t too obvious to recreate in Unity. The first thing being the complete handling of the background. In Processing you would handle this in the initial lines of code of your script. In Unity all this functionality is tied to the camera. We will look at setting this up in the editor first. But of course all these things are available via code as well.
-By default Unity will clear the complete Render Buffer each frame and render the default skybox as a background for your scene. The skybox sadly isn’t the most useful think when you want to create non-enviromental scenes. The most basic alternative to this is setting is a solid background color.
+By default Unity will clear the complete Render Buffer each frame and render the default skybox as a background for your scene. The skybox obviously isn’t the most useful think when you want to create non-enviromental scenes. The most basic alternative to this is setting is a solid background color.
 <img src="/img/UnityCameraBackgroundSolidColor.jpg" alt="Setting the background to “solid color”" />
 This will clear the image buffer with the selected solid color in the field right below the clear flag. As mentioned before, you can of course access all of this via script as well.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">ShapeLerp</span> : MonoBehaviour
@@ -154,7 +138,7 @@ Shape Lerper Example here</p>
       <span>Expand</span>
       <span>↕</span>
     </div>
-    <input type="checkbox" style="display: none" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       Why is it necessary?
 Think of one meter of distance. How far can we break this up? One meter is 100 cm, or 1000 Milimeters, or 1000000000000 picometers. Femtometers anyone? And now Consider Femtometers at 100km distance.
@@ -174,7 +158,7 @@ In the <code>Update()</code> method we simply wait for 2 Frames before changing 
       <span>Expand</span>
       <span>↕</span>
     </div>
-    <input type="checkbox" style="display: none" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       Other Options?
 Of course you could solve how to create the initial background completely differently. You could have a Plane with an image on it and destroy it after two Frames, or just move it out of the way.
@@ -216,24 +200,6 @@ The intial setup is very similar to our setup for creating the fading random Wal
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
-    </a>
-  </div>
-  
-  
-  <div>
-    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c07_ClassicGC.md" target="_blank" rel="noopener">
-      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
-    </a>
-  </div>
-  
-</div>
-
 
       
     </div>
@@ -241,14 +207,13 @@ The intial setup is very similar to our setup for creating the fading random Wal
     
   
 
-  <aside class="book-toc level-3 fixed">
+  <aside class="book-toc levels-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#07-classic-cc-techniques-in-unity">07 - Classic CC Techniques in Unity</a>
 <ul>
 <li>
 <ul>
-<li><a href="#classic-cc-techniques-in-unity">Classic CC Techniques in Unity</a></li>
 <li><a href="#the-fading-paint-effect">The Fading Paint Effect</a></li>
 </ul></li>
 </ul></li>
@@ -259,8 +224,7 @@ The intial setup is very similar to our setup for creating the fading random Wal
 
 
   </main>
-  
-  
+
   
 </body>
 

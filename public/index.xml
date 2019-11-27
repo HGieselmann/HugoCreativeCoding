@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/00_Introduction/</guid>
-      <description>What is this book? The core idea of this book is teaching Unity as tool for creatives of all all kinds. This is “living” book. This means things will change, parts will grow, others will wither. This is for multiple reasons. For one, I am not an expert on all topics in Unity, I guess one can’t be. I have a background in Media-Design and merely am trying to learn and in this case teach Unity to the best of my ability.</description>
+      <description>Introduction What is this book? The core idea of this book is teaching Unity as a tool for creative people of all kinds. This is a “living” book. It means things will change, parts will grow, others will wither. This is for multiple reasons. For one, I am not an expert on all topics in Unity, I guess one can’t be. I have a background in Media-Design and am trying to learn and in this case teach Unity to the best of my ability.</description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/01_The_Editor/</guid>
-      <description>Installing Unity The first step on your journey to learn is to download and install Unity. While you could just head to unity3d.com and grab the latest and greatest version of Unity, I would suggest getting the Unity Hub. The Unity Hub will help you manage your projects and the Versions of Unity you have installed on your machine. As you dive deeper and deeper into Unity, the day will come, where you hear of a new feature and you want to explore it.</description>
+      <description>01 - The Editor Installing Unity The first step on your journey to learn is to download and install Unity. While you could just head to unity3d.com and grab the latest and greatest version of Unity, I would suggest getting the Unity Hub. The Unity Hub will help you manage your projects and the Versions of Unity you have installed on your machine. As you dive deeper and deeper into Unity, the day will come, where you hear of a new feature and you want to explore it.</description>
     </item>
     
     <item>
@@ -33,7 +33,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/02_Moving_Things/</guid>
-      <description>See further down
+      <description>CHAPTER INTRO - REWORK THIS
 These two thing will perfetly go hand in hand, as Design, as well as Coding are Skills. You can read about them as much as you want, but you will only become good at it by actually designing stuff and actually writing code. This is actually an important point. A lot of the ideas of programming are in their core not hard to grasp. A lot of them are really straight forward.</description>
     </item>
     
@@ -43,7 +43,8 @@ These two thing will perfetly go hand in hand, as Design, as well as Coding are 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/03_The_Console/</guid>
-      <description>The Console - Your best friend This chapter is a short but important intermezzo. Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your scene! C# as a programming language is very, very picky about it’s syntax and what works and what not. “Strongly typed” is the fancy computer science term for that.</description>
+      <description>03 - Debugging The Console - Your best friend This chapter is a short but important intermezzo.
+Maybe you have already encountered the console. Whenever you write code, your computer does not understand it will tell you so in the console. And worse, it will also block you from running your scene! C# as a programming language is very, very picky about its syntax and what works and what not.</description>
     </item>
     
     <item>
@@ -52,7 +53,9 @@ These two thing will perfetly go hand in hand, as Design, as well as Coding are 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/04_UserInput/</guid>
-      <description>Conditionals So we know how to code some absolute basic movement. But all of that is built conveniently on the Sin() function and it will just always run, we have no way of interfering with it. What if we could do things based off of some condition. Let’s say you press a button, move the mouse or tilt your phone? This is where “Conditionals” come in. Conditionals will manage how your code will “flow”, and they belong to group of programming ideas that people refer to as “Control Flow”.</description>
+      <description>04 - Conditionals So we know how to code some absolute basic movement. But all of that is built conveniently on the Sin() function and it will just always run, we have no way of interacting with it.
+What if we could do things based off of some condition. Let’s say you press a button, move the mouse or tilt your phone?
+This is where “Conditionals” come in. Conditionals will manage how your code will “flow”, and they belong to a group of programming ideas that people refer to as “Control Flow”.</description>
     </item>
     
     <item>
@@ -61,7 +64,7 @@ These two thing will perfetly go hand in hand, as Design, as well as Coding are 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/05_Functions/</guid>
-      <description>In this chapter we will talk about methods. We have been using them for a while now, without discussing them in detail. Methods are a collection of statements that do exactly one thing - or at least they should only do one thing. The Update() method is responsible for updating all the things you define each frame. The Start() method is responsible for setting things up in the beginning. Creating or “defining” our own functions will do a lot for us.</description>
+      <description>05 - Methods In this chapter, we will discuss methods. We have been using them for a while now, without discussing them. Methods are a collection of statements that do exactly one thing - or at least they should only do one thing. The Update() method updates all the things you define each frame. The Start() method sets things up in the beginning. Creating or “defining” our own functions will do a lot for us.</description>
     </item>
     
     <item>
@@ -70,7 +73,7 @@ These two thing will perfetly go hand in hand, as Design, as well as Coding are 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/06_MultipleObjects/</guid>
-      <description>Multiple Object Workflow If you followed along with some of the examples, you probably realized we are doing a lot of manual labor in changing things on the Unity Editor itself. Each Cuboid has to get the new Script and so forth. Then again programming is a lazy mans art. The less manual labor we have to do the better. With the concepts introduced in this chapter, we will be able handle lots and lots of objects simultaneously.</description>
+      <description>06 - Multiple Objects Multiple Object Workflow If you followed along with some of the examples, you probably realized we do a lot of manual labor. We deal with the Unity Editor a lot. We apply all the new scripts manually to each Cuboid. Then again programming is a lazy mans art. The less manual labor we have to do, the better. With the concepts introduced in this chapter, we will be able handle lots and lots of objects simultaneously.</description>
     </item>
     
     <item>
@@ -79,7 +82,7 @@ These two thing will perfetly go hand in hand, as Design, as well as Coding are 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/07_ClassicGC/</guid>
-      <description>Classic CC Techniques in Unity If you came here as someone with a background in Processing or p5.js, you might be missing some very common processing techniques, that aren’t too obvious to recreate in Unity. The first thing being the complete handling of the background. In Processing you would handle this in the initial lines of code of your script. In Unity all this functionality is tied to the camera.</description>
+      <description>07 - Classic CC Techniques in Unity If you came here as someone with a background in Processing or p5.js, you might be missing some very common processing techniques, that aren’t too obvious to recreate in Unity. The first thing being the complete handling of the background. In Processing you would handle this in the initial lines of code of your script. In Unity all this functionality is tied to the camera.</description>
     </item>
     
     <item>
@@ -97,7 +100,7 @@ These two thing will perfetly go hand in hand, as Design, as well as Coding are 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/08_ClassesAndOOP/</guid>
-      <description>Classes and Object Orientation Don’t Panic! When I first started out coding and asked friends what their experiences was, I heard a few times: “It’s not that bad, but I don’t get Object Orientation”. And when I first heard of it or read on it on the docs I a little bit baffled as well. But when I learned C# for the use in Unity things made “click” very fast.</description>
+      <description>08 - Classes and Object Oriented Programming Don’t Panic! Friends of mine who studied engineering used to complain about the idea of Object Oriented Programming (OOP) and that it is kind of hard to grasp. I can’t say anything about the programming language or the environment they had to learn in, but inside Unity this is actually rather simple. The thing is: We have been using Object Orientation all the time, you just didn’t realize it.</description>
     </item>
     
     <item>
@@ -106,8 +109,7 @@ These two thing will perfetly go hand in hand, as Design, as well as Coding are 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/09_DelegatesAndEvents/</guid>
-      <description>In this chapter we will look at some other C# features and some loose ends we left along the way, because I didn’t want to bother you with them too early. The first thing we want to look at are C# Delegates and Events.
-Delegates and Events We discussed before how Objects can call functions on other objects. To pick a stupid example: I as a “Salesman” Object could personally call a customer and he could learn from me about all the wonderful things my car offers.</description>
+      <description>09 - More Language Features In this chapter we will look at some other C# features and some loose ends we left along the way, because I didn’t want to bother you with them too early. These aren’t things you definitely need to know from the get go, but they will make you a better programmer. And as soon as you wish to tackle slightly larger projects, make sure to come back here.</description>
     </item>
     
     <item>
@@ -116,7 +118,7 @@ Delegates and Events We discussed before how Objects can call functions on other
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/10_BestPractices/</guid>
-      <description>Designing Code Before we dive deeper into considerations about design, let’s take a very short break and discuss designing code. As with many things in design, there are often many, many ways to solve one and the same problem. You soon will, or already have seen, me writing code that you would have approached differently. And it is definitely possible that your solution is better. (And please let me know if you think I do some really stupid stuff!</description>
+      <description>10 - Problem Solving and well designed code  Designing Code  Before we dive deeper into considerations of design, let’s take a very short break and discuss designing code. As with design, there are often different ways to solve the same problem. You soon will, or already have seen, me writing code that you would have approached differently. And it is possible that your solution is better. (And please let me know if you think I do some stupid stuff!</description>
     </item>
     
     <item>
@@ -130,20 +132,13 @@ Delegates and Events We discussed before how Objects can call functions on other
     
     <item>
       <title></title>
-      <link>https://generativeunity.henrikgieselmann.com/docs/12_Animation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://generativeunity.henrikgieselmann.com/docs/12_Animation/</guid>
-      <description> Animation Splines with code </description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://generativeunity.henrikgieselmann.com/docs/12_UserInterfaces/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/12_UserInterfaces/</guid>
-      <description>User Interfaces For many of these more “sketch-like” scenes we have been creating you probably don’t need any kind of user interface. But say you want to bring them all together to show off your progress in Unity. Or you could use Unity as way of creating a UI Design Test app, that could actually be easily deployed to Android or iOS phones. Thus we will look at how UIs are laid out in Unity and how the script setup works.</description>
+      <description>13 - Animation Animation is huge topic. Animation can be about bringing characters to life or about just creating a pleasing transition between two pages in app. Animation can be about huge strides and yet shines when the most subtle feelings of an character
+Philisophical shit about Animation
+Animation in Unity Using Unitys Animation System can be utterly simple, but also scales very well into extremely complicated Animation of Characters and blending between Animations based states.</description>
     </item>
     
     <item>
@@ -152,18 +147,9 @@ Delegates and Events We discussed before how Objects can call functions on other
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/13_Animation/</guid>
-      <description>Animation is huge topic. Animation can be about bringing characters to life or about just creating a pleasing transition between two pages in app. Animation can be about huge strides and yet shines when the most subtle feelings of an character
+      <description>13 - Animation Animation is huge topic. Animation can be about bringing characters to life or about just creating a pleasing transition between two pages in app. Animation can be about huge strides and yet shines when the most subtle feelings of an character
 Philisophical shit about Animation
 Animation in Unity Using Unitys Animation System can be utterly simple, but also scales very well into extremely complicated Animation of Characters and blending between Animations based states.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://generativeunity.henrikgieselmann.com/docs/13_Physics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://generativeunity.henrikgieselmann.com/docs/13_Physics/</guid>
-      <description>Physics and Raycasts!</description>
     </item>
     
     <item>
@@ -172,18 +158,7 @@ Animation in Unity Using Unitys Animation System can be utterly simple, but also
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/14_Lighting/</guid>
-      <description>Title: Master
-Author:
-For creatives light is super essential as soon as you leave the strictly graphical world. Light plays an important role in setting the scene and defining the mood. Think of the warm soft lighting during sundown at the beach, or a a dark alley only lit by a lone flickering streetlamp. The Lights alone can define the feeling we get, once we look at an image. The same scene in different lighting can tell completly different stories.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://generativeunity.henrikgieselmann.com/docs/14_Sound/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://generativeunity.henrikgieselmann.com/docs/14_Sound/</guid>
-      <description> Animation Splines with code </description>
+      <description>14 - Lighting For creatives light is super essential as soon as you leave the strictly graphical world. Light plays an important role in setting the scene and defining the mood. Think of the warm soft lighting during sundown at the beach, or a a dark alley only lit by a lone flickering streetlamp. The Lights alone can define the feeling we get, once we look at an image. The same scene in different lighting can tell completly different stories.</description>
     </item>
     
     <item>
@@ -192,16 +167,8 @@ For creatives light is super essential as soon as you leave the strictly graphic
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/15_Textures/</guid>
-      <description>Textures and Shading Textures and Shaders are a tightly intertwined concept, as textures are actually additional information the shader processes to calculate the final pixels. To provide this additional information 2D images are wrapped around an 3D object along it’s UVs. These UVs are either standards defined in primitive objects, or need to be predefined in the 3D software that created the object in the firstplace. Once the textures are applied they can define a whole range of information.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://generativeunity.henrikgieselmann.com/docs/15_UserInterfaces/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://generativeunity.henrikgieselmann.com/docs/15_UserInterfaces/</guid>
-      <description>User Interfaces!</description>
+      <description>15 - Textures Textures and Shaders are a tightly intertwined concept, as textures are actually additional information the shader processes to calculate the final pixels. To provide this additional information 2D images are wrapped around an 3D object along it’s UVs. These UVs are either standards defined in primitive objects, or need to be predefined in the 3D software that created the object in the firstplace.
+Once the textures are applied they can define a whole range of information.</description>
     </item>
     
     <item>
@@ -210,16 +177,8 @@ For creatives light is super essential as soon as you leave the strictly graphic
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/16_Shaders/</guid>
-      <description>Shaders A shader is little piece of software, or a script, that tells the graphics card how to interpret the Lighting information an object is receiving and how to interpret that light. Unlit shaders can generate these informations for themselves. A very simple example would be a red sphere and a white light in the scene. If the light source is sending white light, how is the sphere ending up red?</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://generativeunity.henrikgieselmann.com/docs/16_VFXGraph/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://generativeunity.henrikgieselmann.com/docs/16_VFXGraph/</guid>
-      <description>Lights and a bit about Shaders</description>
+      <description>16 - Shaders A shader is little piece of software, or a script, that tells the graphics card how to interpret the Lighting information an object is receiving and how to interpret that light. Unlit shaders can generate these informations for themselves.
+A very simple example would be a red sphere and a white light in the scene. If the light source is sending white light, how is the sphere ending up red?</description>
     </item>
     
     <item>
@@ -228,18 +187,7 @@ For creatives light is super essential as soon as you leave the strictly graphic
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/17_Audio/</guid>
-      <description>“Audio is 50%!”. I don’t know how often I heard this sentence over the years yet. And yet it surly isn’t wrong! Audio adds a completely new layer to the works you create. And for some cases I guess you could argue “Audio is even 60% of the experience!”. While you can easily close your eyes or look away, you can’t so easily block out all the sound that’s around you.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://generativeunity.henrikgieselmann.com/docs/17_ShadingAndLighting/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://generativeunity.henrikgieselmann.com/docs/17_ShadingAndLighting/</guid>
-      <description>Title: Master
-Author:
-Lights and a bit about Shaders</description>
+      <description>17 - Audio “Audio is 50%!”. I don’t know how often I heard this sentence over the years yet. And yet it surly isn’t wrong! Audio adds a completely new layer to the works you create. And for some cases I guess you could argue “Audio is even 60% of the experience!”. While you can easily close your eyes or look away, you can’t so easily block out all the sound that’s around you.</description>
     </item>
     
     <item>
@@ -249,17 +197,7 @@ Lights and a bit about Shaders</description>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/18_Augmented/</guid>
       <description>Disclaimer: This chapter is written based on Unity 2019.2 and ARFoundation Package Version 2.0.2. I can only properly show the setup for Android Phones as well, as I do not have an iOS development environment.
-Augmented Reality Definition Designing for Augemented Reality Augmented Reality is one of the most interesting fields in design right now. In contrast to print or webdesign many of the precieved rules are not yet written.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://generativeunity.henrikgieselmann.com/docs/18_TexturesAndImages/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://generativeunity.henrikgieselmann.com/docs/18_TexturesAndImages/</guid>
-      <description>Disclaimer: This chapter is written based on Unity 2019.2 and ARFoundation Package Version 2.0.2. I can only properly show the setup for Android Phones as well, as I do not have an iOS development environment.
-Augmented Reality Definition Designing for Augemented Reality Augmented Reality is one of the most interesting fields in design right now. In contrast to print or webdesign many of the precieved rules are not yet written.</description>
+Augmented Reality What is Augmented Reality? Designing for Augemented Reality Augmented Reality is one of the most interesting fields in design right now. In contrast to print or webdesign many of the precieved rules are not yet written.</description>
     </item>
     
     <item>
@@ -268,7 +206,7 @@ Augmented Reality Definition Designing for Augemented Reality Augmented Reality 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/19_PostProcessingStack/</guid>
-      <description>The last thing we will cover before we move further into bigger projects will be the Unity Post Processing Stack. The Post Processing Stack is a bunch 2D Effects you can apply to the rendered image or during the rendering process. They for the most part try to emulate characteristics of films. Like Grain, Vignette and chromatic aberration. Others try to add faked realism to images by adding motion-blur and screenspace reflections.</description>
+      <description>19 - Post Processing The last thing we will cover before we move further into bigger projects will be the Unity Post Processing Stack. The Post Processing Stack is a bunch 2D Effects you can apply to the rendered image or during the rendering process. They for the most part try to emulate characteristics of films. Like Grain, Vignette and chromatic aberration. Others try to add faked realism to images by adding motion-blur and screenspace reflections.</description>
     </item>
     
     <item>
@@ -333,7 +271,7 @@ Books: - The nature of Code - Daniel Shiffman - Eloquent Javascript - Marijn Hav
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://generativeunity.henrikgieselmann.com/docs/99_Github/</guid>
-      <description>Let’s talk about Version Control You probably noticed, or will soon, that sometimes you have an idea on how to improve your code. You reformat your code, delete some old code here some there and all is good. The next day you look at your code an realize that it was laaate last night and everything you did, was just breaking stuff. But what did you actually change last night?</description>
+      <description>Github Let’s talk about Version Control You probably noticed, or will soon, that sometimes you have an idea on how to improve your code. You reformat your code, delete some old code here some there and all is good. The next day you look at your code an realize that it was laaate last night and everything you did, was just breaking stuff. But what did you actually change last night?</description>
     </item>
     
     <item>

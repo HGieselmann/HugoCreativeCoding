@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-  
-    
-    08 Classes and O O P
-  
- | Generative Unity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="" />
+<meta property="og:description" content="08 - Classes and Object Oriented Programming Don’t Panic! Friends of mine who studied engineering used to complain about the idea of Object Oriented Programming (OOP) and that it is kind of hard to grasp. I can’t say anything about the programming language or the environment they had to learn in, but inside Unity this is actually rather simple. The thing is: We have been using Object Orientation all the time, you just didn’t realize it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://generativeunity.henrikgieselmann.com/docs/08_ClassesAndOOP/" />
 
-
-
-<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
-
-
+<title>08 Classes and O O P | Generative Unity</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/book.min.d54f2886415be97240a76611f87e576a761d64c07020a767fa0ffd1bdc8bda93.css" integrity="sha256-1U8ohkFb6XJAp2YR&#43;H5XanYdZMBwIKdn&#43;g/9G9yL2pM=">
+
+
+<script defer src="/search.min.c7e8bbeb9de0f5f1c6a8f366185decb422a6bcedb2634e90922203068af6af5c.js" integrity="sha256-x&#43;i7653g9fHGqPNmGF3stCKmvO2yY06QkiIDBor2r1w="></script>
 
 <!--
 Made with Book Theme
@@ -33,29 +26,28 @@ https://github.com/alex-shpak/hugo-book
 </head>
 
 <body>
-  <input type="checkbox" style="display: none" id="menu-control" />
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
 
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+  <a href="https://generativeunity.henrikgieselmann.com"><span>Generative Unity</span>
+  </a>
 </h2>
 
 
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2f 08_ClassesAndOOP\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
-<ul>
+
+
+    <ul>
 <li><a href="/docs/00_Introduction/">Introduction</a></li>
 <li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
@@ -64,7 +56,7 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/05_Functions/">05 Methods</a></li>
 <li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
 <li><a href="/docs/07_ClassicGC/">07 Classic GC Techniques</a></li>
-<li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
+<li><a href="/docs/08_ClassesAndOOP/"class=active>08 Classes and OOP</a></li>
 <li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
 <li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
 <li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
@@ -97,116 +89,80 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  
 <script>
 (function() {
-  var menu = document.querySelector('aside.book-menu nav')
-  addEventListener('beforeunload', function(event) {
-    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
   });
-  menu.scrollTop = localStorage.getItem('menu.scrollTop')
-})()
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
 </script>
-
-
 
     </aside>
 
     <div class="book-page">
-      <header class="align-center justify-between book-header">
+      <header class="flex align-center justify-between book-header">
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>
-  
-    
-    08 Classes and O O P
-  
-</strong>
+  <strong>08 Classes and O O P</strong>
 </header>
 
       
 <article class="markdown">
 
-<h3 id="classes-and-object-orientation">Classes and Object Orientation</h3>
+<h1 id="08-classes-and-object-oriented-programming">08 - Classes and Object Oriented Programming</h1>
 
 <h3 id="don-t-panic">Don’t Panic!</h3>
 
-<p>When I first started out coding and asked friends what their experiences was, I heard a few times: “It’s not that bad, but I don’t get Object Orientation”. And when I first heard of it or read on it on the docs I a little bit baffled as well. But when I learned C# for the use in Unity things made “click” very fast. The thing is: We have been using Object Orientation all the time already, you just didn’t realize. Whenever we created a script, it started with the <code>class</code> Keyword after the <code>using</code> statements. We just ignored it was there. So don’t be scared, it’s actually quite simple!</p>
+<p>Friends of mine who studied engineering used to complain about the idea of Object Oriented Programming (OOP) and that it is kind of hard to grasp. I can’t say anything about the programming language or the environment they had to learn in, but inside Unity this is actually rather simple. The thing is: We have been using Object Orientation all the time, you just didn’t realize it. Whenever we created a script, it started with the <code>class</code> Keyword. We just ignored it was there. This keyword means we created a class each time. And classes become objects once they manifest themselves. This means, if you have heard bad things about OOP in the past: Don’t panic. We will just pull some strings together in this chapter.</p>
 
 <h3 id="basics-of-object-orientation">Basics of Object Orientation</h3>
 
-<p>The most important idea of Object Orientated Programming (OOP) is to create clean, modular code which is easy to maintain. We want to group things which fit logically together and if everyhting goes well, we never have to touch that piece of code ever again. But if we have to go back in and change it, we have a file that is as small and clean as it can be, so we can do our modifications easily. So it’s really important to understand: OOP is here to help. OOP is your friend.</p>
+<p>The most important idea of Object Orientated Programming (OOP) is to create clean, modular code which is easy to maintain. We group things in classes and objects which fit logically together and if everything goes well, we never have to touch that piece of code ever again. But if we have to go back in and change it, we have a file that is as small and clean as it can be. Thus we can do our modifications easily. It’s really important to understand: OOP is here to help.</p>
 
-<h3 id="encapsulation">Encapsulation</h3>
+<h3 id="classes-and-objects">Classes and Objects</h3>
 
-<p>Classes are the blueprints for Objects, or the idea what the object should be like. As soon as we Instantiate the class becomes an individual object.</p>
+<p>In OOP we deal with classes and objects. Classes are the blueprints for Objects, or the idea what the object should be. As soon as we <em>Instantiate</em> it, the class becomes an object. <br>
+Let’s walk through this by example. Let’s assume we had bike manufacturing and our designer came up with a new concept for a bike. So they defined if it’s a Mountain bike or a racing bike. They also defined the colors, the customer could choose from. And of course how many gears you could have. All of this is the class, the idea of the bike. So we bring it into manufacturing - which would be our equivalent to instantiation - and out comes an object. <br>
+An Object is the actual version of the bike. You can’t select the color or colors anymore, because all the specifics have been defined during Instantiation. If you need a different bike, you will have to create a new bike - a new object - from the class. <br>
+Now classes can also define behaviour or methods. We probably want to be able to accelerate. We should also be able to brake, so we don’t crash our nice new bicycle. We might even have some lights on there, so we can see at night. These methods are also defined in the class, and can then be used by the object we created. <br>
+This idea of packing code together is called “Encapsulation” and is one of the three cornerstones of Object Oriented programming. <br>
+Encapsulation in short: Put all your code that logically belongs to one object - all it’s properties and all the methods - into one class. An example bike class could look like this, and you will see, this is exactly the same we did all the time.</p>
 
-<p>Let’s walk through this by example. Let’s assume we had bike manufacturing and our designer came up with a new concept for a bike. So they defined if it’s a Mountain bike or a racing bike. They also defined the colors, the customer could choose from. And of course how many gears you could have. All of this is the class, the idea of the bike. So we bring it into manufacturing - which would be our equivalent to instantiation - and out comes an object.
-An Object is an actual physical version of the bike. You can’t select the color or colors anymore, because all the specifics have been defined during Instantiation. If you need a different bike, you will have to create a new bike - a new object - from the class - the idea.
-Now classes and objects can also hold functions. We could have lamps which can be turned on and of. We can break, so we don’t crash our nice new bicycle. These functions are also defined in the class, and can then be used by the object we created.
-This idea of packing code together is called Encapsulation and is one of the three cornerstones of Object Oriented programming.
-Encapsulation in short: Put all your code - all it’s adjectives and all the things it can do - into one class.</p>
-
-<p>Another concept is “Inheritance”. We have been using inheritance all the time as well:
-<code>public class MovingAlbers : MonoBehaviour</code>
-That <code>:</code> right there indicated “Inheritance”. It means our class MovingAlbers Inherits from MonoBehaviour.
-Inheritance means in short means, you can base classes on other classes.
-To stay in our own little bike manufacturing shop, you could have a “base class” that holds all the code, that each and every bike has to have. This could be things like name, price or color. But this also could have methods or behaviours every bike must know, like accelerating and braking.
-CHECK THIS CODE!!
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">bike</span> : MonoBehaviour{
-	public string name;
-	public Color bikeColor;
-	public <span style="color:#902000">float</span> price;
-
-	public <span style="color:#902000">void</span> <span style="color:#06287e">accelerate</span>(<span style="color:#902000">float</span> acceleration){
-	<span style="color:#60a0b0;font-style:italic">// code for acceleration
-</span><span style="color:#60a0b0;font-style:italic"></span>}
-	Public string <span style="color:#06287e">advertise</span>(){
-	string ad <span style="color:#666">=</span> <span style="">“</span>This is our bike<span style="">”</span> <span style="color:#666">+</span> name <span style="color:#666">+</span> <span style="">“</span>. It is <span style="">“</span> <span style="color:#666">+</span> bikeColor <span style="color:#666">+</span> <span style="">“</span> and costs <span style="">“</span> <span style="color:#666">+</span> price;
-		Return ad;</code></pre></div></p>
-
-<p>TODO WE NEED AN EXAMPLE OF OBJECT CREATION AND THE FACT THAT SHIT THEN IS A TYPE HERE!!!!
-FUCK WE ALSO NEED TO TALK ABOUT CONSTRUCTORS AND TYPES!</p>
+<p>Replace by Gist
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">using UnityEngine;  public class <span style="color:#002070;font-weight:bold">Bike</span> : MonoBehaviour {     public Color bikeColor <span style="color:#666">=</span> new Color(<span style="color:#40a070">1</span>,<span style="color:#40a070">1</span>,<span style="color:#40a070">1</span>);     public <span style="color:#902000">int</span> price <span style="color:#666">=</span> <span style="color:#40a070">499</span>;      private <span style="color:#902000">float</span> currentSpeed <span style="color:#666">=</span> <span style="color:#40a070">0f</span>;     private <span style="color:#902000">float</span> acceleration <span style="color:#666">=</span> <span style="color:#40a070">.1f</span>;     private <span style="color:#902000">float</span> deceleration <span style="color:#666">=</span> <span style="color:#40a070">.25f</span>;     private <span style="color:#902000">float</span> maxSpeed <span style="color:#666">=</span> <span style="color:#40a070">10</span>;      <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()     {         HandleInput();         Move();     }      private <span style="color:#902000">void</span> <span style="color:#06287e">HandleInput</span>()     {         <span style="color:#007020;font-weight:bold">if</span> (Input.GetKey(KeyCode.A))         {             Accelerate();         }<span style="color:#007020;font-weight:bold">else</span> <span style="color:#007020;font-weight:bold">if</span> (Input.GetKey(KeyCode.S))         {             Brake();         }     }      <span style="color:#902000">void</span> <span style="color:#06287e">Accelerate</span>()     {         currentSpeed <span style="color:#666">+=</span> acceleration <span style="color:#666">*</span> Time.deltaTime;         <span style="color:#007020;font-weight:bold">if</span> (currentSpeed <span style="color:#666">&gt;</span> maxSpeed)         {             currentSpeed <span style="color:#666">=</span> maxSpeed;         }     }      <span style="color:#902000">void</span> <span style="color:#06287e">Brake</span>()     {         currentSpeed <span style="color:#666">-=</span> deceleration <span style="color:#666">*</span> Time.deltaTime;         <span style="color:#007020;font-weight:bold">if</span> (currentSpeed <span style="color:#666">&lt;</span> <span style="color:#40a070">0</span>)         {             currentSpeed <span style="color:#666">=</span> <span style="color:#40a070">0</span>;         }     }      <span style="color:#902000">void</span> <span style="color:#06287e">Move</span>()     {         transform.Translate(Vector3.forward <span style="color:#666">*</span> currentSpeed);     } }</code></pre></div></p>
 
 <h3 id="inheritance">Inheritance</h3>
 
-<p>But now we have different customers, with very different situations. One is just commuting a few kilometers each day. So he fancies a nice, slick singlespeed bike and will also need good lights for those winter days. The next wants to go mountain biking in the alps over the summer. He wants a versatile gearbox, but sure he has no interest in a dynamo. Those are bikes with very different purposes, but both will end up having a name, a price and a color. Both can inherit these base traits from our bike class, so we don’t need to write that code twice. So we inherit bike using <code>:</code></p>
+<p>Another concept is “Inheritance”. We have been using inheritance all the time as well: <br>
+<code>public class MovingCuboid : MonoBehaviour</code><br>
+That <code>:</code> right there indicated “Inheritance”. It means our class MovingCuboid Inherits from MonoBehaviour. <br>
+Inheritance means in short means, you can base classes on other classes. <br>
+To stay in our own little bike manufacturing shop, you could have a “base class” that holds all the code, that each and every bike has to have. This could be things like name, price or color. But this also could have methods or behaviors every bike must know, like accelerating and braking. The class we have seen previously could be used as our base class. <br>
+But now we have different customers, with very different requirements. One is just commuting a few kilometers each day. So he fancies a nice, slick single speed bike and will also need good lights for those winter days. The next wants to go mountain biking in the alps over the summer. He wants a versatile gearbox, but sure he has no interest in a dynamo. Those are bikes with very different purposes, but both will end up having a name, a price and a color. Both can inherit these base traits from our bike class, so we don’t need to write that code twice. So we inherit bike using <code>:</code></p>
 
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">singlespeedBike</span> : bike{
-	public <span style="color:#902000">float</span> maxlightBrightness <span style="color:#666">=</span> <span style="color:#40a070">10</span>;
-	private <span style="color:#902000">bool</span> lightOn <span style="color:#666">=</span> <span style="color:#007020">false</span>;
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#60a0b0;font-style:italic">// This code is more schematic, and not an actual implementation
+</span><span style="color:#60a0b0;font-style:italic"></span>public class <span style="color:#002070;font-weight:bold">SingleSpeedBike</span> : Bike {     public <span style="color:#902000">float</span> maxlightBrightness <span style="color:#666">=</span> <span style="color:#40a070">10</span>;     private <span style="color:#902000">bool</span> lightOn <span style="color:#666">=</span> <span style="color:#007020">false</span>;      public <span style="color:#902000">void</span> <span style="color:#06287e">switchLights</span>()     {         <span style="color:#007020;font-weight:bold">if</span> (lightOn)         {             lightOn <span style="color:#666">=</span> <span style="color:#007020">false</span>;         }         <span style="color:#007020;font-weight:bold">else</span>         {             lightOn <span style="color:#666">=</span> <span style="color:#007020">true</span>;         }     } }</code></pre></div>
 
-	public <span style="color:#902000">void</span> <span style="color:#06287e">switchLights</span>(){
-		<span style="color:#60a0b0;font-style:italic">// Code for switching the light on and off
-</span><span style="color:#60a0b0;font-style:italic"></span>	}</code></pre></div>
-
-<p>Or the code for mountain bike:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">public class <span style="color:#002070;font-weight:bold">mountainBike</span> : bike{
-	Public <span style="color:#902000">int</span> numberOfGears <span style="color:#666">=</span> <span style="color:#40a070">21</span>;
-
-	public <span style="color:#902000">void</span> <span style="color:#06287e">shiftUp</span>(){
-		<span style="color:#60a0b0;font-style:italic">// Code for switching the light on and off
-</span><span style="color:#60a0b0;font-style:italic"></span>	}
-
-public <span style="color:#902000">void</span> <span style="color:#06287e">shiftDown</span>(){
-		<span style="color:#60a0b0;font-style:italic">// Code for switching the light on and off
-</span><span style="color:#60a0b0;font-style:italic"></span>	}</code></pre></div></p>
-
-<p>This can be extremely helpful, as it shortens our code. If we have a problem with our gearbox code, we only have to take a look at the mountain bike class. All of the base ideas are hidden away in the base class and it also has no code, that is completely irrelevant to the functioning of the bike. This is great stuff!</p>
+<p>This can be extremely helpful, as it shortens our code. It also helps us to avoid writing code all over again. It makes things easier and faster to write and to debug. <br>
+As you can see, on this one, we don’t inherit from MonoBehaviour. We already did so in the base class, thus we don’t have to on the SingleSpeedBike class.</p>
 
 <h3 id="polymorphism">Polymorphism</h3>
 
 <p>Polymorphism is the idea that things can be “many-shaped”. Therefore this fancy Greek word. And this is helpful in many ways. Consider this code:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">private mountainBike myMountainBike <span style="color:#666">=</span> new MountainBike();
-private singlespeedBike mySinglespeed <span style="color:#666">=</span> new MountainBike();</code></pre></div></p>
+private singleSpeedBike mySingleSpeed <span style="color:#666">=</span> new MountainBike();</code></pre></div></p>
 
-<p>As you can see, once we create our bikes, they become two different types. But what if we would want to creat a List or Array of all the bikes we sold. We need to keep track of that, right?
+<p>As you can see, once we create our bikes, they become two different types. But what if we would want to create a List or Array of all the bikes we sold. We need to be able to keep track of that, right? <br>
 Polymorphism to the rescue. Thanks to polymorphism we can use the base class <code>bike</code> as the class we consider to create a list of items sold.
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#666">//</span> put some example code here</code></pre></div>
-Polymorphism also means, that we can override some of the code we wrote in the base class in the child class. This can beuseful if you have some code that you need for all your objects, but then there is this one bike, where you want to change it’s implementation. It would be really annoying to remove the code form the base class and put in each child class. And it would also be bad practice to just create a new function that does exactly the same thing.
-If you look at our base class again. We have that <code>advertise()</code> function. It’s a really dull advertising, but at least it works on all our bikes, right? But when our engineers came up with the mountain bike, marketing - actually same guy as the engineer - was all over the place and wanted to have the number of gears in the advertisement as well.
-So we needed to change that.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	List<span style="color:#666">&lt;</span>Bike<span style="color:#666">&gt;</span> MyBikes <span style="color:#666">=</span> new List<span style="color:#666">&lt;</span>Bike<span style="color:#666">&gt;</span>();
+	MyBikes.Add(myMountainBike);
+	MyBikes.Add(mySingleSpeed);</code></pre></div></p>
+
+<p>Polymorphism also means, that we can override some of the code we wrote in the base class in the child class. This can be useful if you have some code that you need for all your objects, but then there is this one bike, where you want to change it’s implementation. It would be really annoying to remove the code form the base class and put in each child class. And it would also be bad practice to just create a new function that does exactly the same thing. <br>
+If you look at our base class again. We have that <code>Acclerate()</code> method. If we were to create a mountainBike with some kind of gearbox, we would need be able change the we accelerate right? Somehow our gears need to have an effect on acceleration.</p>
 
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">public class <span style="color:#002070;font-weight:bold">mountainBike</span> : bike{
 	Public <span style="color:#902000">int</span> numberOfGears <span style="color:#666">=</span> <span style="color:#40a070">21</span>;
@@ -224,27 +180,23 @@ public override string <span style="color:#06287e">advertise</span>(){
 		Return ad;</code></pre></div>
 
 <p>In our child class mountainBike we declared the advertise function again, but added the keyword <code>override</code> in front. The moment we instantiate our mountainBike the advertise function in the base class is overriden and we can now finally advertise our fancy gearbox!</p>
+
+<h3 id="constructors">Constructors</h3>
+
+<p>Classes <em>typically</em> come with a <code>constructor</code>. Constructors initialize the object you create and are <em>typically</em> called when you instantiate your object. Why typically? While they are very common in pure C# programming, they are less so in Unity. Unity relies on the <code>Awake()</code> and <code>Start()</code> methods for initialization of values. This at least is true for all classes that inherit from <code>MonoBehaviour</code> and thus rely on Unity functionality. If you don’t need the Unity functionality, because you i.e. just use your class to store some data, then it’s actually no problem to make use of constructors.
+Constructors them selves are actually rather simple to create. All you need to create is a method with the exact same name the class has:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class Pet {     public string name;     public <span style="color:#902000">int</span> age;      public <span style="color:#06287e">Pet</span>(string petName, <span style="color:#902000">int</span> petAge)     {         name <span style="color:#666">=</span> petName;         age <span style="color:#666">=</span> petAge;     } }</code></pre></div>
+As you can see, you can even pass arguments to this constructor the same way you would pass them to any other method. Now once you want to instantiate a new Pet you can simply pass name and age like this. A little gotcha is the <code>public</code>. If you can’t access the constructor you have a problem. So remember to always have them public.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">NoMonoTest</span> : MonoBehaviour {     private Pet myPet;     <span style="color:#902000">void</span> <span style="color:#06287e">Start</span>()     {         myPet <span style="color:#666">=</span> new Pet(<span style="color:#4070a0">&#34;Frank&#34;</span>, <span style="color:#40a070">6</span>);         Debug.Log(myPet.name);         Debug.Log(myPet.age);     } }</code></pre></div>
+You can also access this data like you would with any other class we have be creating all along, it’s just the initialization that is a little different.</p>
+
+<ul>
+<li>Fancy Cuboids</li>
+<li>Spaceship Store instead of Bikes?</li>
+</ul>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
-    </a>
-  </div>
-  
-  
-  <div>
-    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c08_ClassesAndOOP.md" target="_blank" rel="noopener">
-      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
-    </a>
-  </div>
-  
-</div>
-
 
       
     </div>
@@ -252,19 +204,19 @@ public override string <span style="color:#06287e">advertise</span>(){
     
   
 
-  <aside class="book-toc level-3 fixed">
+  <aside class="book-toc levels-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#08-classes-and-object-oriented-programming">08 - Classes and Object Oriented Programming</a>
 <ul>
 <li>
 <ul>
-<li><a href="#classes-and-object-orientation">Classes and Object Orientation</a></li>
 <li><a href="#don-t-panic">Don’t Panic!</a></li>
 <li><a href="#basics-of-object-orientation">Basics of Object Orientation</a></li>
-<li><a href="#encapsulation">Encapsulation</a></li>
+<li><a href="#classes-and-objects">Classes and Objects</a></li>
 <li><a href="#inheritance">Inheritance</a></li>
 <li><a href="#polymorphism">Polymorphism</a></li>
+<li><a href="#constructors">Constructors</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -274,8 +226,7 @@ public override string <span style="color:#06287e">advertise</span>(){
 
 
   </main>
-  
-  
+
   
 </body>
 

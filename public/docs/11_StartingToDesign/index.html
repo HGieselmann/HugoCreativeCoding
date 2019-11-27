@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-  
-    
-    11 Starting to Design
-  
- | Generative Unity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="" />
+<meta property="og:description" content="Disclaimer So before we move on I just want to get a few things of my chest. I AM one of the people who way too often thought about technical stuff before design. I fell into that pit in almost any project again and again and I still have a hard time not letting those things get in the way of my design. This also means: I am very likely not at all an expert on design and how to apply it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://generativeunity.henrikgieselmann.com/docs/11_StartingToDesign/" />
 
-
-
-<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
-
-
+<title>11 Starting to Design | Generative Unity</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/book.min.d54f2886415be97240a76611f87e576a761d64c07020a767fa0ffd1bdc8bda93.css" integrity="sha256-1U8ohkFb6XJAp2YR&#43;H5XanYdZMBwIKdn&#43;g/9G9yL2pM=">
+
+
+<script defer src="/search.min.c7e8bbeb9de0f5f1c6a8f366185decb422a6bcedb2634e90922203068af6af5c.js" integrity="sha256-x&#43;i7653g9fHGqPNmGF3stCKmvO2yY06QkiIDBor2r1w="></script>
 
 <!--
 Made with Book Theme
@@ -33,29 +26,28 @@ https://github.com/alex-shpak/hugo-book
 </head>
 
 <body>
-  <input type="checkbox" style="display: none" id="menu-control" />
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
 
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+  <a href="https://generativeunity.henrikgieselmann.com"><span>Generative Unity</span>
+  </a>
 </h2>
 
 
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2f 11_StartingToDesign\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
-<ul>
+
+
+    <ul>
 <li><a href="/docs/00_Introduction/">Introduction</a></li>
 <li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
@@ -67,7 +59,7 @@ https://github.com/alex-shpak/hugo-book
 <li><a href="/docs/08_ClassesAndOOP/">08 Classes and OOP</a></li>
 <li><a href="/docs/09_DelegatesAndEvents/">09 Delegates and Events</a></li>
 <li><a href="/docs/10_BestPractices/">10 Best Practices</a></li>
-<li><a href="/docs/11_StartingToDesign/">11 Design Considerations</a></li>
+<li><a href="/docs/11_StartingToDesign/"class=active>11 Design Considerations</a></li>
 <li><a href="/docs/12_UserInterfaces/">12 User Interfaces</a></li>
 <li><a href="/docs/13_Animation/">13 Animation</a></li>
 <li><a href="/docs/14_Lighting/">14 Lighting</a></li>
@@ -97,32 +89,24 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  
 <script>
 (function() {
-  var menu = document.querySelector('aside.book-menu nav')
-  addEventListener('beforeunload', function(event) {
-    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
   });
-  menu.scrollTop = localStorage.getItem('menu.scrollTop')
-})()
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
 </script>
-
-
 
     </aside>
 
     <div class="book-page">
-      <header class="align-center justify-between book-header">
+      <header class="flex align-center justify-between book-header">
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>
-  
-    
-    11 Starting to Design
-  
-</strong>
+  <strong>11 Starting to Design</strong>
 </header>
 
       
@@ -165,7 +149,7 @@ For now I would just choose one aspect ratio for each sketch you create and igno
       <span>Expand</span>
       <span>↕</span>
     </div>
-    <input type="checkbox" style="display: none" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       <h3 id="vr-and-ar-applications">VR and AR Applications</h3>
 
@@ -236,24 +220,6 @@ Colorlisa.com</p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
-    </a>
-  </div>
-  
-  
-  <div>
-    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c11_StartingToDesign.md" target="_blank" rel="noopener">
-      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
-    </a>
-  </div>
-  
-</div>
-
 
       
     </div>
@@ -261,7 +227,7 @@ Colorlisa.com</p>
     
   
 
-  <aside class="book-toc level-3 fixed">
+  <aside class="book-toc levels-3 fixed">
     <nav id="TableOfContents">
 <ul>
 <li>
@@ -292,8 +258,7 @@ Colorlisa.com</p>
 
 
   </main>
-  
-  
+
   
 </body>
 

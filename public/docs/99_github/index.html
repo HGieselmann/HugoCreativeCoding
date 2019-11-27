@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-  
-    
-    99 Github
-  
- | Generative Unity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="" />
+<meta property="og:description" content="Github Let’s talk about Version Control You probably noticed, or will soon, that sometimes you have an idea on how to improve your code. You reformat your code, delete some old code here some there and all is good. The next day you look at your code an realize that it was laaate last night and everything you did, was just breaking stuff. But what did you actually change last night?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://generativeunity.henrikgieselmann.com/docs/99_Github/" />
 
-
-
-<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
-
-
+<title>99 Github | Generative Unity</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/book.min.d54f2886415be97240a76611f87e576a761d64c07020a767fa0ffd1bdc8bda93.css" integrity="sha256-1U8ohkFb6XJAp2YR&#43;H5XanYdZMBwIKdn&#43;g/9G9yL2pM=">
+
+
+<script defer src="/search.min.c7e8bbeb9de0f5f1c6a8f366185decb422a6bcedb2634e90922203068af6af5c.js" integrity="sha256-x&#43;i7653g9fHGqPNmGF3stCKmvO2yY06QkiIDBor2r1w="></script>
 
 <!--
 Made with Book Theme
@@ -33,29 +26,28 @@ https://github.com/alex-shpak/hugo-book
 </head>
 
 <body>
-  <input type="checkbox" style="display: none" id="menu-control" />
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
 
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+  <a href="https://generativeunity.henrikgieselmann.com"><span>Generative Unity</span>
+  </a>
 </h2>
 
 
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2f 99_Github\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
-<ul>
+
+
+    <ul>
 <li><a href="/docs/00_Introduction/">Introduction</a></li>
 <li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
@@ -83,7 +75,7 @@ https://github.com/alex-shpak/hugo-book
 
 <li><p><strong>Other</strong></p></li>
 
-<li><p><a href="/docs/99_Github/">Github</a></p></li>
+<li><p><a href="/docs/99_Github/"class=active>Github</a></p></li>
 
 <li><p><a href="/docs/98_AdditionalResources/">Additional Resources</a></p></li>
 
@@ -97,36 +89,30 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  
 <script>
 (function() {
-  var menu = document.querySelector('aside.book-menu nav')
-  addEventListener('beforeunload', function(event) {
-    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
   });
-  menu.scrollTop = localStorage.getItem('menu.scrollTop')
-})()
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
 </script>
-
-
 
     </aside>
 
     <div class="book-page">
-      <header class="align-center justify-between book-header">
+      <header class="flex align-center justify-between book-header">
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>
-  
-    
-    99 Github
-  
-</strong>
+  <strong>99 Github</strong>
 </header>
 
       
 <article class="markdown">
+
+<h1 id="github">Github</h1>
 
 <h3 id="let-s-talk-about-version-control">Let’s talk about Version Control</h3>
 
@@ -136,79 +122,60 @@ https://github.com/alex-shpak/hugo-book
 
 <p>So this other option is a little bit more tech-savy but will also teach you to do this independently from Unity using Git. Unity developers themselves use this to share their code with the community and have people look at examples.</p>
 
-<p>Git is a Version Control Software that is freely available. Whenever you feel like you made a good step forward you can “commit” a.k.a. save your progress and if you ever need to go back to that state - you can!
-Now while Git locally is nice, git “Remotes” is what makes it really awesome! This allows you to, for one have  a remote backup as well as more easily collaborate with other people. And once your project grows maybe you have a team and you can all work on the same project.
-There are many commercial providers for remote Git-Repositories, most offer free accounts for small projects. You could look for Mircrosofts Azure Repos, GitKraken, BitBucket by Atlassian, GitLab or, as we will do Github. Github today is also owned by Microsoft.
+<p>Git is a Version Control Software that is freely available. Whenever you feel like you made a good step forward you can “commit” a.k.a. save your progress and if you ever need to go back to that state - you can! <br>
+Now while Git locally is nice, git “Remotes” is what makes it really awesome! This allows you to, for one have  a remote backup as well as more easily collaborate with other people. And once your project grows maybe you have a team and you can all work on the same project. <br>
+There are many commercial providers for remote Git-Repositories, most offer free accounts for small projects. You could look for Mircrosofts Azure Repos, GitKraken, BitBucket by Atlassian, GitLab or, as we will do Github. Github today is also owned by Microsoft. <br>
 Which one you choose is totally up to you, but I will use Github through out this book, as it is what Unity Technologies is using for their public repositories.</p>
 
 <p>So what exactly does Git do?
-Git allows you to store stages of your project and go back in time. This is called a commit. You can also branch out. This means you maybe have the idea for a completly new UI for your game, but don’t want to break things. Then you can create a new “branch” and develop this new UI you or the rest of your team continue working on the rest of the project. Once you finished the new UI, you can make a “pull request”. This will ask the owner of the repository (this may, or may not be you yourself) to merge the changes to your project. Before you merge the code git will make sure both branches are still compatible to one another and then merge them together.
+Git allows you to store stages of your project and go back in time. This is called a commit. You can also branch out. This means you maybe have the idea for a completly new UI for your game, but don’t want to break things. Then you can create a new “branch” and develop this new UI you or the rest of your team continue working on the rest of the project. Once you finished the new UI, you can make a “pull request”. This will ask the owner of the repository (this may, or may not be you yourself) to merge the changes to your project. Before you merge the code git will make sure both branches are still compatible to one another and then merge them together.<br>
 All of this can be done using the GUIs provided by your Remote Repository Provider or using the commandline. We will go the commandline way, as it is universal.</p>
 
 <h3 id="basic-git-usage">Basic Git Usage</h3>
 
-<p>Before we can get into commandline magic we need to install git on our computer. Check out this post by derhuerst on Github Gist, to find out how:<a href="https://gist.github.com/derhuerst/1b15ff4652a867391f03">Link</a>
-Next go ahead and create an Account at Github.com. Once your Account is created and you again open up github.com You will see a Green button with a little Book in it saying “New”. Click it. Now enter a name for your repository or and the optional description. With a free account you will not be able to choose wether the Repository will be public or private, but you can and absolutly should add a .gitignore file. Click the “Add .gitignore” Button and search for Unity and add it.
+<p>Before we can get into commandline magic we need to install git on our computer. Check out this post by derhuerst on Github Gist, to find out how:<a href="https://gist.github.com/derhuerst/1b15ff4652a867391f03">Link</a><br>
+Next go ahead and create an Account at Github.com. Once your Account is created and you again open up github.com You will see a Green button with a little Book in it saying “New”. Click it. Now enter a name for your repository or and the optional description. With a free account you will not be able to choose wether the Repository will be public or private, but you can and absolutly should add a .gitignore file. Click the “Add .gitignore” Button and search for Unity and add it. <br>
 This file will make sure Git will include files that are unnecessary to track. Finally click “Create Repository”.</p>
 
-<p>Now you a you have an empty repository in the cloud. Everything else we will handle from the Commandline. Go ahead and open up a “Terminal” Window on the Mac or Commandline or Powershell if you are on Windows. There are a few short Commands you will need to learn to navigate the commandline.
-<code>ls</code> short for list, will print out all the files and folders on the directory you are in.
-<code>cd</code> short for change directory, will allow you to change the directory. If you want to go deeper one level just put the name of the folder you want to enter, or the path of serveral folders you want to go.
-To go up a level just do a <code>cd ..</code> Or type the path from the beginning like <code>cd C:\</code>.
+<p>Now you a you have an empty repository in the cloud. Everything else we will handle from the Commandline. Go ahead and open up a “Terminal” Window on the Mac or Commandline or Powershell if you are on Windows. There are a few short Commands you will need to learn to navigate the commandline. <br>
+<code>ls</code> short for list, will print out all the files and folders on the directory you are in. <br>
+<code>cd</code> short for change directory, will allow you to change the directory. If you want to go deeper one level just put the name of the folder you want to enter, or the path of serveral folders you want to go. <br>
+To go up a level just do a <code>cd ..</code> Or type the path from the beginning like <code>cd C:\</code>. <br>
 Now use these commands to navigate to your Unity Project Folder.</p>
 
-<p>Once you are there type <code>git status</code>. This will print out the current status of the Folder. In  our case it should tell you, that it is not a repository yet. So we need to initialize it:
-<code>git init</code> will do this for us. Form now on it will try to track changes to our Folder. But this is just locally, so we still need to connect it to our Github.com Repository!
-<code>git remote add origin PathYoYourGitRepo.git</code>
-You can just copy and paste the path from Your browser and add the <code>.git</code> at the end.
-If this goes without failure, our Project Folder and our Online Repository are linked together, but both are in different states! So while Git will not let us push to the cloud we still can pull from it. And that’s a good thing. This way we will receive the <code>.gitignore</code> file Github created for us. So, do a
-<code>git pull origin master</code>
-Git will now download the state of the project from the Cloud for us. Now we can savely add files to our repository, because git will igonre all the files and folders defined in the <code>.gitignore</code>-File.
+<p>Once you are there type <code>git status</code>. This will print out the current status of the Folder. In  our case it should tell you, that it is not a repository yet. So we need to initialize it: <br>
+<code>git init</code> will do this for us. Form now on it will try to track changes to our Folder. But this is just locally, so we still need to connect it to our Github.com Repository! <br>
+<code>git remote add origin PathYoYourGitRepo.git</code> <br>
+You can just copy and paste the path from Your browser and add the <code>.git</code> at the end. <br>
+If this goes without failure, our Project Folder and our Online Repository are linked together, but both are in different states! So while Git will not let us push to the cloud we still can pull from it. And that’s a good thing. This way we will receive the <code>.gitignore</code> file Github created for us. So, do a <br>
+<code>git pull origin master</code> <br>
+Git will now download the state of the project from the Cloud for us. Now we can savely add files to our repository, because git will igonre all the files and folders defined in the <code>.gitignore</code>-File. <br>
 Everything we did just now, is a thing, that we only need to do once for every project. You will get used to it over time, but definetly feel free to use the TL;DR at the bottom to sneek at the code when doing this for other projects.</p>
 
-<p>The following steps you will do quite often, as they are the three Key steps to track your project. It’s adding files, commiting the changes and pushing them to the cloud.
-<code>git add -- all</code> will add all the files to our repository. From now on their history and changed will be tracked by git.
-<code>git commit -m “I changed the following stuff: this is a comment</code>
-You might think, the <code>-m</code> with comment is not important. Git will not commit without a comment!
-Then do a push!
-<code>git push origin master</code>
+<p>The following steps you will do quite often, as they are the three Key steps to track your project. It’s adding files, commiting the changes and pushing them to the cloud. <br>
+<code>git add -- all</code> will add all the files to our repository. From now on their history and changed will be tracked by git. <br>
+<code>git commit -m “I changed the following stuff: this is a comment</code> <br>
+You might think, the <code>-m</code> with comment is not important. Git will not commit without a comment! <br>
+Then do a push! <br>
+<code>git push origin master</code> <br>
 This will trigger an upload Github. Now all your important files will be tracked and saved in the cloud! Commit early and often!</p>
 
-<h3 id="tl-dr">TL;DR</h3>
+<p>###TL;DR <br>
+How to setup your project with Github: <br>
+* Create Repo with <code>Unity.gitignore</code> on the Github Website <br>
+* In the Commandpromt/Terminal navigate to your Unity Project Folder <br>
+* Code to execute one by one: <br></p>
 
-<p>How to setup your project with Github:
-+ Create Repo with <code>Unity.gitignore</code> on the Github Website
-+ In the Commandpromt/Terminal navigate to your Unity Project Folder
-+ Code to execute one by one:</p>
-
-<pre><code>Git init
-Git remote add origin LinkToGithubRepo.git
-Git pull origin master
-Git add -A
-Git commit -m “Comment”
-Git push origin master
+<pre><code>Git init &lt;br&gt;
+Git remote add origin LinkToGithubRepo.git &lt;br&gt;
+Git pull origin master &lt;br&gt;
+Git add -A &lt;br&gt;
+Git commit -m “Comment” &lt;br&gt;
+Git push origin master &lt;br&gt;
 </code></pre>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/alex-shpak/hugo-book/commit/4b3c02d475d29babf390432113b8a7ea1e57a930" title='Last modified June 24, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> June 24, 2019
-    </a>
-  </div>
-  
-  
-  <div>
-    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c99_Github.md" target="_blank" rel="noopener">
-      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
-    </a>
-  </div>
-  
-</div>
-
 
       
     </div>
@@ -216,16 +183,15 @@ Git push origin master
     
   
 
-  <aside class="book-toc level-3 fixed">
+  <aside class="book-toc levels-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#github">Github</a>
 <ul>
 <li>
 <ul>
 <li><a href="#let-s-talk-about-version-control">Let’s talk about Version Control</a></li>
 <li><a href="#basic-git-usage">Basic Git Usage</a></li>
-<li><a href="#tl-dr">TL;DR</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -235,8 +201,7 @@ Git push origin master
 
 
   </main>
-  
-  
+
   
 </body>
 

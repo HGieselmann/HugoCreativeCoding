@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-  
-    
-    02 Moving Things
-  
- | Generative Unity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="" />
+<meta property="og:description" content="CHAPTER INTRO - REWORK THIS
+These two thing will perfetly go hand in hand, as Design, as well as Coding are Skills. You can read about them as much as you want, but you will only become good at it by actually designing stuff and actually writing code. This is actually an important point. A lot of the ideas of programming are in their core not hard to grasp. A lot of them are really straight forward." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://generativeunity.henrikgieselmann.com/docs/02_Moving_Things/" />
 
-
-
-<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
-
-
+<title>02 Moving Things | Generative Unity</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/book.min.d54f2886415be97240a76611f87e576a761d64c07020a767fa0ffd1bdc8bda93.css" integrity="sha256-1U8ohkFb6XJAp2YR&#43;H5XanYdZMBwIKdn&#43;g/9G9yL2pM=">
+
+
+<script defer src="/search.min.c7e8bbeb9de0f5f1c6a8f366185decb422a6bcedb2634e90922203068af6af5c.js" integrity="sha256-x&#43;i7653g9fHGqPNmGF3stCKmvO2yY06QkiIDBor2r1w="></script>
 
 <!--
 Made with Book Theme
@@ -33,32 +27,31 @@ https://github.com/alex-shpak/hugo-book
 </head>
 
 <body>
-  <input type="checkbox" style="display: none" id="menu-control" />
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
 
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+  <a href="https://generativeunity.henrikgieselmann.com"><span>Generative Unity</span>
+  </a>
 </h2>
 
 
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2f 02_Moving_Things\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
-<ul>
+
+
+    <ul>
 <li><a href="/docs/00_Introduction/">Introduction</a></li>
 <li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
-<li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
+<li><a href="/docs/02_Moving_Things/"class=active>02 Moving Things</a></li>
 <li><a href="/docs/03_The_Console/">03 The Console</a></li>
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
 <li><a href="/docs/05_Functions/">05 Methods</a></li>
@@ -97,77 +90,72 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  
 <script>
 (function() {
-  var menu = document.querySelector('aside.book-menu nav')
-  addEventListener('beforeunload', function(event) {
-    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
   });
-  menu.scrollTop = localStorage.getItem('menu.scrollTop')
-})()
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
 </script>
-
-
 
     </aside>
 
     <div class="book-page">
-      <header class="align-center justify-between book-header">
+      <header class="flex align-center justify-between book-header">
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>
-  
-    
-    02 Moving Things
-  
-</strong>
+  <strong>02 Moving Things</strong>
 </header>
 
       
 <article class="markdown">
 
-<p>See further down</p>
+<p>CHAPTER INTRO - REWORK THIS</p>
 
 <p>These two thing will perfetly go hand in hand, as Design, as well as Coding are Skills. You can read about them as much as you want, but you will only become good at it by actually designing stuff and actually writing code. This is actually an important point. A lot of the ideas of programming are in their core not hard to grasp. A lot of them are really straight forward. What makes programming complex is dividing bigger problems into smaller problems and even smaller problems. And becoming good at this thoughtprocess takes practice. When I went to Drawing school to prepare for my design studies I didn’t get any better until the moment my teacher Ivan forced me to come back with 100 drawings of simple things within a week. The Website drawabox.com has a challenge of drawing 250 boxes.
 And for both worlds a great process for starting out exists. In the design world you start out by doing scribbles or storyboards to get an idea of what the result should look like. In coding you should start with so called “Pseudo Code”.
 Pseudo Code is just a few written lines of what needs to happen. You can then try ordering them in the way the code would require execution, if you can estimate that. These can just look like your average cooking recipe. In essence they are the same.
 I recommend starting on paper, as technology sadly has a tendency to screw with your thinking process, but it can also be a good idea to bring your pseudocode into your script as a comment.</p>
 
-<p>For our “Hommage to the Square” experimentation I started with some simple scribbles on what could be things we could easily do with code:
+<p>For our “Homage to the Square” experimentation I started with some simple scribbles on what could be things we could easily do with code:
 TODO INSERT SCRIBBLES AND PSEUDOCODE</p>
+
+<h1 id="02-moving-things">02 - Moving Things</h1>
 
 <h3 id="structure-of-a-script">Structure of a script</h3>
 
-<p>So let’s finally start writing our first script. There are multiple ways to create script, the one I prefer is creating it via <code>RightClick -&gt; C# Script</code> in the Project View. The advantage here is: you can directly choose the folder in which the Script should be located and you don’t have to start organizing your files after the fact.
-But you can also create scripts directly from the Inspector by clicking on “Add Component” and in the search panel simply write the name you want to give to the script. If there isn’t any other component or script with the same name in your project Unity will assume you want to create a script with that name. I called my first script: “MovingCuboids_Lifting”.
-With your script created just open it using double-click. Your default Code Editor will open. This can take while depending on your system, especially when you open the editor for the first time.
+<p>So let’s start writing our first script. There are multiple ways to create a script, the one I prefer is creating it via <code>Right-click -&gt; C# Script</code> in the Project View. The advantage here is: you can choose the folder in which the Script should be located and you don’t have to start organizing your files after the fact. <br>
+But you can also create scripts directly from the Inspector by clicking on “Add Component” and in the search panel simply write the name you want to give to the script. If there isn’t any other component or script with the same name in your project Unity will assume you want to create a script with that name. I called my first script: “MovingCuboids_Lifting”. <br>
+With your script created just open it using double-click. Your default Code Editor will open. This can take a while depending on your system, especially when you open the editor for the first time.
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
       <span>Expand</span>
       <span>↕</span>
     </div>
-    <input type="checkbox" style="display: none" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
-      <h2 id="code-editors-and-ides">Code Editors and IDEs</h2>
+      <h3 id="code-editors-and-ides">Code Editors and IDEs</h3>
 
-<p>The default Code Editor for you probably is “Visual Studio Community Edition” oder “Visual Studio for Mac”. These are so-called “IDEs” - Integrated Development Environments. These are powerful tools for editing Code, they can integrate with Unity and come with many advanced features. The downside to them is, they tend to be slow to start up. And on a laptop they can be draining on your battery, as they thoroughly check your code in the background. So if you are on a low end machine it can be wise to look for a “Code Editor”. They are a lightweight alternative, but in comparison lack some advanced features.
-Great Code Editors are “Visual Studio Code” by Microsoft or “Atom” by Github, which is also part o Microsoft. There is also Sublime Text.
+<p>The default Code Editor for you probably is “Visual Studio Community Edition” or “Visual Studio for Mac”. These are so-called “IDEs” - Integrated Development Environments. These are powerful tools for editing Code, they can integrate with Unity and come with many advanced features. The downside to them is, they tend to be slow to start up. And on a laptop they can be draining on your battery, as they thoroughly check your code in the background. So if you are on a low end machine it can be wise to look for a “Code Editor”. They are a lightweight alternative, but in comparison lack some advanced features. <br>
+Great Code Editors are “Visual Studio Code” by Microsoft or “Atom” by GitHub, which is also part of Microsoft. There is also Sublime Text. <br>
 If you want to check out an IDE that is becoming more and more popular with Unity programmers look out for “Rider” by JetBrains. They also offer the very helpful Plug In “ReSharper” for Visual Studio.
     </div>
   </label>
 </div>
 
-Every Unity Script comes with some “boilerplate” Code to get you started. It looks like this:
+Every Unity Script comes with some “boilerplate” Code to get you started. It looks like this:</p>
+
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	using System.Collections;
 	using System.Collections.Generic;
 	using UnityEngine;
 
-	public class <span style="color:#002070;font-weight:bold">New</span> : MonoBehaviour
+	public class <span style="color:#002070;font-weight:bold">MyNewClass</span> : MonoBehaviour
 	{
-	<span style="color:#60a0b0;font-style:italic">// Start is called before the first frame updat
+	<span style="color:#60a0b0;font-style:italic">// Start is called before the first frame updates
 </span><span style="color:#60a0b0;font-style:italic"></span>		<span style="color:#902000">void</span> Start()
 		{
 	
@@ -177,37 +165,41 @@ Every Unity Script comes with some “boilerplate” Code to get you started. It
 		{
 
 		}
-	}</code></pre></div></p>
+	}</code></pre></div>
 
-<p>The first few lines are “using” statements. All lines in C# that end with a semicolon are considered a “statement”. The “using” statements reference “namespaces” or libraries on your computer into the script. And I think libraries is a nice description for it.. Think of it like a book club and you define beforehand which books you want to talk about. It’s tedious to talk about “The Lord of the Rings” if the other person hasn’t read the book.
+<p>The first few lines are “using” statements. All lines in C# that end with a semicolon are considered a “statement”. The “using” statements reference “namespaces” or libraries on your computer into the script. And I think libraries is a nice description for it. Think of it like a book club and you define beforehand which books you want to talk about. It’s tedious to talk about “The Lord of the Rings” if the other person hasn’t read the book. <br>
 Using these statements you expect Unity know about everything in the UnityEngine itself, as well as the chapters “Collections” and “Collections.Generic” from the “System” book. You can see we can access or require sub-parts using the so called “dot notation”.</p>
 
-<p>Next up is the class. Every script we write defines a class. You could have multiple classes in one and the same file, but that is not considered good practice in C#. Classes really are an advanced topic, so for now, let’s just say they bundle a bunch of code together. Take note of the MovingCuboids_Lifting as the class name. This corresponds to the name we gave our script file and they always need to have the same name. If you change the classname you have to change the filename and vice versa.
-Everything that belongs to this class is wrapped inside the following curly brackets. Curly braces define a block of Code. You can see this in the Code for the Start and Update Methods as well. All our code belongs inside the curly braces of the class, except for everything related to namespaces.
-Moving on to “Methods”.! Start and Update are Methods that Unity recognizes and calls during the execution of the program. The Start function is called first and only once before the program starts running. Here you would define everything you wanted to set up.
-The Update method is then called each frame and keeps running until you end the program. Here we have to write all our Code that changes or animates over the time of the execution of the script.
-<div class="book-expand">
+<p>Next up is the class. Every script we write defines a class. You could have multiple classes in the same file, but that is not considered good practice in C#. Classes really are an advanced topic, so for now, let’s just say they bundle a bunch of code together. Take note of the MovingCuboids_Lifting as the class name. This corresponds to the name we gave our script file and they always need to have the same name. If you change the classname, you have to change the filename and vice versa. <br>
+Everything that belongs to this class is wrapped inside the following curly brackets. Curly braces define a block of Code. You can see this in the Code for the Start and Update Methods as well. All our code belongs inside the curly braces of the class, except for everything related to namespaces.</p>
+
+<p>Moving on to “Methods”. Start and Update are Methods that Unity recognizes and calls during the execution of the program. The Start function is called first and only once before the program starts running. Here you would define everything you wanted to set up. <br>
+The Update method is then called each frame and keeps running until you end the program. Here we have to write all our Code that changes or animates over the time of the execution of the script.</p>
+
+<p><div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
       <span>Expand</span>
       <span>↕</span>
     </div>
-    <input type="checkbox" style="display: none" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       <h2 id="what-is-a-frame">What is a Frame?</h2>
 
-<p>Images are rendered to your screen, one image at a time. If the distance between two images is short enough we percieve this as fluid motion. Movies are typically shot with 24 Frames per Second. Unity by default is set up to render 60 Frames per Second, which is the most common refreshrate for Monitors.
+<p>Images are rendered to your screen, one image at a time. If the distance between two images is short enough, we perceive this as fluid motion. Movies are typically shot with 24 Frames per Second. Unity by default is set up to render 60 Frames per Second, which is the most common refresh rate for Monitors.
     </div>
   </label>
 </div>
 
-In general all your code is executed from top to bottom. So if you would move your using statements to the bottom, Unity or your IDE would start complaining.
-That concludes our first little overview of script structure.</p>
+In general all your code is executed from top to bottom. So if you would move your using statements to the bottom, Unity or your IDE would start complaining.</p>
+
+<p>That concludes our first little overview of script structure.</p>
 
 <h3 id="variables">Variables</h3>
 
-<p>The first thing Coding Concept we will dissect in detail is “Variables” . Variables are often described as boxes with a name on. You can put stuff in and later retrieve the content of the Box. You can store pretty much anything in variables.
-In C# variables have a “Type”. This makes C# a (mostly) “type safe” language. To stay with our box example, If you create a box you have to define what kind of things go inside. If you happen to have a heart-shaped box, you can only store heart-shaped things in there. If you create a round box you can only store round things in it.</p>
+<p>The first thing Coding Concept we will dissect in detail is “Variables” . Variables are often described as boxes with a name on. You can put stuff in and later retrieve the content of the Box. You can store pretty much anything in variables.</p>
+
+<p>In C# variables have a “Type”. This makes C# a (mostly) “type safe” language. To stay with our box example, If you create a box you have to define what kind of things go inside. If you happen to have a heart-shaped box, you can only store heart-shaped things in there. If you create a round box, you can only store round things in it.</p>
 
 <h4 id="numbers">Numbers</h4>
 
@@ -218,7 +210,7 @@ In C# variables have a “Type”. This makes C# a (mostly) “type safe” lang
       <span>Expand</span>
       <span>↕</span>
     </div>
-    <input type="checkbox" style="display: none" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       <h4 id="number-types-memory-and-performance">Number-Types, Memory and Performance</h4>
 
@@ -229,25 +221,24 @@ In C# variables have a “Type”. This makes C# a (mostly) “type safe” lang
 
 The first one is integers. Integers contain all “whole” numbers no matter if positive or negative.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> integerVariable;</code></pre></div>
-This code declares an integer variable with the name “integerVariable”. Right now it holds no value and if would try to access it you would encounter an error.
-You can assign to variables using the <code>=</code> sign.
+This code declares an integer variable with the name “integerVariable”. Right now it holds no value and if would try to access it, you would encounter an error. <br>
+You can assign values to variables using the <code>=</code> sign.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> integerVariable;
 integerVariable <span style="color:#666">=</span> <span style="color:#40a070">1</span>;</code></pre></div>
-This would initialize our integerVariable to “1”.
+This would initialize our integerVariable to “1”. <br>
 We could also do this in just one step:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> integerVariable <span style="color:#666">=</span> <span style="color:#40a070">1</span>;</code></pre></div>
-Assignment is always done form the right side of the <code>=</code> sign to the left. This also means, that any code on the right side will first be evaluated before it is assigned to the varible on the left:
+Assignment is always done form the right side of the <code>=</code> sign to the left. This also means, that any code on the right side will first be evaluated before it is assigned to the variable on the left:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">int</span> integerVariable <span style="color:#666">=</span> <span style="color:#40a070">1</span><span style="color:#666">+</span><span style="color:#40a070">1</span>;</code></pre></div>
-`integerVariable’ would now hold the value “2”.</p>
-
-<p>Next up are “floats” and “doubles”. Both hold all the non-whole numbers. The difference between the two is, that double use the double amount of memory to save values and can store higher precision values. But this also means that doubles take longer to calculate. That’s why in Unity we typically use floats, unless we absolutely need double precision. So why even TALK about doubles already? Because floats are a little weird&hellip;
+`integerVariable’ would now hold the value “2”. <br>
+Next up are “floats” and “doubles”. Both hold all the non-whole numbers. The difference between the two is, that double use the double amount of memory to save values and can store higher precision values. But this also means that doubles take longer to calculate. That’s why in Unity we typically use floats, unless we absolutely need double precision. So why even TALK about doubles already? Because floats are a little weird&hellip;
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">float</span> floatVariable <span style="color:#666">=</span> <span style="color:#40a070">1.1f</span>;
 Double doubleVariable <span style="color:#666">=</span> <span style="color:#40a070">1.1</span>;</code></pre></div>
-Look at that code. See something fishy?
+Look at that code. See something fishy? <br>
 Whenever we declare a float we have to append the value with a lowercase “f” to tell C# that this is indeed a float-value we want to use and <strong>not</strong> a double.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">float</span> floatVariable <span style="color:#666">=</span> <span style="color:#40a070">1.1</span>;</code></pre></div>
-If we don’t do this, our code will actually not run! The above line will cause an error. The compiler can’t know which value it is, we want to store inside and if he assumes that there is chance, that he would have to loose data in the process of converting on type to the other, he won’t do it.
-The compiler will though convert values from one type to the other if he can be sure that no data loss can happen. This is called “implicit” conversion. Implicit conversion happens from integers to floats and floats to doubles and of course integers to doubles.
+If we don’t do this, our code will actually not run! The above line will cause an error. The compiler can’t know which value it is, we want to store inside and if he assumes that there is a chance, that he would have to lose data in the process of converting on type to the other, he won’t do it. <br>
+The compiler will though convert values from one type to the other if he can be sure that no data loss can happen. This is called “implicit” conversion. Implicit conversion happens from integers to floats and floats to doubles and of course integers to doubles. <br>
 If you want to force conversion for types it’s called “explicit” conversion and we do this using a “cast”:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">float</span> floatVariable <span style="color:#666">=</span> (<span style="color:#902000">float</span>)<span style="color:#40a070">1.1</span>;
 <span style="color:#902000">int</span> intVariable <span style="color:#666">=</span> (<span style="color:#902000">int</span>)<span style="color:#40a070">0.5</span>;</code></pre></div>
@@ -264,30 +255,38 @@ You can use this syntax whenever you need to do a simple conversion between valu
       <span>Expand</span>
       <span>↕</span>
     </div>
-    <input type="checkbox" style="display: none" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       <h4 id="conversion">Conversion</h4>
     </div>
   </label>
 </div>
 
-What needs to be said about strings really???</p>
+What needs to be said about strings, really???</p>
 
 <h4 id="objects">Objects</h4>
 
-<p>Objects are the last important Data-Type we really need to know about. Objects really is a generalization for many things. Unity comes with a lot of types we will use.
-The first things we will see are Vectors.
+<p>Objects are the last important Data-Type we really need to know about. Objects really is a generalization for many things. Unity comes with a lot of types we will use.</p>
+
+<p>The first things we will see are Vectors.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">vector3 myVector <span style="color:#666">=</span> new Vector3(<span style="color:#40a070">1</span>,<span style="color:#40a070">1</span>,<span style="color:#40a070">1</span>);</code></pre></div>
-Vector3s are defined by Unity and essentially bundle three floats in one variable. What’s really important here is the <code>new</code> Keyword. It tells C# to allocate some space in memory for it. So if we create variables for classes, then we need to instance them using the new keyword.
-Now this might sound complicated, but for now just roll with it. We will look deeper into this once we reach the chapter about classes and object orientation.</p>
+Vector3s are defined by Unity and essentially bundle three floats in one variable. What’s really important here is the <code>new</code> Keyword. It tells C# to allocate some space in memory for it. So if we create variables for classes, then we need to instance them using the new keyword.</p>
+
+<p>Now this might sound complicated, but for now just roll with it. We will look deeper into this once we reach the chapter about classes and object orientation.</p>
 
 <h3 id="on-pseudo-code">On Pseudo Code</h3>
 
-<p>Throughout the first chapters we will use our “Homage to the Cuboid” as a starting point for experimentation. This will be a great way to get started coding with very small scripts and also see how just a few lines of code can create interesting results.
-But before you actually start to code it’s often a great idea to actually think about what you want to achieve. There is also great value putting this down on paper. So let’s look at the options we have right now. We have been looking at the transform component in the editor, and this gives us exactly nine values to manipulate: X,Y and Z for each transformation: translation, rotation and scale.
-TODO Sketch of possible actions:
+<p>Throughout the first chapters we will use our “Homage to the Cuboid” as a starting point for experimentation. This will be a great way to get started coding with very small scripts and also see how just a few lines of code can create interesting results. <br>
+But before you actually start to code, it’s often a great idea to think about what you want to achieve. There is also great value putting this down on paper. So let’s look at the options we have right now. We have been looking at the transform component in the editor, and this gives us exactly nine values to manipulate: X,Y and Z for each transformation: translation, rotation and scale.</p>
+
+<p>TODO Sketch of possible actions:
 So let’s start with translation, bringing a little snake-like movement into our homage. We will aim for something like this:
-Image of moving Cuboids
+<figure>
+    <img src="/img/MovingCuboids_Shifting_X.gif" width="50%"/> <figcaption>
+            <h4>Cuboids Shifting on the X Axis</h4>
+        </figcaption>
+</figure>
+
 Now that we have a creative vision let’s start out with something called “Pseudo Code”. Pseudo code is the idea of writing something code like, but on a really high level. An abstraction which will make it easier to write the code itself later. You can use comments in your code to put down pseudo code. Comments start with double slashes <code>//</code> and everything that follows in that line will ignored by the compiler.</p>
 
 <p>We know that we can assign values to variables, and that we only want to change the value on one axis, so let’s use the X axis for now.
@@ -295,8 +294,9 @@ Now that we have a creative vision let’s start out with something called “Ps
 How do we get the swinging motion? We’ll make use of a useful thing you might remember from school: A sine wave.
 The <code>sin()</code> method will continuously create a value for us between 0 and 1. Where can we get a continuously growing value? Well: Time! So some simplified code could look like this:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#666">//</span>x <span style="color:#666">=</span> Sinus of Time</code></pre></div>
-This is actually the basic idea. Now that we have that, we need to figure out how to create the offset between each of the Cuboids. We have to create some kind of an Offset for them. But what do we have to Offset? If we Offset X as a whole, we just move the cuboids apart, we actually need to offset the value the <code>sin()</code> function creates and thus need to offset the time value itself. We will also need to be able to adjust this value for each Cuboid individually.
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#666">//</span>x <span style="color:#666">=</span> Sinus of (Time <span style="color:#666">+</span> Offset per Cuboid)</code></pre></div>
+This is actually the basic idea. Now that we have that, we need to figure out how to create the offset between each of the Cuboids. We have to create some kind of Offset for them. But what do we have to Offset? If we Offset X as a whole, we just move the cuboids apart, we actually need to offset the value the <code>sin()</code> function creates and thus need to offset the time value itself. We will also need to be able to adjust this value for each Cuboid individually.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#60a0b0;font-style:italic">// pseudo Code
+</span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#666">//</span>x <span style="color:#666">=</span> Sinus of (Time <span style="color:#666">+</span> Offset per Cuboid)</code></pre></div>
 So let’s get coding!</p>
 
 <h3 id="starting-our-first-script">Starting our first Script</h3>
@@ -311,20 +311,27 @@ And while we can “get” the X position this way, Unity doesn’t actually all
 }</code></pre></div>
 This would set all our transform values to zero. But as we said, we only want to change the value for the X axis. So let’s make sure that happens, by retrieving the current Y and Z values.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	transform.position <span style="color:#666">=</span> new Vector3(<span style="color:#40a070">0</span>, transform.position.y, transform.position.z);</code></pre></div>
-This code will set our X value to 0, but retain the current values for Y and Z and thus all our positioning we did in the Unity Editor for these axis will stay put.
-Now to get our motion going, we need to get a hold of time and calculate the sin. Time we can grab from the Time object using <code>Time.time</code>. To calculate a sin from it we can access the “Math” class using <code>Mathf</code>.
+This code will set our X value to 0, but retain the current values for Y and Z and thus all our positioning we did in the Unity Editor for these axis will stay put.</p>
+
+<p>Now to get our motion going, we need to get a hold of time and calculate the sin. Time we can grab from the Time object using <code>Time.time</code>. To calculate a sin from it we can access the “Math” class using <code>Mathf</code>.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#902000">float</span> sin <span style="color:#666">=</span> Mathf.Sin(Time.time);</code></pre></div>
 Here we calculate the Sin value of the current time and store it in a float variable called <code>sin</code>. We can then go on and assign it to our X position in the Vector3:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#902000">float</span> sin <span style="color:#666">=</span> Mathf.Sin(Time.time);
 	transform.position <span style="color:#666">=</span> new Vector3(sin, transform.position.y, transform.position.z);</code></pre></div>
-TODO Zwischenstands ergebnis hier
+<figure>
+    <img src="/img/MovingCuboids_Shifting_X_Intermediate.gif" width="50%"/> <figcaption>
+            <h4>Well... it’s a start...</h4>
+        </figcaption>
+</figure>
+
 While we are still missing the offset, we also have a very strong movement, and we might want to control both of these.</p>
 
 <h3 id="public-and-private-variables">Public and private variables</h3>
 
-<p>In our pseudo code we found, we need to create an offset for each of our Cuboids. And while we <strong>could</strong> go ahead an create a script for each of them, that would be very tedious work. It would also be a very awful violation of the “DRY” programming principle: “Don’t repeat yourself!”. Thus what we need is a variable we can adjust per Cuboid.
-We will put this variable above the Start function but inside the class:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">MovingCuboids_Shifting</span> : MonoBehaviour
+<p>In our pseudo code we found, we need to create an offset for each of our Cuboids. And while we <strong>could</strong> go ahead an create a script for each of them, that would be very tedious work. It would also be a very awful violation of the “DRY” programming principle: “Don’t repeat yourself!”. Thus what we need is a variable we can adjust per Cuboid.</p>
+
+<p>We will put this variable above the Start function but inside the class:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">MovingCuboidsShifting</span> : MonoBehaviour
 {
     
     public <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
@@ -333,20 +340,58 @@ We will put this variable above the Start function but inside the class:
 	}
 }</code></pre></div>
 Notice something new? We just made our variable <code>public</code>. Public variables can mainly be seen and set by other scripts. But in Unity they also show up on the component in the Inspector.
-Screenshot here
+<figure>
+    <img src="/img/ExposedVariables.jpg" width="50%"/> <figcaption>
+            <h4>Variables exposed in the Inspector</h4>
+        </figcaption>
+</figure>
+
 So now we can set this value for each Cuboid separately. By default all variables and functions are private and you don’t need to put the private keyword. But sometimes it helps to clarify your code.
-Now that we have a value we can adjust, let’s incorporate it into our script:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
+<blockquote class="book-hint info">
+  <h3 id="serialize-field">Serialize Field</h3>
+
+<p>But, the <code>public</code> keyword does more than just exposing the variable to the Unity Editor. It will allow other scripts in your project to access this variable and read it or change it. And this is a gateway opening up for bugs. Taht’s why we want keep our variables <code>private</code> as possible. To remedy this problem Unity offers the Tag <code>[SerializeField]</code>. It will expose your variable to the Unity editor and keep in private for other scripts. Win - Win!
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[SerializeField]
+private <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;</code></pre></div>
+This is the preferred way of working. And while it may seem like unnecessary clutter for now, this will make your life easier down the road. Using this workflow, all the decisions you make regarding making variables public will be conscious.</p>
+
+</blockquote>
+</p>
+
+<h3 id="variable-scope">Variable Scope</h3>
+
+<p>The last thing regarding variables we need to talk about is “variable scope”. Scope is about which you are able to access at which point in your code. In our code we at the moment have two places in which we create variables. On top of the class and inside the Update loop. Variables you create at the top of the file, or to be precise directly inside the <code>{}</code> of the <em>class</em> have “global scope”. They can be accessed in any function or loop in the class. <br>
+Variables you create inside a method like <code>Update()</code> or <code>Start()</code> have “local scope”. The can only be accessed inside the method or loop they were created in.<br>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public class <span style="color:#002070;font-weight:bold">exampleClass</span> : MonoBehaviour{
+	private <span style="color:#902000">int</span> myInteger <span style="color:#666">=</span> <span style="color:#40a070">0</span>; <span style="color:#60a0b0;font-style:italic">// This is at global scope
+</span><span style="color:#60a0b0;font-style:italic"></span>	Start(){
+		private <span style="color:#902000">int</span> myOtherInteger <span style="color:#666">=</span> <span style="color:#40a070">0</span>; <span style="color:#60a0b0;font-style:italic">// This is at local scope
+</span><span style="color:#60a0b0;font-style:italic"></span>		myInteger <span style="color:#666">=</span> <span style="color:#40a070">1</span>; <span style="color:#60a0b0;font-style:italic">// This works
+</span><span style="color:#60a0b0;font-style:italic"></span>		myOtherInteger <span style="color:#666">=</span> <span style="color:#40a070">1</span>; <span style="color:#60a0b0;font-style:italic">// This works as well
+</span><span style="color:#60a0b0;font-style:italic"></span>	}
+	Update(){
+		myInteger <span style="color:#666">=</span> <span style="color:#40a070">2</span>; <span style="color:#60a0b0;font-style:italic">// This works
+</span><span style="color:#60a0b0;font-style:italic"></span>		myOtherInteger <span style="color:#666">=</span> <span style="color:#40a070">2</span>; <span style="color:#60a0b0;font-style:italic">// This DOES NOT WORK!! 
+</span><span style="color:#60a0b0;font-style:italic"></span>	}</code></pre></div>
+In general you have access to the variables declared on “level”up and at the same level but you don’t have access to the variables at one finer level of detail. They are “out of scope”.</p>
+
+<h3 id="putting-it-in-practice">Putting it in practice</h3>
+
+<p>Now that we have a value we can adjust, let’s incorporate it into our script:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[SerializeField]
+private <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
     <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
     {
         <span style="color:#902000">float</span> sinus <span style="color:#666">=</span> Mathf.Sin(Time.time <span style="color:#666">+</span> timeOffset);
         transform.position <span style="color:#666">=</span> new Vector3(sinus, transform.position.y, transform.position.z);
     }</code></pre></div>
-Now look a the placement of our offset. What do you think would happen if put it outside of the parentheses? All operations in C# follow the basic rules of precedence, but if your in doubt about them feel free to just add more parentheses.
-Lastly we want to add a scaling factor on the movement range of the cuboids:
+Now look at the placement of our offset. What do you think would happen if put it outside of the parentheses? All operations in C# follow the basic rules of precedence, but if you’re in doubt about them feel free to just add more parentheses.</p>
+
+<p>Lastly we want to add a scaling factor on the movement range of the cuboids:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#902000">float</span> movementScale <span style="color:#666">=</span> <span style="color:#40a070">0.25f</span>;</code></pre></div>
 No we can ask the interesting question where to put this. And there are actually many options, but let’s consider the obvious ones:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[SerializeField]
+private <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
 <span style="color:#902000">float</span> movementScale <span style="color:#666">=</span> <span style="color:#40a070">0.25f</span>;
     <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
     {
@@ -354,7 +399,8 @@ No we can ask the interesting question where to put this. And there are actually
         transform.position <span style="color:#666">=</span> new Vector3(sinus, transform.position.y, transform.position.z);
     }</code></pre></div>
 And:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[SerializeField]
+private <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
 <span style="color:#902000">float</span> movementScale <span style="color:#666">=</span> <span style="color:#40a070">0.25f</span>;
     <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
     {
@@ -362,7 +408,8 @@ And:
         transform.position <span style="color:#666">=</span> new Vector3(sinus <span style="color:#666">*</span> movementScale, transform.position.y, transform.position.z);
     }</code></pre></div>
 Or the one I actually like best:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[SerializeField]
+public <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
 <span style="color:#902000">float</span> movementScale <span style="color:#666">=</span> <span style="color:#40a070">0.25f</span>;
     <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
     {
@@ -370,24 +417,39 @@ Or the one I actually like best:
         sinus <span style="color:#666">=</span> sinus <span style="color:#666">*</span> movementScale;
         transform.position <span style="color:#666">=</span> new Vector3(sinus, transform.position.y, transform.position.z);
     }</code></pre></div>
-When and where yo put your operations depends on the situation, partly depends on style but should mostly be about readability. Which of these would you think is most clear to any other person reading this?
-You could even go so far as to create a completely new variable for the scaled sinus, which is very precise and thus a very good way to write your code.
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">public <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
+When and where you put your operations depends on the situation, partly depends on style but should mostly be about readability. Which of these would you think is most clear to any other person reading this?</p>
+
+<p>You could even go so far as to create a completely new variable for the scaled sinus, which is very precise and thus a very good way to write your code.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[SerializeField]
+private <span style="color:#902000">float</span> timeOffset <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
 <span style="color:#902000">float</span> movementScale <span style="color:#666">=</span> <span style="color:#40a070">0.25f</span>;
     <span style="color:#902000">void</span> <span style="color:#06287e">Update</span>()
     {
         <span style="color:#902000">float</span> sinus <span style="color:#666">=</span> Mathf.Sin(Time.time <span style="color:#666">+</span> timeOffset);
         <span style="color:#902000">float</span> scaledSinus <span style="color:#666">=</span> sinus <span style="color:#666">*</span> movementScale;
         transform.position <span style="color:#666">=</span> new Vector3(scaledSinus, transform.position.y, transform.position.z);
-    }</code></pre></div></p>
+    }</code></pre></div>
+Whichever way you choose. You should now have something like this happening. You can pat yourself on the back. All of this an important first step!
+<figure>
+    <img src="/img/MovingCuboids_Shifting_X.gif" width="50%"/> <figcaption>
+            <h4>Cuboids Shifting on the X Axis</h4>
+        </figcaption>
+</figure>
+</p>
 
 <h3 id="rotation">Rotation</h3>
 
 <p>While scaling will be very similar to what we just did, rotation can be a little harder. But this is totally dependent on your needs. If you only need to rotate an object around an axis, rotation can be as simple as:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">transform.Rotate(<span style="color:#40a070">0</span>, <span style="color:#40a070">1</span>, <span style="color:#40a070">0</span>);</code></pre></div>
-This would rotate the object around the Y axis by a given value.
-What you can’t do however is assign a Vector3 directly to the Rotation value. Rotations in Unity are stored in Quaternions. Quaternions take in four values and help in avoiding some problems with rotations in 3D space. To set Rotation values, you would need to use this mehtod:
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">transform.rotation <span style="color:#666">=</span> Quaternion.Euler(<span style="color:#40a070">0</span>,<span style="color:#40a070">1</span>,<span style="color:#40a070">0</span>);</code></pre></div></p>
+This would rotate the object around the Y axis by a given value.<br>
+What you can’t do however is assign a Vector3 directly to the Rotation value. Rotations in Unity are stored in Quaternions. Quaternions take in four values and help in avoiding some problems with rotations in 3D space. To set Rotation values, you would need to use this method:
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">transform.rotation <span style="color:#666">=</span> Quaternion.Euler(<span style="color:#40a070">0</span>,<span style="color:#40a070">1</span>,<span style="color:#40a070">0</span>);</code></pre></div>
+<figure>
+    <img src="/img/MovingCuboids_Rotating25.gif" width="50%"/> <figcaption>
+            <h4>RotatingCuboids</h4>
+        </figcaption>
+</figure>
+</p>
 
 <p>Add Parenting rotation Script here</p>
 
@@ -395,40 +457,31 @@ What you can’t do however is assign a Vector3 directly to the Rotation value. 
 
 <p>Project 1 - Variants
 To conclude this chapter I again would like to ask you to spend some time and play with the concepts you learned in this chapter some more. Here are some things I came up with you could achieve only using the concepts we introduced so far.
-Add examples here!</p>
+<figure>
+    <img src="/img/MovingCuboids_ScalingXZ.gif" width="50%"/> <figcaption>
+            <h4>Cuboids Scaling on X and Z</h4>
+        </figcaption>
+</figure>
+
+<figure>
+    <img src="/img/MovingCuboids_ScalingY.gif" width="50%"/> <figcaption>
+            <h4>Cuboids moving on the Y Axis</h4>
+        </figcaption>
+</figure>
+</p>
 
 <p>Project 2 - Space Exploration
-This project is a little bit more advanced as it uses external models again and you will need to make use of “Parenting” in the hierarchy view.
+This project is a little more advanced as it uses external models again and you will need to make use of “Parenting” in the hierarchy view.
 Download the Assets here:
 Add Assets and results here!</p>
 
-<ul>
-<li>learn parenting</li>
-<li>LowPoly Planets</li>
-<li>Transform.Rotate</li>
-<li>Transform.Rotate around</li>
-</ul>
+<p> - learn &ldquo;parenting”
+- LowPoly Planets
+- Transform.Rotate
+- Transform.Rotate around</p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
-    </a>
-  </div>
-  
-  
-  <div>
-    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c02_Moving_Things.md" target="_blank" rel="noopener">
-      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
-    </a>
-  </div>
-  
-</div>
-
 
       
     </div>
@@ -436,10 +489,10 @@ Add Assets and results here!</p>
     
   
 
-  <aside class="book-toc level-3 fixed">
+  <aside class="book-toc levels-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#02-moving-things">02 - Moving Things</a>
 <ul>
 <li>
 <ul>
@@ -453,6 +506,8 @@ Add Assets and results here!</p>
 <li><a href="#on-pseudo-code">On Pseudo Code</a></li>
 <li><a href="#starting-our-first-script">Starting our first Script</a></li>
 <li><a href="#public-and-private-variables">Public and private variables</a></li>
+<li><a href="#variable-scope">Variable Scope</a></li>
+<li><a href="#putting-it-in-practice">Putting it in practice</a></li>
 <li><a href="#rotation">Rotation</a></li>
 <li><a href="#projects">Projects</a></li>
 </ul></li>
@@ -464,8 +519,7 @@ Add Assets and results here!</p>
 
 
   </main>
-  
-  
+
   
 </body>
 

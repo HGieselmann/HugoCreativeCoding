@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-  
-    
-    00 Introduction
-  
- | Generative Unity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="" />
+<meta property="og:description" content="Introduction What is this book? The core idea of this book is teaching Unity as a tool for creative people of all kinds. This is a “living” book. It means things will change, parts will grow, others will wither. This is for multiple reasons. For one, I am not an expert on all topics in Unity, I guess one can’t be. I have a background in Media-Design and am trying to learn and in this case teach Unity to the best of my ability." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://generativeunity.henrikgieselmann.com/docs/00_Introduction/" />
 
-
-
-<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
-
-
+<title>00 Introduction | Generative Unity</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/book.min.d54f2886415be97240a76611f87e576a761d64c07020a767fa0ffd1bdc8bda93.css" integrity="sha256-1U8ohkFb6XJAp2YR&#43;H5XanYdZMBwIKdn&#43;g/9G9yL2pM=">
+
+
+<script defer src="/search.min.c7e8bbeb9de0f5f1c6a8f366185decb422a6bcedb2634e90922203068af6af5c.js" integrity="sha256-x&#43;i7653g9fHGqPNmGF3stCKmvO2yY06QkiIDBor2r1w="></script>
 
 <!--
 Made with Book Theme
@@ -33,30 +26,29 @@ https://github.com/alex-shpak/hugo-book
 </head>
 
 <body>
-  <input type="checkbox" style="display: none" id="menu-control" />
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
 
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+  <a href="https://generativeunity.henrikgieselmann.com"><span>Generative Unity</span>
+  </a>
 </h2>
 
 
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2f 00_Introduction\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
-<ul>
-<li><a href="/docs/00_Introduction/">Introduction</a></li>
+
+
+    <ul>
+<li><a href="/docs/00_Introduction/"class=active>Introduction</a></li>
 <li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
 <li><a href="/docs/03_The_Console/">03 The Console</a></li>
@@ -97,73 +89,66 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  
 <script>
 (function() {
-  var menu = document.querySelector('aside.book-menu nav')
-  addEventListener('beforeunload', function(event) {
-    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
   });
-  menu.scrollTop = localStorage.getItem('menu.scrollTop')
-})()
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
 </script>
-
-
 
     </aside>
 
     <div class="book-page">
-      <header class="align-center justify-between book-header">
+      <header class="flex align-center justify-between book-header">
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>
-  
-    
-    00 Introduction
-  
-</strong>
+  <strong>00 Introduction</strong>
 </header>
 
       
 <article class="markdown">
 
+<h1 id="introduction">Introduction</h1>
+
 <h3 id="what-is-this-book">What is this book?</h3>
 
-<p>The core idea of this book is teaching Unity as tool for creatives of all all kinds. This is “living” book. This means things will change, parts will grow, others will wither. This is for multiple reasons. For one, I am not an expert on all topics in Unity, I guess one can’t be. I have a background in Media-Design and merely am trying to learn and in this case teach Unity to the best of my ability. This means if you find errors, tell me and I will try to fix them. Also Unity, as well as it’s programming language C#, are living things. Unity releases new Versions three times a year, if you count in betas and package updates then there is a lot of change going on. So best practices can change and I will do my best to maintain these changes in this book. As of now all of this will be up-to-date with the Unity 2019.4 LTS (Long term support) version.</p>
+<p>The core idea of this book is teaching Unity as a tool for creative people of all kinds. This is a “living” book. It means things will change, parts will grow, others will wither. This is for multiple reasons. For one, I am not an expert on all topics in Unity, I guess one can’t be. I have a background in Media-Design and am trying to learn and in this case teach Unity to the best of my ability. This means that if you find errors, tell me and I will try to fix them. Unity and its programming language C#, are living things. Unity releases new Versions three times a year, if you count in betas and package updates, then a lot of change is happening all the time. So best practices can change and I will do my best to maintain these changes in this book. As of now, all of this will be up-to-date with the Unity 2019.4 LTS (long-term support) version.</p>
 
-<p>In the beginnig of this book I will teach Unity and C# using “creative coding” or “Generative Design”. I will start with coding, because no matter what you want to do with it, the sooner you become familiar with the coding bits, the easier the rest of it will become. While Unity has many, many use-cases (see further down) most of them will require you to know many different aspects of the software. So while a simple game like Block Breaker or Asteroids may not bee to hard to clone, you have to deal with many different aspects when putting it all together. Think: User Input, Graphics, User Interface, Sound, etc.. While “Creative Coding” of course can get very complex, we can also isolate ideas and try to be creative with them in isolation. This helps to build mileage and also gives us the opportunity to regularly take a step back and think about our visual output.
-With “Creative Coding” we of course will look at the things you would typically see from people learning or using Processing. While Processing is great and I highly encourage anyone to look into it, I think Unity gives us more possibilities moving forward. Also while Processing relies solely on programming for creating output, we will make use of many additional tools Unity provides. While this can be overwhelming in the beginning, I assure you that most of the tools simplify our lives.</p>
+<p>In the beginning of this book I will teach Unity and C# using “creative coding” or “Generative Design”. I will start with coding, because no matter what you want to do with it, the sooner you become familiar with the coding bits, the easier the rest of it will become. While Unity has many uses (see further down) most of them will require you to know aspects of the software. So while a simple game like “Block Breaker” or “Asteroids” may not be too hard to clone, you have to deal with several aspects when putting it all together. Think: User Input, Graphics, User Interface, Sound, etc.. While “Creative Coding” can get very complex, we can isolate ideas and try to be creative with them in isolation. This helps to build mileage and gives us the opportunity to take a step back and think about our visual output.
+With “Creative Coding” we will look at the things you would see from people learning or using Processing. While Processing is great and I encourage anyone to look into it, Unity gives us more possibilities. Processing relies on programming for creating output, we will make use of the added tools Unity provides. This can overwhelm in the beginning, yet I assure you that most of the tools simplify our lives.</p>
 
 <h3 id="who-is-this-for">Who is this for?</h3>
 
-<p>Over the course of this book I will assume that you have absolutely no knowledge of the topic of game engines, 3D or programming. If you do, try to start at a point that seems to be the end of your current knowledge.
-Working with 3D often requires you to have access to 3D models which are created in other software. I can’t go over the process of showing you how to create them in this book, but will provide you all the models you need to follow the book.
-You can also find many, many models for free or for cheap in the Unity Asset store.
-Also have an eye out for the TL;DR sections in each chapter to refresh you knowledge. (Will they be here??)</p>
+<p>In this book I will assume that you have no knowledge of game engines, 3D or programming. If you do, try to start at a point that seems to be the end of your current knowledge.
+Working with game engines often requires you to have access to 3D models which are created in other software. I can’t go over showing you how to create them in this book, but will provide you all the models you need to follow the book.
+You can also find many, many models for free or for cheap in the Unity Asset store.</p>
 
 <p>### What is “Creative Coding”?
-Creative Coding is kind of a weird term. As programming in general is about problem solving, any kind of coding requires creativity. Whether this is in the finance industries, industry automation, gaming or cutting-edge Artificial intelligence. Yet Creative Coding has been widely adopted as a term for artistic works that are generated through Code.
-As mentioned before, we will stretch this term a little and will not solely rely on code to create our works, but will use some editor tools as well.</p>
+Creative Coding is a somewhat weird term. As programming is problem solving, any coding requires creativity. Whether in the finance industries, industry automation, gaming or innovative Artificial intelligence projects. Yet “Creative Coding” is widely adopted as a term for artworks created through code.
+As mentioned before, we will stretch this term a little and will not only rely on code to create our works, but will also use the editor tools.</p>
 
 <h3 id="processing">“Processing”?</h3>
 
-<p>Processing is probably the most influential programming Framework for creative coding. Its has a very shallow learning curve and features many convenient shortcuts for creative coding while still maintaining the ability to create wonderful and complex artworks. With the addition of p5.js to the Processing family it is now also running on a Javascript basis in the Webbrowser and can be used to creative and reactive websites. While Processing does have capabilities to create 3D projects, this is where Unity will outshine it by a large margin.</p>
+<p>Processing is the most influential programming Framework for creative coding. It has a very shallow learning curve and features many convenient shortcuts for creative coding while still maintaining the ability to create wonderful and complex artworks. With the addition of p5.js to the Processing family it is now running on a Javascript basis in the Web browser and is used to build lively and reactive websites. While Processing has capabilities to create 3D projects, Unity will outshine Processing in this area by a large margin.</p>
 
 <h3 id="why-unity">“Why Unity?”</h3>
 
-<p>While Unity is not optimized for Creative Coding, and learning Coding for Unity might be a little harder than learning processing, most ideas are exactly the same. And while Unity will introduce more “clutter” into the journey to programming it also enables it’s users to do so much more. It includes a full-featured 3D Engine, AI Tools and so on. But even more: C# - The programming language we use to code - is very, very versatile. With it you can write native applications for Windows , Linux and Mac as well as Apps for iOS or Android.
-I think it is great place to start learning to code, especially for “creatives”</p>
+<p>While Unity is not optimized for Creative Coding, and learning to code for Unity might be harder than learning &ldquo;Processing”, most ideas are the same. And while Unity will introduce more “clutter” into the journey to programming it enables its users to do so much more. It includes a full-featured 3D Engine and even AI Tools. But even more: C# - The programming language used to code - is very, very versatile. With it you can write native applications for Windows, Linux and Mac and Apps for iOS or Android.
+I think Unity is a great place to learn to code for “creatives”.</p>
 
 <h3 id="but-unreal-engine">“But&hellip; Unreal Engine?”</h3>
 
-<p>Unreal Engine is a fantstic 3D render engine and it is now more and more widely adapted in many industries, as is Unity. But programming in Unreal is hard, because the underlying language is “C++”. While there are many, many similarities between both languages, “C#” handles some of the more tedious and complex programming tasks automatically for us. If you come to the point where you know a lot about C#, switching to C++ won’t be that hard any more. Thus you won’t be making a mistake starting here.
-That said, if you know you want to become a programmer for absolute high-end experiences, and probably be part of a larger team I suggest looking straight at C++ and Unreal Engine. Though I personally think the margin between both is negligible, especially when you are just starting out.</p>
+<p>Unreal Engine is a fantastic 3D render engine, and now more and more widely adapted in many industries, as is Unity. But programming in Unreal is hard, because the underlying language is “C++”. While there are many, many similarities between both languages, “C#” handles the more tedious and complex programming tasks for us. If you reach a point where you know C# well, switching to C++ won’t be that hard any more. Thus you won’t be making a mistake starting here.
+That said, if you know you want to become a programmer for absolute high-end experiences, and be part of a larger team I suggest looking straight at C++ and Unreal Engine. Though I think the margin between both is negligible when you are just starting out.</p>
 
 <h3 id="how-to-read-this-book">How to read this book</h3>
 
-<p>While reading fiction is very much straight forward, reading books that aim to teach something, can be challenging. I’d encourage you to read through each chapter as a whole and try to understand the concept that is discussed. Then go ahead an try it out yourself.
-While I highly suggest reading the first ten chapters in order, you can take a bit more freedoms after that. It will occur that some chapters are tightly entwined in their topics. Or I will introduce concepts that are relevant in other chapters as well. I will trz to always link you to the according passages of course.</p>
+<p>While reading fiction is very much straight forward, reading books that aim to teach something, can be challenging. I’d encourage you to read through each chapter as a whole and try to understand the concept that is discussed. Then try it out yourself.
+While I suggest reading the first ten chapters in order, you can take more freedoms after that. It will occur that the chapters are tightly entwined in their topics. If I introduce concepts relevant chapters in different chapters, I will try to always link you to the according passages.</p>
 
 <h3 id="a-note-on-code">A note on code</h3>
 
@@ -171,30 +156,12 @@ While I highly suggest reading the first ten chapters in order, you can take a b
 On the other side, if you are already versed in a different programming language and think some code examples are messy. And with each concept introduced I try to end up with more readable code and well structured code. But all example have to be well understandable for people just starting out.</p>
 
 <p>Throughout this book we will approach programming through examples as well as tiny projects to test and apply your knowledge. If you are already completely comfortable with a topic, feel free to skip it and go back to it if need be.
-The idea behind projects is: Programming is a craft. Many ideas are easy to grasp while reading them, but actually applying them is something different. There is a kind of muscle memory you have to build up. If you have to think about how to write a “if-block”, you loose time to actually think about the higher-level problem. So use these exercises to get up to speed with programming. It will also offer you the chance to try many creative approaches.</p>
+The idea behind projects is: Programming is a craft. Many ideas are easy to grasp while reading them, but actually applying them is something different. There is a kind of muscle memory you have to build up. If you have to think about how to write a “if-block”, you lose time to actually think about the higher-level problem. So use these exercises to get up to speed with programming. It will also offer you the chance to try many creative approaches.</p>
 
 <p>With all of this out of the way. Let’s go! I hope you enjoy the ride!</p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
-    </a>
-  </div>
-  
-  
-  <div>
-    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c00_Introduction.md" target="_blank" rel="noopener">
-      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
-    </a>
-  </div>
-  
-</div>
-
 
       
     </div>
@@ -202,10 +169,10 @@ The idea behind projects is: Programming is a craft. Many ideas are easy to gras
     
   
 
-  <aside class="book-toc level-3 fixed">
+  <aside class="book-toc levels-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#introduction">Introduction</a>
 <ul>
 <li>
 <ul>
@@ -225,8 +192,7 @@ The idea behind projects is: Programming is a craft. Many ideas are easy to gras
 
 
   </main>
-  
-  
+
   
 </body>
 

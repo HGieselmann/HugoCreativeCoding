@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-  
-    
-    01 the Editor
-  
- | Generative Unity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="" />
+<meta property="og:description" content="01 - The Editor Installing Unity The first step on your journey to learn is to download and install Unity. While you could just head to unity3d.com and grab the latest and greatest version of Unity, I would suggest getting the Unity Hub. The Unity Hub will help you manage your projects and the Versions of Unity you have installed on your machine. As you dive deeper and deeper into Unity, the day will come, where you hear of a new feature and you want to explore it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://generativeunity.henrikgieselmann.com/docs/01_The_Editor/" />
 
-
-
-<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
-
-
+<title>01 the Editor | Generative Unity</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/book.min.d54f2886415be97240a76611f87e576a761d64c07020a767fa0ffd1bdc8bda93.css" integrity="sha256-1U8ohkFb6XJAp2YR&#43;H5XanYdZMBwIKdn&#43;g/9G9yL2pM=">
+
+
+<script defer src="/search.min.c7e8bbeb9de0f5f1c6a8f366185decb422a6bcedb2634e90922203068af6af5c.js" integrity="sha256-x&#43;i7653g9fHGqPNmGF3stCKmvO2yY06QkiIDBor2r1w="></script>
 
 <!--
 Made with Book Theme
@@ -33,31 +26,30 @@ https://github.com/alex-shpak/hugo-book
 </head>
 
 <body>
-  <input type="checkbox" style="display: none" id="menu-control" />
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
 
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+  <a href="https://generativeunity.henrikgieselmann.com"><span>Generative Unity</span>
+  </a>
 </h2>
 
 
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2f 01_The_Editor\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
-<ul>
+
+
+    <ul>
 <li><a href="/docs/00_Introduction/">Introduction</a></li>
-<li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
+<li><a href="/docs/01_The_Editor/"class=active>01 The Editor</a></li>
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
 <li><a href="/docs/03_The_Console/">03 The Console</a></li>
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
@@ -97,76 +89,112 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  
 <script>
 (function() {
-  var menu = document.querySelector('aside.book-menu nav')
-  addEventListener('beforeunload', function(event) {
-    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
   });
-  menu.scrollTop = localStorage.getItem('menu.scrollTop')
-})()
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
 </script>
-
-
 
     </aside>
 
     <div class="book-page">
-      <header class="align-center justify-between book-header">
+      <header class="flex align-center justify-between book-header">
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>
-  
-    
-    01 the Editor
-  
-</strong>
+  <strong>01 the Editor</strong>
 </header>
 
       
 <article class="markdown">
 
+<h1 id="01-the-editor">01 - The Editor</h1>
+
 <h3 id="installing-unity">Installing Unity</h3>
 
 <p>The first step on your journey to learn is to download and install Unity. While you could just head to unity3d.com and grab the latest and greatest version of Unity, I would suggest getting the Unity Hub. The Unity Hub will help you manage your projects and the Versions of Unity you have installed on your machine. As you dive deeper and deeper into Unity, the day will come, where you hear of a new feature and you want to explore it. Then you can install any additional version from Unity Hub and manage all the versions of Unity you have installed. It will also remember in which version you opened a project last time. But just grabbing the current version is just fine. If you go for the latter, choose an “LTS” version, like 2019.4. LTS is short for longtime support and has the best chances of getting all bugs fixed.</p>
 
-<p>I will assume you will manage to download and install Unity Hub yourself. So let’s look at managing Unity Versions and Projects with Unity Hub.
-TODO Add Unity Hub version Management as soon as 2019.4 is out!
-When you start Unity Hub, it will show you all your latest projects. If you don’t have one, just press the “New” Button to create One. In the next panel, you can set the Project Name and the location where you want to store your project. Unity hub will create a folder with your chosen project name. So no need to create that folder yourself.
-You will also have to choose a Template. “3D” is the default option. You will also have options for 2D and depending on the version you installed for “Lightweight RP / LWRP” or “High Definition Renderpipeline / HDRP”. It could also be, that Lightweight Renderpipeline Unity lists this as “Universal Renderpipeline”. Sooner rather than later this will become the default. Yet we will for now go with the classic “3D” version. Hit create and Unity will take a while to initialize your new project and start up the Editor.</p>
+<p>I will assume you will manage to download and install Unity Hub yourself. So let’s look at managing Unity Versions and Projects with Unity Hub. On the “Installs” tab, UnityHub will tell you that you don’t have a version of Unity installed. Thus, simply click on the “Add” Button in the upper right corner.
+<figure>
+    <img src="/img/UnityHubVersionManagement.png" width="50%"/> <figcaption>
+            <h4>Installed Unity versions in UnityHub</h4>
+        </figcaption>
+</figure>
 
-<p>Once Unity opens up, you should see something like this:
-<img src="/img/UnityEditor.jpg" alt="The Unity Editor" /></p>
+In the next menu, you can just go with the version UnityHub suggests, which will be the latest stable release. On the following one you can make some choices. Unity offers support to export to multiple platforms, but if you don’t want to code for i.e. Facebook, you don’t need to waste space for their Source Development Kit(SDK). <br> But you probably keep the checkbox with “Microsoft Visual Studio Community”. This will be our Code Editor. Click Next and let Unity do its thing.
+<figure>
+    <img src="/img/UnityHubVersionManagement2.png" width="50%"/> <figcaption>
+            <h4>Additional Options to install</h4>
+        </figcaption>
+</figure>
 
-<p>Unitys “default Layout” is divided in roughly 4 parts.
+Under “Projects” Unity Hub will show you all your latest projects. If you don’t have one, just press the “New” Button to create One.
+<figure>
+    <img src="/img/UnityHubProjects.png" width="50%"/> <figcaption>
+            <h4>Unity Hub Projects Window</h4>
+        </figcaption>
+</figure>
+
+In the next panel, you can set the Project Name and the location where you want to store your project. Unity hub will create a folder with your chosen project name. So no need to create that folder yourself.  You will also have to choose a Template. “3D” is the default option. You will also have options for 2D and depending on the version you installed for “Lightweight RP / LWRP” or “High Definition Renderpipeline / HDRP”. It could also be, that Lightweight Renderpipeline Unity lists this as “Universal Renderpipeline”. Sooner rather than later this will become the default. Yet we will for now go with the classic “3D” version. Hit create and Unity will take a while to initialize your new project and start up the Editor. <br>
+Once Unity opens up, you should see something like this:
+<figure>
+    <img src="/img/UnityEditor.jpg" width="75%"/> <figcaption>
+            <h4>Standard Unity UI</h4>
+        </figcaption>
+</figure>
+</p>
+
+<p>Unitys “default Layout” is divided in roughly 4 parts.<br>
 The Hierarchy Window is shows all the Objects that are present in your scene. Using the black arrows you can collapse or expand the hierarchy depending on your needs. On the top you will also see a drop-down arrow, because Unity can open multiple scenes at once.
-<img src="/img/UnityHierarchyEditor.jpg" alt="The Unity Editor" /></p>
+<figure>
+    <img src="/img/UnityHierarchy.jpg" width="75%"/> <figcaption>
+            <h4>The Hierarchy View</h4>
+        </figcaption>
+</figure>
+</p>
 
-<p>The “Project” Window holds all Objects inside your project. You can browse this just like any directories in your operating system. You can also create folders to organize yourself. If you were to browse to your project Folder on your hard drive, you would see this structure inside the “Assets” folder. Name all your files and folders from the get go, because things can get messy real quick and not taking care of your Folder-Structure can end being a major source of frustration further down the line. Using right-click you can copy, paste, duplicate and even create new Objects. Info about the selected object will show up in the Inspector. (See below)
-<img src="/img/UnityProject.jpg" alt="The Unity Editor" /></p>
+<p>The “Project” Window holds all Objects inside your project. You can browse this just like any directories in your operating system. You can also create folders to organize yourself. If you were to browse to your project Folder on your hard drive, you would see this structure inside the “Assets” folder. Name all your files and folders from the get go, because things can get messy real quick and not taking care of your Folder-Structure can end being a major source of frustration further down the line. Using right click you can copy, paste, duplicate and even create new Objects. Info about the selected object will show up in the Inspector. (See below)
+<figure>
+    <img src="/img/UnityProject.jpg" width="75%"/> <figcaption>
+            <h4>The Project View</h4>
+        </figcaption>
+</figure>
+</p>
 
 <p>The “Inspector” window shows you information on the selected object. This information comprises so called “Components”. While every Object will have a “Transform” Component the rest of the List will differ. We will look at a lot of components in this book. Just remember where to find them.
-<img src="/img/UnityInspector.jpg" alt="The Unity Editor" /></p>
+<figure>
+    <img src="/img/UnityInspector.jpg" width="75%"/> <figcaption>
+            <h4>The Inspector View</h4>
+        </figcaption>
+</figure>
+</p>
 
-<p>The “Scene” view is your portal to viewing you current Scene. Here you move around and manipulate the objects in your scene using “Gizmos”. To move around in the scene view, you need to remember three shortcuts:
-<em>Alt + Left-click</em> Drag to rotate
-<em>Alt + Right-click</em> Drag to zoom
-<em>Alt + Middle-click</em> Drag to pan the camera
-<img src="/img/UnityScene.jpg" alt="The Unity Editor" /></p>
+<p>The “Scene” view is your portal to viewing you current Scene. Here you move around and manipulate the objects in your scene using “Gizmos”. To move around in the scene view, you need to remember three shortcuts: <br>
+<em>Alt + Left-click</em> Drag to rotate <br>
+<em>Alt + Right-click</em> Drag to zoom <br>
+<em>Alt + Middle-click</em> Drag to pan the camera <br>
+<figure>
+    <img src="/img/UnityScene.jpg" width="75%"/> <figcaption>
+            <h4>The Scene View</h4>
+        </figcaption>
+</figure>
+</p>
 
-<p>Once you select and Object using left-click a <em>gizmo</em> will appear. The default should be the “move” gizmo. Hover over one of the axis and left-click-drag to move the Object along the selected axis. There are also tools for Rotation and Scale. To switch between the three you could use the buttons on the upper left toolbar. But you shouldn’t. Use the Shortcuts:
-W - Move
-E - Rotate
-R - Scale
+<p>Once you select and Object using left-click a <em>gizmo</em> will appear. The default should be the “move” gizmo. Hover over one of the axis and left-click-drag to move the Object along the selected axis. There are also tools for Rotation and Scale. To switch between the three you could use the buttons on the upper left toolbar. But you shouldn’t. Use the Shortcuts: <br>
+W - Move <br>
+E - Rotate <br>
+R - Scale <br>
 <div class="book-expand">
   <label>
     <div class="book-expand-head flex justify-between">
       <span>Expand</span>
       <span>↕</span>
     </div>
-    <input type="checkbox" style="display: none" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       If you wonder how these shortcuts come to be. Why not “R” for Rotate? Because it’s convenient for heavy users. As your thumb will always rest on “alt” for navigation, you will have quick access to the main tools for the editor.
 Also this corresponds to the Industry-Standard keyboard shortcuts many users know from Digital Content Creation Packages like Maya or Houdini.
@@ -179,16 +207,17 @@ Also this corresponds to the Industry-Standard keyboard shortcuts many users kno
 
 <h3 id="introducing-the-bauhaus">Introducing the Bauhaus</h3>
 
-<p>When I started writing this “book” I asked myself, what kind of “sketches” or projects I should create. Working in 3D is a complex manner and most of the time relies on external assets. But some of you may not have the possibility to download and install them. And while many readers have some knowledge about how to create 3D assets themselves I don’t want to rely on that. So what to do? Well, the answer was just all over the place. 2019 - the year I started writing - is the “Bauhausjahr”. Or the year which marks the 100th birthday of the Bauhaus movement. And while the Bauhaus isn’t that easy to pin down and I am not an art historian by any means there were things to extract for this book.
-They focused on reduction to simple shapes and are popular for their <em>Triangle, Rectangle and Circle</em> logo. All shapes we can create in a 3D Software. Most of them come as “Primitives” in a 3D package. Even more so, 3D engines built all objects from triangles! The extreme geometric reduction in the works of the Bauhaus often built on patterns and structures, things we can easily recreate using math.
-And while all of this was convenient, the thing I consider to be most important is experimentation. Many of the teachers at the Bauhaus encouraged their students to experiment. This spirit I’d like to pass onto you. With all the things we create, play around, try things, break things. It is the best way to learn these things.</p>
+<p>When I started writing this “book” I asked myself, what kind of “sketches” or projects I should create. Working in 3D is a complex manner and most of the time relies on external assets. But some of you may not have the possibility to download and install them. And while many readers have some knowledge about how to create 3D assets themselves I don’t want to rely on that. So what to do? Well, the answer was just all over the place. 2019 - the year I started writing - is the “Bauhausjahr”. Or the year which marks the 100th birthday of the Bauhaus movement. And while the Bauhaus isn’t that easy to pin down and I am not an art historian by any means there were things to extract for this book. <br>
+They focused on reduction to simple shapes and are popular for their <em>Triangle, Rectangle and Circle</em> logo. All shapes we can create in a 3D Software. Most of them come as “Primitives” in a 3D package. Even more so, 3D engines built all objects from triangles! The extreme geometric reduction in the works of the Bauhaus often built on patterns and structures, things we can easily recreate using math. <br>
+And while all of this was convenient, the thing I consider being most important is experimentation. Many of the teachers at the Bauhaus encouraged their students to experiment. This spirit I’d like to pass onto you. With all the things we create, play around, try things, break things. It is the best way to learn these things. <br></p>
 
 <h3 id="homage-to-the-cuboid">Homage to the Cuboid</h3>
 
 <p>One teacher at the Bauhaus was Josef Albers.
 History Albers
-In his book “Interaction of Color” he describes how he had students collect colored pieces of paper and combine these by layering them on top of each other. The idea was to help students understand how they interact and how they change their appearance based on the colors beneath them. This culminated later in his paintings “Homage to the Square”. (Look it up!)
-This idea will follow us throughout this book. It will allow us to work quickly, iterate and experiment as much as we can with one simple idea. I also think having to deal with such a simple sketch is great, because it forces you to become creative and iterate and think about what else is possible to based on this idea. It will also work well with coding and you don’t have to install or download anything besides Unity. So I hope you enjoy playing with this as much as I do.</p>
+In his book “Interaction of Color” he describes how he had students collect colored pieces of paper and combine these by layering them on top of each other. The idea was to help students understand how they interact and how they change their appearance based on the colors beneath them. This culminated later in his paintings “Homage to the Square”. (Look it up!)</p>
+
+<p>This idea will follow us throughout this book. It will allow us to work quickly, iterate and experiment as much as we can with one simple idea. I also think having to deal with such a simple sketch is great, because it forces you to become creative and iterate and think about what else is possible to based on this idea. It will also work well with coding and you don’t have to install or download anything besides Unity. So I hope you enjoy playing with this as much as I do.</p>
 
 <h3 id="other-sketches">Other sketches</h3>
 
@@ -196,31 +225,58 @@ This idea will follow us throughout this book. It will allow us to work quickly,
 
 <h3 id="homage-to-the-cuboid-in-unity">“Homage to the Cuboid” in Unity</h3>
 
-<p><img src="/img/HomageToTheCuboid.jpg" alt="The Unity Editor" /></p>
+<figure>
+    <img src="/img/HomageToTheCuboid.jpg" width="75%"/> <figcaption>
+            <h4>Homage to the Cuboid</h4>
+        </figcaption>
+</figure>
 
-<p>So in this chapter we will create our own “Homage to the cuboid” as shown above. As you can see this will be a rather simple thing to create: We need five cubes and scale and position them. But we will also need a material for each of them. And we need to place our camera.
-But first things first. Create a new scene using “ctrl + n”. You can delete everything from the new scene except the camera. This will change the background color, as the light Unity considered being the sun is gone. We will deal with this later.
-Next create two cubes. You can do this by either creating them form the Menu: “GameObject &mdash;&gt; 3D Objects &mdash;&gt; Cube” or by doing a “right-click &mdash;&gt; 3D Objects &mdash;&gt; Cube” in the Hierarchy view. In the inspector make sure to set the Translation and Rotation for both cubes to “0”. We will then use one Ube as a reference for a perfect cube and the other on we will squash down using the scale tool. I scaled it down to have a scale of “0.1” on the Y-Axis. You can then duplicate this cube 4 times. You can do this in the hierarchy or just press “ctrl + d”.
-Then just move them apart to liken the image above. If you want to do it more mathematically you need to move in steps of “0.225”. Once you are satisfied with your result, you can delete the reference cube.
-Now we are missing color. Our cubes are black, because we deleted the only light source in the scene and we don’t want to bring it back! We will use so called “un-lit” shaders for now, as they will allow us to just pick colors. Lights in the scene will not affect these shaders and thus these will be more appropriate for our Josef Albers like studies.
-To create a material that works fur us, create one from the “Assets” menu or in the project view using “right-click &mdash;&gt; create &mdash;&gt; Material”. After naming the material we need to change to the before mentioned shader. In the inspector find the drop-down at the top, that says Shader. In it navigate to the “UI &mdash;&gt; Unlit &mdash;&gt; Transparent” Shader. You will face many options, but we concern ourselves only with the color. Choose one by clicking on the color field.
-GIF
-You can then duplicate your materials and choose one color for each cube. To apply the materials to the cuboids you can simple drag and drop them onto the cuboids in the hierarchy or onto the object in the viewport.
-Gif
-We will have to adjust our camera to match the example above. If you have Gameview and Scene view open next to each other you can try to push the camera where you need it. But that alone won’t work, because I chose an orthographic view for my sketch. The orthographic view will render all lines in parallel and thus will ignore any perspective. I thought this might work better for our Bauhaus Homage. To change this, select the camera and select “orthographic” from the projection drop-down. And while we are here, we can also change the background color:
-Set the “Clear Flags” to “Solid Color” and then select a Color of your choice. I went with a dark grey. And you’re done!</p>
+
+<p>So in this chapter we will create our own “Homage to the cuboid” as shown above. As you can see this will be a rather simple thing to create: We need five cubes and scale and position them. But we will also need a material for each of them. And we need to place our camera.<br>
+But first things first. Create a new scene using <code>ctrl + n</code>. You can delete everything from the new scene except the camera. This will change the background color, as the light Unity considered being the sun is gone. We will deal with this later.<br>
+Next create two cubes. You can do this by either creating them from the Menu: <code>GameObject ---&gt; 3D Objects ---&gt; Cube</code> or by doing a <code>right-click ---&gt; 3D Objects ---&gt; Cube</code> in the Hierarchy view. In the inspector make sure to set the Translation and Rotation for both cubes to <code>0</code>. We will then use one Ube as a reference for a perfect cube and the other on we will squash down using the scale tool. I scaled it down to have a scale of <code>0.1</code> on the Y-Axis. You can then duplicate this cube 4 times. You can do this in the hierarchy or just press <code>ctrl + d</code>. <br>
+Then just move them apart to recreate the image above. If you want to do it more mathematically you need to move in steps of <code>0.225</code>. Once you are satisfied with your result, you can delete the reference cube.</p>
+
+<p>Now we are missing color. Our cubes are black, because we deleted the only light source in the scene and we don’t want to bring it back! We will use so called “un-lit” shaders for now, as they will allow us to just pick colors. Lights in the scene will not affect these shaders and thus these will be more appropriate for our Josef Albers like studies. <br>
+To create a material that works fur us, create one from the “Assets” menu or in the project view using <code>right-click ---&gt; create ---&gt; Material</code>. After naming the material we need to change to the before mentioned shader. In the inspector find the drop-down at the top, that says Shader. In it navigate to the <code>UI ---&gt; Unlit ---&gt; Transparent</code> Shader. You will face many options, but we concern ourselves only with the color. Choose one by clicking on the color field.</p>
+
+<figure>
+    <img src="/img/SelectColor.gif" width="50%"/> <figcaption>
+            <h4>Assign Materials via Drag and Drop</h4>
+        </figcaption>
+</figure>
+
+
+<p>You can then duplicate your materials and choose one color for each cube. To apply the materials to the cuboids you can simple drag and drop them onto the cuboids in the hierarchy or onto the object in the viewport.</p>
+
+<figure>
+    <img src="/img/AssignMaterials.gif" width="100%"/> <figcaption>
+            <h4>Assign Materials via Drag and Drop</h4>
+        </figcaption>
+</figure>
+
+
+<p>We will have to adjust our camera to match the example above. If you have Gameview and Scene view open next to each other you can try to push the camera where you need it. But that alone won’t work, because I chose an orthographic view for my sketch. The orthographic view will render all lines in parallel and thus will ignore any perspective. I thought this might work better for our Bauhaus Homage. To change this, select the camera and select “orthographic” from the projection drop-down. And while we are here, we can also change the background color:</p>
+
+<p>Set the “Clear Flags” to “Solid Color” and then select a Color of your choice. I went with a dark grey. And you’re done!</p>
 
 <h3 id="project-1-bauhausian">Project 1 - Bauhausian</h3>
 
-<p>Right now your focus should be to become familiar with the Unity editor and how to navigate in the 3D View, if you  aren’t already.
-Because Unity limits you to basic shapes out of the box, you could try to recreate one of the famous Bauhaus paintings. Many of these just use simple shapes, like cubes and circles. You can just use any of the 3D basic shapes as replacements for their 2D counterparts.
-For Copyright issues I won’t put my recreations here, but I think “Q1 Suprematistic” by László Moholy-Nagy could be something easy to recreate. Or paintings like “De Stijl” by Peter Keler. They both use only basic shapes in different sizes and You pretty much only need to concern yourself with the final 2D output and can ignore third. If you want more of a challenge, you could also try to recreate the “Stacking Tables” by Josef Albers. With these you could also try to create a hierarchy inside the Hierarchy view using drag and drop. This will become handy later.</p>
+<p>Right now your focus should be to become familiar with the Unity editor and how to navigate in the 3D View, if you  aren’t already.</p>
 
-<h3 id="environment-design">Environment Design</h3>
+<p>Because Unity limits you to basic shapes out of the box, you could try to recreate one of the famous Bauhaus paintings. Many of these just use simple shapes, like cubes and circles. You can just use any of the 3D basic shapes as replacements for their 2D counterparts.</p>
 
-<p>In this second challenge you have a lot more freedom to create your own. I created and asset pack full of low poly Objects. These should be enough to create small environment scenes. Maybe you can even tell a story with your image. I suggest looking for inspiration and reference online.
-You can use these Assets in any other scene you want to create.
-Explain how to download an import these assets.</p>
+<p>For Copyright issues I won’t put my recreations here, but I think “Q1 Suprematistic” by László Moholy-Nagy could be something easy to recreate. Or paintings like “De Stijl” by Peter Keler. They both use only basic shapes in different sizes and You pretty much only need to concern yourself with the final 2D output and can ignore third. If you want more of a challenge, you could also try to recreate the “Stacking Tables” by Josef Albers. With these you could also try to create a hierarchy inside the Hierarchy view using drag and drop. This will become handy later.</p>
+
+<h3 id="projects">Projects</h3>
+
+<h4 id="environment-design">Environment Design</h4>
+
+<p>In this second challenge you have a lot more freedom to create your own. I created and asset pack full of low poly Objects. These should be enough to create small environment scenes. Maybe you can even tell a story with your image. I suggest looking for inspiration and reference online.</p>
+
+<p>You can use these Assets in any other scene you want to create.</p>
+
+<p>Explain how to download an import these assets.</p>
 
 <div class="book-expand">
   <label>
@@ -228,12 +284,13 @@ Explain how to download an import these assets.</p>
       <span>Expand</span>
       <span>↕</span>
     </div>
-    <input type="checkbox" style="display: none" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
-      <h3 id="low-poly-models">Low Poly Models</h3>
+      <h4 id="low-poly-models">Low Poly Models</h4>
 
-<p>All 3D models comprises three essential elements: Points, Lines and Planes. (Hello Mr. Kandinsky!) But mathematics came in and said: Let’s use our terms and call them: Vertex, edge and polygon. So in 3D the names stuck.
-Low poly objects thus are objects which consist only of a few planes or polygons. This helps with performance on lower end devices but also has turned into a full on art style for illustrations and video games.</p>
+<p>All 3D models comprises three essential elements: Points, Lines and Planes. (Hello Mr. Kandinsky!) But mathematics came in and said: Let’s use our terms and call them: Vertex, edge and polygon. So in 3D the names stuck.</p>
+
+<p>Low poly objects thus are objects which consist only of a few planes or polygons. This helps with performance on lower end devices but also has turned into a full on art style for illustrations and video games.</p>
 
 <h3 id="how-to-create-them">How to create them?</h3>
 
@@ -250,24 +307,6 @@ Build Assets</p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/alex-shpak/hugo-book/commit/e30246bf6b69752600fa68779269b673a7f43e51" title='Last modified November 5, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> November 5, 2019
-    </a>
-  </div>
-  
-  
-  <div>
-    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c01_The_Editor.md" target="_blank" rel="noopener">
-      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
-    </a>
-  </div>
-  
-</div>
-
 
       
     </div>
@@ -275,10 +314,10 @@ Build Assets</p>
     
   
 
-  <aside class="book-toc level-3 fixed">
+  <aside class="book-toc levels-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#01-the-editor">01 - The Editor</a>
 <ul>
 <li>
 <ul>
@@ -288,7 +327,10 @@ Build Assets</p>
 <li><a href="#other-sketches">Other sketches</a></li>
 <li><a href="#homage-to-the-cuboid-in-unity">“Homage to the Cuboid” in Unity</a></li>
 <li><a href="#project-1-bauhausian">Project 1 - Bauhausian</a></li>
+<li><a href="#projects">Projects</a>
+<ul>
 <li><a href="#environment-design">Environment Design</a></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -298,8 +340,7 @@ Build Assets</p>
 
 
   </main>
-  
-  
+
   
 </body>
 

@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-  
-    
-    03 the Console
-  
- | Generative Unity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="" />
+<meta property="og:description" content="03 - Debugging The Console - Your best friend This chapter is a short but important intermezzo.
+Maybe you have already encountered the console. Whenever you write code, your computer does not understand it will tell you so in the console. And worse, it will also block you from running your scene! C# as a programming language is very, very picky about its syntax and what works and what not." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://generativeunity.henrikgieselmann.com/docs/03_The_Console/" />
 
-
-
-<link rel="stylesheet" href="/book.min.1a0250256273fabf0f848ed9a3c50aae344d758339cad9725e656ac71546e6f5.css">
-
-
+<title>03 the Console | Generative Unity</title>
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/book.min.d54f2886415be97240a76611f87e576a761d64c07020a767fa0ffd1bdc8bda93.css" integrity="sha256-1U8ohkFb6XJAp2YR&#43;H5XanYdZMBwIKdn&#43;g/9G9yL2pM=">
+
+
+<script defer src="/search.min.c7e8bbeb9de0f5f1c6a8f366185decb422a6bcedb2634e90922203068af6af5c.js" integrity="sha256-x&#43;i7653g9fHGqPNmGF3stCKmvO2yY06QkiIDBor2r1w="></script>
 
 <!--
 Made with Book Theme
@@ -33,33 +27,32 @@ https://github.com/alex-shpak/hugo-book
 </head>
 
 <body>
-  <input type="checkbox" style="display: none" id="menu-control" />
+  <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
 
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://generativeunity.henrikgieselmann.com">Generative Unity</a>
+  <a href="https://generativeunity.henrikgieselmann.com"><span>Generative Unity</span>
+  </a>
 </h2>
 
 
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
 
-    
-  
-  
-  
 
-  <style>
-  nav ul a[href$="\2f docs\2f 03_The_Console\2f "] {
-      color: #004ed0;
-  }
-  </style>
 
-<ul>
+
+
+    <ul>
 <li><a href="/docs/00_Introduction/">Introduction</a></li>
 <li><a href="/docs/01_The_Editor/">01 The Editor</a></li>
 <li><a href="/docs/02_Moving_Things/">02 Moving Things</a></li>
-<li><a href="/docs/03_The_Console/">03 The Console</a></li>
+<li><a href="/docs/03_The_Console/"class=active>03 The Console</a></li>
 <li><a href="/docs/04_UserInput/">04 Conditionals</a></li>
 <li><a href="/docs/05_Functions/">05 Methods</a></li>
 <li><a href="/docs/06_MultipleObjects/">06 Multiple Objects</a></li>
@@ -97,108 +90,108 @@ https://github.com/alex-shpak/hugo-book
 </nav>
 
 
-  
 <script>
 (function() {
-  var menu = document.querySelector('aside.book-menu nav')
-  addEventListener('beforeunload', function(event) {
-    localStorage.setItem('menu.scrollTop', menu.scrollTop)
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
   });
-  menu.scrollTop = localStorage.getItem('menu.scrollTop')
-})()
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
 </script>
-
-
 
     </aside>
 
     <div class="book-page">
-      <header class="align-center justify-between book-header">
+      <header class="flex align-center justify-between book-header">
   <label for="menu-control">
     <img src="/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>
-  
-    
-    03 the Console
-  
-</strong>
+  <strong>03 the Console</strong>
 </header>
 
       
 <article class="markdown">
 
+<h1 id="03-debugging">03 - Debugging</h1>
+
 <h3 id="the-console-your-best-friend">The Console - Your best friend</h3>
 
-<p>This chapter is a short but important intermezzo.
-Maybe you have already encountered the console. Whenever you write code your computer does not understand it will tell you so in the console. And worse, it will also block you from running your scene! C# as a programming language is very, very picky about it’s syntax and what works and what not. “Strongly typed” is the fancy computer science term for that. C# even expects you to to care about capitalization. We as humans are prone to making mistakes and thus sooner or later you are bound to produce an error. If you haven’t, go ahead and deliberately do so. Any typo is good enough:
+<p>This chapter is a short but important intermezzo.<br>
+Maybe you have already encountered the console. Whenever you write code, your computer does not understand it will tell you so in the console. And worse, it will also block you from running your scene! C# as a programming language is very, very picky about its syntax and what works and what not. “Strongly typed” is the fancy computer science term for that. C# even expects you to care about capitalization. We as humans are prone to making mistakes and thus eventually you will produce an error. If you haven’t, do so. Any typo is good enough:
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">transform.positio <span style="color:#666">=</span> transform.positio <span style="color:#666">+</span> new Vector3(<span style="color:#40a070">1</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">0</span>)<span style="color:#666">*</span> Time.deltaTime;</code></pre></div>
-<img src="/img/consoleError.jpg" alt="Console Error" />
-As soon as you do your computer will complain. But not only will he complain, he will also try to tell you what it is he does not understand:
-<code>Assets\Scripts\MovingAlbersVar.cs(19,19): error CS1061: 'Transform' does not contain a definition for 'positio' and no accessible extension method 'positio' accepting a first argument of type 'Transform' could be found (are you missing a using directive or an assembly reference?)</code>
-In this case, he tells us, that he knows about Transform but has no concept of “positio”. And well, of course he doesn’t!
-He is also kind enough to also print out the line in which he has problems understanding you. So this is typically the place where you should start your process of debugging. You can even just double-click on the error message and Unity will directly take you to the line that is causing the error.
-Dealing with errors can be very disheartening. But!&hellip; what you always have to remember is, that this never means, that you are bad programmer. Mistakes happen! Especially in the beginning. They will stay and that’s fine. Everyone knows this happens and that’s why every code editor will try to do it’s best to prevent you from making errors in the first place. Auto-completion for example can help to avoid errors. Any red squiggly line in the code editor is an attempt to tell you Unity will produce an Error in the code.</p>
+<figure>
+    <img src="/img/consoleError.jpg" width="100%"/> <figcaption>
+            <h4>Error in the Console</h4>
+        </figcaption>
+</figure>
 
-<p>Apart from errors Unity also displays “Warnings” here. Warnings aren’t going to break your code immediately. This could for example happen if you use functions that are “Obsolete”. Meaning they are still here for legacy reasons, but will in later Versions of Unity be removed from the code. If you are just playing around, feel free to ignore stuff like this, but at least look into what the alternative is in the future.
-Warnings can be manifold, so if you are run into one and the displayed message isn’t helpful try looking it up in your favorite search engine.</p>
+As soon as you do this, your computer will complain. But not only will he complain, he will also try to tell you what it is he does not understand: <br>
+<code>Assets\Scripts\MyScript.cs(19,19): error CS1061: 'Transform' does not contain a definition for 'positio' and no accessible extension method 'positio' accepting a first argument of type 'Transform' could be found (are you missing a using directive or an assembly reference?)</code><br>
+Here, he tells us he knows about Transform but does not understand “positio”. And sure enough he doesn’t.<br>
+He is also kind enough to print out the line in which he has problems understanding you. So this is the place where you should start your process of debugging. You can even just double-click on the error message and Unity will take you to the line that is causing the error.<br>
+Dealing with errors can be very disheartening. But!&hellip; what you always have to remember is that this never means that you are bad programmer. Mistakes happen! Especially in the beginning. They will stay and that’s fine. Everyone knows this happens, and that’s why every code editor will try to do it’s best to prevent you from making errors. Auto-completion for example can help to avoid errors. Any red squiggly line in the code editor is an attempt to notify you, that Unity will produce an Error in the code.</p>
 
-<p>TODO Inspector Debug Mode</p>
+<p>Apart from errors Unity also displays “Warnings” here. Warnings will not break your code. This could for example happen if you use functions that are “Obsolete”. Meaning they are still here for legacy reasons, but will in later Versions of Unity be removed from the code. If you are just playing around, ignore stuff like this, but at least consider what the alternative is.<br>
+Warnings can be manifold, so if you run into one and the displayed message isn’t a helpful try looking it up in your favorite search engine.</p>
 
 <h3 id="the-power-of-debug-log">The power of “Debug.Log”</h3>
 
-<p>Often in programming we think about what we want to achieve and yet the computer does not do what we want him to. Especially as a beginner we often assume the computer knows something it doesn’t. So we can actually ask the Computer to tell us what he thinks is going on.
-You could for example print out the value for our sinus Variable at each frame to check if it is really staying between 0 and 1.
+<p>Often in programming we think about what we want to achieve and yet the computer does not do what we want him to. As a beginner we often assume the computer knows something it doesn’t. So we can ask the Computer to tell us what he understands is going on. <br>
+You could for example print out the value for our sinus Variable at each frame to check if it is staying between 0 and 1.
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Debug.Log(sinus);</code></pre></div>
-If you now run your code, and check the Console you should se the value printed out each Frame.
-You can have as many Debug.Log Statements in your code as you want, but they will slow down the execution of your code, so once you don’t need one anymore, get rid of it. They also should not be in your code anymore, once you “ship” it.
-If you have a Debug.Log statement in your code, which you don’t need right now, but think it could be useful down the line, you can also just comment it out for the moment being.
-And while this is a really helpful way to get a better grasp of your code, you shouldn’t get in the habit of cluttering them all over the place in your code.</p>
+If you now run your code and check the Console, see the value printed out each Frame.
+You can have as many Debug.Log Statements in your code as you want, but they will slow down the execution of your code, so once you don’t need one anymore, get rid of it. They also should not be in your code anymore once you “ship” it.<br>
+If you have a Debug.Log statement in your code, which you don’t need but think it could be useful down the line, you can also just comment it out for the moment being.<br>
+And while this is a helpful way to get a better grasp of your code, you shouldn’t get in the habit of cluttering them all over the place in your code.</p>
+
+<h3 id="debug-inspector">Debug Inspector</h3>
+
+<p>Now it would be tedious to expose every private variable you want to see on a script via <code>Debug.Log()</code>. Unity also provides us with the “Debug mode” in the Inspector. To enable it, all you have to do is, click on the tiny “burger-menu” in the upper right corner of the Inspector and select “Debug”. Here you can also switch back to the “normal” mode. <br>
+<figure>
+    <img src="/img/DebugInspector.jpg" width="100%"/> <figcaption>
+            <h4>Inspector in Debug Mode</h4>
+        </figcaption>
+</figure>
+
+As soon as you enable “Debug mode”, you see private variables from your script show up next to the public ones. Unity will then also expose a lot of under the hood options and variables and with these create a lot of clutter inside your inspector. Thus you don’t want this to be the default.</p>
 
 <h3 id="breakpoints">Breakpoints</h3>
 
-<p>In addition to Debug.Log you can also use so called breakpoints. Breakpoints allow you to specify a line of code inside your IDE and once your program reaches that line, Unity will switch back to the IDE and you can click on all the variables and check their current values. This is a fantastic tool for debugging your code. you can even go into Playmode directly from the IDE. But it sadly is restricted to IDEs, so you will need to use Visual Studio Community oder Jetbrains Rider, while Code Editors like Visual Studio Code will not suffice.
-Here is how to use them in Visual Studio Community, which ships with Unity:
-Inside the Code Editor on the far left of the document window you will see grey bar. You can simply click in on that bar in front of the line you want to use as a breakpoint. At this line a red dot will appear and the line will be colored red, meaning your breakpoint is set up.
-In the topbar of your IDE you will find a button called “Attach to Unity” and a drop down arrow right beneath it which will allow you to also choose “Attach to Unity and Play”. Select either one. If you opt for the first one you have to switch to Unity and enter play mode manually.
-Once the light you specified is encountered Unity will switch back to your VS Community and mark the line yellow. It will also pop up a few windows on the bottom, i.e. a list of all the variables currently active and which values are assigned to them. You can fully explore the object.
-Once you have found your problem you can easily press the red dot again and it will vanish, bringing everything back to normal.
-ScreenShots!
-Walk through line by line missing!
-F10 and F11
-You cant edit code while you are debugging!!!</p>
+<p>Besides Debug.Log you can also use so called breakpoints. Breakpoints allow you to specify a line of code inside your IDE and once your program reaches that line, Unity will switch back to the IDE and you can click on all the variables and check their current values. This is a fantastic tool for debugging your code. you can even go into playmode from the IDE. But it is restricted to IDEs, so you will need to use Visual Studio Community or Jetbrains Rider, while Code Editors like Visual Studio Code will not suffice.<br>
+Here is how to use them in Visual Studio Community, which ships with Unity: <br>
+Inside the Code Editor on the far left of the document window you will see grey bar. You can click on that bar in front of the line you want to use as a breakpoint. At this line a red dot will appear and it will color the line red, meaning it set your breakpoint up.<br>
+<figure>
+    <img src="/img/VSBreakPoint.jpg" width="100%"/> <figcaption>
+            <h4>Added BreakPoint in Visual Studio</h4>
+        </figcaption>
+</figure>
+
+In the top bar of your IDE you will find a button called “Attach to Unity” and a drop-down arrow right beneath it which will allow you to choose “Attach to Unity and Play”. Select either. If you opt for the first one you have to switch to Unity and manually enter play mode.<br>
+The code then runs and will stop the moment it encounters the line you specified. Unity will then switch back to your VS Community and mark the line yellow. It will also pop up a few windows on the bottom, i.e. a list of all the variables active and which values are assigned to them. You can explore the object.<br>
+<figure>
+    <img src="/img/VSStepThrough.jpg" width="100%"/> <figcaption>
+            <h4>Hold on Breakpoint</h4>
+        </figcaption>
+</figure>
+
+Using the <code>F10</code> and <code>F11</code> Keys you can step through the code. <em>Step In</em> will become interesting once we have looked at Methods in chapter five. For now F10 will allow you to go through the code line by line. This allows you to see what is going on inside your script.
+To stop debugging you can press the red “Stop Button” that appeared the moment you pressed start, or stop the scene inside Unity. I should note, that by default you cannot edit code while debugging is running. And for now keep it that way.
+Once you have found your problem you can press the red dot again and it will vanish, bringing everything back to normal.<br></p>
 
 <h3 id="still-stuck">Still stuck?</h3>
 
-<p>If you are stuck, there are several places to look for help.
-The first place you should always check out are the Unity Docs. You can find them at <a href="https://docs.unity3d.com">https://docs.unity3d.com</a>.
-The Unity Documentation are really, really helpful and consists of two different parts. The first part is the manual. It consists of descriptions of all Components and Workflows in Unity as well as tutorials and Guides on some topics. It also has some great insight about optimizations for your scenes and so on. Be sure to check it out.
-The other part is the Unity Scripting API. (You can switch between both in the upper right corner.)
-API is short for Application programming interface and it’s the things Unity lays open for you to acces through code. Like the transform.position. So you could search for transform. The first entry will show you a list of all the things you can access on that component. That is a lot of stuff and you will never need everything.
-Now think about all other components and think about everything they might lay open. Nobody can remember everything, so it’s great that we can look this stuff up so conveniently.
-If you choose on of it’s properties or functions you can get even more details and in most cases even see example code, which is really helpful!
-You will always find the most recent version of the docs online, but if you happen to have a slow internet connection you could try Zeal as an offline documentation browser. I have it installed on my Laptop as a great way to search the docs when I’m on the train. You can find it at zealdocs.org.</p>
+<p>If you are stuck, there are several places to look for help.<br>
+The first place you should always check out are the Unity Docs. You can find them at <a href="https://docs.unity3d.com">https://docs.unity3d.com</a>. <br>
+The Unity Documentation is helpful and comprises two different parts. The first part is the manual. It comprises descriptions of all Components and Workflows in Unity and tutorials and Guides on some topics. It also has some great insight about optimizations for your scenes and so on. Be sure to check it out.<br>
+The other part is the Unity Scripting API. (You can switch between both in the upper right corner.)<br>
+API is short for Application programming interface and it’s the things Unity lays open for you to access through code. Like the transform.position. So you could search for transform. The first entry will show you a list of all the things you can access on that component. That is a lot of stuff and you will never need everything. <br>
+Now think about all other components and think about everything they might lay open. Nobody can remember everything, so it’s great that we can read up on these things.<br>
+If you choose one of its properties or functions, you can get even more details and in most cases even see example code, which is helpful! <br>
+You will always find the most recent version of the docs online, but if you have a slow internet connection, you could try Zeal as an offline documentation browser. I have it installed on my Laptop as a great way to search the docs when I’m on the train. You can find it at zealdocs.org.<br></p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a href="https://github.com/alex-shpak/hugo-book/commit/37c59d1ca60219a3ab0e0210aec9fc3ec683d811" title='Last modified November 4, 2019 by Henrik Gieselmann' target="_blank" rel="noopener">
-      <img src="/svg/calendar.svg" alt="Changed" /> November 4, 2019
-    </a>
-  </div>
-  
-  
-  <div>
-    <a href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs%5c03_The_Console.md" target="_blank" rel="noopener">
-      <img src="/svg/edit.svg" alt="Edit" /> Edit this page
-    </a>
-  </div>
-  
-</div>
-
 
       
     </div>
@@ -206,15 +199,16 @@ You will always find the most recent version of the docs online, but if you happ
     
   
 
-  <aside class="book-toc level-3 fixed">
+  <aside class="book-toc levels-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#03-debugging">03 - Debugging</a>
 <ul>
 <li>
 <ul>
 <li><a href="#the-console-your-best-friend">The Console - Your best friend</a></li>
 <li><a href="#the-power-of-debug-log">The power of “Debug.Log”</a></li>
+<li><a href="#debug-inspector">Debug Inspector</a></li>
 <li><a href="#breakpoints">Breakpoints</a></li>
 <li><a href="#still-stuck">Still stuck?</a></li>
 </ul></li>
@@ -226,8 +220,7 @@ You will always find the most recent version of the docs online, but if you happ
 
 
   </main>
-  
-  
+
   
 </body>
 

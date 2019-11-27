@@ -68,11 +68,6 @@
   </url>
   
   <url>
-    <loc>https://generativeunity.henrikgieselmann.com/docs/12_Animation/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/12_UserInterfaces/</loc>
     <priority>0</priority>
   </url>
@@ -83,17 +78,7 @@
   </url>
   
   <url>
-    <loc>https://generativeunity.henrikgieselmann.com/docs/13_Physics/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/14_Lighting/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://generativeunity.henrikgieselmann.com/docs/14_Sound/</loc>
     <priority>0</priority>
   </url>
   
@@ -103,17 +88,7 @@
   </url>
   
   <url>
-    <loc>https://generativeunity.henrikgieselmann.com/docs/15_UserInterfaces/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/16_Shaders/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://generativeunity.henrikgieselmann.com/docs/16_VFXGraph/</loc>
     <priority>0</priority>
   </url>
   
@@ -123,17 +98,7 @@
   </url>
   
   <url>
-    <loc>https://generativeunity.henrikgieselmann.com/docs/17_ShadingAndLighting/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://generativeunity.henrikgieselmann.com/docs/18_Augmented/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://generativeunity.henrikgieselmann.com/docs/18_TexturesAndImages/</loc>
     <priority>0</priority>
   </url>
   
@@ -188,7 +153,6 @@
   
   <url>
     <loc>https://generativeunity.henrikgieselmann.com/</loc>
-    <lastmod>2019-07-04T22:33:50+02:00</lastmod>
   </url>
   
   <url>
