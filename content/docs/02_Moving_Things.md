@@ -1,15 +1,14 @@
-CHAPTER INTRO - REWORK THIS
-
-These two thing will perfetly go hand in hand, as Design, as well as Coding are Skills. You can read about them as much as you want, but you will only become good at it by actually designing stuff and actually writing code. This is actually an important point. A lot of the ideas of programming are in their core not hard to grasp. A lot of them are really straight forward. What makes programming complex is dividing bigger problems into smaller problems and even smaller problems. And becoming good at this thoughtprocess takes practice. When I went to Drawing school to prepare for my design studies I didn’t get any better until the moment my teacher Ivan forced me to come back with 100 drawings of simple things within a week. The Website drawabox.com has a challenge of drawing 250 boxes.
-And for both worlds a great process for starting out exists. In the design world you start out by doing scribbles or storyboards to get an idea of what the result should look like. In coding you should start with so called “Pseudo Code”.
-Pseudo Code is just a few written lines of what needs to happen. You can then try ordering them in the way the code would require execution, if you can estimate that. These can just look like your average cooking recipe. In essence they are the same.
-I recommend starting on paper, as technology sadly has a tendency to screw with your thinking process, but it can also be a good idea to bring your pseudocode into your script as a comment.
-
-For our “Homage to the Square” experimentation I started with some simple scribbles on what could be things we could easily do with code:
-TODO INSERT SCRIBBLES AND PSEUDOCODE
-
-
 # 02 - Moving Things
+Before we get started: It is easy to get lost in code as a beginner. There are many things that can throw you off, so it really is a good idea to have an exact plan on what you want to achieve. These can just be some doodles or scribbles, just anything that will get you away from the code and into your personal design thinking space. <br>
+{{< figure src="/img/Scribbles.jpg" title="Scribbles" width="50%">}}
+These are some of the scribbles I first created when thinking about these cuboids that will be following us throughout this book. These aren’t beautiful, they are just quick. A Quick representation of what you could do with one cuboid and a basic transform. <br>
+Now you might think these redundant and unnecessary, but they are a simple way to remind you of what you wanted to create in the first place. They also help to quickly iterate ideas before you go in and have to deal with actually coding.<br>
+Another great way to prepare yourself for coding is writing down in your native language what should happen inside your program. This can really help to structure your code beforehand and identify problems or hard to solve issues before you sit down and write your code. <br>
+*“If you press ‘A’ the player should jump. If he hits an enemy he loses a life.”* <br>
+Superbly simple and yet you now know, you need a player character thats able to jump, you need to check for Input, you need to keep track of lives and find a way to check collision with an enemy player. That is a lot of information in just a simple sentence. <br>
+Both of these processes might seem excessive they really help you get some distance and reflect about the problem at hand in a more concentrated way, so I hope you will at least try these out. But anyway, let’s get to it!
+
+
 ### Structure of a script
 
 So let’s start writing our first script. There are multiple ways to create a script, the one I prefer is creating it via `Right-click -> C# Script` in the Project View. The advantage here is: you can choose the folder in which the Script should be located and you don’t have to start organizing your files after the fact. <br>
