@@ -318,6 +318,12 @@ transform.rotation = Quaternion.Euler(0,1,0);
 {{< figure src="/img/MovingCuboids_Rotating25.gif" title="RotatingCuboids" width="50%">}}
 
 Add Parenting rotation Script here
+The key to recreating this sketch in parenting. We can simply place a planet at the center of the scene (Position 0/0/0) and add a script to rotate it. We can also use this script and attach it to an “empty GameObject” at the center of the scene. This is a very common way to set up relationships in 3D. If you look at the Rockets themselves you will see, that they are set up in the exact same way. This will allow us to have some control still over the objects inside Unity.
+{{<expand>}}
+{{<hint info>}}
+Once you get to the point where your scenes become very, very complex or you are aiming for mobile deployment, it is advisable to keep hierarchies relatively shallow for performance reasons. For now this not an issue though.
+{{</hint>}}
+{{</expand>}}
 
 ### Projects
 Project 1 - Variants
@@ -325,13 +331,24 @@ To conclude this chapter I again would like to ask you to spend some time and pl
 {{< figure src="/img/MovingCuboids_ScalingXZ.gif" title="Cuboids Scaling on X and Z" width="50%">}}
 {{< figure src="/img/MovingCuboids_ScalingY.gif" title="Cuboids moving on the Y Axis" width="50%">}}
 
+
 Project 2 - Space Exploration
-This project is a little more advanced as it uses external models again and you will need to make use of “Parenting” in the hierarchy view.
-Download the Assets here:
-Add Assets and results here!
+{{< figure src="/img/SpaceExploration.gif" title="Space Exploration" width="50%">}}
+This project is a little more advanced as it uses external models again and you will need to make use of parenting in the hierarchy view. <br>
+Download the Assets here: <br>
+Add Assets here!
+The key to recreating this sketch in parenting. We can simply place a planet at the center of the scene (Position 0/0/0) and add a script to rotate it. We can also use this script and attach it to an “empty GameObject” at the center of the scene. This is a very common way to set up relationships in 3D. If you look at the Rockets themselves you will see, that they are set up in the exact same way. This allows us to still have some kind of control over the objects in Unity. I.e we could scale the legs of windows of the spaceships to our liking.
+{{<expand>}}
+{{<hint info>}}
+Once you get to the point where your scenes become very, very complex or you are aiming for mobile deployment, it is advisable to keep hierarchies relatively shallow for performance reasons. For now this not an issue though.
+{{</hint>}}
+{{</expand>}}
+You can now position the spaceship somewhere in the orbit of the planet. Once you switch to playmode your spaceship should fly around the planet in the way you set up the empty in object in the center.
+For the flame we can again just go ahead and create a script that oscillates the size. We can also add our Rotation script to give even more liveliness to the flames. But this is all up to you and your creativity. <br> 
+Important to see here is how much you can actually create with just a few very small scripts attached to objects. <br>
+You can then go ahead and play with materials, colors and lights for your scene. I personally think it can be especially fun to play with the camera and get interesting views on one and the same sketch. That’s one of the great things about working in three dimensions of course!
+{{< figure src="/img/SpaceExploration2.gif" title="Space Exploration 2" width="50%">}}
+Add Asset of completed Scene here
 
 
- - learn "parenting”
-- LowPoly Planets
-- Transform.Rotate
-- Transform.Rotate around
+
