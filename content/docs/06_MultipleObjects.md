@@ -73,7 +73,7 @@ for (int i = 0; i < 5; i++)
 A *for loop* starts with the `for` Keyword followed by parentheses. The first thing is our tally list / Initializer. It works exactly like creating any other variable in Unity, but you *have* to initialize it. What’s also to note is: Counting in computer science almost always starts with 0. Thus we will start with `int i = 0`! The three parts of a loop are separated by a semicolon. Next up is the condition. Conditions in for loops check if your counter is higher or lower then a certain threshold and if it evaluates to false the loop will stop. Finally, the iterator determines by which value to increase or decrease your tally list. In this case the `i++` just means the variable `i` will be increased by one after each iteration. You could also put `i+1`. Actually you can advance your initializer in any step size: `i + 2`, `i + 100` or even `i - 1`. They all work fine. <br>
 In curly braces follows the code to run. In the above counter we just print the value of our counter `i` to the console.
 
-### Create example with for loop here
+**### Create example with for loop here**
 
 ### Arrays
 That’s it for the theory, lets put this into practice. Earlier, when were discussing Instantiation, we said we need a variable to create a reference to our objects. But creating five variables, each to hold a cuboid would be a pain. That’s why we also introduce Arrays. Arrays hold many things of one same type. A list in essence, except that they aren’t really list because list exist as well and... well... this is messed up. They are seperate things and we’ll look at Lists a little later.<br>
@@ -147,13 +147,13 @@ This is also to show explicitly, that you can have the same variable name on dif
 {{< figure src="/img/MultiShiftingXFull.gif" title="Multiple Cubes Shifting" width="75%">}}
 If you feel that this syntax is complicated, take the time an rebuild some of the sketches we build so far. Also feel free to play around with the number of cuboids you create this way. Make sure to feel comfortable with the idea of Arrays and the usage of `i` in this context. Arrays are important and we will leverage their power a lot from now on.
 
-Add in three examples with Scripts applied to prefabs
+**Add in  examples with Scripts applied to prefabs**
 
 
 ### A single script
 All of the examples above use the idea of having the behavior attached to the prefab itself. To make this even more flexible, we could add our behavior at run time as well. <br>
 
-Replace by Gist
+**Replace by Gist**
 {{<highlight c>}}
 using UnityEngine;
 
@@ -224,11 +224,11 @@ while( i < 10){
 This code would actually work just fine. It’s essentially recreating the for loop. <br>
 But you could of course use this in cases, when you want to base the iteration on some kind of outside variable. Just make sure to be able to make the condition can become false based on operations inside the while loop.
 
-Build a Sektch with While loops
+**Build a Sektch with While loops**
 
 
 ### Do-While Loops
-There is one last kind of loop which C# offers. The “do-while” loop. As the name suggests it’s very tightly entangled with the while loop. It’s special feature is, that it will always execute at least once, because the evaluation of the condition follows after the first iteration step.
+There is one last kind of loop which C# offers. The “do-while” loop. As the name suggests it’s very tightly entangled with the while loop. It also works on a condition you have to falsify from inside the loop, but the evaluation of the condition is done after the first iteration of the loop. This guarantees that the code inside the loop is run at least once. This is a rather special case, but can be useful in some situations.
 {{<highlight c>}}
 int i = 0;
 do 
@@ -238,7 +238,7 @@ do
 } while (i < 5);
 {{</highlight>}}
 
-Example Project here?? ??!!
+**Example Project here?? ??!!**
 
 
 ### Lists
@@ -259,7 +259,7 @@ To add objects to your List during runtime you can simply use the `Add()` method
 	cuboids.Add(myGameObject));
 {{</highlight>}}
 An example using Lists and the behavior directly attached to the prefab, would look like this:
-REPLACE BY GIST
+**REPLACE BY GIST**
 
 {{<highlight c>}}
 using System.Collections.Generic;
@@ -300,9 +300,9 @@ So what if you wanted to position your objects not just in a single axis, but in
 private GameObject[,] cuboidArray = new GameObject[5, 5];
 {{</highlight>}}
 This code would create a two-dimensional Array with an array Length of 5 in each dimension. Now most likely you want to assign GameObjects to your Array using an *for loop*. What you will need to do now is nest two for loops into each other, with a different iterator for each loop.
-
+**
 Convert to Gist?
-Replace by script that values single responsibility
+Replace by script that values single responsibility**
 {{<highlight c>}}
 public int arraySize = 5;
 public float offset = 1.5f;
@@ -328,8 +328,8 @@ Now depending on your background, you might think: “A million squares isn’t 
 
 All of this works exactly the same using three dimensions:
 
-Replace by Gists!
-Replace by script that values single responsibility
+**Replace by Gists!
+Replace by script that values single responsibility**
 
 {{<highlight c>}}
 using UnityEngine;
@@ -385,7 +385,15 @@ public class MultiDimensionalCuboidsRotationStacked : MonoBehaviour
 
 
 
-Examples of possible Things
-- move through randomly placed Objects
-- landspeeder with noisy stones on the floor
-- landspeeder with crazy floors, tunnels
+### Projects
+#### Project 1
+Again go and play with this. Here is some inspiration.
+{{< figure src="/img/MultidimensionalNoisePosition.gif" width="50%">}}
+{{<expand>}}
+Add Gist
+{{</expand>}}
+{{< figure src="/img/MultidimensionalDistancebasedSin.gif" width="50%">}}
+{{<expand>}}
+Add Gist
+{{</expand>}}
+

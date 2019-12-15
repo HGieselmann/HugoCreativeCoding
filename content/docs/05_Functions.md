@@ -133,7 +133,7 @@ int result = Add(1, 1); // returns 2
 To add parameters to a method, we declare their type, an integer in this case, and a name for them in the parentheses we left empty until now. In the method itself, you can use these as normal variables. These are only visible to the method and you can’t use these variables outside the context of the method.<br>
 To *pass* information, you add arguments to the function call. Here, this could be literal numbers or any variables that contain an integer. Important is, you **have** to specify all arguments. You can’t just specify a single integer in parentheses.<br>
 Now you can see that the method we created is rather useless, but I hope it clarified the basic idea. Let’s look at a more advanced example: <br>
-Insert Fading/Popping Cuboids here
+**Insert Fading/Popping Cuboids here**
 While this is the Popping example from before, I introduced some fading towards the bounds. Let’s first look at the beginning of the script:
 {{<highlight c>}}
 using UnityEngine;
@@ -343,30 +343,44 @@ float noiseX = Mathf.PerlinNoise(Time.time * movementScale + timeOffset, Time.ti
 {{</highlight>}}
 Getting this kind of animation relies on two kinds of Offsets. The first offset I put as a hard coded `0.5f` for the noiseZ value. This will guarantee that the movement will not just happen along one axis. <br>
 The other offset is a custom offset per cuboid you can set in the Editor. This Offset will create the time offset you can create for the cuboids. You can play around with this value and the order in which you set the offset to create different results.
-We will come across noise lot’s more over the following chapters.
+We will come across noise lot’s more over the following chapters, so play around with it a little to get used to how it works.
 
 ### Projects
 #### Project 1: <br>
-The first thing I suggest you do is, go through the scripts you have written so far and refactor them. An for at least a few, try not to rely on the refactoring help of your IDE. Get the concept o writing them engraved into your brain!.<br>
+The first thing I suggest you do is, go through the scripts you have written so far and refactor them. An for at least a few, try not to rely on the refactoring help of your IDE. Get the concept of writing them engraved into your brain!. <br>
 
-#### Projects 2:<br>
-While methods don’t actually allow is to do something utterly new, it allows is creating things that aren’t horribly tedious to do. So here are some more examples for our Cuboid: Go check them out.<br>
-Add more examples here using methods
-#### Projects 3:<br>
-Noise Walker
-Low poly Example
-More advanced land speeder?
+#### Project 2: <br>
+While methods don’t actually allow us to do something utterly new, it allows is creating things that aren’t horribly tedious to do. So here are some more examples for our Cuboid: Go check them out. <br>
+{{< figure src="/img/ConditionalCuboids_2Pivots.gif" width="50%">}}
+{{<expand>}}
+Insert Gist
+{{</expand>}}
+{{< figure src="/img/ConditionalCuboids_4Pivots.gif" width="50%">}}
+{{<expand>}}
+Insert Gist
+{{</expand>}}
+#### Project 3: <br>
+In this project we will use noise to let our spaceship hover and struggle over the surface of a planet. We will reuse the assets from chapter 02.
+{{< figure src="/img/SpaceshipCloseToPlanet.gif" width="50%">}}
+You can start with you sketch form before. You will need to adjust the size relationship between the planet and the spaceship. The easiest way to achieve this, is to scale down the spaceship and then adjust the camera. You probably need to adjust the Field of View as well. <br>
+Once they are in position add a new script. <br>
+We will add two methods to our script. One for adjusting the distance to the planet surface based on noise and one which will add noise to the rotation of our ship.
+{{<expand>}}
+**Add GIST**
+{{</expand>}}
+While there is not much in here that is overly complicated, I want to note a few things. <br>
+1. In the `Start()` method I grab the current location and rotation of the rocket. This ensure that any positioning updates we make in the editor will be reflected in the sketch. We don’t hardcode some values here.
+2. At the end of the PerlinNoise statements I subtract the `rotationScale` multiplied by a half. This is to ensure the noise is zero-centered and we don’t add a pitch in any direction. Go ahead an remove this to see what happens. (And I yes I know what I said about Magic numbers, but I personally think in this case thats fine.)
+3. The ` + x`, ` + y` and ` + z` on the Time.time for rotation are just here to create a random offset in time. This will prevent that all rotations happen at the exact same time. You could create this with more control and sophistication.
+4. To iterate over my point from earlier: Look at `Update()` and imagine coming back to this script in two months. Just two lines of code and you know what the whole script does. You don’t necessarily know how. But what is happening is easily identified.
+
+
+#### Project 4:
+Spaceship Randomizer
 
 
 
 
-- animated Randomness
-- recreate an image each touch
--  Suprematism
-- can we implement design rules to get “non random results”
-
-- Land speeder with things placed through noise
-- 
 
 ### Additional Resources:
  - [Ari Danish - Working with Noise](https://vimeo.com/75313908) <br>
