@@ -396,4 +396,8 @@ Add Gist
 {{<expand>}}
 Add Gist
 {{</expand>}}
+{{< figure src="/img/MultidimensionalOffsetGridScale.gif" width="50%">}}
+{{<expand>}}
+Add Gist
+{{</expand>}}
 
