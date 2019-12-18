@@ -1,13 +1,13 @@
 # 06 - Multiple Objects
 ### Multiple Object Workflow
-If you followed along with some of the examples, you probably realized we do a lot of manual labor. We deal with the Unity Editor a lot. We apply all the new scripts manually to each Cuboid. Then again programming is a lazy mans art. The less manual labor we have to do, the better. \
+If you followed along with some of the examples, you probably realized we do a lot of manual labor. We deal with the Unity Editor a lot. We apply all the new scripts manually to each Cuboid. Then again programming is a lazy mans art. The less manual labor we have to do, the better.\
 With the concepts introduced in this chapter, we will be able handle lots and lots of objects simultaneously. Hence it will also allow us to create more complex sketches. \
-To do this conveniently in Unity we need to look at three Concepts: \
-1. Prefabs and Instantiation \
-2. Arrays and/or Lists \
-3. Loops \
-In short, we will create objects through Instantiation. We will the use Arrays and Lists to keep track of them and loops to iterate over them. \
-What's even better is, it opens up a lot of creative possibilities and ideas to talk about! \
+To do this conveniently in Unity we need to look at three Concepts:  
+1. Prefabs and Instantiation  
+2. Arrays and/or Lists  
+3. Loops  
+In short, we will create objects through Instantiation. We will the use Arrays and Lists to keep track of them and loops to iterate over them.\
+What's even better is, it opens up a lot of creative possibilities and ideas to talk about!\
 We will also look at interaction between multiple scripts. Finally keywords like `private` and `public` will hopefully make more sense.
 
 ### Prefabs and Instantiation
@@ -33,10 +33,10 @@ Next we need to actually create an actual instance at runtime:
 {{<highlight c>}}
 Instantiate(cuboidPrefab, Vector3.zero, Quaternion.identity);
 {{</highlight>}}
-The `Instantiate()` Method takes three arguments: \
-1. The Object we want to Instantiate \
-2. A Vector3 as Position in Space \
-3. Rotation passed as a Quaternion. \
+The `Instantiate()` Method takes three arguments:  
+1. The Object we want to Instantiate  
+2. A Vector3 as Position in Space  
+3. Rotation passed as a Quaternion.  
 For now, just use `Quaternion.identity;`. Quaternions are scary things and `Quaternion.identity` will place them in the exact state you created the Prefab in, so that's very likely correct anyway. \
 If you run your scene now, you should have one Cuboid moving around, based on the script you had attached to it, when creating the prefab. \
 Go ahead and duplicate that line and run the code again. It should give you two cuboids and yet you should only see one. Both are created in exactly the same space and size. But you should be able to see two of them in the hierarchy. You could go ahead and change the position at which you instantiate the object, or we could position it after instantiation. \
@@ -48,7 +48,7 @@ To move it afterwards, we need to find a way to access a GameObject after instan
 #### the 'var' Keyword
 You might stumbled across the 'var' Keyword here. You will see code that never uses 'var' and code which makes a lot use of it. Generally speaking you should only use it when through the context it is unmistakeable which Type is referenced. This is mostly true for "Object stuff". To keep it simple for now. As an Example:
 `GameObject myGameOject = new GameObject();`\
-This would create a new empty GameObject. But the line of code isn't a beauty, is it? That's where var comes in:\
+This would create a new empty GameObject. But the line of code isn't a beauty, is it? That's where var comes in:  
 `var myGameObject = new GameObject();`\
 Don't worry about it too much for now. This will become second nature over time.
 {{</hint>}}
@@ -116,7 +116,7 @@ So now let's look at actually making use of this:
 This code incorporates everything we have covered so far. We first create a variable `myPrefab`. We then create a variable for an array of GameObjects and also create a variable for the size of the array. In `Start()` method we then initialize the array to the size of the variable. Henceforth it can hold five objects right now. But at the moment all slots are empty. \
 Next we need to create a *for loop* and it's condition is that our initializer is smaller than our `arraySize` variable. During the loop w-e access each slot of the list by it's number, using the iterator. We also use the iterator as an multiplier for the position, thus shifting each object up by one.
 {{< figure src="/img/MultiShiftingX.gif" title="Multiple Cubes Shifting" width="75%">}}
-As you can see, the cuboids now move happily along in sync. But they all still have same color and all of them have the exact same offset. \
+As you can see, the cuboids now move happily along in sync. But they all still have same color and all of them have the exact same offset.  
 
 ### Script Communication
 So what if we want to change the color of these? We need to find a way to access the Color component of the objects. And we have done this before in Chapter 5. But this time we access the GameObject in our array first.
@@ -151,7 +151,7 @@ If you feel that this syntax is complicated, take the time an rebuild some of th
 
 
 ### A single script
-All of the examples above use the idea of having the behavior attached to the prefab itself. To make this even more flexible, we could add our behavior at run time as well. \
+All of the examples above use the idea of having the behavior attached to the prefab itself. To make this even more flexible, we could add our behavior at run time as well.  
 
 **Replace by Gist**
 {{<highlight c>}}
@@ -401,3 +401,11 @@ Add Gist
 Add Gist
 {{</expand>}}
 
+#### Project 2
+Busy Orbit
+{{< figure src="/img/BusyOrbit.gif" width="50%">}}
+You guessed it, we will stay with our spaceships. This time we will create a very busy orbit around our planet and reuse all the concepts we introduced in this chapter. \
+The beauty of this is mostly how little code we need to actually achieve this. We will do quite a few things we had to do manually before with just a line of code. \
+The main logic is handled inside one script. We create an empty GameObject as pivot point for each rocket and then choose a random rocket from an array of rocket prefabs and attach it to it's pivot. Then we rotate the all pivots randomly. 
+Lastly we just rotate each pivot each frame.
+Of course you could go wild with this one, randomize colors, rotation speed, size and so forth. But I will leave that up yo you.

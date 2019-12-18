@@ -9,9 +9,9 @@ headless: true
 - [04 Conditionals]({{< relref "/docs/04_UserInput.md" >}})
 - [05 Methods]({{< relref "/docs/05_Functions.md" >}})
 - [06 Multiple Objects]({{< relref "/docs/06_MultipleObjects.md" >}})
-- [07 Classic GC Techniques]({{< relref "docs/07_ClassicGC.md" >}})
-- [08 Classes and OOP]({{< relref "docs/08_ClassesAndOOP.md" >}})
-- [09 Delegates and Events]({{< relref "docs/09_DelegatesAndEvents.md" >}})
+- [07 Classes and OOP]({{< relref "docs/07_ClassesAndOOP.md" >}})
+- [08 Intermediate C#]({{< relref "docs/08_IntermediateCSharp.md" >}})
+- [09 Classic GC]({{< relref "docs/09_ClassicGC.md" >}})
 - [10 Best Practices]({{< relref "docs/10_BestPractices.md" >}})
 - [11 Design Considerations]({{< relref "docs/11_StartingToDesign.md" >}})
 - [12 User Interfaces]({{< relref "docs/12_UserInterfaces.md" >}})
@@ -29,4 +29,4 @@ headless: true
 - **Other**
 - [Github]({{< relref "/docs/99_Github.md" >}})
 - [Additional Resources]({{< relref "/docs/98_AdditionalResources.md" >}})  
-- [  ]({{< relref "/posts" >}})
+- [Blog Posts]({{< relref "/posts" >}})
